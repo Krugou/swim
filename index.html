@@ -20,11 +20,11 @@
     const twoHoursBeforeNow = Math.floor( ( Date.now() / 1000 ) - ( 2 * 60 * 60 ) );
     const twoHoursFromNow = Math.floor( ( Date.now() / 1000 ) + ( 2 * 60 * 60 ) );
     const fetchUrl = `https://resurssivaraus.espoo.fi/Tailored/prime_product_intranet/espoo/web/Calendar/ReservationData.aspx?resourceid%5B%5D=16650&start=${ twoHoursBeforeNow }&end=${ twoHoursFromNow }&_=${ twoHoursBeforeNow }`;
-    fetch( fetchUrl )
-      .then( response => {
-        // Handle the response here
-        console.log( response );
-      } )
+    console.log( "🚀 ~ fetchUrl:", fetchUrl );
+    fetch( fetchUrl ).then( response => {
+      // Handle the response here
+      console.log( response );
+    } )
       .catch( error => console.error( 'Error:', error ) );
     swimmingHallData.forEach( hall => {
       const hallElement = document.createElement( 'div' );
