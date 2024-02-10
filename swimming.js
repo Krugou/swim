@@ -6,10 +6,6 @@ const swimmingHallData = [
 		swimmingHallName: 'Matinkylän uimahalli',
 		relatedLinks: [
 			{
-				relatedLinkName: 'Swim',
-				url: '24767,24790',
-			},
-			{
 				relatedLinkName: 'Terapia-allas',
 				url: '24790',
 			},
@@ -21,19 +17,15 @@ const swimmingHallData = [
 				relatedLinkName: '50m, koko allas',
 				url: '24767',
 			},
+			{
+				relatedLinkName: 'Swim',
+				url: '24767,24790',
+			},
 		],
 	},
 	{
 		swimmingHallName: 'Leppävaaran uimahalli',
 		relatedLinks: [
-			{
-				relatedLinkName: 'Swim',
-				url: '18509,16074',
-			},
-			{
-				relatedLinkName: 'Swim(summer)',
-				url: '18509,19191,16074',
-			},
 			{
 				relatedLinkName: 'Terapia-allas',
 				url: '18509',
@@ -49,6 +41,14 @@ const swimmingHallData = [
 			{
 				relatedLinkName: 'Iso allas, koko allas',
 				url: '16074',
+			},
+			{
+				relatedLinkName: 'Swim',
+				url: '18509,16074',
+			},
+			{
+				relatedLinkName: 'Swim(summer)',
+				url: '18509,19191,16074',
 			},
 		],
 	},
@@ -73,10 +73,6 @@ const swimmingHallData = [
 		swimmingHallName: 'Keski-Espoon uimahalli',
 		relatedLinks: [
 			{
-				relatedLinkName: 'Swim',
-				url: '16650,16645',
-			},
-			{
 				relatedLinkName: 'Terapia-allas',
 				url: '16650',
 			},
@@ -87,6 +83,10 @@ const swimmingHallData = [
 			{
 				relatedLinkName: 'Iso allas, koko allas',
 				url: '16645',
+			},
+			{
+				relatedLinkName: 'Swim',
+				url: '16650,16645',
 			},
 		],
 	},
