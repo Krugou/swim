@@ -27,6 +27,10 @@ const swimmingHallData = [
 		relatedLinks: [
 			{
 				relatedLinkName: 'Swim',
+				url: 'https://resurssivaraus.espoo.fi/liikunnantilavaraus/haku/?ResourceIDs=18509,16074',
+			},
+			{
+				relatedLinkName: 'Swim(summer)',
 				url: 'https://resurssivaraus.espoo.fi/liikunnantilavaraus/haku/?ResourceIDs=18509,19191,16074',
 			},
 			{
