@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Swimming halls</title>
+</head>
+
+<body class="p-6 bg-gray-300 text-gray-800">
+  <h1 class="text-2xl text-center m-2 p-2 bg-blue-500 text-white rounded">Swimming hall schedules</h1>
+  <div id="app" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+    <!-- Swimming halls will be inserted here -->
+  </div>
+
+  <script src="./swimming.js"></script>
+  <script>
+    const app = document.getElementById( 'app' );
+
+    swimmingHallData.forEach( hall => {
+      const hallElement = document.createElement( 'div' );
+      hallElement.className = 'border p-4 rounded shadow bg-white';
+
+      const hallName = document.createElement( 'h2' );
+      hallName.className = 'text-xl font-bold mb-2 text-blue-500';
+      hallName.textContent = hall.swimmingHallName;
+      hallElement.appendChild( hallName );
+
+      const linksList = document.createElement( 'ul' );
+      hall.relatedLinks.forEach( link => {
+        const linkItem = document.createElement( 'li' );
+        const linkElement = document.createElement( 'a' );
+        linkElement.href = link.url;
+        linkElement.textContent = link.relatedLinkName;
+        linkElement.className = 'inline-block bg-blue-500 m-4 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded';
+        linkItem.appendChild( linkElement );
+        linksList.appendChild( linkItem );
+      } );
+      hallElement.appendChild( linksList );
+
+      app.appendChild( hallElement );
+    } );
+  </script>
+</body>
+
+</html>
