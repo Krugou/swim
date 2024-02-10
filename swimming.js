@@ -71,4 +71,17 @@ const swimmingHallData = [
 			},
 		],
 	},
+	{
+		swimmingHallName: 'Olari uimahalli',
+		relatedLinks: [
+			{
+				relatedLinkName: 'Koko allas',
+				url: 'https://resurssivaraus.espoo.fi/liikunnantilavaraus/haku/?ResourceIDs=15968',
+			},
+			{
+				relatedLinkName: 'Kuntosali',
+				url: 'https://resurssivaraus.espoo.fi/liikunnantilavaraus/haku/?ResourceIDs=15967',
+			},
+		],
+	},
 ];
