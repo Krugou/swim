@@ -17,7 +17,12 @@
   <script src="./swimming.js"></script>
   <script>
     const app = document.getElementById( 'app' );
-
+    fetch( 'https://resurssivaraus.espoo.fi/Tailored/prime_product_intranet/espoo/web/Calendar/ReservationData.aspx?resourceid%5B%5D=16650&start=1707084000&end=1707688800&_=1707560390539' )
+      .then( response => {
+        // Handle the response here
+        console.log( response );
+      } )
+      .catch( error => console.error( 'Error:', error ) );
     swimmingHallData.forEach( hall => {
       const hallElement = document.createElement( 'div' );
       hallElement.className = 'border p-4 rounded shadow bg-white';
@@ -31,7 +36,7 @@
       hall.relatedLinks.forEach( link => {
         const linkItem = document.createElement( 'li' );
         const linkElement = document.createElement( 'a' );
-        linkElement.href = link.url;
+        linkElement.href = reservationUrl + link.url;
         linkElement.textContent = link.relatedLinkName;
         linkElement.className = 'inline-block bg-blue-500 m-4 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded';
         linkItem.appendChild( linkElement );
