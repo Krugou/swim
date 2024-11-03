@@ -1,4 +1,3 @@
-// https://resurssivaraus.espoo.fi/Tailored/prime_product_intranet/espoo/web/Calendar/ReservationData.aspx?resourceid%5B%5D=16650&start=1707084000&end=1707688800&_=1707560390539
 const reservationUrl =
 	'https://resurssivaraus.espoo.fi/liikunnantilavaraus/haku/?ResourceIDs=';
 type SwimmingAsset = {
