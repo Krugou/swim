@@ -80,15 +80,15 @@
   }
 </style>
 
-<h1 class="text-2xl text-center m-2 p-2 bg-blue-500 text-white rounded">Swimming hall schedules</h1>
-<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+<h1 class="p-2 m-2 text-2xl text-center text-white bg-blue-500 rounded">Swimming hall schedules</h1>
+<div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
   {#each swimmingHalls as hall}
-    <div class="border p-4 rounded shadow bg-white">
-      <h2 class="text-xl font-bold mb-2 text-blue-500">{hall.swimmingHallName}</h2>
+    <div class="p-4 bg-white border rounded shadow">
+      <h2 class="mb-2 text-xl font-bold text-blue-500">{hall.swimmingHallName}</h2>
       <ul>
         {#each hall.assets as asset}
           <li class="flex space-x-4">
-            <a href="{reservationUrl + asset.url}" class="inline-block bg-blue-500 m-4 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">{asset.swimmingAssetName}</a>
+            <a href="{reservationUrl + asset.url}" class="inline-block px-4 py-2 m-4 font-bold text-white bg-blue-500 rounded hover:bg-blue-700">{asset.swimmingAssetName}</a>
             <a href="https://resurssivaraus.espoo.fi/Tailored/prime_product_intranet/espoo/web/Calendar/ReservationData.aspx?resourceid%5B%5D={asset.url}&start={Math.floor(Date.now() / 1000 - 4 * 60 * 60)}&end={Math.floor(Date.now() / 1000 + 4 * 60 * 60)}&_={Math.floor(Date.now() / 1000 - 4 * 60 * 60)}" class="inline-block {asset.hasFreeReservation ? 'bg-green-500 hover:bg-green-700' : asset.hasReservationInNext1Hour ? 'bg-red-500 hover:bg-red-700' : 'bg-green-500 hover:bg-green-700'} text-white font-bold py-2 px-4 rounded">R</a>
             <div class="flex flex-row">
               <span class="red-circle" style="visibility: {asset.hasReservationInNext1Hour && !asset.hasFreeReservation ? 'visible' : 'hidden'}"></span>
