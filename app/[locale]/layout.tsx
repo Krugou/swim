@@ -1,25 +1,21 @@
-import type { Metadata } from "next";
+import type { Metadata } from 'next';
+import type { ReactElement } from 'react';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import { ThemeProvider } from '@/components/theme-provider';
 import { notFound } from 'next/navigation';
 import { locales } from '@/lib/i18n/config';
-import "../globals.css";
+import '../globals.css';
 
 export const metadata: Metadata = {
-  title: "Swimming Hall Schedules - Espoo",
-  description: "Swimming halls reservation viewer for Espoo swimming halls",
+  title: 'Swimming Hall Schedules - Espoo',
+  description: 'Swimming halls reservation viewer for Espoo swimming halls',
   manifest: '/manifest.json',
-  themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#ffffff' },
-    { media: '(prefers-color-scheme: dark)', color: '#0a0a0a' }
-  ],
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
-    maximumScale: 5,
-    userScalable: true,
+  icons: {
+    icon: '/favicon.ico',
+    apple: '/icon-192x192.png',
   },
+  // themeColor and viewport moved to the top-level `viewport` export
   appleWebApp: {
     capable: true,
     statusBarStyle: 'default',
@@ -27,7 +23,19 @@ export const metadata: Metadata = {
   },
 };
 
-export function generateStaticParams() {
+// Export viewport separately per Next.js recommendation
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+  userScalable: true,
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#ffffff' },
+    { media: '(prefers-color-scheme: dark)', color: '#0a0a0a' },
+  ],
+};
+
+export function generateStaticParams(): { locale: string }[] {
   return locales.map((locale) => ({ locale }));
 }
 
@@ -37,11 +45,11 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
   params: Promise<{ locale: string }>;
-}>) {
+}>): Promise<ReactElement> {
   const { locale } = await params;
-  
+
   // Ensure that the incoming `locale` is valid
-  if (!locales.includes(locale as any)) {
+  if (!(locales as readonly string[]).includes(locale)) {
     notFound();
   }
 
@@ -51,10 +59,7 @@ export default async function RootLayout({
 
   return (
     <html lang={locale} suppressHydrationWarning>
-      <head>
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="apple-touch-icon" href="/icon-192x192.png" />
-      </head>
+      <head />
       <body className="antialiased">
         <a href="#main-content" className="skip-to-content">
           Skip to main content
@@ -65,9 +70,7 @@ export default async function RootLayout({
           enableSystem
           disableTransitionOnChange={false}
         >
-          <NextIntlClientProvider messages={messages}>
-            {children}
-          </NextIntlClientProvider>
+          <NextIntlClientProvider messages={messages}>{children}</NextIntlClientProvider>
         </ThemeProvider>
       </body>
     </html>
