@@ -22,16 +22,32 @@ interface SwimmingHallCardProps {
   links: RelatedLink[];
 }
 
+// Constants
+const FREE_PRACTICE_TEXT = 'Vapaaharjoitte';
+const FOUR_HOURS_IN_SECONDS = 4 * 60 * 60;
+
+// Helper functions
+const getTimeWindow = () => {
+  const nowInSeconds = Math.floor(Date.now() / 1000);
+  return {
+    start: nowInSeconds - FOUR_HOURS_IN_SECONDS,
+    end: nowInSeconds + FOUR_HOURS_IN_SECONDS,
+  };
+};
+
+const buildProxyUrl = (resourceId: string, timeWindow: { start: number; end: number }) => {
+  const cityUrl = `https://resurssivaraus.espoo.fi/Tailored/prime_product_intranet/espoo/web/Calendar/ReservationData.aspx?resourceid%5B%5D=${resourceId}&start=${timeWindow.start}&end=${timeWindow.end}&_=${timeWindow.start}`;
+  return `https://proxy.aleksi-nokelainen.workers.dev/?url=${encodeURIComponent(cityUrl)}`;
+};
+
 export function SwimmingHallCard({ hallName, links }: SwimmingHallCardProps) {
   const [linkStatuses, setLinkStatuses] = useState<Map<string, ReservationStatus>>(new Map());
 
   useEffect(() => {
-    const fourHoursBeforeNow = Math.floor(Date.now() / 1000 - 4 * 60 * 60);
-    const fourHoursFromNow = Math.floor(Date.now() / 1000 + 4 * 60 * 60);
+    const timeWindow = getTimeWindow();
 
     links.forEach((link) => {
-      const cityUrl = `https://resurssivaraus.espoo.fi/Tailored/prime_product_intranet/espoo/web/Calendar/ReservationData.aspx?resourceid%5B%5D=${link.url}&start=${fourHoursBeforeNow}&end=${fourHoursFromNow}&_=${fourHoursBeforeNow}`;
-      const proxyUrl = `https://proxy.aleksi-nokelainen.workers.dev/?url=${encodeURIComponent(cityUrl)}`;
+      const proxyUrl = buildProxyUrl(link.url, timeWindow);
 
       fetch(proxyUrl)
         .then((response) => response.json())
@@ -62,7 +78,7 @@ export function SwimmingHallCard({ hallName, links }: SwimmingHallCardProps) {
               hasReservationInNext3Hours = true;
             }
 
-            if (reservation.title.includes('Vapaaharjoitte')) {
+            if (reservation.title.includes(FREE_PRACTICE_TEXT)) {
               hasFreeReservation = true;
             }
           });
@@ -97,10 +113,8 @@ export function SwimmingHallCard({ hallName, links }: SwimmingHallCardProps) {
       <CardContent>
         <ul className="space-y-2">
           {links.map((link) => {
-            const fourHoursBeforeNow = Math.floor(Date.now() / 1000 - 4 * 60 * 60);
-            const fourHoursFromNow = Math.floor(Date.now() / 1000 + 4 * 60 * 60);
-            const cityUrl = `https://resurssivaraus.espoo.fi/Tailored/prime_product_intranet/espoo/web/Calendar/ReservationData.aspx?resourceid%5B%5D=${link.url}&start=${fourHoursBeforeNow}&end=${fourHoursFromNow}&_=${fourHoursBeforeNow}`;
-            const proxyUrl = `https://proxy.aleksi-nokelainen.workers.dev/?url=${encodeURIComponent(cityUrl)}`;
+            const timeWindow = getTimeWindow();
+            const proxyUrl = buildProxyUrl(link.url, timeWindow);
             const status = linkStatuses.get(link.url);
 
             return (
@@ -120,7 +134,7 @@ export function SwimmingHallCard({ hallName, links }: SwimmingHallCardProps) {
                   className={`inline-block text-white font-bold py-2 px-4 rounded transition-colors ${getLinkClassName(status)}`}
                 >
                   R
-                  <div className="flex flex-row inline-block ml-2">
+                  <div className="inline-flex ml-2">
                     <span
                       className={`inline-block h-3 w-3 bg-red-800 rounded-full mx-0.5 ${
                         status?.hasReservationInNext1Hour && !status?.hasFreeReservation
