@@ -1,0 +1,44 @@
+{
+  "app": {
+    "title": "Uimahallin aikataulut",
+    "description": "Reaaliaikainen saatavuus Espoon uimahalleille"
+  },
+  "navigation": {
+    "home": "Etusivu",
+    "about": "Tietoa",
+    "settings": "Asetukset"
+  },
+  "theme": {
+    "light": "Valoisa",
+    "dark": "Tumma",
+    "system": "Järjestelmä",
+    "toggle": "Vaihda teemaa"
+  },
+  "language": {
+    "select": "Valitse kieli",
+    "en": "Englanti",
+    "fi": "Suomi",
+    "sv": "Ruotsi"
+  },
+  "status": {
+    "available": "Saatavilla",
+    "reserved": "Varattu",
+    "freeReservation": "Vapaaharjoittelu saatavilla",
+    "loading": "Ladataan saatavuutta..."
+  },
+  "reservation": {
+    "viewReservations": "Näytä varaukset",
+    "bookNow": "Varaa nyt",
+    "checkAvailability": "Tarkista saatavuus"
+  },
+  "timeIndicators": {
+    "nextHour": "Varattu seuraavan tunnin aikana",
+    "next2Hours": "Varattu seuraavan 2 tunnin aikana",
+    "next3Hours": "Varattu seuraavan 3 tunnin aikana"
+  },
+  "accessibility": {
+    "skipToContent": "Siirry pääsisältöön",
+    "openMenu": "Avaa valikko",
+    "closeMenu": "Sulje valikko"
+  }
+}
