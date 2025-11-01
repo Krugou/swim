@@ -1,0 +1,44 @@
+{
+  "app": {
+    "title": "Swimming Hall Schedules",
+    "description": "Real-time availability for Espoo swimming halls"
+  },
+  "navigation": {
+    "home": "Home",
+    "about": "About",
+    "settings": "Settings"
+  },
+  "theme": {
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System",
+    "toggle": "Toggle theme"
+  },
+  "language": {
+    "select": "Select language",
+    "en": "English",
+    "fi": "Finnish",
+    "sv": "Swedish"
+  },
+  "status": {
+    "available": "Available",
+    "reserved": "Reserved",
+    "freeReservation": "Free practice available",
+    "loading": "Loading availability..."
+  },
+  "reservation": {
+    "viewReservations": "View reservations",
+    "bookNow": "Book now",
+    "checkAvailability": "Check availability"
+  },
+  "timeIndicators": {
+    "nextHour": "Reserved in next hour",
+    "next2Hours": "Reserved in next 2 hours",
+    "next3Hours": "Reserved in next 3 hours"
+  },
+  "accessibility": {
+    "skipToContent": "Skip to main content",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
+  }
+}

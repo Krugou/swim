@@ -1,0 +1,44 @@
+{
+  "app": {
+    "title": "Simhallens tidtabeller",
+    "description": "Realtidstillgänglighet för simhallar i Esbo"
+  },
+  "navigation": {
+    "home": "Hem",
+    "about": "Om",
+    "settings": "Inställningar"
+  },
+  "theme": {
+    "light": "Ljus",
+    "dark": "Mörk",
+    "system": "System",
+    "toggle": "Växla tema"
+  },
+  "language": {
+    "select": "Välj språk",
+    "en": "Engelska",
+    "fi": "Finska",
+    "sv": "Svenska"
+  },
+  "status": {
+    "available": "Tillgänglig",
+    "reserved": "Reserverad",
+    "freeReservation": "Fri träning tillgänglig",
+    "loading": "Laddar tillgänglighet..."
+  },
+  "reservation": {
+    "viewReservations": "Visa reservationer",
+    "bookNow": "Boka nu",
+    "checkAvailability": "Kontrollera tillgänglighet"
+  },
+  "timeIndicators": {
+    "nextHour": "Reserverad inom nästa timme",
+    "next2Hours": "Reserverad inom 2 timmar",
+    "next3Hours": "Reserverad inom 3 timmar"
+  },
+  "accessibility": {
+    "skipToContent": "Hoppa till huvudinnehåll",
+    "openMenu": "Öppna meny",
+    "closeMenu": "Stäng meny"
+  }
+}
