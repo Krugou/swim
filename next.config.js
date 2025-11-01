@@ -1,5 +1,5 @@
 // Next.js configuration for static export and GitHub Pages under /swim
-import createNextIntlPlugin from 'next-intl/plugin';
+const createNextIntlPlugin = require('next-intl/plugin');
 // Use named-exports based i18n config at project root
 const withNextIntl = createNextIntlPlugin('./i18n.ts');
 const isProd = process.env.NODE_ENV === 'production';
@@ -14,4 +14,4 @@ const nextConfig = {
   trailingSlash: true,
 };
 
-export default withNextIntl(nextConfig);
+module.exports = withNextIntl(nextConfig);
