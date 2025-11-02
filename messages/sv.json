@@ -34,11 +34,20 @@
   "timeIndicators": {
     "nextHour": "Reserverad inom nästa timme",
     "next2Hours": "Reserverad inom 2 timmar",
-    "next3Hours": "Reserverad inom 3 timmar"
+    "next3Hours": "Reserverad inom 3 timmar",
+    "next4Hours": "Reserverad inom 4 timmar",
+    "next5Hours": "Reserverad inom 5 timmar",
+    "next6Hours": "Reserverad inom 6 timmar"
   },
   "accessibility": {
     "skipToContent": "Hoppa till huvudinnehåll",
     "openMenu": "Öppna meny",
     "closeMenu": "Stäng meny"
+  },
+  "about": {
+    "title": "Om detta projekt",
+    "description": "Detta är ett gratis, öppen källkodsprojekt som erbjuder ett användarvänligt gränssnitt för att visa tillgänglighet för simhallar i Esbo. Informationen som visas här är densamma som finns på Esbo stads officiella webbplats, men presenterad i ett mer tillgängligt och lättanvänt format.",
+    "dataSource": "Data hämtas direkt från Esbo stads reservationssystem i realtid.",
+    "projectInfo": "Detta projekt skapas och underhålls av volontärer för att hjälpa samhället att lättare få tillgång till simhallsinformation."
   }
 }

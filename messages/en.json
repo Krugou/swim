@@ -34,11 +34,20 @@
   "timeIndicators": {
     "nextHour": "Reserved in next hour",
     "next2Hours": "Reserved in next 2 hours",
-    "next3Hours": "Reserved in next 3 hours"
+    "next3Hours": "Reserved in next 3 hours",
+    "next4Hours": "Reserved in next 4 hours",
+    "next5Hours": "Reserved in next 5 hours",
+    "next6Hours": "Reserved in next 6 hours"
   },
   "accessibility": {
     "skipToContent": "Skip to main content",
     "openMenu": "Open menu",
     "closeMenu": "Close menu"
+  },
+  "about": {
+    "title": "About This Project",
+    "description": "This is a free, open-source project that provides a user-friendly interface to view swimming hall availability in Espoo. The information displayed here is the same as what's available on the official Espoo city website, but presented in a more accessible and easy-to-use format.",
+    "dataSource": "Data is sourced directly from Espoo city's reservation system in real-time.",
+    "projectInfo": "This project is created and maintained by volunteers to help the community access swimming hall information more easily."
   }
 }

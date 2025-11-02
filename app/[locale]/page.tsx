@@ -17,6 +17,7 @@ export default function Home(): ReactElement {
   const [showCalendar, setShowCalendar] = useState(false);
   const [showCharts, setShowCharts] = useState(false);
   const t = useTranslations('app');
+  const tAbout = useTranslations('about');
 
   const handleOpenCalendar = useCallback(() => setShowCalendar(true), []);
   const handleCloseCalendar = useCallback(() => setShowCalendar(false), []);
@@ -79,8 +80,20 @@ export default function Home(): ReactElement {
       </main>
 
       <footer className="border-t bg-background/95 backdrop-blur mt-8">
-        <div className="container mx-auto px-4 py-4 sm:py-6 sm:px-6 lg:px-8 text-center text-xs sm:text-sm text-muted-foreground">
-          <p>© {new Date().getFullYear()} Swimming Hall Schedules. All rights reserved.</p>
+        <div className="container mx-auto px-4 py-6 sm:py-8 sm:px-6 lg:px-8">
+          <div className="max-w-3xl mx-auto">
+            <h3 className="text-lg sm:text-xl font-bold text-foreground mb-3">
+              {tAbout('title')}
+            </h3>
+            <div className="space-y-2 text-xs sm:text-sm text-muted-foreground">
+              <p>{tAbout('description')}</p>
+              <p>{tAbout('dataSource')}</p>
+              <p>{tAbout('projectInfo')}</p>
+            </div>
+            <div className="mt-4 pt-4 border-t text-center text-xs text-muted-foreground">
+              <p>© {new Date().getFullYear()} Swimming Hall Schedules. All rights reserved.</p>
+            </div>
+          </div>
         </div>
       </footer>
 

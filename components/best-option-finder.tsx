@@ -185,10 +185,16 @@ const analyzeReservations = (data: any[]): ReservationStatus => {
   const oneHourFromNow = new Date(currentTime.getTime() + 60 * 60 * 1000);
   const twoHoursFromNow = new Date(currentTime.getTime() + 2 * 60 * 60 * 1000);
   const threeHoursFromNow = new Date(currentTime.getTime() + 3 * 60 * 60 * 1000);
+  const fourHoursFromNow = new Date(currentTime.getTime() + 4 * 60 * 60 * 1000);
+  const fiveHoursFromNow = new Date(currentTime.getTime() + 5 * 60 * 60 * 1000);
+  const sixHoursFromNow = new Date(currentTime.getTime() + 6 * 60 * 60 * 1000);
 
   let hasReservationInNext1Hour = false;
   let hasReservationInNext2Hours = false;
   let hasReservationInNext3Hours = false;
+  let hasReservationInNext4Hours = false;
+  let hasReservationInNext5Hours = false;
+  let hasReservationInNext6Hours = false;
   let hasFreeReservation = false;
 
   data.forEach((reservation) => {
@@ -204,6 +210,15 @@ const analyzeReservations = (data: any[]): ReservationStatus => {
     if (reservationStart <= threeHoursFromNow && reservationEnd > currentTime) {
       hasReservationInNext3Hours = true;
     }
+    if (reservationStart <= fourHoursFromNow && reservationEnd > currentTime) {
+      hasReservationInNext4Hours = true;
+    }
+    if (reservationStart <= fiveHoursFromNow && reservationEnd > currentTime) {
+      hasReservationInNext5Hours = true;
+    }
+    if (reservationStart <= sixHoursFromNow && reservationEnd > currentTime) {
+      hasReservationInNext6Hours = true;
+    }
     if (reservation.title && reservation.title.includes('Vapaaharjoitte')) {
       hasFreeReservation = true;
     }
@@ -213,6 +228,9 @@ const analyzeReservations = (data: any[]): ReservationStatus => {
     hasReservationInNext1Hour,
     hasReservationInNext2Hours,
     hasReservationInNext3Hours,
+    hasReservationInNext4Hours,
+    hasReservationInNext5Hours,
+    hasReservationInNext6Hours,
     hasFreeReservation,
     isLoading: false,
   };

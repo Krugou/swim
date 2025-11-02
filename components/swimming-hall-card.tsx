@@ -17,6 +17,9 @@ export interface ReservationStatus {
   hasReservationInNext1Hour: boolean;
   hasReservationInNext2Hours: boolean;
   hasReservationInNext3Hours: boolean;
+  hasReservationInNext4Hours: boolean;
+  hasReservationInNext5Hours: boolean;
+  hasReservationInNext6Hours: boolean;
   hasFreeReservation: boolean;
   isLoading: boolean;
 }
@@ -61,6 +64,9 @@ export function SwimmingHallCard({ hallName, links }: SwimmingHallCardProps) {
           hasReservationInNext1Hour: false,
           hasReservationInNext2Hours: false,
           hasReservationInNext3Hours: false,
+          hasReservationInNext4Hours: false,
+          hasReservationInNext5Hours: false,
+          hasReservationInNext6Hours: false,
           hasFreeReservation: false,
           isLoading: true,
         });
@@ -78,10 +84,16 @@ export function SwimmingHallCard({ hallName, links }: SwimmingHallCardProps) {
           const oneHourFromNow = new Date(currentTime.getTime() + 60 * 60 * 1000);
           const twoHoursFromNow = new Date(currentTime.getTime() + 2 * 60 * 60 * 1000);
           const threeHoursFromNow = new Date(currentTime.getTime() + 3 * 60 * 60 * 1000);
+          const fourHoursFromNow = new Date(currentTime.getTime() + 4 * 60 * 60 * 1000);
+          const fiveHoursFromNow = new Date(currentTime.getTime() + 5 * 60 * 60 * 1000);
+          const sixHoursFromNow = new Date(currentTime.getTime() + 6 * 60 * 60 * 1000);
 
           let hasReservationInNext1Hour = false;
           let hasReservationInNext2Hours = false;
           let hasReservationInNext3Hours = false;
+          let hasReservationInNext4Hours = false;
+          let hasReservationInNext5Hours = false;
+          let hasReservationInNext6Hours = false;
           let hasFreeReservation = false;
 
           data.forEach((reservation) => {
@@ -100,6 +112,18 @@ export function SwimmingHallCard({ hallName, links }: SwimmingHallCardProps) {
               hasReservationInNext3Hours = true;
             }
 
+            if (reservationStart <= fourHoursFromNow && reservationEnd > currentTime) {
+              hasReservationInNext4Hours = true;
+            }
+
+            if (reservationStart <= fiveHoursFromNow && reservationEnd > currentTime) {
+              hasReservationInNext5Hours = true;
+            }
+
+            if (reservationStart <= sixHoursFromNow && reservationEnd > currentTime) {
+              hasReservationInNext6Hours = true;
+            }
+
             if (reservation.title.includes(FREE_PRACTICE_TEXT)) {
               hasFreeReservation = true;
             }
@@ -111,6 +135,9 @@ export function SwimmingHallCard({ hallName, links }: SwimmingHallCardProps) {
               hasReservationInNext1Hour,
               hasReservationInNext2Hours,
               hasReservationInNext3Hours,
+              hasReservationInNext4Hours,
+              hasReservationInNext5Hours,
+              hasReservationInNext6Hours,
               hasFreeReservation,
               isLoading: false,
             });
@@ -125,6 +152,9 @@ export function SwimmingHallCard({ hallName, links }: SwimmingHallCardProps) {
               hasReservationInNext1Hour: false,
               hasReservationInNext2Hours: false,
               hasReservationInNext3Hours: false,
+              hasReservationInNext4Hours: false,
+              hasReservationInNext5Hours: false,
+              hasReservationInNext6Hours: false,
               hasFreeReservation: false,
               isLoading: false,
             });
@@ -254,6 +284,30 @@ export function SwimmingHallCard({ hallName, links }: SwimmingHallCardProps) {
                               }`}
                               aria-hidden="true"
                             />
+                            <span
+                              className={`inline-block h-2 w-2 sm:h-3 sm:w-3 bg-red-800 rounded-full mx-0.5 ${
+                                status?.hasReservationInNext4Hours && !status?.hasFreeReservation
+                                  ? 'visible'
+                                  : 'invisible'
+                              }`}
+                              aria-hidden="true"
+                            />
+                            <span
+                              className={`inline-block h-2 w-2 sm:h-3 sm:w-3 bg-red-800 rounded-full mx-0.5 ${
+                                status?.hasReservationInNext5Hours && !status?.hasFreeReservation
+                                  ? 'visible'
+                                  : 'invisible'
+                              }`}
+                              aria-hidden="true"
+                            />
+                            <span
+                              className={`inline-block h-2 w-2 sm:h-3 sm:w-3 bg-red-800 rounded-full mx-0.5 ${
+                                status?.hasReservationInNext6Hours && !status?.hasFreeReservation
+                                  ? 'visible'
+                                  : 'invisible'
+                              }`}
+                              aria-hidden="true"
+                            />
                           </div>
                         </motion.a>
                       )}
@@ -277,5 +331,8 @@ function getAriaLabel(status: ReservationStatus | undefined, t: any): string {
   if (status.hasReservationInNext1Hour) labels.push(t('nextHour'));
   if (status.hasReservationInNext2Hours) labels.push(t('next2Hours'));
   if (status.hasReservationInNext3Hours) labels.push(t('next3Hours'));
+  if (status.hasReservationInNext4Hours) labels.push(t('next4Hours'));
+  if (status.hasReservationInNext5Hours) labels.push(t('next5Hours'));
+  if (status.hasReservationInNext6Hours) labels.push(t('next6Hours'));
   return labels.join(', ');
 }
