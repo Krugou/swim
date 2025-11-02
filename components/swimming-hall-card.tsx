@@ -187,9 +187,9 @@ export function SwimmingHallCard({ hallName, links }: SwimmingHallCardProps) {
                   key={link.url}
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  className="flex flex-col sm:flex-row sm:items-center gap-2"
+                  className="flex flex-col   gap-2"
                 >
-                  <div className="flex items-center gap-2 flex-1 min-w-0">
+                  <div className="flex flex-col items-center gap-2 flex-1 min-w-0">
                     <a
                       href={reservationUrl + link.url}
                       target="_blank"
@@ -226,7 +226,11 @@ export function SwimmingHallCard({ hallName, links }: SwimmingHallCardProps) {
                           aria-label={`${tReservation('viewReservations')} - ${link.relatedLinkName}`}
                         >
                           <span className="text-sm sm:text-base">R</span>
-                          <div className="inline-flex ml-1" role="status" aria-label={getAriaLabel(status, tTime)}>
+                          <div
+                            className="inline-flex ml-1"
+                            role="status"
+                            aria-label={getAriaLabel(status, tTime)}
+                          >
                             <span
                               className={`inline-block h-2 w-2 sm:h-3 sm:w-3 bg-red-800 rounded-full mx-0.5 ${
                                 status?.hasReservationInNext1Hour && !status?.hasFreeReservation
