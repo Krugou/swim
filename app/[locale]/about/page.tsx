@@ -9,6 +9,7 @@ import { type ReactElement } from 'react';
 
 export default function AboutPage(): ReactElement {
   const tAbout = useTranslations('about');
+  const tNav = useTranslations('navigation');
   const router = useRouter();
 
   return (
@@ -18,10 +19,10 @@ export default function AboutPage(): ReactElement {
           <button
             onClick={() => router.back()}
             className="flex items-center gap-2 p-2 rounded-md hover:bg-accent transition-colors focus-visible:ring-2 focus-visible:ring-ring"
-            aria-label="Go back"
+            aria-label={tNav('back')}
           >
             <ArrowLeft className="h-4 w-4 sm:h-5 sm:w-5" aria-hidden="true" />
-            <span className="text-sm sm:text-base font-medium">Back</span>
+            <span className="text-sm sm:text-base font-medium">{tNav('back')}</span>
           </button>
           <div className="flex items-center gap-1 sm:gap-2">
             <LanguageSwitcher />
