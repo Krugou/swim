@@ -194,7 +194,7 @@ export function SwimmingHallCard({ hallName, links }: SwimmingHallCardProps) {
                       href={reservationUrl + link.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex-1 min-w-0 inline-flex items-center justify-center bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-3 sm:px-4 rounded transition-colors text-sm sm:text-base focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                      className="flex-1 min-w-0 w-full inline-flex items-center justify-center bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-3 sm:px-4 rounded transition-colors text-sm sm:text-base focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                       aria-label={`${tReservation('bookNow')} - ${link.relatedLinkName}`}
                     >
                       <span className="truncate">{link.relatedLinkName}</span>
@@ -220,12 +220,11 @@ export function SwimmingHallCard({ hallName, links }: SwimmingHallCardProps) {
                           href={proxyUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className={`inline-flex items-center justify-center w-12 sm:w-14 h-10 text-white font-bold rounded transition-all focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ${getLinkClassName(
+                          className={`inline-flex items-center justify-center w-full h-10 text-white font-bold rounded transition-all focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ${getLinkClassName(
                             status
                           )} ${status?.hasFreeReservation ? 'animate-pulse-glow' : ''}`}
                           aria-label={`${tReservation('viewReservations')} - ${link.relatedLinkName}`}
                         >
-                          <span className="text-sm sm:text-base">R</span>
                           <div
                             className="inline-flex ml-1"
                             role="status"
@@ -260,7 +259,7 @@ export function SwimmingHallCard({ hallName, links }: SwimmingHallCardProps) {
                       )}
                     </AnimatePresence>
                   </div>
-                  <div className="sm:ml-2">{getStatusBadge(status)}</div>
+                  <div className="sm:ml-2 flex items-center w-full">{getStatusBadge(status)}</div>
                 </motion.li>
               );
             })}
