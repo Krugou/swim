@@ -34,11 +34,20 @@
   "timeIndicators": {
     "nextHour": "Varattu seuraavan tunnin aikana",
     "next2Hours": "Varattu seuraavan 2 tunnin aikana",
-    "next3Hours": "Varattu seuraavan 3 tunnin aikana"
+    "next3Hours": "Varattu seuraavan 3 tunnin aikana",
+    "next4Hours": "Varattu seuraavan 4 tunnin aikana",
+    "next5Hours": "Varattu seuraavan 5 tunnin aikana",
+    "next6Hours": "Varattu seuraavan 6 tunnin aikana"
   },
   "accessibility": {
     "skipToContent": "Siirry pääsisältöön",
     "openMenu": "Avaa valikko",
     "closeMenu": "Sulje valikko"
+  },
+  "about": {
+    "title": "Tietoa projektista",
+    "description": "Tämä on ilmainen, avoimen lähdekoodin projekti, joka tarjoaa helppokäyttöisen käyttöliittymän Espoon uimahallien saatavuuden tarkasteluun. Täällä näytettävät tiedot ovat samat kuin Espoon kaupungin virallisella verkkosivustolla, mutta esitetty käyttäjäystävällisemmässä muodossa.",
+    "dataSource": "Tiedot haetaan suoraan Espoon kaupungin varausjärjestelmästä reaaliajassa.",
+    "projectInfo": "Tämä projekti on luotu ja sitä ylläpidetään vapaaehtoisvoimin, jotta yhteisö pääsee helpommin käsiksi uimahallien tietoihin."
   }
 }

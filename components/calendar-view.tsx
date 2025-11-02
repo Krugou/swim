@@ -70,8 +70,15 @@ export const CalendarView = React.memo(function CalendarView({ onClose }: Calend
             const data = await response.json();
 
             data.forEach((reservation: any) => {
+              // Extract organization name from title for better display
+              const titleParts = reservation.title?.split('  ').filter((p: string) => p.trim()) || [];
+              const organization = titleParts.length >= 2 ? titleParts[1].trim() : 'Reserved';
+              const displayTitle = reservation.title?.includes('Vapaaharjoitte') 
+                ? `🎉 Free Practice - ${link.relatedLinkName}`
+                : `${organization.substring(0, 30)}${organization.length > 30 ? '...' : ''} - ${link.relatedLinkName}`;
+              
               allEvents.push({
-                title: `${hall.swimmingHallName} - ${link.relatedLinkName}`,
+                title: displayTitle,
                 start: new Date(reservation.start),
                 end: new Date(reservation.end),
                 resource: {
