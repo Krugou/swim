@@ -33,8 +33,6 @@ interface ChartsViewProps {
   onClose: () => void;
 }
 
-const COLORS = ['#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6'];
-
 export const ChartsView = React.memo(function ChartsView({ onClose }: ChartsViewProps) {
   const t = useTranslations('status');
   const [stats, setStats] = useState<ReservationStats[]>([]);
@@ -204,7 +202,7 @@ export const ChartsView = React.memo(function ChartsView({ onClose }: ChartsView
                       fill="#8884d8"
                       dataKey="value"
                     >
-                      {pieData.map((entry, index) => (
+                      {pieData.map((_entry, index) => (
                         <Cell key={`cell-${index}`} fill={index === 0 ? '#10b981' : '#3b82f6'} />
                       ))}
                     </Pie>
