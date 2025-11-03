@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 import { Sparkles, Loader2, MapPin } from 'lucide-react';
-import { swimmingHallData, type SwimmingHall } from '@/lib/swimming-halls-data';
+import { swimmingHallData } from '@/lib/swimming-halls-data';
 import type { ReservationStatus } from './swimming-hall-card';
 
 interface BestOption {

@@ -72,7 +72,7 @@ const parseReservationTitle = (title: string): ReservationDetails => {
   let timeRange = '';
 
   // Try to extract organization (usually the second part)
-  if (parts.length >= 2) {
+  if (parts.length >= 2 && parts[1]) {
     organization = parts[1].trim();
   }
 
@@ -221,7 +221,7 @@ export function SwimmingHallCard({ hallName, links }: SwimmingHallCardProps) {
               hasFreeReservation,
               isLoading: false,
               upcomingReservations,
-              nextAvailableSlot,
+              ...(nextAvailableSlot !== undefined && { nextAvailableSlot }),
             });
             return newMap;
           });
