@@ -6,7 +6,8 @@
   "navigation": {
     "home": "Hem",
     "about": "Om",
-    "settings": "Inställningar"
+    "settings": "Inställningar",
+    "back": "Tillbaka"
   },
   "theme": {
     "light": "Ljus",

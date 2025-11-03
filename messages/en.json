@@ -6,7 +6,8 @@
   "navigation": {
     "home": "Home",
     "about": "About",
-    "settings": "Settings"
+    "settings": "Settings",
+    "back": "Back"
   },
   "theme": {
     "light": "Light",

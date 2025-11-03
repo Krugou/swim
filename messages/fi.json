@@ -6,7 +6,8 @@
   "navigation": {
     "home": "Etusivu",
     "about": "Tietoa",
-    "settings": "Asetukset"
+    "settings": "Asetukset",
+    "back": "Takaisin"
   },
   "theme": {
     "light": "Valoisa",

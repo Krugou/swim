@@ -7,17 +7,19 @@ import { LanguageSwitcher } from '@/components/language-switcher';
 import { BestOptionFinder } from '@/components/best-option-finder';
 import { CalendarView } from '@/components/calendar-view';
 import { ChartsView } from '@/components/charts-view';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { useState, useCallback, type ReactElement } from 'react';
-import { Calendar, TrendingUp } from 'lucide-react';
+import { Calendar, TrendingUp, Info } from 'lucide-react';
 import { AnimatePresence } from 'framer-motion';
+import Link from 'next/link';
 // generateStaticParams is exported from the segment's layout.tsx (server file)
 
 export default function Home(): ReactElement {
   const [showCalendar, setShowCalendar] = useState(false);
   const [showCharts, setShowCharts] = useState(false);
   const t = useTranslations('app');
-  const tAbout = useTranslations('about');
+  const tNav = useTranslations('navigation');
+  const locale = useLocale();
 
   const handleOpenCalendar = useCallback(() => setShowCalendar(true), []);
   const handleCloseCalendar = useCallback(() => setShowCalendar(false), []);
@@ -34,7 +36,7 @@ export default function Home(): ReactElement {
           <div className="flex items-center gap-1 sm:gap-2">
             <button
               onClick={handleOpenCalendar}
-              className="p-2 rounded-md hover:bg-accent transition-colors focus-visible:ring-2 focus-visible:ring-ring"
+              className="hidden sm:flex p-2 rounded-md hover:bg-accent transition-colors focus-visible:ring-2 focus-visible:ring-ring"
               aria-label="Open calendar view"
               title="Calendar View"
             >
@@ -42,12 +44,20 @@ export default function Home(): ReactElement {
             </button>
             <button
               onClick={handleOpenCharts}
-              className="p-2 rounded-md hover:bg-accent transition-colors focus-visible:ring-2 focus-visible:ring-ring"
+              className="hidden sm:flex p-2 rounded-md hover:bg-accent transition-colors focus-visible:ring-2 focus-visible:ring-ring"
               aria-label="Open statistics"
               title="Statistics"
             >
               <TrendingUp className="h-4 w-4 sm:h-5 sm:w-5" aria-hidden="true" />
             </button>
+            <Link
+              href={`/${locale}/about`}
+              className="p-2 rounded-md hover:bg-accent transition-colors focus-visible:ring-2 focus-visible:ring-ring"
+              aria-label={tNav('about')}
+              title={tNav('about')}
+            >
+              <Info className="h-4 w-4 sm:h-5 sm:w-5" aria-hidden="true" />
+            </Link>
             <LanguageSwitcher />
             <ThemeToggle />
           </div>
@@ -80,19 +90,9 @@ export default function Home(): ReactElement {
       </main>
 
       <footer className="border-t bg-background/95 backdrop-blur mt-8">
-        <div className="container mx-auto px-4 py-6 sm:py-8 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mx-auto">
-            <h3 className="text-lg sm:text-xl font-bold text-foreground mb-3">
-              {tAbout('title')}
-            </h3>
-            <div className="space-y-2 text-xs sm:text-sm text-muted-foreground">
-              <p>{tAbout('description')}</p>
-              <p>{tAbout('dataSource')}</p>
-              <p>{tAbout('projectInfo')}</p>
-            </div>
-            <div className="mt-4 pt-4 border-t text-center text-xs text-muted-foreground">
-              <p>© {new Date().getFullYear()} Swimming Hall Schedules. All rights reserved.</p>
-            </div>
+        <div className="container mx-auto px-4 py-4 sm:py-6 sm:px-6 lg:px-8">
+          <div className="text-center text-xs sm:text-sm text-muted-foreground">
+            <p>© {new Date().getFullYear()} Swimming Hall Schedules. All rights reserved.</p>
           </div>
         </div>
       </footer>
