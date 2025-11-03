@@ -65,17 +65,17 @@ const buildProxyUrl = (resourceId: string, timeWindow: { start: number; end: num
 // Parse reservation title to extract organization and resource details
 // Example title: "Harjoitusvaraus  CETUS ESPOO RY, CETUS ESBO RF  Harjoitusvaraus  Leppävaaran uimahalli, rata 6   17.08.2025 - 30.05.2027"
 const parseReservationTitle = (title: string): ReservationDetails => {
-  const parts = title.split('  ').filter(part => part.trim());
-  
+  const parts = title.split('  ').filter((part) => part.trim());
+
   let organization = 'Unknown';
   let resourceName = 'Unknown';
   let timeRange = '';
-  
+
   // Try to extract organization (usually the second part)
   if (parts.length >= 2) {
     organization = parts[1].trim();
   }
-  
+
   // Try to extract resource name (usually contains the hall name and specific resource)
   for (const part of parts) {
     if (part.includes(',')) {
@@ -86,13 +86,13 @@ const parseReservationTitle = (title: string): ReservationDetails => {
       }
     }
   }
-  
+
   // Try to extract time range (usually the last part with dates)
   const lastPart = parts[parts.length - 1];
   if (lastPart && lastPart.includes('-')) {
     timeRange = lastPart.trim();
   }
-  
+
   return { organization, resourceName, timeRange };
 };
 
@@ -148,8 +148,8 @@ export function SwimmingHallCard({ hallName, links }: SwimmingHallCardProps) {
           let nextAvailableSlot: string | undefined;
 
           // Sort reservations by start time
-          const sortedData = [...data].sort((a, b) => 
-            new Date(a.start).getTime() - new Date(b.start).getTime()
+          const sortedData = [...data].sort(
+            (a, b) => new Date(a.start).getTime() - new Date(b.start).getTime()
           );
 
           sortedData.forEach((reservation) => {
@@ -185,17 +185,25 @@ export function SwimmingHallCard({ hallName, links }: SwimmingHallCardProps) {
             }
 
             // Collect upcoming reservations (next 3 within 6 hours)
-            if (reservationStart > currentTime && reservationStart <= sixHoursFromNow && upcomingReservations.length < 3) {
+            if (
+              reservationStart > currentTime &&
+              reservationStart <= sixHoursFromNow &&
+              upcomingReservations.length < 3
+            ) {
               upcomingReservations.push(parseReservationTitle(reservation.title));
             }
           });
 
           // Find next available slot (gap between current time and first reservation)
           if (sortedData.length > 0) {
-            const firstFutureReservation = sortedData.find(r => new Date(r.start) > currentTime);
+            const firstFutureReservation = sortedData.find((r) => new Date(r.start) > currentTime);
             if (firstFutureReservation) {
-              const minutesUntil = Math.floor((new Date(firstFutureReservation.start).getTime() - currentTime.getTime()) / (60 * 1000));
-              if (minutesUntil > 15) { // Only show if there's at least 15 minutes
+              const minutesUntil = Math.floor(
+                (new Date(firstFutureReservation.start).getTime() - currentTime.getTime()) /
+                  (60 * 1000)
+              );
+              if (minutesUntil > 15) {
+                // Only show if there's at least 15 minutes
                 nextAvailableSlot = `${minutesUntil} min`;
               }
             }
@@ -315,7 +323,7 @@ export function SwimmingHallCard({ hallName, links }: SwimmingHallCardProps) {
                           <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />
                           <span className="sr-only">{t('loading')}</span>
                         </motion.div>
-                      ) : (
+                      ) : !status?.hasFreeReservation ? (
                         <motion.a
                           key="status"
                           initial={{ opacity: 0, scale: 0.8 }}
@@ -326,83 +334,73 @@ export function SwimmingHallCard({ hallName, links }: SwimmingHallCardProps) {
                           rel="noopener noreferrer"
                           className={`inline-flex items-center justify-center w-full h-10 text-white font-bold rounded transition-all focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ${getLinkClassName(
                             status
-                          )} ${status?.hasFreeReservation ? 'animate-pulse-glow' : ''}`}
+                          )}`}
                           aria-label={`${tReservation('viewReservations')} - ${link.relatedLinkName}`}
                         >
                           <div
                             className="inline-flex ml-1"
                             role="status"
-                            aria-label={getAriaLabel(status, tTime)}
+                            aria-label={getAriaLabel(status, tTime, t)}
                           >
                             <span
                               className={`inline-block h-2 w-2 sm:h-3 sm:w-3 bg-red-800 rounded-full mx-0.5 ${
-                                status?.hasReservationInNext1Hour && !status?.hasFreeReservation
-                                  ? 'visible'
-                                  : 'invisible'
+                                status?.hasReservationInNext1Hour ? 'visible' : 'invisible'
                               }`}
                               aria-hidden="true"
                             />
                             <span
                               className={`inline-block h-2 w-2 sm:h-3 sm:w-3 bg-red-800 rounded-full mx-0.5 ${
-                                status?.hasReservationInNext2Hours && !status?.hasFreeReservation
-                                  ? 'visible'
-                                  : 'invisible'
+                                status?.hasReservationInNext2Hours ? 'visible' : 'invisible'
                               }`}
                               aria-hidden="true"
                             />
                             <span
                               className={`inline-block h-2 w-2 sm:h-3 sm:w-3 bg-red-800 rounded-full mx-0.5 ${
-                                status?.hasReservationInNext3Hours && !status?.hasFreeReservation
-                                  ? 'visible'
-                                  : 'invisible'
+                                status?.hasReservationInNext3Hours ? 'visible' : 'invisible'
                               }`}
                               aria-hidden="true"
                             />
                             <span
                               className={`inline-block h-2 w-2 sm:h-3 sm:w-3 bg-red-800 rounded-full mx-0.5 ${
-                                status?.hasReservationInNext4Hours && !status?.hasFreeReservation
-                                  ? 'visible'
-                                  : 'invisible'
+                                status?.hasReservationInNext4Hours ? 'visible' : 'invisible'
                               }`}
                               aria-hidden="true"
                             />
                             <span
                               className={`inline-block h-2 w-2 sm:h-3 sm:w-3 bg-red-800 rounded-full mx-0.5 ${
-                                status?.hasReservationInNext5Hours && !status?.hasFreeReservation
-                                  ? 'visible'
-                                  : 'invisible'
+                                status?.hasReservationInNext5Hours ? 'visible' : 'invisible'
                               }`}
                               aria-hidden="true"
                             />
                             <span
                               className={`inline-block h-2 w-2 sm:h-3 sm:w-3 bg-red-800 rounded-full mx-0.5 ${
-                                status?.hasReservationInNext6Hours && !status?.hasFreeReservation
-                                  ? 'visible'
-                                  : 'invisible'
+                                status?.hasReservationInNext6Hours ? 'visible' : 'invisible'
                               }`}
                               aria-hidden="true"
                             />
                           </div>
                         </motion.a>
-                      )}
+                      ) : null}
                     </AnimatePresence>
                   </div>
                   <div className="sm:ml-2 flex flex-col gap-1 w-full">
                     {getStatusBadge(status)}
                     {status?.nextAvailableSlot && !status?.hasReservationInNext1Hour && (
                       <span className="text-xs text-muted-foreground">
-                        ⏱️ Free for {status.nextAvailableSlot}
+                        ⏱️ {tTime('freeFor')} {status.nextAvailableSlot}
                       </span>
                     )}
                     {status?.upcomingReservations && status.upcomingReservations.length > 0 && (
                       <details className="text-xs text-muted-foreground mt-1">
                         <summary className="cursor-pointer hover:text-foreground transition-colors">
-                          📋 Upcoming reservations ({status.upcomingReservations.length})
+                          📋 {tTime('upcomingReservations')} ({status.upcomingReservations.length})
                         </summary>
                         <div className="mt-2 space-y-2 pl-2 border-l-2 border-muted">
                           {status.upcomingReservations.map((res, idx) => (
                             <div key={idx} className="text-xs">
-                              <div className="font-semibold text-foreground">{res.organization}</div>
+                              <div className="font-semibold text-foreground">
+                                {res.organization}
+                              </div>
                               {res.resourceName !== 'Unknown' && (
                                 <div className="text-muted-foreground">{res.resourceName}</div>
                               )}
@@ -422,15 +420,15 @@ export function SwimmingHallCard({ hallName, links }: SwimmingHallCardProps) {
   );
 }
 
-function getAriaLabel(status: ReservationStatus | undefined, t: any): string {
+function getAriaLabel(status: ReservationStatus | undefined, tTime: any, tStatus: any): string {
   if (!status) return '';
   const labels: string[] = [];
-  if (status.hasFreeReservation) return 'Free practice available';
-  if (status.hasReservationInNext1Hour) labels.push(t('nextHour'));
-  if (status.hasReservationInNext2Hours) labels.push(t('next2Hours'));
-  if (status.hasReservationInNext3Hours) labels.push(t('next3Hours'));
-  if (status.hasReservationInNext4Hours) labels.push(t('next4Hours'));
-  if (status.hasReservationInNext5Hours) labels.push(t('next5Hours'));
-  if (status.hasReservationInNext6Hours) labels.push(t('next6Hours'));
+  if (status.hasFreeReservation) return tStatus('freeReservation');
+  if (status.hasReservationInNext1Hour) labels.push(tTime('nextHour'));
+  if (status.hasReservationInNext2Hours) labels.push(tTime('next2Hours'));
+  if (status.hasReservationInNext3Hours) labels.push(tTime('next3Hours'));
+  if (status.hasReservationInNext4Hours) labels.push(tTime('next4Hours'));
+  if (status.hasReservationInNext5Hours) labels.push(tTime('next5Hours'));
+  if (status.hasReservationInNext6Hours) labels.push(tTime('next6Hours'));
   return labels.join(', ');
 }

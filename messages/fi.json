@@ -37,7 +37,9 @@
     "next3Hours": "Varattu seuraavan 3 tunnin aikana",
     "next4Hours": "Varattu seuraavan 4 tunnin aikana",
     "next5Hours": "Varattu seuraavan 5 tunnin aikana",
-    "next6Hours": "Varattu seuraavan 6 tunnin aikana"
+    "next6Hours": "Varattu seuraavan 6 tunnin aikana",
+    "freeFor": "Vapaana",
+    "upcomingReservations": "Tulevat varaukset"
   },
   "accessibility": {
     "skipToContent": "Siirry pääsisältöön",

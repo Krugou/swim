@@ -37,7 +37,9 @@
     "next3Hours": "Reserved in next 3 hours",
     "next4Hours": "Reserved in next 4 hours",
     "next5Hours": "Reserved in next 5 hours",
-    "next6Hours": "Reserved in next 6 hours"
+    "next6Hours": "Reserved in next 6 hours",
+    "freeFor": "Free for",
+    "upcomingReservations": "Upcoming reservations"
   },
   "accessibility": {
     "skipToContent": "Skip to main content",
