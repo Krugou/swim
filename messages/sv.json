@@ -52,5 +52,11 @@
     "description": "Detta är ett gratis, öppen källkodsprojekt som erbjuder ett användarvänligt gränssnitt för att visa tillgänglighet för simhallar i Esbo. Informationen som visas här är densamma som finns på Esbo stads officiella webbplats, men presenterad i ett mer tillgängligt och lättanvänt format.",
     "dataSource": "Data hämtas direkt från Esbo stads reservationssystem i realtid.",
     "projectInfo": "Detta projekt skapas och underhålls av volontärer för att hjälpa samhället att lättare få tillgång till simhallsinformation."
+  },
+  "bestOption": {
+    "searching": "Söker...",
+    "findBestOptions": "Hitta bästa alternativen nu",
+    "bestOptionsTitle": "Bästa alternativen just nu",
+    "noSlotsAvailable": "Inga lediga tider hittades just nu. Försök igen senare!"
   }
 }

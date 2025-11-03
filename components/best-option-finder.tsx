@@ -20,6 +20,7 @@ export function BestOptionFinder() {
   const [showResults, setShowResults] = useState(false);
   const t = useTranslations('status');
   const tReservation = useTranslations('reservation');
+  const tBestOption = useTranslations('bestOption');
 
   const findBestOptions = async () => {
     setIsSearching(true);
@@ -83,12 +84,12 @@ export function BestOptionFinder() {
           {isSearching ? (
             <>
               <Loader2 className="h-5 w-5 animate-spin" aria-hidden="true" />
-              <span>Searching...</span>
+              <span>{tBestOption('searching')}</span>
             </>
           ) : (
             <>
               <Sparkles className="h-5 w-5" aria-hidden="true" />
-              <span>Find Best Options Now</span>
+              <span>{tBestOption('findBestOptions')}</span>
             </>
           )}
         </button>
@@ -106,12 +107,12 @@ export function BestOptionFinder() {
             <div className="bg-card border rounded-lg p-4 sm:p-6 shadow-lg">
               <h3 className="text-xl sm:text-2xl font-bold mb-4 text-foreground flex items-center gap-2">
                 <Sparkles className="h-6 w-6 text-green-500" aria-hidden="true" />
-                Best Options Right Now
+                {tBestOption('bestOptionsTitle')}
               </h3>
-              
+
               {bestOptions.length === 0 ? (
                 <p className="text-muted-foreground text-center py-4">
-                  No available slots found at the moment. Try again later!
+                  {tBestOption('noSlotsAvailable')}
                 </p>
               ) : (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -128,7 +129,10 @@ export function BestOptionFinder() {
                       }`}
                     >
                       <div className="flex items-start gap-2 mb-2">
-                        <MapPin className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" aria-hidden="true" />
+                        <MapPin
+                          className="h-5 w-5 text-primary flex-shrink-0 mt-0.5"
+                          aria-hidden="true"
+                        />
                         <div>
                           <h4 className="font-bold text-foreground">{option.hallName}</h4>
                           <p className="text-sm text-muted-foreground">{option.linkName}</p>

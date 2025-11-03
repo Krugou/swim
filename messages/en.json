@@ -52,5 +52,11 @@
     "description": "This is a free, open-source project that provides a user-friendly interface to view swimming hall availability in Espoo. The information displayed here is the same as what's available on the official Espoo city website, but presented in a more accessible and easy-to-use format.",
     "dataSource": "Data is sourced directly from Espoo city's reservation system in real-time.",
     "projectInfo": "This project is created and maintained by volunteers to help the community access swimming hall information more easily."
+  },
+  "bestOption": {
+    "searching": "Searching...",
+    "findBestOptions": "Find Best Options Now",
+    "bestOptionsTitle": "Best Options Right Now",
+    "noSlotsAvailable": "No available slots found at the moment. Try again later!"
   }
 }

@@ -52,5 +52,11 @@
     "description": "Tämä on ilmainen, avoimen lähdekoodin projekti, joka tarjoaa helppokäyttöisen käyttöliittymän Espoon uimahallien saatavuuden tarkasteluun. Täällä näytettävät tiedot ovat samat kuin Espoon kaupungin virallisella verkkosivustolla, mutta esitetty käyttäjäystävällisemmässä muodossa.",
     "dataSource": "Tiedot haetaan suoraan Espoon kaupungin varausjärjestelmästä reaaliajassa.",
     "projectInfo": "Tämä projekti on luotu ja sitä ylläpidetään vapaaehtoisvoimin, jotta yhteisö pääsee helpommin käsiksi uimahallien tietoihin."
+  },
+  "bestOption": {
+    "searching": "Etsitään...",
+    "findBestOptions": "Etsi parhaat vaihtoehdot nyt",
+    "bestOptionsTitle": "Parhaat vaihtoehdot juuri nyt",
+    "noSlotsAvailable": "Vapaita aikoja ei löytynyt tällä hetkellä. Yritä myöhemmin uudelleen!"
   }
 }
