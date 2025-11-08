@@ -40,7 +40,10 @@
     "next5Hours": "Reserverad inom 5 timmar",
     "next6Hours": "Reserverad inom 6 timmar",
     "freeFor": "Ledig i",
-    "upcomingReservations": "Kommande reservationer"
+    "upcomingReservations": "Kommande reservationer",
+    "reservedUntil": "Reserverad till",
+    "freePracticeUntil": "Fri träning till",
+    "minutes": "min"
   },
   "accessibility": {
     "skipToContent": "Hoppa till huvudinnehåll",

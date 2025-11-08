@@ -37,6 +37,9 @@ export interface ReservationStatus {
   isLoading: boolean;
   upcomingReservations?: ReservationDetails[];
   nextAvailableSlot?: string;
+  currentReservationEnd?: string;
+  currentReservationDuration?: number;
+  isCurrentlyFreePractice?: boolean;
 }
 
 interface SwimmingHallCardProps {
@@ -146,11 +149,35 @@ export function SwimmingHallCard({ hallName, links }: SwimmingHallCardProps) {
           let hasFreeReservation = false;
           const upcomingReservations: ReservationDetails[] = [];
           let nextAvailableSlot: string | undefined;
+          let currentReservationEnd: string | undefined;
+          let currentReservationDuration: number | undefined;
+          let isCurrentlyFreePractice = false;
 
           // Sort reservations by start time
           const sortedData = [...data].sort(
             (a, b) => new Date(a.start).getTime() - new Date(b.start).getTime()
           );
+
+          // Find current ongoing reservation
+          const currentReservation = sortedData.find((reservation) => {
+            const reservationStart = new Date(reservation.start);
+            const reservationEnd = new Date(reservation.end);
+            return reservationStart <= currentTime && reservationEnd > currentTime;
+          });
+
+          if (currentReservation) {
+            const reservationEnd = new Date(currentReservation.end);
+            const minutesRemaining = Math.floor(
+              (reservationEnd.getTime() - currentTime.getTime()) / (60 * 1000)
+            );
+            
+            // Format the end time as HH:MM
+            const hours = reservationEnd.getHours().toString().padStart(2, '0');
+            const minutes = reservationEnd.getMinutes().toString().padStart(2, '0');
+            currentReservationEnd = `${hours}:${minutes}`;
+            currentReservationDuration = minutesRemaining;
+            isCurrentlyFreePractice = currentReservation.title.includes(FREE_PRACTICE_TEXT);
+          }
 
           sortedData.forEach((reservation) => {
             const reservationStart = new Date(reservation.start);
@@ -222,6 +249,9 @@ export function SwimmingHallCard({ hallName, links }: SwimmingHallCardProps) {
               isLoading: false,
               upcomingReservations,
               ...(nextAvailableSlot !== undefined && { nextAvailableSlot }),
+              ...(currentReservationEnd !== undefined && { currentReservationEnd }),
+              ...(currentReservationDuration !== undefined && { currentReservationDuration }),
+              ...(isCurrentlyFreePractice !== undefined && { isCurrentlyFreePractice }),
             });
             return newMap;
           });
@@ -385,7 +415,20 @@ export function SwimmingHallCard({ hallName, links }: SwimmingHallCardProps) {
                   </div>
                   <div className="sm:ml-2 flex flex-col gap-1 w-full">
                     {getStatusBadge(status)}
-                    {status?.nextAvailableSlot && !status?.hasReservationInNext1Hour && (
+                    {status?.currentReservationEnd && status?.currentReservationDuration !== undefined && (
+                      <span className="text-xs text-muted-foreground">
+                        {status.isCurrentlyFreePractice ? (
+                          <>
+                            🎉 {tTime('freePracticeUntil')} {status.currentReservationEnd} ({status.currentReservationDuration} {tTime('minutes')})
+                          </>
+                        ) : (
+                          <>
+                            🔒 {tTime('reservedUntil')} {status.currentReservationEnd} ({status.currentReservationDuration} {tTime('minutes')})
+                          </>
+                        )}
+                      </span>
+                    )}
+                    {status?.nextAvailableSlot && !status?.hasReservationInNext1Hour && !status?.currentReservationEnd && (
                       <span className="text-xs text-muted-foreground">
                         ⏱️ {tTime('freeFor')} {status.nextAvailableSlot}
                       </span>

@@ -40,7 +40,10 @@
     "next5Hours": "Varattu seuraavan 5 tunnin aikana",
     "next6Hours": "Varattu seuraavan 6 tunnin aikana",
     "freeFor": "Vapaana",
-    "upcomingReservations": "Tulevat varaukset"
+    "upcomingReservations": "Tulevat varaukset",
+    "reservedUntil": "Varattu klo",
+    "freePracticeUntil": "Vapaaharjoittelu klo",
+    "minutes": "min"
   },
   "accessibility": {
     "skipToContent": "Siirry pääsisältöön",
