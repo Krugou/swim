@@ -40,7 +40,10 @@
     "next5Hours": "Reserved in next 5 hours",
     "next6Hours": "Reserved in next 6 hours",
     "freeFor": "Free for",
-    "upcomingReservations": "Upcoming reservations"
+    "upcomingReservations": "Upcoming reservations",
+    "reservedUntil": "Reserved until",
+    "freePracticeUntil": "Free practice until",
+    "minutes": "min"
   },
   "accessibility": {
     "skipToContent": "Skip to main content",
