@@ -42,6 +42,10 @@ export async function getUserLocation(): Promise<UserLocation | null> {
       (error) => {
         console.error('Error getting location:', error);
         resolve(null);
+      },
+      {
+        timeout: 10000, // 10 second timeout
+        enableHighAccuracy: false,
       }
     );
   });
