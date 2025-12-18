@@ -61,5 +61,11 @@
     "findBestOptions": "Etsi parhaat vaihtoehdot nyt",
     "bestOptionsTitle": "Parhaat vaihtoehdot juuri nyt",
     "noSlotsAvailable": "Vapaita aikoja ei löytynyt tällä hetkellä. Yritä myöhemmin uudelleen!"
+  },
+  "weather": {
+    "loading": "Ladataan säätietoja...",
+    "temperature": "Lämpötila",
+    "precipitation": "Sademäärä",
+    "wind": "Tuuli"
   }
 }

@@ -83,6 +83,8 @@ export default function Home(): ReactElement {
                 key={hall.swimmingHallName}
                 hallName={hall.swimmingHallName}
                 links={hall.relatedLinks}
+                latitude={hall.latitude}
+                longitude={hall.longitude}
               />
             ))}
           </div>
