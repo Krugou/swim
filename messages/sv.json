@@ -61,5 +61,11 @@
     "findBestOptions": "Hitta bästa alternativen nu",
     "bestOptionsTitle": "Bästa alternativen just nu",
     "noSlotsAvailable": "Inga lediga tider hittades just nu. Försök igen senare!"
+  },
+  "weather": {
+    "loading": "Laddar väder...",
+    "temperature": "Temperatur",
+    "precipitation": "Nederbörd",
+    "wind": "Vind"
   }
 }

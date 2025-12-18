@@ -61,5 +61,11 @@
     "findBestOptions": "Find Best Options Now",
     "bestOptionsTitle": "Best Options Right Now",
     "noSlotsAvailable": "No available slots found at the moment. Try again later!"
+  },
+  "weather": {
+    "loading": "Loading weather...",
+    "temperature": "Temperature",
+    "precipitation": "Precipitation",
+    "wind": "Wind"
   }
 }

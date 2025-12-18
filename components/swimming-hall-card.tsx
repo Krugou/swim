@@ -6,6 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { reservationUrl, type RelatedLink } from '@/lib/swimming-halls-data';
 import { useTranslations } from 'next-intl';
 import { Loader2 } from 'lucide-react';
+import { WeatherDisplay } from '@/components/weather-display';
 
 interface ReservationData {
   start: string;
@@ -45,6 +46,8 @@ export interface ReservationStatus {
 interface SwimmingHallCardProps {
   hallName: string;
   links: RelatedLink[];
+  latitude: number;
+  longitude: number;
 }
 
 // Constants
@@ -99,7 +102,7 @@ const parseReservationTitle = (title: string): ReservationDetails => {
   return { organization, resourceName, timeRange };
 };
 
-export function SwimmingHallCard({ hallName, links }: SwimmingHallCardProps) {
+export function SwimmingHallCard({ hallName, links, latitude, longitude }: SwimmingHallCardProps) {
   const [linkStatuses, setLinkStatuses] = useState<Map<string, ReservationStatus>>(new Map());
   const t = useTranslations('status');
   const tReservation = useTranslations('reservation');
@@ -315,7 +318,10 @@ export function SwimmingHallCard({ hallName, links }: SwimmingHallCardProps) {
     >
       <Card className="h-full transition-shadow hover:shadow-lg">
         <CardHeader>
-          <CardTitle className="text-lg sm:text-xl text-primary">{hallName}</CardTitle>
+          <div className="flex flex-col gap-2">
+            <CardTitle className="text-lg sm:text-xl text-primary">{hallName}</CardTitle>
+            <WeatherDisplay latitude={latitude} longitude={longitude} />
+          </div>
         </CardHeader>
         <CardContent>
           <ul className="space-y-3" role="list">

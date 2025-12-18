@@ -9,11 +9,15 @@ export interface RelatedLink {
 export interface SwimmingHall {
   swimmingHallName: string;
   relatedLinks: RelatedLink[];
+  latitude: number;
+  longitude: number;
 }
 
 export const swimmingHallData: SwimmingHall[] = [
   {
     swimmingHallName: 'Matinkylän uimahalli',
+    latitude: 60.167,
+    longitude: 24.750,
     relatedLinks: [
       {
         relatedLinkName: 'Terapia-allas',
@@ -35,6 +39,8 @@ export const swimmingHallData: SwimmingHall[] = [
   },
   {
     swimmingHallName: 'Leppävaaran uimahalli',
+    latitude: 60.218,
+    longitude: 24.813,
     relatedLinks: [
       {
         relatedLinkName: 'Terapia-allas',
@@ -64,6 +70,8 @@ export const swimmingHallData: SwimmingHall[] = [
   },
   {
     swimmingHallName: 'Espoonlahden uimahalli',
+    latitude: 60.146,
+    longitude: 24.666,
     relatedLinks: [
       {
         relatedLinkName: 'Kuntosali 1 (yläsali)',
@@ -81,6 +89,8 @@ export const swimmingHallData: SwimmingHall[] = [
   },
   {
     swimmingHallName: 'Keski-Espoon uimahalli',
+    latitude: 60.207,
+    longitude: 24.655,
     relatedLinks: [
       {
         relatedLinkName: 'Terapia-allas',
@@ -102,6 +112,8 @@ export const swimmingHallData: SwimmingHall[] = [
   },
   {
     swimmingHallName: 'Olari uimahalli',
+    latitude: 60.181,
+    longitude: 24.734,
     relatedLinks: [
       {
         relatedLinkName: 'Koko allas',
