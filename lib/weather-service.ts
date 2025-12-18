@@ -41,9 +41,10 @@ export async function fetchWeatherData(
   try {
     const url = `https://api.met.no/weatherapi/locationforecast/2.0/compact?lat=${latitude}&lon=${longitude}`;
     
+    // Next.js App Router specific: Uses revalidate for caching
     const response = await fetch(url, {
       headers: {
-        'User-Agent': 'SwimmingHallSchedules/1.0 (github.com/Krugou/swim)',
+        'User-Agent': 'SwimmingHallSchedules/1.0 (https://github.com/Krugou/swim)',
       },
       next: { revalidate: 1800 }, // Cache for 30 minutes
     });
@@ -117,4 +118,30 @@ export function getWeatherIcon(symbolCode: string): string {
     return '🌫️';
   }
   return '🌤️';
+}
+
+export function getWeatherDescription(symbolCode: string): string {
+  // Map yr.no symbol codes to text descriptions
+  if (symbolCode.includes('clearsky') || symbolCode.includes('fair')) {
+    return 'Clear sky';
+  }
+  if (symbolCode.includes('partlycloudy')) {
+    return 'Partly cloudy';
+  }
+  if (symbolCode.includes('cloudy')) {
+    return 'Cloudy';
+  }
+  if (symbolCode.includes('rain') || symbolCode.includes('lightrain')) {
+    return 'Rainy';
+  }
+  if (symbolCode.includes('heavyrain')) {
+    return 'Heavy rain';
+  }
+  if (symbolCode.includes('snow') || symbolCode.includes('sleet')) {
+    return 'Snow';
+  }
+  if (symbolCode.includes('fog')) {
+    return 'Foggy';
+  }
+  return 'Partly cloudy';
 }

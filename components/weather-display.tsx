@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { fetchWeatherData, getWeatherIcon, type WeatherData } from '@/lib/weather-service';
+import { fetchWeatherData, getWeatherIcon, getWeatherDescription, type WeatherData } from '@/lib/weather-service';
 import { useTranslations } from 'next-intl';
 
 interface WeatherDisplayProps {
@@ -47,15 +47,23 @@ export function WeatherDisplay({ latitude, longitude }: WeatherDisplayProps) {
   }
 
   const icon = getWeatherIcon(weather.symbolCode);
+  const description = getWeatherDescription(weather.symbolCode);
 
   return (
     <div className="flex items-center gap-2 text-xs text-muted-foreground">
-      <span className="text-base" aria-hidden="true">
+      <span 
+        className="text-base" 
+        role="img" 
+        aria-label={description}
+        title={description}
+      >
         {icon}
       </span>
       <span className="font-semibold">{Math.round(weather.temperature)}°C</span>
       {weather.precipitation !== undefined && weather.precipitation > 0 && (
-        <span className="text-xs">💧 {weather.precipitation}mm</span>
+        <span className="text-xs" aria-label={`Precipitation: ${weather.precipitation} millimeters`}>
+          <span role="img" aria-label="precipitation">💧</span> {weather.precipitation}mm
+        </span>
       )}
     </div>
   );
