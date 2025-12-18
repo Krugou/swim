@@ -8,23 +8,61 @@ import { BestOptionFinder } from '@/components/best-option-finder';
 import { CalendarView } from '@/components/calendar-view';
 import { ChartsView } from '@/components/charts-view';
 import { useTranslations, useLocale } from 'next-intl';
-import { useState, useCallback, type ReactElement } from 'react';
-import { Calendar, TrendingUp, Info } from 'lucide-react';
+import { useState, useCallback, type ReactElement, useMemo } from 'react';
+import { Calendar, TrendingUp, Info, MapPin } from 'lucide-react';
 import { AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
+import { getUserLocation, calculateDistance, type UserLocation } from '@/lib/location-service';
 // generateStaticParams is exported from the segment's layout.tsx (server file)
 
 export default function Home(): ReactElement {
   const [showCalendar, setShowCalendar] = useState(false);
   const [showCharts, setShowCharts] = useState(false);
+  const [userLocation, setUserLocation] = useState<UserLocation | null>(null);
+  const [locationRequesting, setLocationRequesting] = useState(false);
+  const [locationEnabled, setLocationEnabled] = useState(false);
   const t = useTranslations('app');
   const tNav = useTranslations('navigation');
+  const tLocation = useTranslations('location');
   const locale = useLocale();
 
   const handleOpenCalendar = useCallback(() => setShowCalendar(true), []);
   const handleCloseCalendar = useCallback(() => setShowCalendar(false), []);
   const handleOpenCharts = useCallback(() => setShowCharts(true), []);
   const handleCloseCharts = useCallback(() => setShowCharts(false), []);
+
+  const handleToggleLocation = useCallback(async () => {
+    if (locationEnabled) {
+      setLocationEnabled(false);
+      setUserLocation(null);
+    } else {
+      setLocationRequesting(true);
+      const location = await getUserLocation();
+      setLocationRequesting(false);
+      if (location) {
+        setUserLocation(location);
+        setLocationEnabled(true);
+      }
+    }
+  }, [locationEnabled]);
+
+  const sortedHalls = useMemo(() => {
+    if (!userLocation) {
+      return swimmingHallData.map((hall) => ({ ...hall, distance: undefined }));
+    }
+
+    return [...swimmingHallData]
+      .map((hall) => ({
+        ...hall,
+        distance: calculateDistance(
+          userLocation.latitude,
+          userLocation.longitude,
+          hall.latitude,
+          hall.longitude
+        ),
+      }))
+      .sort((a, b) => (a.distance || 0) - (b.distance || 0));
+  }, [userLocation]);
 
   return (
     <>
@@ -34,6 +72,22 @@ export default function Home(): ReactElement {
             Swimming Halls
           </h1>
           <div className="flex items-center gap-1 sm:gap-2">
+            <button
+              onClick={handleToggleLocation}
+              disabled={locationRequesting}
+              className={`p-2 rounded-md transition-colors focus-visible:ring-2 focus-visible:ring-ring ${
+                locationEnabled
+                  ? 'bg-green-500/20 hover:bg-green-500/30 text-green-600 dark:text-green-400'
+                  : 'hover:bg-accent'
+              }`}
+              aria-label={locationEnabled ? tLocation('disable') : tLocation('enable')}
+              title={locationEnabled ? tLocation('disable') : tLocation('enable')}
+            >
+              <MapPin
+                className={`h-4 w-4 sm:h-5 sm:w-5 ${locationRequesting ? 'animate-pulse' : ''}`}
+                aria-hidden="true"
+              />
+            </button>
             <button
               onClick={handleOpenCalendar}
               className="hidden sm:flex p-2 rounded-md hover:bg-accent transition-colors focus-visible:ring-2 focus-visible:ring-ring"
@@ -77,14 +131,24 @@ export default function Home(): ReactElement {
 
           <BestOptionFinder />
 
+          {locationEnabled && userLocation && (
+            <div className="mb-4 text-center">
+              <span className="inline-flex items-center gap-2 px-4 py-2 bg-green-500/10 text-green-700 dark:text-green-300 rounded-full text-sm font-medium">
+                <MapPin className="h-4 w-4" aria-hidden="true" />
+                {tLocation('sortedByDistance')}
+              </span>
+            </div>
+          )}
+
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6">
-            {swimmingHallData.map((hall) => (
+            {sortedHalls.map((hall) => (
               <SwimmingHallCard
                 key={hall.swimmingHallName}
                 hallName={hall.swimmingHallName}
                 links={hall.relatedLinks}
                 latitude={hall.latitude}
                 longitude={hall.longitude}
+                {...(hall.distance !== undefined && { distance: hall.distance })}
               />
             ))}
           </div>

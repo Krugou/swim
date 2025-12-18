@@ -67,5 +67,13 @@
     "temperature": "Lämpötila",
     "precipitation": "Sademäärä",
     "wind": "Tuuli"
+  },
+  "location": {
+    "enable": "Käytä sijaintia",
+    "disable": "Poista sijainti käytöstä",
+    "requesting": "Pyydetään sijaintia...",
+    "denied": "Sijaintiin ei ole pääsyä",
+    "away": "päässä",
+    "sortedByDistance": "Järjestetty etäisyyden mukaan"
   }
 }

@@ -67,5 +67,13 @@
     "temperature": "Temperature",
     "precipitation": "Precipitation",
     "wind": "Wind"
+  },
+  "location": {
+    "enable": "Enable Location",
+    "disable": "Disable Location",
+    "requesting": "Requesting location...",
+    "denied": "Location access denied",
+    "away": "away",
+    "sortedByDistance": "Sorted by distance"
   }
 }

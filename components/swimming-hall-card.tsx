@@ -48,6 +48,7 @@ interface SwimmingHallCardProps {
   links: RelatedLink[];
   latitude: number;
   longitude: number;
+  distance?: number;
 }
 
 // Constants
@@ -102,11 +103,12 @@ const parseReservationTitle = (title: string): ReservationDetails => {
   return { organization, resourceName, timeRange };
 };
 
-export function SwimmingHallCard({ hallName, links, latitude, longitude }: SwimmingHallCardProps) {
+export function SwimmingHallCard({ hallName, links, latitude, longitude, distance }: SwimmingHallCardProps) {
   const [linkStatuses, setLinkStatuses] = useState<Map<string, ReservationStatus>>(new Map());
   const t = useTranslations('status');
   const tReservation = useTranslations('reservation');
   const tTime = useTranslations('timeIndicators');
+  const tLocation = useTranslations('location');
 
   useEffect(() => {
     const timeWindow = getTimeWindow();
@@ -319,7 +321,14 @@ export function SwimmingHallCard({ hallName, links, latitude, longitude }: Swimm
       <Card className="h-full transition-shadow hover:shadow-lg">
         <CardHeader>
           <div className="flex flex-col gap-2">
-            <CardTitle className="text-lg sm:text-xl text-primary">{hallName}</CardTitle>
+            <div className="flex items-center justify-between gap-2">
+              <CardTitle className="text-lg sm:text-xl text-primary">{hallName}</CardTitle>
+              {distance !== undefined && (
+                <span className="text-sm font-semibold text-primary whitespace-nowrap">
+                  📍 {distance.toFixed(1)} km {tLocation('away')}
+                </span>
+              )}
+            </div>
             <WeatherDisplay latitude={latitude} longitude={longitude} />
           </div>
         </CardHeader>

@@ -67,5 +67,13 @@
     "temperature": "Temperatur",
     "precipitation": "Nederbörd",
     "wind": "Vind"
+  },
+  "location": {
+    "enable": "Aktivera plats",
+    "disable": "Inaktivera plats",
+    "requesting": "Begär plats...",
+    "denied": "Platstillgång nekad",
+    "away": "bort",
+    "sortedByDistance": "Sorterad efter avstånd"
   }
 }
