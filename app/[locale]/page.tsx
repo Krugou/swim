@@ -13,11 +13,6 @@ import { Calendar, TrendingUp, Info, MapPin } from 'lucide-react';
 import { AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import { getUserLocation, calculateDistance, type UserLocation } from '@/lib/location-service';
-import { locales } from '@/lib/i18n/config';
-
-export function generateStaticParams() {
-  return locales.map((locale) => ({ locale }));
-}
 
 export default function Home(): ReactElement {
   const [showCalendar, setShowCalendar] = useState(false);

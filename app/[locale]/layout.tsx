@@ -5,6 +5,7 @@ import { getMessages } from 'next-intl/server';
 import { ThemeProvider } from '@/components/theme-provider';
 import { notFound } from 'next/navigation';
 import { locales } from '@/lib/i18n/config';
+import { QueryClientProvider } from '@/components/query-client-provider';
 import '../globals.css';
 
 export const metadata: Metadata = {
@@ -64,14 +65,16 @@ export default async function RootLayout({
         <a href="#main-content" className="skip-to-content">
           Skip to main content
         </a>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange={false}
-        >
-          <NextIntlClientProvider messages={messages}>{children}</NextIntlClientProvider>
-        </ThemeProvider>
+        <QueryClientProvider>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange={false}
+          >
+            <NextIntlClientProvider messages={messages}>{children}</NextIntlClientProvider>
+          </ThemeProvider>
+        </QueryClientProvider>
       </body>
     </html>
   );

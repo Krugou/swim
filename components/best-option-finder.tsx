@@ -5,7 +5,12 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 import { Sparkles, Loader2, MapPin } from 'lucide-react';
 import { swimmingHallData } from '@/lib/swimming-halls-data';
-import type { ReservationStatus } from './swimming-hall-card';
+import { useQuery } from '@tanstack/react-query';
+import {
+  fetchReservationData,
+  analyzeReservations,
+  type ReservationData,
+} from '@/lib/hooks/use-reservation-data';
 
 interface BestOption {
   hallName: string;
@@ -15,62 +20,71 @@ interface BestOption {
 }
 
 export function BestOptionFinder() {
-  const [isSearching, setIsSearching] = useState(false);
-  const [bestOptions, setBestOptions] = useState<BestOption[]>([]);
   const [showResults, setShowResults] = useState(false);
   const t = useTranslations('status');
   const tReservation = useTranslations('reservation');
   const tBestOption = useTranslations('bestOption');
 
-  const findBestOptions = async () => {
-    setIsSearching(true);
-    setShowResults(false);
-    const options: BestOption[] = [];
+  // Pre-fetch all data
+  const allResourceIds = swimmingHallData.flatMap((hall) =>
+    hall.relatedLinks.map((link) => link.url)
+  );
 
-    const fetchPromises = swimmingHallData.flatMap((hall) =>
-      hall.relatedLinks.map(async (link) => {
-        const timeWindow = getTimeWindow();
-        const proxyUrl = buildProxyUrl(link.url, timeWindow);
+  const queries = allResourceIds.map((resourceId) =>
+    useQuery({
+      queryKey: ['reservations', resourceId],
+      queryFn: () => fetchReservationData(resourceId),
+      enabled: showResults, // Only fetch when user clicks search
+    })
+  );
 
-        try {
-          const response = await fetch(proxyUrl);
-          const data = await response.json();
-          const status = analyzeReservations(data);
+  // Create a map of resourceId -> query result for easy lookup
+  const queryMap = new Map(allResourceIds.map((resourceId, index) => [resourceId, queries[index]]));
+
+  const isSearching = queries.some((q) => q.isLoading || q.isFetching);
+  const allDataLoaded = queries.every((q) => q.data || q.error);
+
+  const findBestOptions = () => {
+    setShowResults(true);
+    // This will trigger all queries to start fetching
+  };
+
+  // Calculate best options from the query results
+  const bestOptions: BestOption[] = [];
+
+  if (allDataLoaded && showResults) {
+    swimmingHallData.forEach((hall) => {
+      hall.relatedLinks.forEach((link) => {
+        const query = queryMap.get(link.url);
+        if (query?.data) {
+          const status = analyzeReservations(query.data as ReservationData[]);
 
           if (status.hasFreeReservation) {
-            options.push({
+            bestOptions.push({
               hallName: hall.swimmingHallName,
               linkName: link.relatedLinkName,
               resourceId: link.url,
               reason: 'free-practice',
             });
           } else if (!status.hasReservationInNext1Hour) {
-            options.push({
+            bestOptions.push({
               hallName: hall.swimmingHallName,
               linkName: link.relatedLinkName,
               resourceId: link.url,
               reason: 'available-now',
             });
           }
-        } catch (error) {
-          console.error('Error fetching data:', error);
         }
-      })
-    );
-
-    await Promise.all(fetchPromises);
+      });
+    });
 
     // Sort: free practice first, then by name
-    options.sort((a, b) => {
+    bestOptions.sort((a, b) => {
       if (a.reason === 'free-practice' && b.reason !== 'free-practice') return -1;
       if (a.reason !== 'free-practice' && b.reason === 'free-practice') return 1;
       return a.hallName.localeCompare(b.hallName);
     });
-
-    setBestOptions(options);
-    setIsSearching(false);
-    setShowResults(true);
-  };
+  }
 
   return (
     <div className="mb-8">
@@ -78,8 +92,8 @@ export function BestOptionFinder() {
         <button
           onClick={findBestOptions}
           disabled={isSearching}
-          className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white font-bold rounded-lg shadow-lg hover:shadow-xl transition-all transform hover:scale-105 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
-          aria-busy={isSearching}
+          className="inline-flex items-center gap-2 px-6 py-3 bg-linear-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white font-bold rounded-lg shadow-lg hover:shadow-xl transition-all transform hover:scale-105 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+          aria-busy={isSearching ? 'true' : 'false'}
         >
           {isSearching ? (
             <>
@@ -130,7 +144,7 @@ export function BestOptionFinder() {
                     >
                       <div className="flex items-start gap-2 mb-2">
                         <MapPin
-                          className="h-5 w-5 text-primary flex-shrink-0 mt-0.5"
+                          className="h-5 w-5 text-primary shrink-0 mt-0.5"
                           aria-hidden="true"
                         />
                         <div>
@@ -168,74 +182,3 @@ export function BestOptionFinder() {
     </div>
   );
 }
-
-// Helper functions (duplicated from swimming-hall-card.tsx for now)
-const getTimeWindow = (): { start: number; end: number } => {
-  const nowInSeconds = Math.floor(Date.now() / 1000);
-  const FOUR_HOURS_IN_SECONDS = 4 * 60 * 60;
-  return {
-    start: nowInSeconds - FOUR_HOURS_IN_SECONDS,
-    end: nowInSeconds + FOUR_HOURS_IN_SECONDS,
-  };
-};
-
-const buildProxyUrl = (resourceId: string, timeWindow: { start: number; end: number }): string => {
-  const cityUrl = `https://resurssivaraus.espoo.fi/Tailored/prime_product_intranet/espoo/web/Calendar/ReservationData.aspx?resourceid%5B%5D=${resourceId}&start=${timeWindow.start}&end=${timeWindow.end}&_=${timeWindow.start}`;
-  return `https://proxy.aleksi-nokelainen.workers.dev/?url=${encodeURIComponent(cityUrl)}`;
-};
-
-const analyzeReservations = (data: any[]): ReservationStatus => {
-  const currentTime = new Date();
-  const oneHourFromNow = new Date(currentTime.getTime() + 60 * 60 * 1000);
-  const twoHoursFromNow = new Date(currentTime.getTime() + 2 * 60 * 60 * 1000);
-  const threeHoursFromNow = new Date(currentTime.getTime() + 3 * 60 * 60 * 1000);
-  const fourHoursFromNow = new Date(currentTime.getTime() + 4 * 60 * 60 * 1000);
-  const fiveHoursFromNow = new Date(currentTime.getTime() + 5 * 60 * 60 * 1000);
-  const sixHoursFromNow = new Date(currentTime.getTime() + 6 * 60 * 60 * 1000);
-
-  let hasReservationInNext1Hour = false;
-  let hasReservationInNext2Hours = false;
-  let hasReservationInNext3Hours = false;
-  let hasReservationInNext4Hours = false;
-  let hasReservationInNext5Hours = false;
-  let hasReservationInNext6Hours = false;
-  let hasFreeReservation = false;
-
-  data.forEach((reservation) => {
-    const reservationStart = new Date(reservation.start);
-    const reservationEnd = new Date(reservation.end);
-
-    if (reservationStart <= oneHourFromNow && reservationEnd > currentTime) {
-      hasReservationInNext1Hour = true;
-    }
-    if (reservationStart <= twoHoursFromNow && reservationEnd > currentTime) {
-      hasReservationInNext2Hours = true;
-    }
-    if (reservationStart <= threeHoursFromNow && reservationEnd > currentTime) {
-      hasReservationInNext3Hours = true;
-    }
-    if (reservationStart <= fourHoursFromNow && reservationEnd > currentTime) {
-      hasReservationInNext4Hours = true;
-    }
-    if (reservationStart <= fiveHoursFromNow && reservationEnd > currentTime) {
-      hasReservationInNext5Hours = true;
-    }
-    if (reservationStart <= sixHoursFromNow && reservationEnd > currentTime) {
-      hasReservationInNext6Hours = true;
-    }
-    if (reservation.title && reservation.title.includes('Vapaaharjoitte')) {
-      hasFreeReservation = true;
-    }
-  });
-
-  return {
-    hasReservationInNext1Hour,
-    hasReservationInNext2Hours,
-    hasReservationInNext3Hours,
-    hasReservationInNext4Hours,
-    hasReservationInNext5Hours,
-    hasReservationInNext6Hours,
-    hasFreeReservation,
-    isLoading: false,
-  };
-};
