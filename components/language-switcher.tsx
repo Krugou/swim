@@ -23,7 +23,9 @@ export function LanguageSwitcher() {
   return (
     <div className="relative">
       <button
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={() => {
+          setIsOpen(!isOpen);
+        }}
         className="inline-flex h-10 items-center justify-center rounded-md border border-input bg-background px-4 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 transition-colors"
         aria-expanded={isOpen}
         aria-haspopup="true"
@@ -31,11 +33,13 @@ export function LanguageSwitcher() {
         <Languages className="mr-2 h-4 w-4" aria-hidden="true" />
         {localeNames[locale]}
       </button>
-      {isOpen && (
+      {isOpen ? (
         <>
           <div
             className="fixed inset-0 z-40"
-            onClick={() => setIsOpen(false)}
+            onClick={() => {
+              setIsOpen(false);
+            }}
             aria-hidden="true"
           />
           <div
@@ -45,7 +49,9 @@ export function LanguageSwitcher() {
             {Object.entries(localeNames).map(([key, name]) => (
               <button
                 key={key}
-                onClick={() => handleLocaleChange(key as Locale)}
+                onClick={() => {
+                  handleLocaleChange(key as Locale);
+                }}
                 className={`block w-full px-4 py-2 text-left text-sm hover:bg-accent hover:text-accent-foreground transition-colors ${
                   locale === key ? 'bg-accent font-medium' : ''
                 }`}
@@ -56,7 +62,7 @@ export function LanguageSwitcher() {
             ))}
           </div>
         </>
-      )}
+      ) : null}
     </div>
   );
 }

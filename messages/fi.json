@@ -7,7 +7,11 @@
     "home": "Etusivu",
     "about": "Tietoa",
     "settings": "Asetukset",
-    "back": "Takaisin"
+    "back": "Takaisin",
+    "swimmingHalls": "Uimahallit",
+    "best": "Paras",
+    "calendar": "Kalenteri",
+    "stats": "Tilastot"
   },
   "theme": {
     "light": "Valoisa",
@@ -25,7 +29,12 @@
     "available": "Saatavilla",
     "reserved": "Varattu",
     "freeReservation": "Vapaaharjoittelu saatavilla",
+    "freePractice": "Vapaaharjoittelu",
     "loading": "Ladataan saatavuutta..."
+  },
+  "errors": {
+    "loadingData": "Virhe tietoja ladattaessa. Yritä uudelleen",
+    "retry": "Yritä uudelleen"
   },
   "reservation": {
     "viewReservations": "Näytä varaukset",
@@ -43,12 +52,21 @@
     "upcomingReservations": "Tulevat varaukset",
     "reservedUntil": "Varattu klo",
     "freePracticeUntil": "Vapaaharjoittelu klo",
-    "minutes": "min"
+    "minutes": "min",
+    "updated": "Päivitetty",
+    "justNow": "juuri nyt",
+    "ago": "sitten"
   },
   "accessibility": {
     "skipToContent": "Siirry pääsisältöön",
     "openMenu": "Avaa valikko",
-    "closeMenu": "Sulje valikko"
+    "closeMenu": "Sulje valikko",
+    "findBestOptions": "Etsi parhaat vaihtoehdot",
+    "openCalendar": "Avaa kalenterinäkymä",
+    "openStats": "Avaa tilastot"
+  },
+  "footer": {
+    "copyright": "Uimahallin aikataulut. Kaikki oikeudet pidätetään."
   },
   "about": {
     "title": "Tietoa projektista",

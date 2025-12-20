@@ -41,6 +41,7 @@ function ResourceLink({ link }: { link: RelatedLink }) {
   const t = useTranslations('status');
   const tReservation = useTranslations('reservation');
   const tTime = useTranslations('timeIndicators');
+  const tErrors = useTranslations('errors');
 
   const timeWindow = getTimeWindow();
   const proxyUrl = buildProxyUrl(link.url, timeWindow);
@@ -112,10 +113,10 @@ function ResourceLink({ link }: { link: RelatedLink }) {
               exit={{ opacity: 0, scale: 0.8 }}
               onClick={() => refetch()}
               className="inline-flex items-center justify-center gap-2 w-full h-10 text-white font-bold bg-red-600 hover:bg-red-700 rounded transition-all focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-              aria-label={`Error loading data. Click to retry`}
+              aria-label={tErrors('loadingData')}
             >
               <AlertCircle className="h-4 w-4" aria-hidden="true" />
-              <span className="text-sm">Retry</span>
+              <span className="text-sm">{tErrors('retry')}</span>
             </motion.button>
           ) : status && !status.hasFreeReservation ? (
             <motion.a
@@ -179,7 +180,7 @@ function ResourceLink({ link }: { link: RelatedLink }) {
       </div>
       <div className="sm:ml-2 flex flex-col gap-1 w-full">
         {getStatusBadge(status)}
-        {status?.currentReservationEnd && status?.currentReservationDuration !== undefined && (
+        {status?.currentReservationEnd && status?.currentReservationDuration !== undefined ? (
           <span className="text-xs text-muted-foreground">
             {status.isCurrentlyFreePractice ? (
               <>
@@ -193,20 +194,21 @@ function ResourceLink({ link }: { link: RelatedLink }) {
               </>
             )}
           </span>
-        )}
+        ) : null}
         {status?.nextAvailableSlot &&
-          !status?.hasReservationInNext1Hour &&
-          !status?.currentReservationEnd && (
-            <span className="text-xs text-muted-foreground">
-              ⏱️ {tTime('freeFor')} {status.nextAvailableSlot}
-            </span>
-          )}
-        {minutesAgo !== null && (
-          <span className="text-xs text-muted-foreground/70 flex items-center gap-1">
-            🕐 Updated {minutesAgo === 0 ? 'just now' : `${minutesAgo}m ago`}
+        !status?.hasReservationInNext1Hour &&
+        !status?.currentReservationEnd ? (
+          <span className="text-xs text-muted-foreground">
+            ⏱️ {tTime('freeFor')} {status.nextAvailableSlot}
           </span>
-        )}
-        {status?.upcomingReservations && status.upcomingReservations.length > 0 && (
+        ) : null}
+        {minutesAgo !== null ? (
+          <span className="text-xs text-muted-foreground/70 flex items-center gap-1">
+            🕐 {tTime('updated')}{' '}
+            {minutesAgo === 0 ? tTime('justNow') : `${minutesAgo}m ${tTime('ago')}`}
+          </span>
+        ) : null}
+        {status?.upcomingReservations && status.upcomingReservations.length > 0 ? (
           <details className="text-xs text-muted-foreground mt-1">
             <summary className="cursor-pointer hover:text-foreground transition-colors">
               📋 {tTime('upcomingReservations')} ({status.upcomingReservations.length})
@@ -215,14 +217,14 @@ function ResourceLink({ link }: { link: RelatedLink }) {
               {status.upcomingReservations.map((res, idx) => (
                 <div key={idx} className="text-xs">
                   <div className="font-semibold text-foreground">{res.organization}</div>
-                  {res.resourceName !== 'Unknown' && (
+                  {res.resourceName !== 'Unknown' ? (
                     <div className="text-muted-foreground">{res.resourceName}</div>
-                  )}
+                  ) : null}
                 </div>
               ))}
             </div>
           </details>
-        )}
+        ) : null}
       </div>
     </motion.li>
   );
@@ -257,14 +259,14 @@ export function SwimmingHallCard({
             <div className="flex items-center justify-between gap-2">
               <CardTitle className="text-lg sm:text-xl text-primary">{hallName}</CardTitle>
               <div className="flex items-center gap-2">
-                {distance !== undefined && (
+                {distance !== undefined ? (
                   <span className="text-sm font-semibold text-primary whitespace-nowrap">
                     📍 {distance.toFixed(1)} km {tLocation('away')}
                   </span>
-                )}
+                ) : null}
                 <button
                   onClick={handleRefreshAll}
-                  className="p-2 hover:bg-muted rounded-full transition-colors focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                  className="p-2 hover:bg-muted rounded-full cursor-pointer transition-colors focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                   aria-label="Refresh all data"
                   title="Refresh all data"
                 >

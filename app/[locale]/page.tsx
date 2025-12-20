@@ -23,12 +23,22 @@ export default function Home(): ReactElement {
   const t = useTranslations('app');
   const tNav = useTranslations('navigation');
   const tLocation = useTranslations('location');
+  const tAccessibility = useTranslations('accessibility');
+  const tFooter = useTranslations('footer');
   const locale = useLocale();
 
-  const handleOpenCalendar = useCallback(() => setShowCalendar(true), []);
-  const handleCloseCalendar = useCallback(() => setShowCalendar(false), []);
-  const handleOpenCharts = useCallback(() => setShowCharts(true), []);
-  const handleCloseCharts = useCallback(() => setShowCharts(false), []);
+  const handleOpenCalendar = useCallback(() => {
+    setShowCalendar(true);
+  }, []);
+  const handleCloseCalendar = useCallback(() => {
+    setShowCalendar(false);
+  }, []);
+  const handleOpenCharts = useCallback(() => {
+    setShowCharts(true);
+  }, []);
+  const handleCloseCharts = useCallback(() => {
+    setShowCharts(false);
+  }, []);
 
   const handleToggleLocation = useCallback(async () => {
     if (locationEnabled) {
@@ -68,7 +78,7 @@ export default function Home(): ReactElement {
       <header className="sticky top-0 z-40 w-full border-b bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60">
         <div className="container mx-auto flex h-14 sm:h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
           <h1 className="text-base sm:text-lg md:text-xl font-bold text-primary truncate">
-            Swimming Halls
+            {tNav('swimmingHalls')}
           </h1>
           <div className="flex items-center gap-1 sm:gap-2">
             <button
@@ -90,7 +100,7 @@ export default function Home(): ReactElement {
             <button
               onClick={handleOpenCalendar}
               className="hidden sm:flex p-2 rounded-md hover:bg-accent transition-colors focus-visible:ring-2 focus-visible:ring-ring"
-              aria-label="Open calendar view"
+              aria-label={tAccessibility('openCalendar')}
               title="Calendar View"
             >
               <Calendar className="h-4 w-4 sm:h-5 sm:w-5" aria-hidden="true" />
@@ -98,7 +108,7 @@ export default function Home(): ReactElement {
             <button
               onClick={handleOpenCharts}
               className="hidden sm:flex p-2 rounded-md hover:bg-accent transition-colors focus-visible:ring-2 focus-visible:ring-ring"
-              aria-label="Open statistics"
+              aria-label={tAccessibility('openStats')}
               title="Statistics"
             >
               <TrendingUp className="h-4 w-4 sm:h-5 sm:w-5" aria-hidden="true" />
@@ -130,14 +140,14 @@ export default function Home(): ReactElement {
 
           <BestOptionFinder />
 
-          {locationEnabled && userLocation && (
+          {locationEnabled && userLocation ? (
             <div className="mb-4 text-center">
               <span className="inline-flex items-center gap-2 px-4 py-2 bg-green-500/10 text-green-700 dark:text-green-300 rounded-full text-sm font-medium">
                 <MapPin className="h-4 w-4" aria-hidden="true" />
                 {tLocation('sortedByDistance')}
               </span>
             </div>
-          )}
+          ) : null}
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6">
             {sortedHalls.map((hall) => (
@@ -157,16 +167,20 @@ export default function Home(): ReactElement {
       <footer className="border-t bg-background/95 backdrop-blur mt-8">
         <div className="container mx-auto px-4 py-4 sm:py-6 sm:px-6 lg:px-8">
           <div className="text-center text-xs sm:text-sm text-muted-foreground">
-            <p>© {new Date().getFullYear()} Swimming Hall Schedules. All rights reserved.</p>
+            <p>
+              © {new Date().getFullYear()} {tFooter('copyright')}
+            </p>
           </div>
         </div>
       </footer>
 
       <AnimatePresence>
-        {showCalendar && <CalendarView onClose={handleCloseCalendar} />}
+        {showCalendar ? <CalendarView onClose={handleCloseCalendar} /> : null}
       </AnimatePresence>
 
-      <AnimatePresence>{showCharts && <ChartsView onClose={handleCloseCharts} />}</AnimatePresence>
+      <AnimatePresence>
+        {showCharts ? <ChartsView onClose={handleCloseCharts} /> : null}
+      </AnimatePresence>
     </>
   );
 }

@@ -17,7 +17,9 @@ export default function AboutPage(): ReactElement {
       <header className="sticky top-0 z-40 w-full border-b bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60">
         <div className="container mx-auto flex h-14 sm:h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
           <button
-            onClick={() => router.back()}
+            onClick={() => {
+              router.back();
+            }}
             className="flex items-center gap-2 p-2 rounded-md hover:bg-accent transition-colors focus-visible:ring-2 focus-visible:ring-ring"
             aria-label={tNav('back')}
           >

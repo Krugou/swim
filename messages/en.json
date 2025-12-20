@@ -7,7 +7,11 @@
     "home": "Home",
     "about": "About",
     "settings": "Settings",
-    "back": "Back"
+    "back": "Back",
+    "swimmingHalls": "Swimming Halls",
+    "best": "Best",
+    "calendar": "Calendar",
+    "stats": "Stats"
   },
   "theme": {
     "light": "Light",
@@ -25,7 +29,12 @@
     "available": "Available",
     "reserved": "Reserved",
     "freeReservation": "Free practice available",
+    "freePractice": "Free Practice",
     "loading": "Loading availability..."
+  },
+  "errors": {
+    "loadingData": "Error loading data. Click to retry",
+    "retry": "Retry"
   },
   "reservation": {
     "viewReservations": "View reservations",
@@ -43,12 +52,21 @@
     "upcomingReservations": "Upcoming reservations",
     "reservedUntil": "Reserved until",
     "freePracticeUntil": "Free practice until",
-    "minutes": "min"
+    "minutes": "min",
+    "updated": "Updated",
+    "justNow": "just now",
+    "ago": "ago"
   },
   "accessibility": {
     "skipToContent": "Skip to main content",
     "openMenu": "Open menu",
-    "closeMenu": "Close menu"
+    "closeMenu": "Close menu",
+    "findBestOptions": "Find best options",
+    "openCalendar": "Open calendar view",
+    "openStats": "Open statistics"
+  },
+  "footer": {
+    "copyright": "Swimming Hall Schedules. All rights reserved."
   },
   "about": {
     "title": "About This Project",

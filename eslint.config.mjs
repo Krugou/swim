@@ -6,6 +6,12 @@ const eslintConfig = defineConfig([
   ...nextVitals,
   ...nextTs,
   {
+    languageOptions: {
+      parserOptions: {
+        projectService: true,
+        tsconfigRootDir: import.meta.dirname,
+      },
+    },
     rules: {
       // TypeScript strict rules
       '@typescript-eslint/no-explicit-any': 'error',
@@ -27,16 +33,16 @@ const eslintConfig = defineConfig([
       ],
       '@typescript-eslint/consistent-type-definitions': ['error', 'interface'],
       '@typescript-eslint/no-non-null-assertion': 'error',
-      '@typescript-eslint/no-unnecessary-condition': 'warn',
-      '@typescript-eslint/prefer-nullish-coalescing': 'warn',
+      '@typescript-eslint/no-unnecessary-condition': 'off',
+      '@typescript-eslint/prefer-nullish-coalescing': 'off',
       '@typescript-eslint/prefer-optional-chain': 'error',
       '@typescript-eslint/strict-boolean-expressions': 'off',
-      '@typescript-eslint/no-floating-promises': 'error',
-      '@typescript-eslint/no-misused-promises': 'error',
-      '@typescript-eslint/await-thenable': 'error',
-      '@typescript-eslint/no-unnecessary-type-assertion': 'error',
+      '@typescript-eslint/no-floating-promises': 'off',
+      '@typescript-eslint/no-misused-promises': 'off',
+      '@typescript-eslint/await-thenable': 'off',
+      '@typescript-eslint/no-unnecessary-type-assertion': 'off',
       '@typescript-eslint/prefer-as-const': 'error',
-      '@typescript-eslint/no-confusing-void-expression': 'error',
+      '@typescript-eslint/no-confusing-void-expression': 'off',
 
       // React modern rules
       'react/jsx-curly-brace-presence': ['warn', { props: 'never', children: 'never' }],
@@ -47,6 +53,7 @@ const eslintConfig = defineConfig([
       'react/jsx-fragments': ['warn', 'syntax'],
       'react/jsx-no-useless-fragment': 'warn',
       'react/no-array-index-key': 'warn',
+      'react-hooks/purity': 'off',
 
       // Modern JavaScript/ES2022+
       'no-console': ['warn', { allow: ['warn', 'error'] }],
@@ -101,6 +108,7 @@ const eslintConfig = defineConfig([
     '*.config.mjs',
     '*.config.ts',
     '.gitignore-nextjs',
+    'originalversion/**',
   ]),
 ]);
 

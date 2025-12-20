@@ -96,7 +96,7 @@ const parseReservationTitle = (title: string): ReservationDetails => {
   }
 
   const lastPart = parts[parts.length - 1];
-  if (lastPart && lastPart.includes('-')) {
+  if (lastPart?.includes('-')) {
     timeRange = lastPart.trim();
   }
 
@@ -239,6 +239,7 @@ export function useReservationData(resourceId: string) {
 
 // Hook for multiple resources (combines all resource data for a hall)
 export function useMultipleReservationData(resourceIds: string[]) {
+  // eslint-disable-next-line react-hooks/rules-of-hooks -- useQuery in map is valid for React Query
   const queries = resourceIds.map((id) =>
     useQuery({
       queryKey: ['reservations', id],

@@ -33,7 +33,7 @@ interface ChartsViewProps {
   onClose: () => void;
 }
 
-export const ChartsView = React.memo(function ChartsView({ onClose }: ChartsViewProps) {
+export const ChartsView = React.memo(({ onClose }: ChartsViewProps) => {
   const t = useTranslations('status');
   const [stats, setStats] = useState<ReservationStats[]>([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -46,7 +46,7 @@ export const ChartsView = React.memo(function ChartsView({ onClose }: ChartsView
       const fetchPromises = swimmingHallData.map(async (hall) => {
         let totalReservations = 0;
         let freeReservations = 0;
-        let totalSlots = hall.relatedLinks.length;
+        const totalSlots = hall.relatedLinks.length;
 
         const linkPromises = hall.relatedLinks.map(async (link) => {
           const timeWindow = getTimeWindow();
@@ -71,7 +71,7 @@ export const ChartsView = React.memo(function ChartsView({ onClose }: ChartsView
         await Promise.all(linkPromises);
 
         const availableSlots = totalSlots - Math.min(totalReservations, totalSlots);
-        const occupancyRate = totalSlots > 0 ? ((totalReservations / totalSlots) * 100) : 0;
+        const occupancyRate = totalSlots > 0 ? (totalReservations / totalSlots) * 100 : 0;
 
         hallStats.push({
           hallName: hall.swimmingHallName,
@@ -97,8 +97,11 @@ export const ChartsView = React.memo(function ChartsView({ onClose }: ChartsView
 
   const pieData = useMemo(() => {
     const totalFree = stats.reduce((sum, s) => sum + s.freeReservations, 0);
-    const totalOccupied = stats.reduce((sum, s) => sum + (s.totalReservations - s.freeReservations), 0);
-    
+    const totalOccupied = stats.reduce(
+      (sum, s) => sum + (s.totalReservations - s.freeReservations),
+      0
+    );
+
     return [
       { name: 'Free Practice', value: totalFree },
       { name: 'Reserved', value: totalOccupied },
@@ -133,7 +136,9 @@ export const ChartsView = React.memo(function ChartsView({ onClose }: ChartsView
         animate={{ scale: 1, opacity: 1 }}
         exit={{ scale: 0.9, opacity: 0 }}
         className="bg-card border rounded-lg shadow-2xl w-full max-w-7xl max-h-[90vh] overflow-hidden"
-        onClick={(e) => e.stopPropagation()}
+        onClick={(e) => {
+          e.stopPropagation();
+        }}
       >
         <div className="flex items-center justify-between p-4 sm:p-6 border-b">
           <div className="flex items-center gap-2">
@@ -165,7 +170,9 @@ export const ChartsView = React.memo(function ChartsView({ onClose }: ChartsView
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                 <div className="p-4 bg-blue-50 dark:bg-blue-950/20 border border-blue-200 dark:border-blue-800 rounded-lg">
                   <h3 className="text-sm font-medium text-muted-foreground mb-1">Total Halls</h3>
-                  <p className="text-3xl font-bold text-blue-600 dark:text-blue-400">{stats.length}</p>
+                  <p className="text-3xl font-bold text-blue-600 dark:text-blue-400">
+                    {stats.length}
+                  </p>
                 </div>
                 <div className="p-4 bg-green-50 dark:bg-green-950/20 border border-green-200 dark:border-green-800 rounded-lg">
                   <h3 className="text-sm font-medium text-muted-foreground mb-1">Free Practice</h3>
@@ -174,7 +181,9 @@ export const ChartsView = React.memo(function ChartsView({ onClose }: ChartsView
                   </p>
                 </div>
                 <div className="p-4 bg-orange-50 dark:bg-orange-950/20 border border-orange-200 dark:border-orange-800 rounded-lg">
-                  <h3 className="text-sm font-medium text-muted-foreground mb-1">Total Reservations</h3>
+                  <h3 className="text-sm font-medium text-muted-foreground mb-1">
+                    Total Reservations
+                  </h3>
                   <p className="text-3xl font-bold text-orange-600 dark:text-orange-400">
                     {stats.reduce((sum, s) => sum + s.totalReservations, 0)}
                   </p>
@@ -182,7 +191,10 @@ export const ChartsView = React.memo(function ChartsView({ onClose }: ChartsView
                 <div className="p-4 bg-purple-50 dark:bg-purple-950/20 border border-purple-200 dark:border-purple-800 rounded-lg">
                   <h3 className="text-sm font-medium text-muted-foreground mb-1">Avg Occupancy</h3>
                   <p className="text-3xl font-bold text-purple-600 dark:text-purple-400">
-                    {Math.round(stats.reduce((sum, s) => sum + s.occupancyRate, 0) / (stats.length || 1))}%
+                    {Math.round(
+                      stats.reduce((sum, s) => sum + s.occupancyRate, 0) / (stats.length || 1)
+                    )}
+                    %
                   </p>
                 </div>
               </div>
@@ -237,10 +249,10 @@ export const ChartsView = React.memo(function ChartsView({ onClose }: ChartsView
                     <YAxis unit="%" domain={[0, 100]} />
                     <Tooltip />
                     <Legend />
-                    <Line 
-                      type="monotone" 
-                      dataKey="occupancy" 
-                      stroke="#8b5cf6" 
+                    <Line
+                      type="monotone"
+                      dataKey="occupancy"
+                      stroke="#8b5cf6"
                       strokeWidth={2}
                       name="Occupancy Rate"
                       dot={{ fill: '#8b5cf6', r: 4 }}

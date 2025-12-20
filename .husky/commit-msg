@@ -1,0 +1,25 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+# Get the commit message
+commit_msg=$(cat "$1")
+
+# Check if commit message follows conventional commits format
+# Allowed types: feat, fix, docs, style, refactor, perf, test, chore, build, ci
+commit_regex='^(feat|fix|docs|style|refactor|perf|test|chore|build|ci|revert)(\(.+\))?: .{1,}'
+
+if ! echo "$commit_msg" | grep -qE "$commit_regex"; then
+  echo "❌ Invalid commit message format!"
+  echo ""
+  echo "Commit message should follow the Conventional Commits format:"
+  echo "  <type>(<scope>): <subject>"
+  echo ""
+  echo "Types: feat, fix, docs, style, refactor, perf, test, chore, build, ci, revert"
+  echo ""
+  echo "Examples:"
+  echo "  feat(auth): add login functionality"
+  echo "  fix(api): resolve data fetching issue"
+  echo "  docs: update README with setup instructions"
+  echo ""
+  exit 1
+fi

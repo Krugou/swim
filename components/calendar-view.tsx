@@ -27,11 +27,11 @@ interface CalendarViewProps {
 
 const locales = {
   en: enUS,
-  fi: fi,
-  sv: sv,
+  fi,
+  sv,
 };
 
-export const CalendarView = React.memo(function CalendarView({ onClose }: CalendarViewProps) {
+export const CalendarView = React.memo(({ onClose }: CalendarViewProps) => {
   const locale = useLocale() as Locale;
   const t = useTranslations('status');
   const [events, setEvents] = useState<CalendarEvent[]>([]);
@@ -56,9 +56,10 @@ export const CalendarView = React.memo(function CalendarView({ onClose }: Calend
 
     try {
       const { swimmingHallData } = await import('@/lib/swimming-halls-data');
-      const hallsToFetch = hallFilter === 'all' 
-        ? swimmingHallData 
-        : swimmingHallData.filter(h => h.swimmingHallName === hallFilter);
+      const hallsToFetch =
+        hallFilter === 'all'
+          ? swimmingHallData
+          : swimmingHallData.filter((h) => h.swimmingHallName === hallFilter);
 
       const fetchPromises = hallsToFetch.flatMap((hall) =>
         hall.relatedLinks.map(async (link) => {
@@ -71,12 +72,13 @@ export const CalendarView = React.memo(function CalendarView({ onClose }: Calend
 
             data.forEach((reservation: any) => {
               // Extract organization name from title for better display
-              const titleParts = reservation.title?.split('  ').filter((p: string) => p.trim()) || [];
-              const organization = titleParts.length >= 2 ? titleParts[1].trim() : 'Reserved';
-              const displayTitle = reservation.title?.includes('Vapaaharjoitte') 
-                ? `🎉 Free Practice - ${link.relatedLinkName}`
+              const titleParts =
+                reservation.title?.split('  ').filter((p: string) => p.trim()) || [];
+              const organization = titleParts.length >= 2 ? titleParts[1].trim() : t('reserved');
+              const displayTitle = reservation.title?.includes('Vapaaharjoitte')
+                ? `🎉 ${t('freePractice')} - ${link.relatedLinkName}`
                 : `${organization.substring(0, 30)}${organization.length > 30 ? '...' : ''} - ${link.relatedLinkName}`;
-              
+
               allEvents.push({
                 title: displayTitle,
                 start: new Date(reservation.start),
@@ -108,7 +110,7 @@ export const CalendarView = React.memo(function CalendarView({ onClose }: Calend
   }, [loadReservations, selectedHall]);
 
   const eventStyleGetter = useCallback((event: CalendarEvent) => {
-    const isFree = event.resource.isFree;
+    const { isFree } = event.resource;
     return {
       style: {
         backgroundColor: isFree ? '#22c55e' : '#3b82f6',
@@ -138,14 +140,14 @@ export const CalendarView = React.memo(function CalendarView({ onClose }: Calend
         animate={{ scale: 1, opacity: 1 }}
         exit={{ scale: 0.9, opacity: 0 }}
         className="bg-card border rounded-lg shadow-2xl w-full max-w-7xl max-h-[90vh] overflow-hidden"
-        onClick={(e) => e.stopPropagation()}
+        onClick={(e) => {
+          e.stopPropagation();
+        }}
       >
         <div className="flex items-center justify-between p-4 sm:p-6 border-b">
           <div className="flex items-center gap-2">
             <CalendarIcon className="h-6 w-6 text-primary" aria-hidden="true" />
-            <h2 className="text-xl sm:text-2xl font-bold text-foreground">
-              Reservation Calendar
-            </h2>
+            <h2 className="text-xl sm:text-2xl font-bold text-foreground">Reservation Calendar</h2>
           </div>
           <button
             onClick={onClose}
@@ -164,7 +166,9 @@ export const CalendarView = React.memo(function CalendarView({ onClose }: Calend
             <select
               id="hall-filter"
               value={selectedHall}
-              onChange={(e) => handleSelectHall(e.target.value)}
+              onChange={(e) => {
+                handleSelectHall(e.target.value);
+              }}
               className="w-full sm:w-auto px-4 py-2 border rounded-md bg-background text-foreground focus-visible:ring-2 focus-visible:ring-ring"
             >
               <option value="all">All Halls</option>

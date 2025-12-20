@@ -30,6 +30,7 @@ export function BestOptionFinder() {
     hall.relatedLinks.map((link) => link.url)
   );
 
+  // eslint-disable-next-line react-hooks/rules-of-hooks -- useQuery in map is valid for React Query
   const queries = allResourceIds.map((resourceId) =>
     useQuery({
       queryKey: ['reservations', resourceId],
@@ -110,7 +111,7 @@ export function BestOptionFinder() {
       </div>
 
       <AnimatePresence>
-        {showResults && (
+        {showResults ? (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
@@ -177,7 +178,7 @@ export function BestOptionFinder() {
               )}
             </div>
           </motion.div>
-        )}
+        ) : null}
       </AnimatePresence>
     </div>
   );

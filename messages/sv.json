@@ -7,7 +7,11 @@
     "home": "Hem",
     "about": "Om",
     "settings": "Inställningar",
-    "back": "Tillbaka"
+    "back": "Tillbaka",
+    "swimmingHalls": "Simhallar",
+    "best": "Bäst",
+    "calendar": "Kalender",
+    "stats": "Statistik"
   },
   "theme": {
     "light": "Ljus",
@@ -25,7 +29,12 @@
     "available": "Tillgänglig",
     "reserved": "Reserverad",
     "freeReservation": "Fri träning tillgänglig",
+    "freePractice": "Fri träning",
     "loading": "Laddar tillgänglighet..."
+  },
+  "errors": {
+    "loadingData": "Fel vid laddning av data. Klicka för att försöka igen",
+    "retry": "Försök igen"
   },
   "reservation": {
     "viewReservations": "Visa reservationer",
@@ -43,12 +52,21 @@
     "upcomingReservations": "Kommande reservationer",
     "reservedUntil": "Reserverad till",
     "freePracticeUntil": "Fri träning till",
-    "minutes": "min"
+    "minutes": "min",
+    "updated": "Uppdaterad",
+    "justNow": "just nu",
+    "ago": "sedan"
   },
   "accessibility": {
     "skipToContent": "Hoppa till huvudinnehåll",
     "openMenu": "Öppna meny",
-    "closeMenu": "Stäng meny"
+    "closeMenu": "Stäng meny",
+    "findBestOptions": "Hitta bästa alternativen",
+    "openCalendar": "Öppna kalendervy",
+    "openStats": "Öppna statistik"
+  },
+  "footer": {
+    "copyright": "Simhallens tidtabeller. Alla rättigheter förbehållna."
   },
   "about": {
     "title": "Om detta projekt",

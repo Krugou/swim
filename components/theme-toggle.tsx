@@ -15,14 +15,14 @@ export function ThemeToggle() {
   }, []);
 
   if (!mounted) {
-    return (
-      <div className="h-10 w-10 rounded-md border border-input bg-background" />
-    );
+    return <div className="h-10 w-10 rounded-md border border-input bg-background" />;
   }
 
   return (
     <button
-      onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+      onClick={() => {
+        setTheme(theme === 'dark' ? 'light' : 'dark');
+      }}
       className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-input bg-background hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 transition-colors"
       aria-label={t('toggle')}
     >
