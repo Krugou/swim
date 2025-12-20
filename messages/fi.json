@@ -93,5 +93,34 @@
     "denied": "Sijaintiin ei ole pääsyä",
     "away": "päässä",
     "sortedByDistance": "Järjestetty etäisyyden mukaan"
+  },
+  "maps": {
+    "title": "Karttanäkymä",
+    "yourLocation": "Sijaintisi",
+    "getDirections": "Hae reittiohjeet"
+  },
+  "notifications": {
+    "enable": "Ota ilmoitukset käyttöön",
+    "disable": "Poista ilmoitukset käytöstä",
+    "permissionDenied": "Ilmoituslupa evätty. Ole hyvä ja salli selaimen asetuksista.",
+    "notSupported": "Ilmoituksia ei tueta tässä selaimessa.",
+    "error": "Ilmoitusten käyttöönotto epäonnistui. Yritä uudelleen."
+  },
+  "quickActions": {
+    "share": "Jaa",
+    "shared": "Jaettu!",
+    "addToCalendar": "Lisää kalenteriin",
+    "added": "Lisätty!",
+    "viewDetails": "Näytä tiedot"
+  },
+  "hallDetails": {
+    "description": "Kuvaus",
+    "address": "Osoite",
+    "getDirections": "Hae reittiohjeet",
+    "openingHours": "Aukioloajat",
+    "contact": "Yhteystiedot",
+    "facilities": "Tilat",
+    "availableResources": "Saatavilla olevat tilat",
+    "viewDetails": "Näytä tiedot"
   }
 }

@@ -2,12 +2,14 @@
 
 import { motion, AnimatePresence } from 'framer-motion';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { reservationUrl, type RelatedLink } from '@/lib/swimming-halls-data';
+import { reservationUrl, type RelatedLink, type SwimmingHall } from '@/lib/swimming-halls-data';
 import { useTranslations } from 'next-intl';
-import { Loader2, AlertCircle, RefreshCcw } from 'lucide-react';
+import { Loader2, AlertCircle, RefreshCcw, Info } from 'lucide-react';
 import { WeatherDisplay } from '@/components/weather-display';
 import { useReservationData, type AnalyzedReservationData } from '@/lib/hooks/use-reservation-data';
 import { useQueryClient } from '@tanstack/react-query';
+import { useState } from 'react';
+import { HallDetails } from '@/components/hall-details';
 
 interface SwimmingHallCardProps {
   hallName: string;
@@ -238,7 +240,17 @@ export function SwimmingHallCard({
   distance,
 }: SwimmingHallCardProps) {
   const tLocation = useTranslations('location');
+  const tDetails = useTranslations('hallDetails');
   const queryClient = useQueryClient();
+  const [showDetails, setShowDetails] = useState(false);
+
+  // Create full hall data for details view
+  const fullHallData: SwimmingHall = {
+    swimmingHallName: hallName,
+    relatedLinks: links,
+    latitude,
+    longitude,
+  };
 
   const handleRefreshAll = () => {
     links.forEach((link) => {
@@ -247,45 +259,61 @@ export function SwimmingHallCard({
   };
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.3 }}
-      whileHover={{ y: -4 }}
-    >
-      <Card className="h-full transition-shadow hover:shadow-lg">
-        <CardHeader>
-          <div className="flex flex-col gap-2">
-            <div className="flex items-center justify-between gap-2">
-              <CardTitle className="text-lg sm:text-xl text-primary">{hallName}</CardTitle>
-              <div className="flex items-center gap-2">
-                {distance !== undefined ? (
-                  <span className="text-sm font-semibold text-primary whitespace-nowrap">
-                    📍 {distance.toFixed(1)} km {tLocation('away')}
-                  </span>
-                ) : null}
-                <button
-                  onClick={handleRefreshAll}
-                  className="p-2 hover:bg-muted rounded-full cursor-pointer transition-colors focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-                  aria-label="Refresh all data"
-                  title="Refresh all data"
-                >
-                  <RefreshCcw className="h-4 w-4" />
-                </button>
+    <>
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.3 }}
+        whileHover={{ y: -4 }}
+      >
+        <Card className="h-full transition-shadow hover:shadow-lg">
+          <CardHeader>
+            <div className="flex flex-col gap-2">
+              <div className="flex items-center justify-between gap-2">
+                <CardTitle className="text-lg sm:text-xl text-primary">{hallName}</CardTitle>
+                <div className="flex items-center gap-2">
+                  {distance !== undefined ? (
+                    <span className="text-sm font-semibold text-primary whitespace-nowrap">
+                      📍 {distance.toFixed(1)} km {tLocation('away')}
+                    </span>
+                  ) : null}
+                  <button
+                    onClick={() => setShowDetails(true)}
+                    className="p-2 hover:bg-muted rounded-full cursor-pointer transition-colors focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                    aria-label={tDetails('viewDetails')}
+                    title={tDetails('viewDetails')}
+                  >
+                    <Info className="h-4 w-4" />
+                  </button>
+                  <button
+                    onClick={handleRefreshAll}
+                    className="p-2 hover:bg-muted rounded-full cursor-pointer transition-colors focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                    aria-label="Refresh all data"
+                    title="Refresh all data"
+                  >
+                    <RefreshCcw className="h-4 w-4" />
+                  </button>
+                </div>
               </div>
+              <WeatherDisplay latitude={latitude} longitude={longitude} />
             </div>
-            <WeatherDisplay latitude={latitude} longitude={longitude} />
-          </div>
-        </CardHeader>
-        <CardContent>
-          <ul className="space-y-3" role="list">
-            {links.map((link) => (
-              <ResourceLink key={link.url} link={link} />
-            ))}
-          </ul>
-        </CardContent>
-      </Card>
-    </motion.div>
+          </CardHeader>
+          <CardContent>
+            <ul className="space-y-3" role="list">
+              {links.map((link) => (
+                <ResourceLink key={link.url} link={link} />
+              ))}
+            </ul>
+          </CardContent>
+        </Card>
+      </motion.div>
+
+      <AnimatePresence>
+        {showDetails ? (
+          <HallDetails hall={fullHallData} onClose={() => setShowDetails(false)} />
+        ) : null}
+      </AnimatePresence>
+    </>
   );
 }
 

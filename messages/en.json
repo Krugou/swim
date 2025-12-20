@@ -93,5 +93,34 @@
     "denied": "Location access denied",
     "away": "away",
     "sortedByDistance": "Sorted by distance"
+  },
+  "maps": {
+    "title": "Maps View",
+    "yourLocation": "Your Location",
+    "getDirections": "Get Directions"
+  },
+  "notifications": {
+    "enable": "Enable Notifications",
+    "disable": "Disable Notifications",
+    "permissionDenied": "Notification permission denied. Please enable in browser settings.",
+    "notSupported": "Notifications are not supported in this browser.",
+    "error": "Failed to toggle notifications. Please try again."
+  },
+  "quickActions": {
+    "share": "Share",
+    "shared": "Shared!",
+    "addToCalendar": "Add to Calendar",
+    "added": "Added!",
+    "viewDetails": "View Details"
+  },
+  "hallDetails": {
+    "description": "Description",
+    "address": "Address",
+    "getDirections": "Get Directions",
+    "openingHours": "Opening Hours",
+    "contact": "Contact",
+    "facilities": "Facilities",
+    "availableResources": "Available Resources",
+    "viewDetails": "View Details"
   }
 }

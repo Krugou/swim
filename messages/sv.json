@@ -93,5 +93,34 @@
     "denied": "Platstillgång nekad",
     "away": "bort",
     "sortedByDistance": "Sorterad efter avstånd"
+  },
+  "maps": {
+    "title": "Kartvy",
+    "yourLocation": "Din plats",
+    "getDirections": "Få vägbeskrivning"
+  },
+  "notifications": {
+    "enable": "Aktivera meddelanden",
+    "disable": "Inaktivera meddelanden",
+    "permissionDenied": "Meddelandetillstånd nekat. Vänligen aktivera i webbläsarinställningar.",
+    "notSupported": "Meddelanden stöds inte i denna webbläsare.",
+    "error": "Misslyckades att växla meddelanden. Försök igen."
+  },
+  "quickActions": {
+    "share": "Dela",
+    "shared": "Delad!",
+    "addToCalendar": "Lägg till i kalender",
+    "added": "Tillagd!",
+    "viewDetails": "Visa detaljer"
+  },
+  "hallDetails": {
+    "description": "Beskrivning",
+    "address": "Adress",
+    "getDirections": "Få vägbeskrivning",
+    "openingHours": "Öppettider",
+    "contact": "Kontakt",
+    "facilities": "Faciliteter",
+    "availableResources": "Tillgängliga resurser",
+    "viewDetails": "Visa detaljer"
   }
 }
