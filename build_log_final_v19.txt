@@ -1,0 +1,22 @@
+
+> nextjs-swim@0.1.0 build
+> next build
+
+Ôû▓ Next.js 16.1.6 (Turbopack)
+
+  Creating an optimized production build ...
+Ô£ô Compiled successfully in 1436.3ms
+  Running TypeScript ...
+Failed to compile.
+
+./components/swimming-hall-card.tsx:5:10
+Type error: 'reservationUrl' is declared but its value is never read.
+
+  3 | import { motion, AnimatePresence } from 'framer-motion';
+  4 | import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+> 5 | import { reservationUrl, type RelatedLink } from '@/lib/swimming-halls-data';
+    |          ^
+  6 | import { useTranslations } from 'next-intl';
+  7 | import { Loader2, AlertCircle, RefreshCcw, Info, ExternalLink } from 'lucide-react';
+  8 | import { WeatherDisplay } from '@/components/weather-display';
+Next.js build worker exited with code: 1 and signal: null
