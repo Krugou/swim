@@ -31,7 +31,8 @@
     "reserved": "Reserved",
     "freeReservation": "Free practice available",
     "freePractice": "Free Practice",
-    "loading": "Loading availability..."
+    "loading": "Loading availability...",
+    "closed": "Closed"
   },
   "errors": {
     "loadingData": "Error loading data. Click to retry",

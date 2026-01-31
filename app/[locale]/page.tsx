@@ -73,6 +73,7 @@ export default function Home(): ReactElement {
                   links={hall.relatedLinks}
                   latitude={hall.latitude}
                   longitude={hall.longitude}
+                  opening={hall.opening}
                   {...(hall.distance !== undefined && { distance: hall.distance })}
                 />
               ))}

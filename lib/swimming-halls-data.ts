@@ -11,13 +11,23 @@ export interface SwimmingHall {
   relatedLinks: RelatedLink[];
   latitude: number;
   longitude: number;
+  description?: string;
+  facilities?: string[];
+  opening?: string;
+  phone?: string;
+  address?: string;
 }
 
 export const swimmingHallData: SwimmingHall[] = [
   {
     swimmingHallName: 'Matinkylän uimahalli',
     latitude: 60.167,
-    longitude: 24.750,
+    longitude: 24.75,
+    description: 'Modern 50m swimming hall with therapy pool and gym facilities.',
+    facilities: ['50m Pool', 'Therapy Pool', 'Gym', 'Sauna', 'Changing Rooms', 'Lockers'],
+    opening: 'Mon-Fri: 6:00-21:00, Sat-Sun: 8:00-18:00',
+    phone: '+358 9 816 29400',
+    address: 'Säterinkatu 8, 02230 Espoo',
     relatedLinks: [
       {
         relatedLinkName: 'Terapia-allas',
@@ -41,6 +51,11 @@ export const swimmingHallData: SwimmingHall[] = [
     swimmingHallName: 'Leppävaaran uimahalli',
     latitude: 60.218,
     longitude: 24.813,
+    description: 'Large swimming complex with indoor and outdoor pools.',
+    facilities: ['Indoor Pool', 'Outdoor Pool (Summer)', 'Therapy Pool', 'Gym', 'Sauna', 'Café'],
+    opening: 'Mon-Fri: 6:00-21:00, Sat-Sun: 8:00-18:00',
+    phone: '+358 9 816 28000',
+    address: 'Veräjäpellonkatu 30, 02650 Espoo',
     relatedLinks: [
       {
         relatedLinkName: 'Terapia-allas',
@@ -72,6 +87,11 @@ export const swimmingHallData: SwimmingHall[] = [
     swimmingHallName: 'Espoonlahden uimahalli',
     latitude: 60.146,
     longitude: 24.666,
+    description: '50m competition pool with gym facilities.',
+    facilities: ['50m Pool', 'Gym', 'Sauna', 'Changing Rooms', 'Lockers'],
+    opening: 'Mon-Fri: 6:00-21:00, Sat-Sun: 8:00-18:00',
+    phone: '+358 9 816 27500',
+    address: 'Sairaalaportinkatu 1, 02320 Espoo',
     relatedLinks: [
       {
         relatedLinkName: 'Kuntosali 1 (yläsali)',
@@ -91,6 +111,11 @@ export const swimmingHallData: SwimmingHall[] = [
     swimmingHallName: 'Keski-Espoon uimahalli',
     latitude: 60.207,
     longitude: 24.655,
+    description: 'Swimming hall with therapy pool and gym.',
+    facilities: ['Pool', 'Therapy Pool', 'Gym', 'Sauna', 'Changing Rooms'],
+    opening: 'Mon-Fri: 6:00-21:00, Sat-Sun: 8:00-18:00',
+    phone: '+358 9 816 26600',
+    address: 'Säterinkatu 9, 02650 Espoo',
     relatedLinks: [
       {
         relatedLinkName: 'Terapia-allas',
@@ -114,6 +139,11 @@ export const swimmingHallData: SwimmingHall[] = [
     swimmingHallName: 'Olari uimahalli',
     latitude: 60.181,
     longitude: 24.734,
+    description: 'Neighborhood swimming hall with gym.',
+    facilities: ['Pool', 'Gym', 'Sauna', 'Changing Rooms', 'Lockers'],
+    opening: 'Mon-Fri: 6:00-21:00, Sat-Sun: 8:00-18:00',
+    phone: '+358 9 816 25900',
+    address: 'Olarin tennistie 1, 02210 Espoo',
     relatedLinks: [
       {
         relatedLinkName: 'Koko allas',

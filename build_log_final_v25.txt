@@ -1,0 +1,36 @@
+
+> nextjs-swim@0.1.0 build
+> next build
+
+Ôû▓ Next.js 16.1.6 (Turbopack)
+
+  Creating an optimized production build ...
+
+> Build error occurred
+Error: Turbopack build failed with 1 errors:
+./components/swimming-hall-card.tsx:234:17
+Parsing ecmascript source code failed
+  232 |                   </div>
+  233 |                 );
+> 234 |               })}
+      |                 ^
+  235 |             </motion.a>
+  236 |           ) : null}
+  237 |         </AnimatePresence>
+
+Expected '</', got '}'
+
+Import traces:
+  Client Component Browser:
+    ./components/swimming-hall-card.tsx [Client Component Browser]
+    ./app/[locale]/page.tsx [Client Component Browser]
+    ./app/[locale]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/swimming-hall-card.tsx [Client Component SSR]
+    ./app/[locale]/page.tsx [Client Component SSR]
+    ./app/[locale]/page.tsx [Server Component]
+
+
+    at <unknown> (./components/swimming-hall-card.tsx:234:17)
+Assertion failed: !(handle->flags & UV_HANDLE_CLOSING), file c:\ws\deps\uv\src\win\async.c, line 76

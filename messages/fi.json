@@ -31,7 +31,8 @@
     "reserved": "Varattu",
     "freeReservation": "Vapaaharjoittelu saatavilla",
     "freePractice": "Vapaaharjoittelu",
-    "loading": "Ladataan saatavuutta..."
+    "loading": "Ladataan saatavuutta...",
+    "closed": "Suljettu"
   },
   "errors": {
     "loadingData": "Virhe tietoja ladattaessa. Yritä uudelleen",
