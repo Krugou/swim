@@ -135,48 +135,49 @@ function ResourceLink({ link }: { link: RelatedLink }) {
               )}`}
               aria-label={`${tReservation('viewReservations')} - ${link.relatedLinkName}`}
             >
-              <div
-                className="inline-flex ml-1"
+              <svg
+                width="34"
+                height="16"
+                viewBox="0 0 34 16"
+                className="ml-2"
                 role="status"
                 aria-label={getAriaLabel(status, tTime, t)}
               >
-                <span
-                  className={`inline-block h-2 w-2 sm:h-3 sm:w-3 bg-red-800 rounded-full mx-0.5 ${
-                    status?.hasReservationInNext1Hour ? 'visible' : 'invisible'
-                  }`}
-                  aria-hidden="true"
-                />
-                <span
-                  className={`inline-block h-2 w-2 sm:h-3 sm:w-3 bg-red-800 rounded-full mx-0.5 ${
-                    status?.hasReservationInNext2Hours ? 'visible' : 'invisible'
-                  }`}
-                  aria-hidden="true"
-                />
-                <span
-                  className={`inline-block h-2 w-2 sm:h-3 sm:w-3 bg-red-800 rounded-full mx-0.5 ${
-                    status?.hasReservationInNext3Hours ? 'visible' : 'invisible'
-                  }`}
-                  aria-hidden="true"
-                />
-                <span
-                  className={`inline-block h-2 w-2 sm:h-3 sm:w-3 bg-red-800 rounded-full mx-0.5 ${
-                    status?.hasReservationInNext4Hours ? 'visible' : 'invisible'
-                  }`}
-                  aria-hidden="true"
-                />
-                <span
-                  className={`inline-block h-2 w-2 sm:h-3 sm:w-3 bg-red-800 rounded-full mx-0.5 ${
-                    status?.hasReservationInNext5Hours ? 'visible' : 'invisible'
-                  }`}
-                  aria-hidden="true"
-                />
-                <span
-                  className={`inline-block h-2 w-2 sm:h-3 sm:w-3 bg-red-800 rounded-full mx-0.5 ${
-                    status?.hasReservationInNext6Hours ? 'visible' : 'invisible'
-                  }`}
-                  aria-hidden="true"
-                />
-              </div>
+                {[
+                  status?.hasReservationInNext1Hour,
+                  status?.hasReservationInNext2Hours,
+                  status?.hasReservationInNext3Hours,
+                  status?.hasReservationInNext4Hours,
+                  status?.hasReservationInNext5Hours,
+                  status?.hasReservationInNext6Hours,
+                ].map((isReserved, index) => {
+                  // Pseudo-random height for "random svg" look: 40% to 100%
+                  // Seeded by index to be stable
+                  const heightPercent = 0.4 + ((index * 7 + 3) % 5) * 0.15;
+                  const barHeight = 16 * heightPercent;
+                  const y = 16 - barHeight;
+
+                  return (
+                    <rect
+                      key={index}
+                      x={index * 6}
+                      y={y}
+                      width="4"
+                      height={barHeight}
+                      className={
+                        isReserved
+                          ? 'fill-destructive'
+                          : 'fill-transparent stroke-black dark:stroke-white stroke-1'
+                      }
+                      rx="1"
+                    >
+                      <title>
+                        {isReserved ? `Reserved (${index + 1}h)` : `Free (${index + 1}h)`}
+                      </title>
+                    </rect>
+                  );
+                })}
+              </svg>
             </motion.a>
           ) : null}
         </AnimatePresence>
