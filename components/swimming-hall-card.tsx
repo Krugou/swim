@@ -2,14 +2,12 @@
 
 import { motion, AnimatePresence } from 'framer-motion';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { reservationUrl, type RelatedLink, type SwimmingHall } from '@/lib/swimming-halls-data';
+import { reservationUrl, type RelatedLink } from '@/lib/swimming-halls-data';
 import { useTranslations } from 'next-intl';
 import { Loader2, AlertCircle, RefreshCcw, Info } from 'lucide-react';
 import { WeatherDisplay } from '@/components/weather-display';
 import { useReservationData, type AnalyzedReservationData } from '@/lib/hooks/use-reservation-data';
 import { useQueryClient } from '@tanstack/react-query';
-import { useState } from 'react';
-import { HallDetails } from '@/components/hall-details';
 import Link from 'next/link';
 import { useLocale } from 'next-intl';
 import { slugify } from '@/lib/slugify';
@@ -247,15 +245,6 @@ export function SwimmingHallCard({
   const queryClient = useQueryClient();
   const locale = useLocale();
   // We keep showDetails for potential internal use, but we can also remove it
-  const [showDetails, setShowDetails] = useState(false);
-
-  // Create full hall data for details view
-  const fullHallData: SwimmingHall = {
-    swimmingHallName: hallName,
-    relatedLinks: links,
-    latitude,
-    longitude,
-  };
 
   const handleRefreshAll = () => {
     links.forEach((link) => {
@@ -304,7 +293,7 @@ export function SwimmingHallCard({
             </div>
           </CardHeader>
           <CardContent>
-            <ul className="space-y-3" role="list">
+            <ul className="grid grid-cols-1 md:grid-cols-2 gap-4" role="list">
               {links.map((link) => (
                 <ResourceLink key={link.url} link={link} />
               ))}
@@ -312,12 +301,6 @@ export function SwimmingHallCard({
           </CardContent>
         </Card>
       </motion.div>
-
-      <AnimatePresence>
-        {showDetails ? (
-          <HallDetails hall={fullHallData} onClose={() => setShowDetails(false)} />
-        ) : null}
-      </AnimatePresence>
     </>
   );
 }
