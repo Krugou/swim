@@ -2,9 +2,9 @@
 
 import { motion, AnimatePresence } from 'framer-motion';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { type RelatedLink } from '@/lib/swimming-halls-data';
+import { reservationUrl, type RelatedLink } from '@/lib/swimming-halls-data';
 import { useTranslations } from 'next-intl';
-import { Loader2, AlertCircle, RefreshCcw, Info, ExternalLink } from 'lucide-react';
+import { Loader2, AlertCircle, RefreshCcw, Info } from 'lucide-react';
 import { WeatherDisplay } from '@/components/weather-display';
 import { useReservationData, type AnalyzedReservationData } from '@/lib/hooks/use-reservation-data';
 import { useQueryClient } from '@tanstack/react-query';
@@ -40,7 +40,7 @@ const buildProxyUrl = (resourceId: string, timeWindow: { start: number; end: num
 };
 
 function ResourceLink({ link }: { link: RelatedLink }) {
-  const { data: status, isLoading, error, refetch } = useReservationData(link.url);
+  const { data: status, isLoading, error, dataUpdatedAt, refetch } = useReservationData(link.url);
   const t = useTranslations('status');
   const tReservation = useTranslations('reservation');
   const tTime = useTranslations('timeIndicators');
@@ -48,6 +48,13 @@ function ResourceLink({ link }: { link: RelatedLink }) {
 
   const timeWindow = getTimeWindow();
   const proxyUrl = buildProxyUrl(link.url, timeWindow);
+
+  const getLinkClassName = (status?: AnalyzedReservationData): string => {
+    if (!status || isLoading) return 'bg-blue-500 hover:bg-blue-700';
+    if (status.hasFreeReservation) return 'bg-green-500 hover:bg-green-700';
+    if (status.hasReservationInNext1Hour) return 'bg-red-500 hover:bg-red-700';
+    return 'bg-green-500 hover:bg-green-700';
+  };
 
   const getStatusBadge = (status?: AnalyzedReservationData) => {
     if (!status || isLoading) return null;
@@ -72,24 +79,72 @@ function ResourceLink({ link }: { link: RelatedLink }) {
     );
   };
 
+  const lastUpdated = dataUpdatedAt ? new Date(dataUpdatedAt) : null;
+  const minutesAgo = lastUpdated
+    ? Math.floor((Date.now() - lastUpdated.getTime()) / (60 * 1000))
+    : null;
+
   return (
-    <motion.li
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      className="flex flex-col gap-2 p-3 bg-muted/30 rounded-lg border border-border"
-    >
-      <div className="flex items-center justify-between gap-3">
-        <div className="flex flex-col min-w-0">
-          <span className="font-bold text-sm sm:text-base truncate" title={link.relatedLinkName}>
+    <motion.li initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="flex flex-col gap-2">
+      <div className="flex flex-col gap-1 w-full relative">
+        <div className="flex items-center justify-between gap-4">
+          <span className="font-bold text-sm sm:text-base leading-tight">
             {link.relatedLinkName}
           </span>
-          <div className="flex items-center gap-2 mt-1">
-            {getStatusBadge(status)}
-            {status && !status.hasFreeReservation && (
+          <a
+            href={reservationUrl + link.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center shrink-0 bg-primary hover:bg-primary/90 text-primary-foreground font-bold py-1.5 px-3 rounded-md text-xs sm:text-sm transition-colors focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 border-2 border-primary shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,0.2)] active:translate-x-px active:translate-y-px active:shadow-none"
+            aria-label={`${tReservation('bookNow')} - ${link.relatedLinkName}`}
+          >
+            {tReservation('bookNow')}
+          </a>
+        </div>
+        <AnimatePresence mode="wait">
+          {isLoading ? (
+            <motion.div
+              key="loading"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="inline-flex items-center justify-center w-12 sm:w-14 h-10 bg-muted rounded animate-shimmer"
+            >
+              <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />
+              <span className="sr-only">{t('loading')}</span>
+            </motion.div>
+          ) : error ? (
+            <motion.button
+              key="error"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.8 }}
+              onClick={() => refetch()}
+              className="inline-flex items-center justify-center gap-2 w-full h-10 text-white font-bold bg-red-600 hover:bg-red-700 rounded transition-all focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+              aria-label={tErrors('loadingData')}
+            >
+              <AlertCircle className="h-4 w-4" aria-hidden="true" />
+              <span className="text-sm">{tErrors('retry')}</span>
+            </motion.button>
+          ) : status && !status.hasFreeReservation ? (
+            <motion.a
+              key="status"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.8 }}
+              href={proxyUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`inline-flex items-center justify-center w-full h-10 text-white font-bold rounded transition-all focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ${getLinkClassName(
+                status
+              )}`}
+              aria-label={`${tReservation('viewReservations')} - ${link.relatedLinkName}`}
+            >
               <svg
                 width="34"
                 height="16"
                 viewBox="0 0 34 16"
+                className="ml-2"
                 role="status"
                 aria-label={getAriaLabel(status, tTime, t)}
               >
@@ -101,9 +156,12 @@ function ResourceLink({ link }: { link: RelatedLink }) {
                   status?.hasReservationInNext5Hours,
                   status?.hasReservationInNext6Hours,
                 ].map((isReserved, index) => {
+                  // Pseudo-random height for "random svg" look: 40% to 100%
+                  // Seeded by index to be stable
                   const heightPercent = 0.4 + ((index * 7 + 3) % 5) * 0.15;
                   const barHeight = 16 * heightPercent;
                   const y = 16 - barHeight;
+
                   return (
                     <rect
                       key={index}
@@ -125,84 +183,58 @@ function ResourceLink({ link }: { link: RelatedLink }) {
                   );
                 })}
               </svg>
-            )}
-          </div>
-        </div>
-
-        <div className="flex items-center gap-2 shrink-0">
-          <AnimatePresence mode="wait">
-            {isLoading ? (
-              <Loader2 className="h-5 w-5 animate-spin text-muted-foreground" />
-            ) : error ? (
-              <button
-                onClick={() => refetch()}
-                className="text-destructive hover:text-destructive/80"
-                title={tErrors('retry')}
-              >
-                <AlertCircle className="h-5 w-5" />
-              </button>
-            ) : (
-              <a
-                href={proxyUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`inline-flex items-center justify-center p-2 rounded-md transition-colors ${
-                  status?.hasFreeReservation
-                    ? 'bg-green-100 text-green-700 hover:bg-green-200 dark:bg-green-900/30 dark:text-green-400'
-                    : 'bg-primary/10 text-primary hover:bg-primary/20'
-                }`}
-                title={tReservation('viewReservations')}
-              >
-                <span className="sr-only">{tReservation('viewReservations')}</span>
-                <ExternalLink className="h-4 w-4" />
-              </a>
-            )}
-          </AnimatePresence>
-        </div>
+            </motion.a>
+          ) : null}
+        </AnimatePresence>
       </div>
-
-      {/* Info Section - Collapsible or just smaller text below if relevant */}
-      {(status?.currentReservationEnd ||
-        status?.nextAvailableSlot ||
-        status?.upcomingReservations?.length) && (
-        <div className="text-xs text-muted-foreground border-t border-border/50 pt-2 mt-1">
-          {status?.currentReservationEnd && (
-            <div className="flex items-center gap-1.5">
-              {status.isCurrentlyFreePractice ? '🎉' : '🔒'}
-              <span>
-                {status.isCurrentlyFreePractice
-                  ? tTime('freePracticeUntil')
-                  : tTime('reservedUntil')}{' '}
-                {status.currentReservationEnd}
-              </span>
-            </div>
-          )}
-          {status?.nextAvailableSlot &&
-            !status?.currentReservationEnd &&
-            !status?.hasReservationInNext1Hour && (
-              <div className="flex items-center gap-1.5">
-                ⏱️{' '}
-                <span>
-                  {tTime('freeFor')} {status.nextAvailableSlot}
-                </span>
-              </div>
+      <div className="sm:ml-2 flex flex-col gap-1 w-full">
+        {getStatusBadge(status)}
+        {status?.currentReservationEnd && status?.currentReservationDuration !== undefined ? (
+          <span className="text-xs text-muted-foreground">
+            {status.isCurrentlyFreePractice ? (
+              <>
+                🎉 {tTime('freePracticeUntil')} {status.currentReservationEnd} (
+                {status.currentReservationDuration} {tTime('minutes')})
+              </>
+            ) : (
+              <>
+                🔒 {tTime('reservedUntil')} {status.currentReservationEnd} (
+                {status.currentReservationDuration} {tTime('minutes')})
+              </>
             )}
-          {status?.upcomingReservations && status.upcomingReservations.length > 0 && (
-            <details className="mt-1">
-              <summary className="cursor-pointer hover:underline opacity-80">
-                {tTime('upcomingReservations')} ({status.upcomingReservations.length})
-              </summary>
-              <div className="mt-1 pl-2 border-l-2 border-muted space-y-1">
-                {status.upcomingReservations.slice(0, 3).map((res, idx) => (
-                  <div key={idx} className="truncate" title={res.organization}>
-                    {res.organization}
-                  </div>
-                ))}
-              </div>
-            </details>
-          )}
-        </div>
-      )}
+          </span>
+        ) : null}
+        {status?.nextAvailableSlot &&
+        !status?.hasReservationInNext1Hour &&
+        !status?.currentReservationEnd ? (
+          <span className="text-xs text-muted-foreground">
+            ⏱️ {tTime('freeFor')} {status.nextAvailableSlot}
+          </span>
+        ) : null}
+        {minutesAgo !== null ? (
+          <span className="text-xs text-muted-foreground/70 flex items-center gap-1">
+            🕐 {tTime('updated')}{' '}
+            {minutesAgo === 0 ? tTime('justNow') : `${minutesAgo}m ${tTime('ago')}`}
+          </span>
+        ) : null}
+        {status?.upcomingReservations && status.upcomingReservations.length > 0 ? (
+          <details className="text-xs text-muted-foreground mt-1">
+            <summary className="cursor-pointer hover:text-foreground transition-colors">
+              📋 {tTime('upcomingReservations')} ({status.upcomingReservations.length})
+            </summary>
+            <div className="mt-2 space-y-2 pl-2 border-l-2 border-muted">
+              {status.upcomingReservations.map((res, idx) => (
+                <div key={idx} className="text-xs">
+                  <div className="font-semibold text-foreground">{res.organization}</div>
+                  {res.resourceName !== 'Unknown' ? (
+                    <div className="text-muted-foreground">{res.resourceName}</div>
+                  ) : null}
+                </div>
+              ))}
+            </div>
+          </details>
+        ) : null}
+      </div>
     </motion.li>
   );
 }
