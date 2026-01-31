@@ -1,7 +1,8 @@
 {
   "app": {
     "title": "Uimahallit",
-    "description": "Espoon uimahallien reaaliaikainen tilanne"
+    "description": "Espoon uimahallien reaaliaikainen tilanne",
+    "findBestOptions": "Etsi parhaat vaihtoehdot"
   },
   "navigation": {
     "home": "Etusivu",

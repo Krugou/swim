@@ -1,7 +1,8 @@
 {
   "app": {
     "title": "Swimming Halls",
-    "description": "Real-time availability for Espoo swimming halls"
+    "description": "Real-time availability for Espoo swimming halls",
+    "findBestOptions": "Find best options"
   },
   "navigation": {
     "home": "Home",
