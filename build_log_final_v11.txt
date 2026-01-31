@@ -1,0 +1,57 @@
+
+> nextjs-swim@0.1.0 build
+> next build
+
+Ôû▓ Next.js 16.1.0 (Turbopack)
+
+  Creating an optimized production build ...
+Ô£ô Compiled successfully in 1504.6ms
+  Running TypeScript ...
+  Collecting page data using 15 workers ...
+  Generating static pages using 15 workers (0/28) ...
+  Generating static pages using 15 workers (7/28) 
+  Generating static pages using 15 workers (14/28) 
+Error: MISSING_MESSAGE: app.findBestOptions (fi)
+    at aZ (C:\Users\moxch\Documents\GitHub\swim\.next\server\chunks\ssr\app_[locale]_page_tsx_c1b18dd0._.js:9:43514) {
+  code: 'MISSING_MESSAGE',
+  originalMessage: 'app.findBestOptions (fi)'
+}
+Error: MISSING_MESSAGE: app.findBestOptions (fi)
+    at aZ (C:\Users\moxch\Documents\GitHub\swim\.next\server\chunks\ssr\app_[locale]_page_tsx_c1b18dd0._.js:9:43514) {
+  code: 'MISSING_MESSAGE',
+  originalMessage: 'app.findBestOptions (fi)'
+}
+  Generating static pages using 15 workers (21/28) 
+Error: MISSING_MESSAGE: app.findBestOptions (fi)
+    at aZ (C:\Users\moxch\Documents\GitHub\swim\.next\server\chunks\ssr\app_[locale]_page_tsx_c1b18dd0._.js:9:43514) {
+  code: 'MISSING_MESSAGE',
+  originalMessage: 'app.findBestOptions (fi)'
+}
+Ô£ô Generating static pages using 15 workers (28/28) in 528.9ms
+  Finalizing page optimization ...
+
+Route (app)
+Ôöî Ôùï /
+Ôö£ Ôùï /_not-found
+Ôö£ ÔùÅ /[locale]
+Ôöé Ôö£ /en
+Ôöé Ôö£ /fi
+Ôöé Ôöö /sv
+Ôö£ ÔùÅ /[locale]/about
+Ôöé Ôö£ /en/about
+Ôöé Ôö£ /fi/about
+Ôöé Ôöö /sv/about
+Ôö£ ÔùÅ /[locale]/best
+Ôöé Ôö£ /en/best
+Ôöé Ôö£ /fi/best
+Ôöé Ôöö /sv/best
+Ôöö ÔùÅ /[locale]/hall/[slug]
+  Ôö£ /en/hall/matinkyln-uimahalli
+  Ôö£ /en/hall/leppvaaran-uimahalli
+  Ôö£ /en/hall/espoonlahden-uimahalli
+  Ôöö [+12 more paths]
+
+
+Ôùï  (Static)  prerendered as static content
+ÔùÅ  (SSG)     prerendered as static HTML (uses generateStaticParams)
+

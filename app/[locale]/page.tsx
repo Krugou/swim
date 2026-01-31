@@ -4,12 +4,11 @@ import { SwimmingHallCard } from '@/components/swimming-hall-card';
 import { swimmingHallData } from '@/lib/swimming-halls-data';
 import { ThemeToggle } from '@/components/theme-toggle';
 import { LanguageSwitcher } from '@/components/language-switcher';
-import { BestOptionFinder } from '@/components/best-option-finder';
 import { NotificationToggle } from '@/components/notification-toggle';
 import { BottomNav } from '@/components/bottom-nav';
 import { useTranslations, useLocale } from 'next-intl';
 import { type ReactElement, useMemo } from 'react';
-import { Info } from 'lucide-react';
+import { Info, Sparkles } from 'lucide-react';
 import Link from 'next/link';
 export default function Home(): ReactElement {
   const t = useTranslations('app');
@@ -55,7 +54,15 @@ export default function Home(): ReactElement {
             </p>
           </div>
 
-          <BestOptionFinder />
+          <div className="flex justify-center mb-8">
+            <Link
+              href={`/${locale}/best`}
+              className="inline-flex items-center gap-2 px-6 py-3 bg-linear-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white font-bold rounded-lg shadow-lg hover:shadow-xl transition-all transform hover:scale-105 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+            >
+              <Sparkles className="h-5 w-5" aria-hidden="true" />
+              <span>{t('findBestOptions')}</span>
+            </Link>
+          </div>
 
           <div className="mx-auto max-w-4xl">
             <div className="grid grid-cols-1 gap-6 sm:gap-8 lg:gap-10">
