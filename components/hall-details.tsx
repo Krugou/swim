@@ -91,101 +91,101 @@ export function HallDetails({ hall, onClose }: HallDetailsProps) {
           </button>
         </div>
 
-        {/* Content - Single focused column */}
-        <div className="mx-auto max-w-4xl w-full divide-y flex flex-col">
-          {/* Main Info */}
-          <div className="p-6 sm:p-10 space-y-10">
-            {/* Description */}
-            <section className="text-center">
-              <div className="flex items-center justify-center gap-2 mb-4">
-                <InfoIcon className="h-8 w-8 text-primary" />
-                <h2 className="text-2xl font-semibold">{tDetails('description')}</h2>
+        {/* Content - Structured Card Grid */}
+        <div className="p-6 sm:p-10 space-y-10">
+          {/* Description Card - Full width focus */}
+          <section className="bg-card rounded-2xl border p-8 shadow-sm">
+            <div className="flex items-center gap-3 mb-4">
+              <InfoIcon className="h-6 w-6 text-primary" />
+              <h2 className="text-2xl font-bold">{tDetails('description')}</h2>
+            </div>
+            <p className="text-muted-foreground text-lg leading-relaxed">{details.description}</p>
+          </section>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* Address Card */}
+            <section className="bg-card rounded-2xl border p-6 shadow-sm flex flex-col justify-between">
+              <div>
+                <div className="flex items-center gap-3 mb-4">
+                  <MapPin className="h-6 w-6 text-primary" />
+                  <h3 className="text-xl font-bold">{tDetails('address')}</h3>
+                </div>
+                <p className="text-muted-foreground text-lg mb-6">{details.address}</p>
               </div>
-              <p className="text-muted-foreground text-xl leading-relaxed max-w-3xl mx-auto">
-                {details.description}
-              </p>
+              <a
+                href={`https://www.google.com/maps/dir/?api=1&destination=${hall.latitude},${hall.longitude}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 px-4 py-3 bg-primary text-primary-foreground rounded-xl font-bold hover:opacity-90 transition-all shadow-md active:scale-95"
+              >
+                <ExternalLink className="h-4 w-4" />
+                {tDetails('getDirections')}
+              </a>
             </section>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 pt-6">
-              {/* Address */}
-              <section className="bg-muted/30 p-6 rounded-xl border">
-                <div className="flex items-center gap-2 mb-4">
-                  <MapPin className="h-6 w-6 text-primary" />
-                  <h3 className="text-xl font-semibold">{tDetails('address')}</h3>
-                </div>
-                <p className="text-muted-foreground text-lg">{details.address}</p>
-                <a
-                  href={`https://www.google.com/maps/dir/?api=1&destination=${hall.latitude},${hall.longitude}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-4 inline-flex items-center gap-2 px-4 py-2 bg-primary/10 text-primary rounded-lg font-medium hover:bg-primary/20 transition-colors"
-                >
-                  <ExternalLink className="h-4 w-4" />
-                  {tDetails('getDirections')}
-                </a>
-              </section>
+            {/* Opening Hours Card */}
+            <section className="bg-card rounded-2xl border p-6 shadow-sm">
+              <div className="flex items-center gap-3 mb-4">
+                <Clock className="h-6 w-6 text-primary" />
+                <h3 className="text-xl font-bold">{tDetails('openingHours')}</h3>
+              </div>
+              <p className="text-muted-foreground text-lg leading-relaxed">{details.opening}</p>
+            </section>
 
-              {/* Opening Hours */}
-              <section className="bg-muted/30 p-6 rounded-xl border">
-                <div className="flex items-center gap-2 mb-4">
-                  <Clock className="h-6 w-6 text-primary" />
-                  <h3 className="text-xl font-semibold">{tDetails('openingHours')}</h3>
-                </div>
-                <p className="text-muted-foreground text-lg">{details.opening}</p>
-              </section>
-            </div>
-
-            {/* Phone */}
+            {/* Contact Card */}
             {details.phone ? (
-              <section className="text-center pt-6">
-                <div className="flex items-center justify-center gap-2 mb-4">
+              <section className="bg-card rounded-2xl border p-6 shadow-sm md:col-span-2">
+                <div className="flex items-center gap-3 mb-4">
                   <Phone className="h-6 w-6 text-primary" />
-                  <h3 className="text-xl font-semibold">{tDetails('contact')}</h3>
+                  <h3 className="text-xl font-bold">{tDetails('contact')}</h3>
                 </div>
-                <a
-                  href={`tel:${details.phone}`}
-                  className="text-3xl font-bold text-blue-600 hover:text-blue-800 hover:underline transition-colors"
-                >
-                  {details.phone}
-                </a>
+                <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+                  <a
+                    href={`tel:${details.phone}`}
+                    className="text-2xl sm:text-3xl font-extrabold text-blue-600 dark:text-blue-400 hover:scale-105 transition-transform origin-left"
+                  >
+                    {details.phone}
+                  </a>
+                  <p className="text-sm text-muted-foreground bg-muted px-3 py-1 rounded-full font-medium">
+                    Available for inquiries during opening hours
+                  </p>
+                </div>
               </section>
             ) : null}
 
-            {/* Facilities */}
-            <section className="pt-6">
-              <h3 className="text-xl font-semibold mb-6 text-center">{tDetails('facilities')}</h3>
+            {/* Facilities Card */}
+            <section className="bg-card rounded-2xl border p-6 shadow-sm md:col-span-2">
+              <h3 className="text-xl font-bold mb-6">{tDetails('facilities')}</h3>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                 {details.facilities.map((facility) => (
                   <div
                     key={facility}
-                    className="flex items-center justify-center gap-2 px-4 py-3 bg-muted/50 rounded-xl border text-center"
+                    className="flex items-center gap-2 px-4 py-3 bg-muted/50 rounded-xl border-l-4 border-l-green-500 font-semibold text-sm shadow-sm"
                   >
-                    <span className="text-green-600 font-bold">✓</span>
-                    <span className="text-sm font-semibold">{facility}</span>
+                    <span className="text-green-600">✓</span>
+                    {facility}
                   </div>
                 ))}
               </div>
             </section>
           </div>
 
-          {/* Resources - Now below and prominently displayed */}
-          <div className="bg-muted/20 p-6 sm:p-10">
-            <section className="max-w-3xl mx-auto">
-              <h3 className="text-2xl font-semibold mb-8 text-center">
-                {tDetails('availableResources')}
-              </h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {hall.relatedLinks.map((link) => (
-                  <QuickActions
-                    key={link.url}
-                    hallName={hall.swimmingHallName}
-                    linkName={link.relatedLinkName}
-                    resourceId={link.url}
-                  />
-                ))}
-              </div>
-            </section>
-          </div>
+          {/* Resources Section - Grid Layout */}
+          <section>
+            <h3 className="text-2xl font-bold mb-8 text-center">
+              {tDetails('availableResources')}
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {hall.relatedLinks.map((link) => (
+                <QuickActions
+                  key={link.url}
+                  hallName={hall.swimmingHallName}
+                  linkName={link.relatedLinkName}
+                  resourceId={link.url}
+                />
+              ))}
+            </div>
+          </section>
         </div>
       </motion.div>
     </div>

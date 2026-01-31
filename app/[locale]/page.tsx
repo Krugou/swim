@@ -57,8 +57,8 @@ export default function Home(): ReactElement {
 
           <BestOptionFinder />
 
-          <div>
-            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-6 sm:gap-8 lg:gap-10">
+          <div className="mx-auto max-w-4xl">
+            <div className="grid grid-cols-1 gap-6 sm:gap-8 lg:gap-10">
               {sortedHalls.map((hall) => (
                 <SwimmingHallCard
                   key={hall.swimmingHallName}
