@@ -1,8 +1,8 @@
 'use client';
 
-import { Share2, Calendar, ExternalLink, Loader2 } from 'lucide-react';
+import { Share2, ExternalLink, Loader2 } from 'lucide-react';
 import { useTranslations } from 'next-intl';
-import { shareAvailability, exportNextFreeSlot } from '@/lib/calendar-export';
+import { shareAvailability } from '@/lib/calendar-export';
 import { useReservationData } from '@/lib/hooks/use-reservation-data';
 import { reservationUrl } from '@/lib/swimming-halls-data';
 import { useState } from 'react';
@@ -11,42 +11,21 @@ interface QuickActionsProps {
   hallName: string;
   linkName: string;
   resourceId: string;
-  latitude: number;
-  longitude: number;
 }
 
-export function QuickActions({
-  hallName,
-  linkName,
-  resourceId,
-  latitude,
-  longitude,
-}: QuickActionsProps) {
+export function QuickActions({ hallName, linkName, resourceId }: QuickActionsProps) {
   const { data: status, isLoading } = useReservationData(resourceId);
   const tQuick = useTranslations('quickActions');
   const tStatus = useTranslations('status');
   const [shareSuccess, setShareSuccess] = useState(false);
-  const [calendarSuccess, setCalendarSuccess] = useState(false);
 
   const isAvailable = status && !status.hasReservationInNext1Hour;
-  const hasFreeTime = status?.nextAvailableSlot;
 
   const handleShare = async () => {
     const success = await shareAvailability(hallName, linkName, resourceId, !!isAvailable);
     if (success) {
       setShareSuccess(true);
       setTimeout(() => setShareSuccess(false), 2000);
-    }
-  };
-
-  const handleCalendarExport = () => {
-    if (hasFreeTime) {
-      const minutes = parseInt(hasFreeTime);
-      if (!isNaN(minutes)) {
-        exportNextFreeSlot(hallName, linkName, minutes, latitude, longitude);
-        setCalendarSuccess(true);
-        setTimeout(() => setCalendarSuccess(false), 2000);
-      }
     }
   };
 
@@ -111,21 +90,6 @@ export function QuickActions({
           <Share2 className="h-3.5 w-3.5" />
           {shareSuccess ? tQuick('shared') : tQuick('share')}
         </button>
-
-        {hasFreeTime ? (
-          <button
-            onClick={handleCalendarExport}
-            className={`flex-1 inline-flex items-center justify-center gap-2 px-3 py-2 text-xs font-medium rounded-md transition-colors focus-visible:ring-2 focus-visible:ring-ring ${
-              calendarSuccess
-                ? 'bg-green-500 text-white'
-                : 'bg-primary/10 hover:bg-primary/20 text-primary'
-            }`}
-            title={tQuick('addToCalendar')}
-          >
-            <Calendar className="h-3.5 w-3.5" />
-            {calendarSuccess ? tQuick('added') : tQuick('addToCalendar')}
-          </button>
-        ) : null}
       </div>
     </div>
   );

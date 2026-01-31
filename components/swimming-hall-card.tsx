@@ -10,6 +10,9 @@ import { useReservationData, type AnalyzedReservationData } from '@/lib/hooks/us
 import { useQueryClient } from '@tanstack/react-query';
 import { useState } from 'react';
 import { HallDetails } from '@/components/hall-details';
+import Link from 'next/link';
+import { useLocale } from 'next-intl';
+import { slugify } from '@/lib/slugify';
 
 interface SwimmingHallCardProps {
   hallName: string;
@@ -242,6 +245,8 @@ export function SwimmingHallCard({
   const tLocation = useTranslations('location');
   const tDetails = useTranslations('hallDetails');
   const queryClient = useQueryClient();
+  const locale = useLocale();
+  // We keep showDetails for potential internal use, but we can also remove it
   const [showDetails, setShowDetails] = useState(false);
 
   // Create full hall data for details view
@@ -277,14 +282,14 @@ export function SwimmingHallCard({
                       📍 {distance.toFixed(1)} km {tLocation('away')}
                     </span>
                   ) : null}
-                  <button
-                    onClick={() => setShowDetails(true)}
+                  <Link
+                    href={`/${locale}/hall/${slugify(hallName)}`}
                     className="p-2 hover:bg-muted rounded-full cursor-pointer transition-colors focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                     aria-label={tDetails('viewDetails')}
                     title={tDetails('viewDetails')}
                   >
                     <Info className="h-4 w-4" />
-                  </button>
+                  </Link>
                   <button
                     onClick={handleRefreshAll}
                     className="p-2 hover:bg-muted rounded-full cursor-pointer transition-colors focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"

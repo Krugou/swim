@@ -1,22 +1,10 @@
 'use client';
 
-import { Calendar, TrendingUp, Sparkles, Map } from 'lucide-react';
+import { Sparkles } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 
-interface BottomNavProps {
-  onCalendarClick: () => void;
-  onChartsClick: () => void;
-  onBestOptionClick: () => void;
-  onMapsClick: () => void;
-}
-
-export function BottomNav({
-  onCalendarClick,
-  onChartsClick,
-  onBestOptionClick,
-  onMapsClick,
-}: BottomNavProps) {
+export function BottomNav() {
   const tNav = useTranslations('navigation');
   const tAccessibility = useTranslations('accessibility');
 
@@ -28,41 +16,19 @@ export function BottomNav({
       role="navigation"
       aria-label="Bottom navigation"
     >
-      <div className="flex items-center justify-around h-16 px-4">
+      <div className="flex items-center justify-center h-16 px-4">
         <button
-          onClick={onBestOptionClick}
-          className="flex flex-col items-center justify-center flex-1 gap-1 py-2 px-3 rounded-lg hover:bg-accent transition-colors focus-visible:ring-2 focus-visible:ring-ring"
+          onClick={() => {
+            const element = document.getElementById('best-option-finder');
+            if (element) {
+              element.scrollIntoView({ behavior: 'smooth' });
+            }
+          }}
+          className="flex flex-col items-center justify-center py-2 px-6 rounded-lg hover:bg-accent transition-colors focus-visible:ring-2 focus-visible:ring-ring"
           aria-label={tAccessibility('findBestOptions')}
         >
           <Sparkles className="h-5 w-5 text-green-600 dark:text-green-400" aria-hidden="true" />
           <span className="text-xs font-medium">{tNav('best')}</span>
-        </button>
-
-        <button
-          onClick={onMapsClick}
-          className="flex flex-col items-center justify-center flex-1 gap-1 py-2 px-3 rounded-lg hover:bg-accent transition-colors focus-visible:ring-2 focus-visible:ring-ring"
-          aria-label="Open Maps"
-        >
-          <Map className="h-5 w-5" aria-hidden="true" />
-          <span className="text-xs font-medium">Map</span>
-        </button>
-
-        <button
-          onClick={onCalendarClick}
-          className="flex flex-col items-center justify-center flex-1 gap-1 py-2 px-3 rounded-lg hover:bg-accent transition-colors focus-visible:ring-2 focus-visible:ring-ring"
-          aria-label={tAccessibility('openCalendar')}
-        >
-          <Calendar className="h-5 w-5" aria-hidden="true" />
-          <span className="text-xs font-medium">{tNav('calendar')}</span>
-        </button>
-
-        <button
-          onClick={onChartsClick}
-          className="flex flex-col items-center justify-center flex-1 gap-1 py-2 px-3 rounded-lg hover:bg-accent transition-colors focus-visible:ring-2 focus-visible:ring-ring"
-          aria-label={tAccessibility('openStats')}
-        >
-          <TrendingUp className="h-5 w-5" aria-hidden="true" />
-          <span className="text-xs font-medium">{tNav('stats')}</span>
         </button>
       </div>
     </motion.nav>

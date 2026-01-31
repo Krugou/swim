@@ -179,8 +179,6 @@ export function HallDetails({ hall, onClose }: HallDetailsProps) {
                     hallName={hall.swimmingHallName}
                     linkName={link.relatedLinkName}
                     resourceId={link.url}
-                    latitude={hall.latitude}
-                    longitude={hall.longitude}
                   />
                 ))}
               </div>

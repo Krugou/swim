@@ -5,49 +5,23 @@ import { swimmingHallData } from '@/lib/swimming-halls-data';
 import { ThemeToggle } from '@/components/theme-toggle';
 import { LanguageSwitcher } from '@/components/language-switcher';
 import { BestOptionFinder } from '@/components/best-option-finder';
-import { CalendarView } from '@/components/calendar-view';
-import { ChartsView } from '@/components/charts-view';
-import { MapsView } from '@/components/maps-view';
 import { NotificationToggle } from '@/components/notification-toggle';
+import { BottomNav } from '@/components/bottom-nav';
 import { useTranslations, useLocale } from 'next-intl';
 import { useState, useCallback, type ReactElement, useMemo } from 'react';
-import { Calendar, TrendingUp, Info, MapPin, Map } from 'lucide-react';
-import { AnimatePresence } from 'framer-motion';
+import { Info, MapPin } from 'lucide-react';
 import Link from 'next/link';
 import { getUserLocation, calculateDistance, type UserLocation } from '@/lib/location-service';
 
 export default function Home(): ReactElement {
-  const [showCalendar, setShowCalendar] = useState(false);
-  const [showCharts, setShowCharts] = useState(false);
-  const [showMaps, setShowMaps] = useState(false);
   const [userLocation, setUserLocation] = useState<UserLocation | null>(null);
   const [locationRequesting, setLocationRequesting] = useState(false);
   const [locationEnabled, setLocationEnabled] = useState(false);
   const t = useTranslations('app');
   const tNav = useTranslations('navigation');
   const tLocation = useTranslations('location');
-  const tAccessibility = useTranslations('accessibility');
   const tFooter = useTranslations('footer');
   const locale = useLocale();
-
-  const handleOpenCalendar = useCallback(() => {
-    setShowCalendar(true);
-  }, []);
-  const handleCloseCalendar = useCallback(() => {
-    setShowCalendar(false);
-  }, []);
-  const handleOpenCharts = useCallback(() => {
-    setShowCharts(true);
-  }, []);
-  const handleCloseCharts = useCallback(() => {
-    setShowCharts(false);
-  }, []);
-  const handleOpenMaps = useCallback(() => {
-    setShowMaps(true);
-  }, []);
-  const handleCloseMaps = useCallback(() => {
-    setShowMaps(false);
-  }, []);
 
   const handleToggleLocation = useCallback(async () => {
     if (locationEnabled) {
@@ -106,30 +80,6 @@ export default function Home(): ReactElement {
                 className={`h-4 w-4 sm:h-5 sm:w-5 ${locationRequesting ? 'animate-pulse' : ''}`}
                 aria-hidden="true"
               />
-            </button>
-            <button
-              onClick={handleOpenMaps}
-              className="hidden sm:flex p-2 rounded-md hover:bg-accent transition-colors focus-visible:ring-2 focus-visible:ring-ring"
-              aria-label="Open Maps"
-              title="Maps View"
-            >
-              <Map className="h-4 w-4 sm:h-5 sm:w-5" aria-hidden="true" />
-            </button>
-            <button
-              onClick={handleOpenCalendar}
-              className="hidden sm:flex p-2 rounded-md hover:bg-accent transition-colors focus-visible:ring-2 focus-visible:ring-ring"
-              aria-label={tAccessibility('openCalendar')}
-              title="Calendar View"
-            >
-              <Calendar className="h-4 w-4 sm:h-5 sm:w-5" aria-hidden="true" />
-            </button>
-            <button
-              onClick={handleOpenCharts}
-              className="hidden sm:flex p-2 rounded-md hover:bg-accent transition-colors focus-visible:ring-2 focus-visible:ring-ring"
-              aria-label={tAccessibility('openStats')}
-              title="Statistics"
-            >
-              <TrendingUp className="h-4 w-4 sm:h-5 sm:w-5" aria-hidden="true" />
             </button>
             <Link
               href={`/${locale}/about`}
@@ -192,15 +142,7 @@ export default function Home(): ReactElement {
         </div>
       </footer>
 
-      <AnimatePresence>
-        {showCalendar ? <CalendarView onClose={handleCloseCalendar} /> : null}
-      </AnimatePresence>
-
-      <AnimatePresence>
-        {showCharts ? <ChartsView onClose={handleCloseCharts} /> : null}
-      </AnimatePresence>
-
-      <AnimatePresence>{showMaps ? <MapsView onClose={handleCloseMaps} /> : null}</AnimatePresence>
+      <BottomNav />
     </>
   );
 }
