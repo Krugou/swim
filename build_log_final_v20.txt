@@ -5,18 +5,18 @@
 Ôû▓ Next.js 16.1.6 (Turbopack)
 
   Creating an optimized production build ...
-Ô£ô Compiled successfully in 1374.3ms
+Ô£ô Compiled successfully in 1420.2ms
   Running TypeScript ...
 Failed to compile.
 
-./components/swimming-hall-card.tsx:43:43
-Type error: 'dataUpdatedAt' is declared but its value is never read.
+./components/swimming-hall-card.tsx:50:9
+Type error: 'proxyUrl' is declared but its value is never read.
 
-  41 |
-  42 | function ResourceLink({ link }: { link: RelatedLink }) {
-> 43 |   const { data: status, isLoading, error, dataUpdatedAt, refetch } = useReservationData(link.url);
-     |                                           ^
-  44 |   const t = useTranslations('status');
-  45 |   const tReservation = useTranslations('reservation');
-  46 |   const tTime = useTranslations('timeIndicators');
+  48 |
+  49 |   const timeWindow = getTimeWindow();
+> 50 |   const proxyUrl = buildProxyUrl(link.url, timeWindow);
+     |         ^
+  51 |
+  52 |   const getLinkClassName = (status?: AnalyzedReservationData): string => {
+  53 |     if (!status || isLoading) return 'bg-blue-500 hover:bg-blue-700';
 Next.js build worker exited with code: 1 and signal: null

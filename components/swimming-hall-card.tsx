@@ -22,39 +22,12 @@ interface SwimmingHallCardProps {
   onToggleFavorite?: () => void;
 }
 
-// Constants
-const FOUR_HOURS_IN_SECONDS = 4 * 60 * 60;
-
-// Helper functions
-const getTimeWindow = (): { start: number; end: number } => {
-  const nowInSeconds = Math.floor(Date.now() / 1000);
-  return {
-    start: nowInSeconds - FOUR_HOURS_IN_SECONDS,
-    end: nowInSeconds + FOUR_HOURS_IN_SECONDS,
-  };
-};
-
-const buildProxyUrl = (resourceId: string, timeWindow: { start: number; end: number }): string => {
-  const cityUrl = `https://resurssivaraus.espoo.fi/Tailored/prime_product_intranet/espoo/web/Calendar/ReservationData.aspx?resourceid%5B%5D=${resourceId}&start=${timeWindow.start}&end=${timeWindow.end}&_=${timeWindow.start}`;
-  return `https://proxy.aleksi-nokelainen.workers.dev/?url=${encodeURIComponent(cityUrl)}`;
-};
-
 function ResourceLink({ link }: { link: RelatedLink }) {
   const { data: status, isLoading, error, dataUpdatedAt, refetch } = useReservationData(link.url);
   const t = useTranslations('status');
   const tReservation = useTranslations('reservation');
   const tTime = useTranslations('timeIndicators');
   const tErrors = useTranslations('errors');
-
-  const timeWindow = getTimeWindow();
-  const proxyUrl = buildProxyUrl(link.url, timeWindow);
-
-  const getLinkClassName = (status?: AnalyzedReservationData): string => {
-    if (!status || isLoading) return 'bg-blue-500 hover:bg-blue-700';
-    if (status.hasFreeReservation) return 'bg-green-500 hover:bg-green-700';
-    if (status.hasReservationInNext1Hour) return 'bg-red-500 hover:bg-red-700';
-    return 'bg-green-500 hover:bg-green-700';
-  };
 
   const getStatusBadge = (status?: AnalyzedReservationData) => {
     if (!status || isLoading) return null;
@@ -127,24 +100,17 @@ function ResourceLink({ link }: { link: RelatedLink }) {
               <span className="text-sm">{tErrors('retry')}</span>
             </motion.button>
           ) : status && !status.hasFreeReservation ? (
-            <motion.a
+            <motion.div
               key="status"
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.8 }}
-              href={proxyUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`inline-flex items-center justify-center w-full h-10 text-white font-bold rounded transition-all focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ${getLinkClassName(
-                status
-              )}`}
-              aria-label={`${tReservation('viewReservations')} - ${link.relatedLinkName}`}
+              className="inline-flex items-center justify-center h-10 px-2 rounded bg-muted/20 border border-muted"
             >
               <svg
                 width="34"
                 height="16"
                 viewBox="0 0 34 16"
-                className="ml-2"
                 role="status"
                 aria-label={getAriaLabel(status, tTime, t)}
               >
@@ -183,7 +149,7 @@ function ResourceLink({ link }: { link: RelatedLink }) {
                   );
                 })}
               </svg>
-            </motion.a>
+            </motion.div>
           ) : null}
         </AnimatePresence>
       </div>
