@@ -1,0 +1,22 @@
+
+> nextjs-swim@0.1.0 build
+> next build
+
+Ôû▓ Next.js 16.1.6 (Turbopack)
+
+  Creating an optimized production build ...
+Ô£ô Compiled successfully in 1426.5ms
+  Running TypeScript ...
+Failed to compile.
+
+./app/[locale]/page.tsx:4:33
+Type error: 'SwimmingHall' is declared but its value is never read.
+
+  2 |
+  3 | import { SwimmingHallCard } from '@/components/swimming-hall-card';
+> 4 | import { swimmingHallData, type SwimmingHall } from '@/lib/swimming-halls-data';
+    |                                 ^
+  5 | import { ThemeToggle } from '@/components/theme-toggle';
+  6 | import { LanguageSwitcher } from '@/components/language-switcher';
+  7 | import { NotificationToggle } from '@/components/notification-toggle';
+Next.js build worker exited with code: 1 and signal: null

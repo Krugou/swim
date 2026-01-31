@@ -7,18 +7,57 @@ import { LanguageSwitcher } from '@/components/language-switcher';
 import { NotificationToggle } from '@/components/notification-toggle';
 import { BottomNav } from '@/components/bottom-nav';
 import { useTranslations, useLocale } from 'next-intl';
-import { type ReactElement, useMemo } from 'react';
-import { Info, Sparkles } from 'lucide-react';
+import { type ReactElement, useMemo, useState } from 'react';
+import { Info, Sparkles, MapPin, Loader2 } from 'lucide-react';
 import Link from 'next/link';
+import { calculateDistance, getUserLocation, type UserLocation } from '@/lib/location-service';
+
 export default function Home(): ReactElement {
   const t = useTranslations('app');
   const tNav = useTranslations('navigation');
   const tFooter = useTranslations('footer');
+  const tLocation = useTranslations('location');
   const locale = useLocale();
 
+  const [userLocation, setUserLocation] = useState<UserLocation | null>(null);
+  const [isLocationLoading, setIsLocationLoading] = useState(false);
+
+  const handleToggleLocation = async () => {
+    if (userLocation) {
+      setUserLocation(null);
+      return;
+    }
+
+    setIsLocationLoading(true);
+    const location = await getUserLocation();
+    setIsLocationLoading(false);
+
+    if (location) {
+      setUserLocation(location);
+    } else {
+      // Handle error or denied permission if needed
+      // transform error to toast or something? For now silent fail or console
+      console.warn('Could not get location');
+    }
+  };
+
   const sortedHalls = useMemo(() => {
-    return [...swimmingHallData].map((hall) => ({ ...hall, distance: undefined }));
-  }, []);
+    if (!userLocation) {
+      return [...swimmingHallData].map((hall) => ({ ...hall, distance: undefined }));
+    }
+
+    return [...swimmingHallData]
+      .map((hall) => {
+        const distance = calculateDistance(
+          userLocation.latitude,
+          userLocation.longitude,
+          hall.latitude,
+          hall.longitude
+        );
+        return { ...hall, distance };
+      })
+      .sort((a, b) => (a.distance || 0) - (b.distance || 0));
+  }, [userLocation]);
 
   return (
     <>
@@ -54,7 +93,7 @@ export default function Home(): ReactElement {
             </p>
           </div>
 
-          <div className="flex justify-center mb-8">
+          <div className="flex flex-wrap justify-center gap-4 mb-8">
             <Link
               href={`/${locale}/best`}
               className="inline-flex items-center gap-2 px-6 py-3 bg-linear-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white font-bold rounded-lg shadow-lg hover:shadow-xl transition-all transform hover:scale-105 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
@@ -62,9 +101,39 @@ export default function Home(): ReactElement {
               <Sparkles className="h-5 w-5" aria-hidden="true" />
               <span>{t('findBestOptions')}</span>
             </Link>
+
+            <button
+              onClick={handleToggleLocation}
+              disabled={isLocationLoading}
+              className={`inline-flex items-center gap-2 px-6 py-3 font-bold rounded-lg shadow-lg hover:shadow-xl transition-all transform hover:scale-105 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ${
+                userLocation
+                  ? 'bg-secondary text-secondary-foreground hover:bg-secondary/90'
+                  : 'bg-primary text-primary-foreground hover:bg-primary/90'
+              }`}
+            >
+              {isLocationLoading ? (
+                <Loader2 className="h-5 w-5 animate-spin" />
+              ) : (
+                <MapPin className="h-5 w-5" />
+              )}
+              <span>
+                {isLocationLoading
+                  ? tLocation('requesting')
+                  : userLocation
+                    ? tLocation('disable')
+                    : tLocation('enable')}
+              </span>
+            </button>
           </div>
 
           <div className="mx-auto max-w-4xl">
+            {userLocation && (
+              <div className="mb-4 text-center">
+                <span className="inline-block px-3 py-1 text-xs font-semibold bg-accent text-accent-foreground rounded-full">
+                  📍 {tLocation('sortedByDistance')}
+                </span>
+              </div>
+            )}
             <div className="grid grid-cols-1 gap-6 sm:gap-8 lg:gap-10">
               {sortedHalls.map((hall) => (
                 <SwimmingHallCard
