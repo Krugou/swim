@@ -1,8 +1,5 @@
 @import 'tailwindcss';
 
-/* Leaflet styles for maps */
-@import 'leaflet/dist/leaflet.css';
-
 @layer base {
   :root {
     --background: 0 0% 100%;
