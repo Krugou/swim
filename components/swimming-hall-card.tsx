@@ -22,12 +22,32 @@ interface SwimmingHallCardProps {
   onToggleFavorite?: () => void;
 }
 
+// Constants
+const FOUR_HOURS_IN_SECONDS = 4 * 60 * 60;
+
+// Helper functions
+const getTimeWindow = (): { start: number; end: number } => {
+  const nowInSeconds = Math.floor(Date.now() / 1000);
+  return {
+    start: nowInSeconds - FOUR_HOURS_IN_SECONDS,
+    end: nowInSeconds + FOUR_HOURS_IN_SECONDS,
+  };
+};
+
+const buildProxyUrl = (resourceId: string, timeWindow: { start: number; end: number }): string => {
+  const cityUrl = `https://resurssivaraus.espoo.fi/Tailored/prime_product_intranet/espoo/web/Calendar/ReservationData.aspx?resourceid%5B%5D=${resourceId}&start=${timeWindow.start}&end=${timeWindow.end}&_=${timeWindow.start}`;
+  return `https://proxy.aleksi-nokelainen.workers.dev/?url=${encodeURIComponent(cityUrl)}`;
+};
+
 function ResourceLink({ link }: { link: RelatedLink }) {
   const { data: status, isLoading, error, dataUpdatedAt, refetch } = useReservationData(link.url);
   const t = useTranslations('status');
   const tReservation = useTranslations('reservation');
   const tTime = useTranslations('timeIndicators');
   const tErrors = useTranslations('errors');
+
+  const timeWindow = getTimeWindow();
+  const proxyUrl = buildProxyUrl(link.url, timeWindow);
 
   const getStatusBadge = (status?: AnalyzedReservationData) => {
     if (!status || isLoading) return null;
@@ -100,56 +120,43 @@ function ResourceLink({ link }: { link: RelatedLink }) {
               <span className="text-sm">{tErrors('retry')}</span>
             </motion.button>
           ) : status && !status.hasFreeReservation ? (
-            <motion.div
+            <motion.a
               key="status"
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.8 }}
-              className="inline-flex items-center justify-center h-10 px-2 rounded bg-muted/20 border border-muted"
+              href={proxyUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-start w-full h-auto py-2 px-1 gap-2 overflow-x-auto no-scrollbar"
+              aria-label={`${tReservation('viewReservations')} - ${link.relatedLinkName}`}
             >
-              <svg
-                width="34"
-                height="16"
-                viewBox="0 0 34 16"
-                role="status"
-                aria-label={getAriaLabel(status, tTime, t)}
-              >
-                {[
-                  status?.hasReservationInNext1Hour,
-                  status?.hasReservationInNext2Hours,
-                  status?.hasReservationInNext3Hours,
-                  status?.hasReservationInNext4Hours,
-                  status?.hasReservationInNext5Hours,
-                  status?.hasReservationInNext6Hours,
-                ].map((isReserved, index) => {
-                  // Pseudo-random height for "random svg" look: 40% to 100%
-                  // Seeded by index to be stable
-                  const heightPercent = 0.4 + ((index * 7 + 3) % 5) * 0.15;
-                  const barHeight = 16 * heightPercent;
-                  const y = 16 - barHeight;
+              {[
+                status?.hasReservationInNext1Hour,
+                status?.hasReservationInNext2Hours,
+                status?.hasReservationInNext3Hours,
+                status?.hasReservationInNext4Hours,
+                status?.hasReservationInNext5Hours,
+                status?.hasReservationInNext6Hours,
+              ].map((isReserved, index) => {
+                const currentHour = new Date().getHours();
+                const displayHour = (currentHour + index + 1) % 24;
 
-                  return (
-                    <rect
-                      key={index}
-                      x={index * 6}
-                      y={y}
-                      width="4"
-                      height={barHeight}
-                      className={
-                        isReserved
-                          ? 'fill-destructive'
-                          : 'fill-transparent stroke-black dark:stroke-white stroke-1'
-                      }
-                      rx="1"
-                    >
-                      <title>
-                        {isReserved ? `Reserved (${index + 1}h)` : `Free (${index + 1}h)`}
-                      </title>
-                    </rect>
-                  );
-                })}
-              </svg>
-            </motion.div>
+                return (
+                  <div
+                    key={index}
+                    className={`flex flex-col items-center justify-center w-8 h-8 rounded-full border-2 border-black dark:border-white shrink-0 font-bold text-xs shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,0.2)] ${
+                      isReserved
+                        ? 'bg-destructive text-destructive-foreground'
+                        : 'bg-accent text-accent-foreground'
+                    }`}
+                    title={isReserved ? `Reserved ${displayHour}:00` : `Free ${displayHour}:00`}
+                  >
+                    {displayHour}
+                  </div>
+                );
+              })}
+            </motion.a>
           ) : null}
         </AnimatePresence>
       </div>
@@ -275,21 +282,4 @@ export function SwimmingHallCard({
       </motion.div>
     </>
   );
-}
-
-function getAriaLabel(
-  status: AnalyzedReservationData | undefined,
-  tTime: any,
-  tStatus: any
-): string {
-  if (!status) return '';
-  const labels: string[] = [];
-  if (status.hasFreeReservation) return tStatus('freeReservation');
-  if (status.hasReservationInNext1Hour) labels.push(tTime('nextHour'));
-  if (status.hasReservationInNext2Hours) labels.push(tTime('next2Hours'));
-  if (status.hasReservationInNext3Hours) labels.push(tTime('next3Hours'));
-  if (status.hasReservationInNext4Hours) labels.push(tTime('next4Hours'));
-  if (status.hasReservationInNext5Hours) labels.push(tTime('next5Hours'));
-  if (status.hasReservationInNext6Hours) labels.push(tTime('next6Hours'));
-  return labels.join(', ');
 }

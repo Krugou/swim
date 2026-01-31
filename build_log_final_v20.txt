@@ -5,18 +5,18 @@
 Ôû▓ Next.js 16.1.6 (Turbopack)
 
   Creating an optimized production build ...
-Ô£ô Compiled successfully in 1420.2ms
+Ô£ô Compiled successfully in 1423.9ms
   Running TypeScript ...
 Failed to compile.
 
-./components/swimming-hall-card.tsx:50:9
-Type error: 'proxyUrl' is declared but its value is never read.
+./components/swimming-hall-card.tsx:52:9
+Type error: 'getLinkClassName' is declared but its value is never read.
 
-  48 |
-  49 |   const timeWindow = getTimeWindow();
-> 50 |   const proxyUrl = buildProxyUrl(link.url, timeWindow);
-     |         ^
+  50 |   const proxyUrl = buildProxyUrl(link.url, timeWindow);
   51 |
-  52 |   const getLinkClassName = (status?: AnalyzedReservationData): string => {
+> 52 |   const getLinkClassName = (status?: AnalyzedReservationData): string => {
+     |         ^
   53 |     if (!status || isLoading) return 'bg-blue-500 hover:bg-blue-700';
+  54 |     if (status.hasFreeReservation) return 'bg-green-500 hover:bg-green-700';
+  55 |     if (status.hasReservationInNext1Hour) return 'bg-red-500 hover:bg-red-700';
 Next.js build worker exited with code: 1 and signal: null
