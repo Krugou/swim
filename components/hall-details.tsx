@@ -94,7 +94,7 @@ export function HallDetails({ hall, onClose }: HallDetailsProps) {
         {/* Content - Structured Card Grid */}
         <div className="p-6 sm:p-10 space-y-10">
           {/* Description Card - Full width focus */}
-          <section className="bg-card rounded-2xl border p-8 shadow-sm">
+          <section className="bg-card rounded-2xl border-2 border-primary p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,0.2)]">
             <div className="flex items-center gap-3 mb-4">
               <InfoIcon className="h-6 w-6 text-primary" />
               <h2 className="text-2xl font-bold">{tDetails('description')}</h2>
@@ -104,7 +104,7 @@ export function HallDetails({ hall, onClose }: HallDetailsProps) {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Address Card */}
-            <section className="bg-card rounded-2xl border p-6 shadow-sm flex flex-col justify-between">
+            <section className="bg-card rounded-2xl border-2 border-primary p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,0.2)] flex flex-col justify-between">
               <div>
                 <div className="flex items-center gap-3 mb-4">
                   <MapPin className="h-6 w-6 text-primary" />
@@ -124,7 +124,7 @@ export function HallDetails({ hall, onClose }: HallDetailsProps) {
             </section>
 
             {/* Opening Hours Card */}
-            <section className="bg-card rounded-2xl border p-6 shadow-sm">
+            <section className="bg-card rounded-2xl border-2 border-primary p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,0.2)]">
               <div className="flex items-center gap-3 mb-4">
                 <Clock className="h-6 w-6 text-primary" />
                 <h3 className="text-xl font-bold">{tDetails('openingHours')}</h3>
@@ -134,7 +134,7 @@ export function HallDetails({ hall, onClose }: HallDetailsProps) {
 
             {/* Contact Card */}
             {details.phone ? (
-              <section className="bg-card rounded-2xl border p-6 shadow-sm md:col-span-2">
+              <section className="bg-card rounded-2xl border-2 border-primary p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,0.2)] md:col-span-2">
                 <div className="flex items-center gap-3 mb-4">
                   <Phone className="h-6 w-6 text-primary" />
                   <h3 className="text-xl font-bold">{tDetails('contact')}</h3>
@@ -154,7 +154,7 @@ export function HallDetails({ hall, onClose }: HallDetailsProps) {
             ) : null}
 
             {/* Facilities Card */}
-            <section className="bg-card rounded-2xl border p-6 shadow-sm md:col-span-2">
+            <section className="bg-card rounded-2xl border-2 border-primary p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,0.2)] md:col-span-2">
               <h3 className="text-xl font-bold mb-6">{tDetails('facilities')}</h3>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                 {details.facilities.map((facility) => (

@@ -132,10 +132,10 @@ export default function BestOptionsPage() {
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: index * 0.05 }}
-                  className={`p-6 rounded-2xl border-2 shadow-sm ${
+                  className={`p-6 rounded-2xl border-4 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,0.2)] ${
                     option.reason === 'free-practice'
-                      ? 'border-green-500 bg-green-50/50 dark:bg-green-950/20'
-                      : 'border-emerald-500 bg-emerald-50/50 dark:bg-emerald-950/20'
+                      ? 'border-green-600 bg-green-50/50 dark:bg-green-950/40'
+                      : 'border-emerald-600 bg-emerald-50/50 dark:bg-emerald-950/40'
                   }`}
                 >
                   <div className="flex items-start gap-4 mb-4">
