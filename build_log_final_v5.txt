@@ -1,0 +1,38 @@
+
+> nextjs-swim@0.1.0 build
+> next build
+
+Ôû▓ Next.js 16.1.0 (Turbopack)
+
+  Creating an optimized production build ...
+Ô£ô Compiled successfully in 1413.5ms
+  Running TypeScript ...
+  Collecting page data using 15 workers ...
+  Generating static pages using 15 workers (0/25) ...
+  Generating static pages using 15 workers (6/25) 
+  Generating static pages using 15 workers (12/25) 
+  Generating static pages using 15 workers (18/25) 
+Ô£ô Generating static pages using 15 workers (25/25) in 593.1ms
+  Finalizing page optimization ...
+
+Route (app)
+Ôöî Ôùï /
+Ôö£ Ôùï /_not-found
+Ôö£ ÔùÅ /[locale]
+Ôöé Ôö£ /en
+Ôöé Ôö£ /fi
+Ôöé Ôöö /sv
+Ôö£ ÔùÅ /[locale]/about
+Ôöé Ôö£ /en/about
+Ôöé Ôö£ /fi/about
+Ôöé Ôöö /sv/about
+Ôöö ÔùÅ /[locale]/hall/[slug]
+  Ôö£ /en/hall/matinkyln-uimahalli
+  Ôö£ /en/hall/leppvaaran-uimahalli
+  Ôö£ /en/hall/espoonlahden-uimahalli
+  Ôöö [+12 more paths]
+
+
+Ôùï  (Static)  prerendered as static content
+ÔùÅ  (SSG)     prerendered as static HTML (uses generateStaticParams)
+

@@ -9,8 +9,8 @@ import { QueryClientProvider } from '@/components/query-client-provider';
 import '../globals.css';
 
 export const metadata: Metadata = {
-  title: 'Swimming Hall Schedules - Espoo',
-  description: 'Swimming halls reservation viewer for Espoo swimming halls',
+  title: 'Swimming Halls - Espoo',
+  description: 'Real-time swimming hall situation in Espoo',
   manifest: '/manifest.json',
   icons: {
     icon: '/favicon.ico',

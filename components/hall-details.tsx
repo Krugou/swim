@@ -71,108 +71,110 @@ export function HallDetails({ hall, onClose }: HallDetailsProps) {
   };
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      className="fixed inset-0 z-50 bg-background/80 backdrop-blur-sm"
-      onClick={onClose}
-    >
+    <div className="container mx-auto px-4 py-8 sm:px-6 lg:px-8 max-w-5xl">
       <motion.div
-        initial={{ x: '100%' }}
-        animate={{ x: 0 }}
-        exit={{ x: '100%' }}
-        transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-        onClick={(e) => e.stopPropagation()}
-        className="fixed right-0 top-0 bottom-0 w-full sm:w-[500px] bg-background border-l shadow-2xl flex flex-col overflow-hidden"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="bg-card rounded-xl border shadow-sm overflow-hidden"
       >
         {/* Header */}
-        <div className="flex items-center justify-between p-4 border-b bg-card">
-          <h2 className="text-xl font-bold text-foreground">{hall.swimmingHallName}</h2>
+        <div className="flex items-center justify-between p-6 border-b">
+          <h1 className="text-2xl sm:text-3xl font-bold text-foreground">
+            {hall.swimmingHallName}
+          </h1>
           <button
             onClick={onClose}
             className="p-2 hover:bg-muted rounded-full transition-colors focus-visible:ring-2 focus-visible:ring-ring"
             aria-label={t('back')}
           >
-            <X className="h-5 w-5" />
+            <X className="h-6 w-6" />
           </button>
         </div>
 
-        {/* Content */}
-        <div className="flex-1 overflow-y-auto">
-          <div className="p-6 space-y-6">
+        {/* Content - Single focused column */}
+        <div className="mx-auto max-w-4xl w-full divide-y flex flex-col">
+          {/* Main Info */}
+          <div className="p-6 sm:p-10 space-y-10">
             {/* Description */}
-            <div>
-              <div className="flex items-center gap-2 mb-2">
-                <InfoIcon className="h-5 w-5 text-primary" />
-                <h3 className="text-lg font-semibold">{tDetails('description')}</h3>
+            <section className="text-center">
+              <div className="flex items-center justify-center gap-2 mb-4">
+                <InfoIcon className="h-8 w-8 text-primary" />
+                <h2 className="text-2xl font-semibold">{tDetails('description')}</h2>
               </div>
-              <p className="text-muted-foreground">{details.description}</p>
-            </div>
+              <p className="text-muted-foreground text-xl leading-relaxed max-w-3xl mx-auto">
+                {details.description}
+              </p>
+            </section>
 
-            {/* Address */}
-            <div>
-              <div className="flex items-center gap-2 mb-2">
-                <MapPin className="h-5 w-5 text-primary" />
-                <h3 className="text-lg font-semibold">{tDetails('address')}</h3>
-              </div>
-              <p className="text-muted-foreground">{details.address}</p>
-              <a
-                href={`https://www.google.com/maps/dir/?api=1&destination=${hall.latitude},${hall.longitude}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-2 inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 hover:underline"
-              >
-                <ExternalLink className="h-4 w-4" />
-                {tDetails('getDirections')}
-              </a>
-            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 pt-6">
+              {/* Address */}
+              <section className="bg-muted/30 p-6 rounded-xl border">
+                <div className="flex items-center gap-2 mb-4">
+                  <MapPin className="h-6 w-6 text-primary" />
+                  <h3 className="text-xl font-semibold">{tDetails('address')}</h3>
+                </div>
+                <p className="text-muted-foreground text-lg">{details.address}</p>
+                <a
+                  href={`https://www.google.com/maps/dir/?api=1&destination=${hall.latitude},${hall.longitude}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-4 inline-flex items-center gap-2 px-4 py-2 bg-primary/10 text-primary rounded-lg font-medium hover:bg-primary/20 transition-colors"
+                >
+                  <ExternalLink className="h-4 w-4" />
+                  {tDetails('getDirections')}
+                </a>
+              </section>
 
-            {/* Opening Hours */}
-            <div>
-              <div className="flex items-center gap-2 mb-2">
-                <Clock className="h-5 w-5 text-primary" />
-                <h3 className="text-lg font-semibold">{tDetails('openingHours')}</h3>
-              </div>
-              <p className="text-muted-foreground">{details.opening}</p>
+              {/* Opening Hours */}
+              <section className="bg-muted/30 p-6 rounded-xl border">
+                <div className="flex items-center gap-2 mb-4">
+                  <Clock className="h-6 w-6 text-primary" />
+                  <h3 className="text-xl font-semibold">{tDetails('openingHours')}</h3>
+                </div>
+                <p className="text-muted-foreground text-lg">{details.opening}</p>
+              </section>
             </div>
 
             {/* Phone */}
             {details.phone ? (
-              <div>
-                <div className="flex items-center gap-2 mb-2">
-                  <Phone className="h-5 w-5 text-primary" />
-                  <h3 className="text-lg font-semibold">{tDetails('contact')}</h3>
+              <section className="text-center pt-6">
+                <div className="flex items-center justify-center gap-2 mb-4">
+                  <Phone className="h-6 w-6 text-primary" />
+                  <h3 className="text-xl font-semibold">{tDetails('contact')}</h3>
                 </div>
                 <a
                   href={`tel:${details.phone}`}
-                  className="text-blue-600 hover:text-blue-800 hover:underline"
+                  className="text-3xl font-bold text-blue-600 hover:text-blue-800 hover:underline transition-colors"
                 >
                   {details.phone}
                 </a>
-              </div>
+              </section>
             ) : null}
 
             {/* Facilities */}
-            <div>
-              <h3 className="text-lg font-semibold mb-2">{tDetails('facilities')}</h3>
-              <div className="grid grid-cols-2 gap-2">
+            <section className="pt-6">
+              <h3 className="text-xl font-semibold mb-6 text-center">{tDetails('facilities')}</h3>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                 {details.facilities.map((facility) => (
                   <div
                     key={facility}
-                    className="flex items-center gap-2 px-3 py-2 bg-muted rounded-lg"
+                    className="flex items-center justify-center gap-2 px-4 py-3 bg-muted/50 rounded-xl border text-center"
                   >
-                    <span className="text-green-500">✓</span>
-                    <span className="text-sm">{facility}</span>
+                    <span className="text-green-600 font-bold">✓</span>
+                    <span className="text-sm font-semibold">{facility}</span>
                   </div>
                 ))}
               </div>
-            </div>
+            </section>
+          </div>
 
-            {/* Available Resources */}
-            <div>
-              <h3 className="text-lg font-semibold mb-3">{tDetails('availableResources')}</h3>
-              <div className="space-y-2">
+          {/* Resources - Now below and prominently displayed */}
+          <div className="bg-muted/20 p-6 sm:p-10">
+            <section className="max-w-3xl mx-auto">
+              <h3 className="text-2xl font-semibold mb-8 text-center">
+                {tDetails('availableResources')}
+              </h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {hall.relatedLinks.map((link) => (
                   <QuickActions
                     key={link.url}
@@ -182,10 +184,10 @@ export function HallDetails({ hall, onClose }: HallDetailsProps) {
                   />
                 ))}
               </div>
-            </div>
+            </section>
           </div>
         </div>
       </motion.div>
-    </motion.div>
+    </div>
   );
 }

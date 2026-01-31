@@ -1,7 +1,7 @@
 {
   "app": {
-    "title": "Uimahallin aikataulut",
-    "description": "Reaaliaikainen saatavuus Espoon uimahalleille"
+    "title": "Uimahallit",
+    "description": "Espoon uimahallien reaaliaikainen tilanne"
   },
   "navigation": {
     "home": "Etusivu",
