@@ -3,12 +3,11 @@
 import { motion } from 'framer-motion';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { type RelatedLink } from '@/lib/swimming-halls-data';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { RefreshCcw, Info } from 'lucide-react';
 import { WeatherDisplay } from '@/components/weather-display';
 import { useQueryClient } from '@tanstack/react-query';
 import Link from 'next/link';
-import { useLocale } from 'next-intl';
 import { slugify } from '@/lib/slugify';
 import { checkIsOpen } from '@/lib/opening-hours';
 import { ResourceLink } from '@/components/resource-link';
@@ -18,7 +17,7 @@ interface SwimmingHallCardProps {
   links: RelatedLink[];
   latitude: number;
   longitude: number;
-  distance?: number;
+  distance?: number | undefined;
   isFavorite?: boolean;
   onToggleFavorite?: () => void;
   opening?: string | undefined;

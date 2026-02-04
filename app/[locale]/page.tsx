@@ -41,6 +41,12 @@ export default function Home(): ReactElement {
     }
   };
 
+  const getLocationButtonText = () => {
+    if (isLocationLoading) return tLocation('requesting');
+    if (userLocation) return tLocation('disable');
+    return tLocation('enable');
+  };
+
   const sortedHalls = useMemo(() => {
     if (!userLocation) {
       return [...swimmingHallData].map((hall) => ({ ...hall, distance: undefined }));
@@ -116,24 +122,18 @@ export default function Home(): ReactElement {
               ) : (
                 <MapPin className="h-5 w-5" />
               )}
-              <span>
-                {isLocationLoading
-                  ? tLocation('requesting')
-                  : userLocation
-                    ? tLocation('disable')
-                    : tLocation('enable')}
-              </span>
+              <span>{getLocationButtonText()}</span>
             </button>
           </div>
 
           <div className="mx-auto max-w-4xl">
-            {userLocation && (
+            {userLocation ? (
               <div className="mb-4 text-center">
                 <span className="inline-block px-3 py-1 text-xs font-semibold bg-accent text-accent-foreground rounded-full">
                   📍 {tLocation('sortedByDistance')}
                 </span>
               </div>
-            )}
+            ) : null}
             <div className="grid grid-cols-1 gap-6 sm:gap-8 lg:gap-10">
               {sortedHalls.map((hall) => (
                 <SwimmingHallCard
@@ -143,7 +143,7 @@ export default function Home(): ReactElement {
                   latitude={hall.latitude}
                   longitude={hall.longitude}
                   opening={hall.opening}
-                  {...(hall.distance !== undefined && { distance: hall.distance })}
+                  distance={hall.distance}
                 />
               ))}
             </div>

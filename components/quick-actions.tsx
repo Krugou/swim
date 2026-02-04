@@ -40,9 +40,17 @@ export function QuickActions({ hallName, linkName, resourceId }: QuickActionsPro
     }
     if (status?.hasFreeReservation) {
       return (
-        <span className="inline-block px-2 py-1 text-xs font-semibold text-white bg-green-600 rounded-full animate-pulse">
-          🎉 {tStatus('freeReservation')}
-        </span>
+        <div className="mt-1 flex items-center gap-2 px-3 py-2 bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-100 dark:border-emerald-900 rounded-md shadow-sm">
+          <span className="text-lg animate-pulse">🎉</span>
+          <div className="flex flex-col leading-none">
+            <span className="text-[10px] uppercase font-bold text-emerald-600 dark:text-emerald-400 tracking-wider">
+              {tStatus('freeReservation')}
+            </span>
+            <span className="text-xs font-medium text-emerald-700 dark:text-emerald-300">
+              {tStatus('available')}
+            </span>
+          </div>
+        </div>
       );
     }
     if (isAvailable) {

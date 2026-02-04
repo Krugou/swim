@@ -55,23 +55,19 @@ export const checkIsOpen = (opening?: string): boolean => {
     if (appliesToday) {
       if (timesStr.toLowerCase() === 'closed') return false;
 
-      const timeRange = timesStr.split('-');
-      if (timeRange.length !== 2) continue;
-
-      const startStr = timeRange[0];
-      const endStr = timeRange[1];
+      const [startStr, endStr] = timesStr.split('-');
 
       if (!startStr || !endStr) continue;
 
-      const startParts = startStr.trim().split(':');
-      const endParts = endStr.trim().split(':');
+      const [startHourStr, startMinuteStr] = startStr.trim().split(':');
+      const [endHourStr, endMinuteStr] = endStr.trim().split(':');
 
-      if (startParts.length < 2 || endParts.length < 2) continue;
+      if (!startHourStr || !endHourStr) continue;
 
-      const sh = Number(startParts[0]);
-      const sm = Number(startParts[1]);
-      const eh = Number(endParts[0]);
-      const em = Number(endParts[1]);
+      const sh = Number(startHourStr);
+      const sm = Number(startMinuteStr);
+      const eh = Number(endHourStr);
+      const em = Number(endMinuteStr);
 
       if (isNaN(sh) || isNaN(eh)) continue;
 

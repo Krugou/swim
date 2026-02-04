@@ -161,9 +161,17 @@ export function ResourceLink({ link, isOpen }: ResourceLinkProps) {
         {status?.nextAvailableSlot &&
         !status?.hasReservationInNext1Hour &&
         !status?.currentReservationEnd ? (
-          <span className="text-xs text-muted-foreground">
-            ⏱️ {tTime('freeFor')} {status.nextAvailableSlot}
-          </span>
+          <div className="mt-1 flex items-center gap-2 px-3 py-2 bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-100 dark:border-emerald-900 rounded-md shadow-sm">
+            <span className="text-lg animate-pulse">⏱️</span>
+            <div className="flex flex-col leading-none">
+              <span className="text-[10px] uppercase font-bold text-emerald-600 dark:text-emerald-400 tracking-wider">
+                {tTime('freeFor')}
+              </span>
+              <span className="text-base font-black text-emerald-700 dark:text-emerald-300 font-mono">
+                {status.nextAvailableSlot}
+              </span>
+            </div>
+          </div>
         ) : null}
         {minutesAgo !== null ? (
           <span className="text-xs text-muted-foreground/70 flex items-center gap-1">

@@ -1,6 +1,6 @@
 'use client';
 
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, useQueries } from '@tanstack/react-query';
 
 export interface ReservationData {
   start: string;
@@ -239,13 +239,12 @@ export function useReservationData(resourceId: string) {
 
 // Hook for multiple resources (combines all resource data for a hall)
 export function useMultipleReservationData(resourceIds: string[]) {
-  // eslint-disable-next-line react-hooks/rules-of-hooks -- useQuery in map is valid for React Query
-  const queries = resourceIds.map((id) =>
-    useQuery({
+  const queries = useQueries({
+    queries: resourceIds.map((id) => ({
       queryKey: ['reservations', id],
       queryFn: () => fetchReservationData(id),
-    })
-  );
+    })),
+  });
 
   const isLoading = queries.some((q) => q.isLoading);
   const error = queries.find((q) => q.error)?.error;

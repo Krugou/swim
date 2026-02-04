@@ -1,17 +1,16 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { Sparkles, Loader2, MapPin, X } from 'lucide-react';
 import { swimmingHallData } from '@/lib/swimming-halls-data';
-import { useQuery } from '@tanstack/react-query';
+import { useQueries } from '@tanstack/react-query';
 import {
   fetchReservationData,
   analyzeReservations,
   type ReservationData,
 } from '@/lib/hooks/use-reservation-data';
 import Link from 'next/link';
-import { useLocale } from 'next-intl';
 
 interface BestOption {
   hallName: string;
@@ -32,13 +31,12 @@ export default function BestOptionsPage() {
   );
 
   // Auto-trigger queries on mount
-  // eslint-disable-next-line react-hooks/rules-of-hooks -- useQuery in map is valid for React Query
-  const queries = allResourceIds.map((resourceId) =>
-    useQuery({
+  const queries = useQueries({
+    queries: allResourceIds.map((resourceId) => ({
       queryKey: ['reservations', resourceId],
       queryFn: () => fetchReservationData(resourceId),
-    })
-  );
+    })),
+  });
 
   // Create a map of resourceId -> query result for easy lookup
   const queryMap = new Map(allResourceIds.map((resourceId, index) => [resourceId, queries[index]]));

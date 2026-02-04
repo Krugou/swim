@@ -40,7 +40,7 @@ export async function fetchWeatherData(
 ): Promise<WeatherData | null> {
   try {
     const url = `https://api.met.no/weatherapi/locationforecast/2.0/compact?lat=${latitude}&lon=${longitude}`;
-    
+
     // Next.js App Router specific: Uses revalidate for caching
     const response = await fetch(url, {
       headers: {
@@ -55,24 +55,26 @@ export async function fetchWeatherData(
     }
 
     const data: YrNoResponse = await response.json();
-    
+
     if (!data.properties?.timeseries?.length) {
       return null;
     }
 
-    const current = data.properties.timeseries[0];
-    
+    const [current] = data.properties.timeseries;
+
     if (!current) {
       return null;
     }
 
-    const temperature = current.data.instant.details.air_temperature;
-    const symbolCode = 
-      current.data.next_1_hours?.summary.symbol_code || 
-      current.data.next_6_hours?.summary.symbol_code || 
+    const {
+      air_temperature: temperature,
+      precipitation_amount: precipitation,
+      wind_speed: windSpeed,
+    } = current.data.instant.details;
+    const symbolCode =
+      current.data.next_1_hours?.summary.symbol_code ||
+      current.data.next_6_hours?.summary.symbol_code ||
       'cloudy';
-    const precipitation = current.data.instant.details.precipitation_amount;
-    const windSpeed = current.data.instant.details.wind_speed;
 
     const result: WeatherData = {
       temperature,
