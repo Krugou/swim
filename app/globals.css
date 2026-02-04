@@ -8,42 +8,55 @@
     --card-foreground: 0 0% 0%;
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 0%;
-    --primary: 207 100% 40%;
+    --primary: 262 83% 58%; /* Vibrant Purple */
     --primary-foreground: 0 0% 100%;
-    --secondary: 44 100% 59%;
+    --secondary: 44 100% 59%; /* Yellow */
     --secondary-foreground: 0 0% 0%;
-    --muted: 0 0% 96%;
-    --muted-foreground: 0 0% 30%;
-    --accent: 44 100% 59%;
-    --accent-foreground: 0 0% 0%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
+    --muted: 180 100% 90%; /* Light Cyan */
+    --muted-foreground: 0 0% 0%;
+    --accent: 327 100% 54%; /* Hot Pink */
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 100% 50%;
+    --destructive-foreground: 0 0% 100%;
     --border: 0 0% 0%;
     --input: 0 0% 0%;
-    --ring: 207 100% 40%;
-    --radius: 0.25rem;
+    --ring: 0 0% 0%;
+    --radius: 0.5rem;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 207 100% 50%; /* Slightly lighter blue for dark mode */
-    --primary-foreground: 0 0% 100%;
-    --secondary: 44 100% 59%;
-    --secondary-foreground: 0 0% 0%;
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-    --accent: 44 100% 59%;
+    --background: 262 80% 10%; /* Dark Purple */
+    --foreground: 0 0% 100%;
+    --card: 262 80% 15%;
+    --card-foreground: 0 0% 100%;
+    --popover: 262 80% 15%;
+    --popover-foreground: 0 0% 100%;
+    --primary: 44 100% 59%; /* Yellow in dark mode */
+    --primary-foreground: 0 0% 0%;
+    --secondary: 327 100% 54%; /* Hot Pink */
+    --secondary-foreground: 0 0% 100%;
+    --muted: 262 50% 25%;
+    --muted-foreground: 0 0% 80%;
+    --accent: 180 100% 50%; /* Cyan */
     --accent-foreground: 0 0% 0%;
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 207 100% 50%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 0% 100%; /* White border in dark mode? Or keep black if background is light? */
+    /* Neobrutalism often keeps usage of black borders even in dark mode if background allows,
+       but for true dark mode, we usually invert or go high contrast.
+       Let's try white borders for dark mode to keep contrast. */
+    --border: 0 0% 100%;
+    --input: 0 0% 100%;
+    --ring: 44 100% 59%;
+  }
+}
+
+@layer components {
+  .neo-card {
+    @apply border-[3px] border-black dark:border-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)];
+  }
+  .neo-button {
+    @apply border-2 border-black dark:border-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none hover:-translate-y-1 transition-all;
   }
 }
 
@@ -53,6 +66,17 @@ body {
   transition:
     background-color 0.3s ease,
     color 0.3s ease;
+  font-family:
+    system-ui,
+    -apple-system,
+    sans-serif;
+  padding: 1rem;
+}
+
+@media (min-width: 768px) {
+  body {
+    padding: 2rem;
+  }
 }
 
 /* Custom scrollbar for dark mode */

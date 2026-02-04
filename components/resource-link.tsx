@@ -26,20 +26,20 @@ export function ResourceLink({ link, isOpen }: ResourceLinkProps) {
     if (!status || isLoading) return null;
     if (status.hasFreeReservation) {
       return (
-        <span className="inline-block px-2 py-1 text-xs font-semibold text-white bg-green-600 rounded-full">
+        <span className="inline-block px-2 py-1 text-xs font-bold uppercase border-2 border-black dark:border-white bg-green-500 text-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)] rounded-md">
           {t('freeReservation')}
         </span>
       );
     }
     if (status.hasReservationInNext1Hour) {
       return (
-        <span className="inline-block px-2 py-1 text-xs font-semibold text-white bg-red-600 rounded-full">
+        <span className="inline-block px-2 py-1 text-xs font-bold uppercase border-2 border-black dark:border-white bg-red-500 text-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)] rounded-md">
           {t('reserved')}
         </span>
       );
     }
     return (
-      <span className="inline-block px-2 py-1 text-xs font-semibold text-white bg-green-600 rounded-full">
+      <span className="inline-block px-2 py-1 text-xs font-bold uppercase border-2 border-black dark:border-white bg-green-500 text-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)] rounded-md">
         {t('available')}
       </span>
     );
@@ -61,7 +61,7 @@ export function ResourceLink({ link, isOpen }: ResourceLinkProps) {
             href={reservationUrl + link.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center shrink-0 bg-primary hover:bg-primary/90 text-primary-foreground font-bold py-1.5 px-3 rounded-md text-xs sm:text-sm transition-colors focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 border-2 border-primary shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,0.2)] active:translate-x-px active:translate-y-px active:shadow-none"
+            className="inline-flex items-center justify-center shrink-0 bg-primary hover:bg-primary/90 text-primary-foreground font-bold py-1.5 px-3 rounded-md text-xs sm:text-sm transition-all focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 border-2 border-black dark:border-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)] hover:-translate-y-0.5 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:hover:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] active:translate-x-0 active:translate-y-0 active:shadow-none"
             aria-label={`${tReservation('bookNow')} - ${link.relatedLinkName}`}
           >
             {tReservation('bookNow')}
@@ -86,7 +86,7 @@ export function ResourceLink({ link, isOpen }: ResourceLinkProps) {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.8 }}
               onClick={() => refetch()}
-              className="inline-flex items-center justify-center gap-2 w-full h-10 text-white font-bold bg-red-600 hover:bg-red-700 rounded transition-all focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+              className="inline-flex items-center justify-center gap-2 w-full h-10 text-white font-bold bg-red-600 hover:bg-red-700 rounded-md border-2 border-black dark:border-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)] hover:-translate-y-0.5 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:hover:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] active:translate-y-0 active:shadow-none transition-all focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
               aria-label={tErrors('loadingData')}
             >
               <AlertCircle className="h-4 w-4" aria-hidden="true" />
@@ -125,10 +125,10 @@ export function ResourceLink({ link, isOpen }: ResourceLinkProps) {
                   return (
                     <div
                       key={index}
-                      className={`flex flex-col items-center justify-center w-8 h-8 rounded-full border-2 border-black dark:border-white shrink-0 font-bold text-xs shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,0.2)] ${
+                      className={`flex flex-col items-center justify-center w-8 h-8 rounded-md border-2 border-black dark:border-white shrink-0 font-bold text-xs shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)] ${
                         isReserved
-                          ? 'bg-destructive text-destructive-foreground'
-                          : 'bg-accent text-accent-foreground'
+                          ? 'bg-red-500 text-white border-dashed'
+                          : 'bg-green-400 text-black'
                       }`}
                       title={isReserved ? `Reserved ${displayHour}:00` : `Free ${displayHour}:00`}
                     >
@@ -161,13 +161,13 @@ export function ResourceLink({ link, isOpen }: ResourceLinkProps) {
         {status?.nextAvailableSlot &&
         !status?.hasReservationInNext1Hour &&
         !status?.currentReservationEnd ? (
-          <div className="mt-1 flex items-center gap-2 px-3 py-2 bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-100 dark:border-emerald-900 rounded-md shadow-sm">
+          <div className="mt-1 flex items-center gap-2 px-3 py-2 bg-emerald-100 dark:bg-emerald-900 border-2 border-black dark:border-white rounded-md shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)]">
             <span className="text-lg animate-pulse">⏱️</span>
             <div className="flex flex-col leading-none">
-              <span className="text-[10px] uppercase font-bold text-emerald-600 dark:text-emerald-400 tracking-wider">
+              <span className="text-[10px] uppercase font-bold text-black dark:text-white tracking-wider">
                 {tTime('freeFor')}
               </span>
-              <span className="text-base font-black text-emerald-700 dark:text-emerald-300 font-mono">
+              <span className="text-base font-black text-emerald-800 dark:text-emerald-100 font-mono">
                 {status.nextAvailableSlot}
               </span>
             </div>

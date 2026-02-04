@@ -50,7 +50,7 @@ export function SwimmingHallCard({
       transition={{ duration: 0.3 }}
       whileHover={{ y: -4 }}
     >
-      <Card className="h-full transition-shadow hover:shadow-lg">
+      <Card className="h-full transition-all hover:-translate-y-1 hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] dark:hover:shadow-[8px_8px_0px_0px_rgba(255,255,255,1)]">
         <CardHeader>
           <div className="flex flex-col gap-2">
             <div className="flex items-center justify-between gap-2">
@@ -63,7 +63,7 @@ export function SwimmingHallCard({
                 ) : null}
                 <Link
                   href={`/${locale}/hall/${slugify(hallName)}`}
-                  className="p-2 hover:bg-muted rounded-full cursor-pointer transition-colors focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                  className="p-2 bg-secondary text-secondary-foreground border-2 border-black dark:border-white rounded-md shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)] hover:-translate-y-0.5 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:hover:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] active:translate-y-0 active:shadow-none transition-all"
                   aria-label={tDetails('viewDetails')}
                   title={tDetails('viewDetails')}
                 >
@@ -71,7 +71,7 @@ export function SwimmingHallCard({
                 </Link>
                 <button
                   onClick={handleRefreshAll}
-                  className="p-2 hover:bg-muted rounded-full cursor-pointer transition-colors focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                  className="p-2 bg-accent text-accent-foreground border-2 border-black dark:border-white rounded-md shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)] hover:-translate-y-0.5 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:hover:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] active:translate-y-0 active:shadow-none transition-all"
                   aria-label="Refresh all data"
                   title="Refresh all data"
                 >
