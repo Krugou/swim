@@ -128,6 +128,14 @@
     "contact": "Contact",
     "facilities": "Facilities",
     "availableResources": "Available Resources",
-    "viewDetails": "View Details"
+    "viewDetails": "View Details",
+    "refreshingData": "Refreshing hall data..."
+  },
+  "pwa": {
+    "installTitle": "Install Swim App",
+    "installDescription": "Get real-time updates and offline access.",
+    "dismiss": "Dismiss",
+    "installButton": "Install Now",
+    "maybeLater": "Maybe Later"
   }
 }

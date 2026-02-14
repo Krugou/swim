@@ -128,6 +128,14 @@
     "contact": "Yhteystiedot",
     "facilities": "Tilat",
     "availableResources": "Saatavilla olevat tilat",
-    "viewDetails": "Näytä tiedot"
+    "viewDetails": "Näytä tiedot",
+    "refreshingData": "Päivitetään hallin tietoja..."
+  },
+  "pwa": {
+    "installTitle": "Asenna Uimahallit",
+    "installDescription": "Saat reaaliaikaiset päivitykset ja offline-käytön.",
+    "dismiss": "Sulje",
+    "installButton": "Asenna nyt",
+    "maybeLater": "Ehkä myöhemmin"
   }
 }

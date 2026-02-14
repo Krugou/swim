@@ -34,7 +34,8 @@
     "reserved": "Reserverad",
     "freeReservation": "Fri träning tillgänglig",
     "freePractice": "Fri träning",
-    "loading": "Laddar tillgänglighet..."
+    "loading": "Laddar tillgänglighet...",
+    "closed": "Stängt"
   },
   "errors": {
     "loadingData": "Fel vid laddning av data. Klicka för att försöka igen",
@@ -126,6 +127,14 @@
     "contact": "Kontakt",
     "facilities": "Faciliteter",
     "availableResources": "Tillgängliga resurser",
-    "viewDetails": "Visa detaljer"
+    "viewDetails": "Visa detaljer",
+    "refreshingData": "Uppdaterar simhallens data..."
+  },
+  "pwa": {
+    "installTitle": "Installera Simhallarna",
+    "installDescription": "Få realtidsuppdateringar och offlineåtkomst.",
+    "dismiss": "Stäng",
+    "installButton": "Installera nu",
+    "maybeLater": "Kanske senare"
   }
 }
