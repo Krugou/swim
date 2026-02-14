@@ -2,7 +2,9 @@
   "app": {
     "title": "Swimming Halls",
     "description": "Real-time availability for Espoo swimming halls",
-    "findBestOptions": "Find best options"
+    "findBestOptions": "Find best options",
+    "themeLabel": "Theme",
+    "languageLabel": "Language"
   },
   "navigation": {
     "home": "Home",
@@ -12,7 +14,9 @@
     "swimmingHalls": "Swimming Halls",
     "best": "Best",
     "calendar": "Calendar",
-    "stats": "Stats"
+    "stats": "Stats",
+    "list": "List",
+    "map": "Map"
   },
   "theme": {
     "light": "Light",
@@ -113,7 +117,8 @@
     "shared": "Shared!",
     "addToCalendar": "Add to Calendar",
     "added": "Added!",
-    "viewDetails": "View Details"
+    "viewDetails": "View Details",
+    "refresh": "Refresh all data"
   },
   "hallDetails": {
     "description": "Description",

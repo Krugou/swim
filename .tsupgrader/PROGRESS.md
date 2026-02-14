@@ -10,7 +10,6 @@
 
 ✅ Using local TypeScript compiler: `lib`
 
-
 🔨 **Building project to collect baseline errors...**
 
 ## Update Order
@@ -23,7 +22,6 @@ Packages will be updated in 5 group(s):
 4. `eslint-config-next`
 5. `prettier`
 
-
 ---
 
 ### Update Group 1/5: `@types/node`
@@ -32,35 +30,24 @@ Packages will be updated in 5 group(s):
 
 ✅ No new errors after updating `@types/node`
 
-
 **Modified files:** `package.json, package-lock.json`
 
 ✅ **Successfully upgraded:** `@types/node`
 ⏱️ **Completed in:** 00:00:05
 
-
-
 ---
 
 ### Update Group 2/5: `recharts react react-dom next next-intl lucide-react framer-motion`
 
-🔄 **Updating:** framer-motion `12.23.24` → `^12.23.26lucide-react `0.552.0` → `^0.562.0`
-, next `16.0.10` → `16.1.0`
-, next-intl `4.4.0` → `^4.6.1`
-, react `19.2.0` → `19.2.3`
-, react-dom `19.2.0` → `19.2.3`
-, recharts `3.3.0` → `^3.6.0`
-, 
+🔄 **Updating:** framer-motion `12.23.24` → `^12.23.26lucide-react `0.552.0`→`^0.562.0`, next`16.0.10`→`16.1.0`, next-intl`4.4.0`→`^4.6.1`, react`19.2.0`→`19.2.3`, react-dom`19.2.0`→`19.2.3`, recharts`3.3.0`→`^3.6.0`
+,
 
 ✅ No new errors after updating `recharts react react-dom next next-intl lucide-react framer-motion`
-
 
 **Modified files:** `package.json, package-lock.json`
 
 ✅ **Successfully upgraded:** `framer-motion`, `lucide-react`, `next`, `next-intl`, `react`, `react-dom`, `recharts`
 ⏱️ **Completed in:** 00:00:43
-
-
 
 ---
 
@@ -70,13 +57,10 @@ Packages will be updated in 5 group(s):
 
 ✅ No new errors after updating `tailwind-merge`
 
-
 **Modified files:** `package.json, package-lock.json`
 
 ✅ **Successfully upgraded:** `tailwind-merge`
 ⏱️ **Completed in:** 00:00:04
-
-
 
 ---
 
@@ -86,13 +70,10 @@ Packages will be updated in 5 group(s):
 
 ✅ No new errors after updating `eslint-config-next`
 
-
 **Modified files:** `package.json, package-lock.json`
 
 ✅ **Successfully upgraded:** `eslint-config-next`
 ⏱️ **Completed in:** 00:00:04
-
-
 
 ---
 
@@ -102,20 +83,16 @@ Packages will be updated in 5 group(s):
 
 ✅ No new errors after updating `prettier`
 
-
 **Modified files:** `package.json, package-lock.json`
 
 ✅ **Successfully upgraded:** `prettier`
 ⏱️ **Completed in:** 00:00:03
 
-
-
 ✅ **All package groups completed**
 
 🔍 Looking for local TypeScript installation...
 
 ✅ Using local TypeScript compiler: `lib`
-
 
 🔨 **Building project to collect baseline errors...**
 
@@ -123,15 +100,11 @@ Packages will be updated in 5 group(s):
 
 Packages will be updated in 0 group(s):
 
-
-
-
 ✅ **All package groups completed**
 
 🔍 Looking for local TypeScript installation...
 
 ✅ Using local TypeScript compiler: `lib`
-
 
 🔨 **Building project to collect baseline errors...**
 
@@ -139,15 +112,11 @@ Packages will be updated in 0 group(s):
 
 Packages will be updated in 0 group(s):
 
-
-
-
 ✅ **All package groups completed**
 
 🔍 Looking for local TypeScript installation...
 
 ✅ Using local TypeScript compiler: `lib`
-
 
 🔨 **Building project to collect baseline errors...**
 
@@ -155,15 +124,11 @@ Packages will be updated in 0 group(s):
 
 Packages will be updated in 0 group(s):
 
-
-
-
 ✅ **All package groups completed**
 
 🔍 Looking for local TypeScript installation...
 
 ✅ Using local TypeScript compiler: `lib`
-
 
 🔨 **Building project to collect baseline errors...**
 
@@ -171,11 +136,7 @@ Packages will be updated in 0 group(s):
 
 Packages will be updated in 0 group(s):
 
-
-
-
 ✅ **All package groups completed**
-
 
 ---
 
@@ -186,7 +147,6 @@ Packages will be updated in 0 group(s):
 ✅ **Successfully upgraded:** 11 package(s)
 ❌ **Unable to upgrade:** 0 package(s)
 📦 **Total packages checked:** 11
-
 
 ## 🤖 Token Usage Summary
 
@@ -200,4 +160,3 @@ Packages will be updated in 0 group(s):
 📦 **Found 5 package installation tasks**
 
 ℹ️ No dependencies available to update.
-

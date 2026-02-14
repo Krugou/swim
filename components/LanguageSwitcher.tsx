@@ -1,6 +1,7 @@
 'use client';
 
 import * as React from 'react';
+import { Button } from '@/components/ui/Button';
 import { useLocale } from 'next-intl';
 import { usePathname, useRouter } from 'next/navigation';
 import { type Locale, localeNames } from '@/lib/i18n/config';
@@ -22,17 +23,18 @@ export function LanguageSwitcher() {
 
   return (
     <div className="relative">
-      <button
+      <Button
         onClick={() => {
           setIsOpen(!isOpen);
         }}
-        className="inline-flex h-10 items-center justify-center rounded-md border border-input bg-background px-4 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 transition-colors"
+        variant="ghost"
+        className="border border-input px-4 font-medium"
         aria-expanded={isOpen}
         aria-haspopup="true"
       >
         <Languages className="mr-2 h-4 w-4" aria-hidden="true" />
         {localeNames[locale]}
-      </button>
+      </Button>
       {isOpen ? (
         <>
           <div

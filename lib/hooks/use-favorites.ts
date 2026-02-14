@@ -47,7 +47,7 @@ export function useFavorites(): UseFavoritesReturn {
 
   const toggleFavorite = (hallName: string): void => {
     setFavorites((prev) =>
-      prev.includes(hallName) ? prev.filter((name) => name !== hallName) : [...prev, hallName]
+      prev.includes(hallName) ? prev.filter((name) => name !== hallName) : [...prev, hallName],
     );
   };
 

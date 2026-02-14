@@ -7,6 +7,7 @@ This is a Next.js 16 application that displays real-time reservation schedules f
 ## Architecture & Technology Stack
 
 ### Core Technologies
+
 - **Next.js 16** - App Router with Server Components
 - **TypeScript** - Strict type checking enabled
 - **Tailwind CSS v4** - Utility-first CSS framework
@@ -39,12 +40,14 @@ swim/
 ### File Organization
 
 #### Components
+
 - **Server Components** (default): Place in `app/` directory for pages, layouts
 - **Client Components**: Place in `components/` with `'use client'` directive
 - **UI Components**: Place reusable shadcn/ui components in `components/ui/`
 - **Feature Components**: Place domain-specific components in `components/`
 
 #### Naming Conventions
+
 - **Files**: Use kebab-case for files: `swimming-hall-card.tsx`
 - **Components**: Use PascalCase: `SwimmingHallCard`
 - **Types/Interfaces**: Use PascalCase with descriptive names
@@ -52,6 +55,7 @@ swim/
 - **Functions**: Use camelCase: `getTimeWindow`, `buildProxyUrl`
 
 #### Type Definitions
+
 - Define interfaces for all data structures
 - Export types from the same file where data is defined
 - Use `type` for unions, `interface` for object shapes
@@ -60,6 +64,7 @@ swim/
 ### Code Style
 
 #### TypeScript Best Practices
+
 ```typescript
 // ✅ Good - Explicit types, exported interfaces
 export interface SwimmingHall {
@@ -82,6 +87,7 @@ function getData(url) {
 ```
 
 #### Component Patterns
+
 ```typescript
 // ✅ Good - Server Component (default)
 export default function Page() {
@@ -108,6 +114,7 @@ export function Component({ data }) {
 ```
 
 #### Styling with Tailwind
+
 ```typescript
 // ✅ Good - Use cn() utility for conditional classes
 import { cn } from '@/lib/utils';
@@ -128,20 +135,22 @@ import { cn } from '@/lib/utils';
 ### Data Fetching
 
 #### Client-Side Fetching (Current Pattern)
+
 ```typescript
 // ✅ Good - Used for real-time data that changes frequently
 useEffect(() => {
   const timeWindow = getTimeWindow();
   const proxyUrl = buildProxyUrl(link.url, timeWindow);
-  
+
   fetch(proxyUrl)
-    .then(response => response.json())
-    .then(data => processData(data))
-    .catch(error => console.error('Error:', error));
+    .then((response) => response.json())
+    .then((data) => processData(data))
+    .catch((error) => console.error('Error:', error));
 }, [links]);
 ```
 
 #### Future Considerations
+
 - For static data: Use Server Components with direct API calls
 - For dynamic data: Consider React Server Actions for mutations
 - For real-time updates: Current client-side fetching is appropriate
@@ -166,6 +175,7 @@ linkStatuses.set(key, value);
 ### Helper Functions
 
 #### Extract Reusable Logic
+
 ```typescript
 // ✅ Good - Extracted helper functions
 const getTimeWindow = () => {
@@ -186,12 +196,14 @@ const buildProxyUrl = (resourceId: string, timeWindow: { start: number; end: num
 ### Performance Optimization
 
 #### React Best Practices
+
 - Prefer Server Components for static content
 - Use `'use client'` only when needed (state, effects, browser APIs)
 - Memoize expensive computations with `useMemo`
 - Avoid inline function definitions in JSX when possible
 
 #### Next.js Optimization
+
 - Images: Use Next.js `Image` component (currently disabled for static export)
 - Fonts: Use `next/font` for optimized font loading
 - Code Splitting: Leverage dynamic imports for heavy components
@@ -202,12 +214,12 @@ const buildProxyUrl = (resourceId: string, timeWindow: { start: number; end: num
 ```typescript
 // ✅ Good - Proper error handling
 fetch(url)
-  .then(response => {
+  .then((response) => {
     if (!response.ok) throw new Error('Network response was not ok');
     return response.json();
   })
-  .then(data => processData(data))
-  .catch(error => {
+  .then((data) => processData(data))
+  .catch((error) => {
     console.error('Error fetching data:', error);
     // Consider user-friendly error states
   });
@@ -271,17 +283,20 @@ describe('getTimeWindow', () => {
 ## Domain-Specific Guidelines
 
 ### Swimming Hall Data
+
 - All swimming hall data is in `lib/swimming-halls-data.ts`
 - Each hall has a name and array of related links (pools, gyms, etc.)
 - Resource IDs are unique identifiers for Espoo's booking system
 
 ### Reservation Status Logic
+
 - **Green**: Available or has "Vapaaharjoitte" (free practice)
 - **Red**: Reserved within next hour
 - **Circles**: Show reservations in next 1, 2, 3 hours
 - Only show circles when NOT free practice
 
 ### External APIs
+
 - **Espoo API**: `resurssivaraus.espoo.fi` - Official booking system
 - **Proxy**: `proxy.aleksi-nokelainen.workers.dev` - CORS proxy for API access
 - Time window: 4 hours before and after current time
@@ -289,6 +304,7 @@ describe('getTimeWindow', () => {
 ## Development Workflow
 
 ### Starting Development
+
 ```bash
 npm install              # Install dependencies
 npm run dev:turbo        # Start dev server with Turbopack
@@ -297,6 +313,7 @@ npm run build            # Build for production
 ```
 
 ### Making Changes
+
 1. Create a new branch for your feature
 2. Make changes following the guidelines above
 3. Run `npm run lint` to check for issues
@@ -305,6 +322,7 @@ npm run build            # Build for production
 6. Commit with clear, descriptive messages
 
 ### Before Committing
+
 - [ ] Code follows TypeScript and React best practices
 - [ ] Components are properly typed
 - [ ] Tailwind classes use `cn()` utility
@@ -316,11 +334,13 @@ npm run build            # Build for production
 ## Common Tasks
 
 ### Adding a New Swimming Hall
+
 1. Add entry to `swimmingHallData` array in `lib/swimming-halls-data.ts`
 2. Follow existing structure with `swimmingHallName` and `relatedLinks`
 3. Verify resource IDs are correct
 
 ### Adding a New Component
+
 1. Create file in `components/` directory
 2. Use PascalCase for filename: `new-component.tsx`
 3. Add `'use client'` if using hooks or browser APIs
@@ -328,12 +348,14 @@ npm run build            # Build for production
 5. Type all props with an interface
 
 ### Modifying Styles
+
 1. Use existing Tailwind classes when possible
 2. Add new global styles to `app/globals.css` if needed
 3. Maintain responsive design with sm:, md:, lg: breakpoints
 4. Keep dark mode compatibility (though not currently used)
 
 ### Adding shadcn/ui Components
+
 ```bash
 # Note: Manual installation since network is limited
 # Copy component from shadcn/ui docs to components/ui/
@@ -343,6 +365,7 @@ npm run build            # Build for production
 ## Deployment
 
 ### GitHub Pages
+
 - Workflow: `.github/workflows/deploy.yml`
 - Triggers on push to `main` branch
 - Builds Next.js app with static export
@@ -350,6 +373,7 @@ npm run build            # Build for production
 - Deploys to GitHub Pages
 
 ### Configuration
+
 - `next.config.ts`: Configured for static export
 - `output: 'export'`: Enables static HTML generation
 - `images.unoptimized`: Required for static export
@@ -358,6 +382,7 @@ npm run build            # Build for production
 ## Troubleshooting
 
 ### Build Issues
+
 - **Error**: Cannot apply unknown utility class
   - Solution: Check Tailwind CSS v4 syntax in `globals.css`
   - Avoid `@apply` directives
@@ -367,11 +392,13 @@ npm run build            # Build for production
   - Verify file exists at specified path
 
 ### Type Errors
+
 - **Error**: Property does not exist on type
   - Solution: Add proper interface definitions
   - Check TypeScript strict mode settings
 
 ### ESLint Errors
+
 - Run `npm run lint` to see all issues
 - Fix auto-fixable issues: `npm run lint -- --fix`
 - Check `eslint.config.mjs` for current rules
@@ -387,6 +414,7 @@ npm run build            # Build for production
 ## Questions?
 
 When unsure about implementation:
+
 1. Check existing patterns in the codebase
 2. Follow Next.js and React best practices
 3. Prioritize type safety and readability
@@ -413,6 +441,7 @@ function MyComponent() {
 ```
 
 **Guidelines:**
+
 - All user-facing text MUST be internationalized
 - Add new translation keys to all locale files (en.json, fi.json, sv.json)
 - Use semantic namespace organization (app, navigation, status, etc.)
@@ -429,6 +458,7 @@ Using `next-themes` for system-aware dark mode:
 ```
 
 **Color System:**
+
 - Use CSS variables from `globals.css` for consistent theming
 - Test all components in both light and dark modes
 - Ensure sufficient contrast for accessibility
@@ -457,6 +487,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 ```
 
 **Animation Guidelines:**
+
 - Keep animations under 300ms for snappiness
 - Use hardware-accelerated properties (transform, opacity)
 - Respect `prefers-reduced-motion` (handled in CSS)
@@ -485,6 +516,7 @@ const processedData = useMemo(() => {
 ```
 
 **When to use:**
+
 - Wrap components that receive complex props in `React.memo`
 - Use `useCallback` for event handlers passed to child components
 - Use `useMemo` for expensive calculations or data transformations
@@ -495,16 +527,19 @@ const processedData = useMemo(() => {
 The app is configured as a PWA with offline support:
 
 **Manifest:** `/public/manifest.json`
+
 - App name, icons, theme colors
 - Standalone display mode
 - Portrait orientation
 
 **Icons Required:**
+
 - `/public/icon-192x192.png` (192x192px)
 - `/public/icon-512x512.png` (512x512px)
 - `/public/favicon.ico`
 
 **Testing PWA:**
+
 ```bash
 npm run build
 npx serve out  # Test static build locally
@@ -513,6 +548,7 @@ npx serve out  # Test static build locally
 ### Mobile Optimization
 
 **Responsive Design Checklist:**
+
 - [ ] Use mobile-first approach with Tailwind breakpoints
 - [ ] Test on viewport widths: 320px, 375px, 768px, 1024px, 1440px
 - [ ] Touch targets minimum 44x44px (iOS HIG)
@@ -521,6 +557,7 @@ npx serve out  # Test static build locally
 - [ ] Test with Chrome DevTools mobile emulation
 
 **Breakpoints:**
+
 ```typescript
 // Tailwind CSS breakpoints
 sm:  640px   // Small tablets
@@ -530,6 +567,7 @@ xl:  1280px  // Large desktops
 ```
 
 **Mobile-specific patterns:**
+
 ```typescript
 // Stack on mobile, row on desktop
 <div className="flex flex-col sm:flex-row gap-2">
@@ -558,6 +596,7 @@ import { CalendarView } from '@/components/calendar-view';
 ```
 
 **Guidelines:**
+
 - Load data for 7 days before/after current date
 - Show loading state while fetching
 - Handle timezone correctly (all times in local timezone)
@@ -577,6 +616,7 @@ import { ChartsView } from '@/components/charts-view';
 ```
 
 **Guidelines:**
+
 - Responsive containers (100% width)
 - Accessible color palette
 - Clear labels and legends
@@ -597,6 +637,7 @@ import { BestOptionFinder } from '@/components/best-option-finder';
 ```
 
 **Guidelines:**
+
 - Show loading state during search
 - Handle errors gracefully
 - Animate results entrance
@@ -623,13 +664,14 @@ import { BestOptionFinder } from '@/components/best-option-finder';
 </div>
 
 // Keyboard navigation
-<button 
+<button
   className="focus-visible:ring-2 focus-visible:ring-ring"
   onKeyDown={handleKeyDown}
 >
 ```
 
 **Checklist:**
+
 - [ ] All interactive elements keyboard accessible (Tab, Enter, Space)
 - [ ] Focus indicators visible (focus-visible)
 - [ ] Sufficient color contrast (4.5:1 for text)
@@ -642,6 +684,7 @@ import { BestOptionFinder } from '@/components/best-option-finder';
 ### Code Organization Best Practices
 
 **File Structure:**
+
 ```
 app/[locale]/          # Internationalized pages
 components/            # Reusable components
@@ -662,6 +705,7 @@ public/              # Static assets
 ```
 
 **Import Order:**
+
 1. React and Next.js imports
 2. Third-party libraries
 3. Internal components (@/components)
@@ -670,6 +714,7 @@ public/              # Static assets
 6. Styles
 
 **Component Structure:**
+
 ```typescript
 // 1. Imports
 import React, { useState, useCallback } from 'react';
@@ -689,10 +734,10 @@ const formatData = (data: any) => { };
 export const MyComponent = React.memo(function MyComponent(props: MyComponentProps) {
   // Hooks
   const [state, setState] = useState();
-  
+
   // Callbacks
   const handleClick = useCallback(() => { }, []);
-  
+
   // Render
   return <div>{props.title}</div>;
 });
@@ -704,6 +749,7 @@ function SubComponent() { }
 ### Testing Strategy
 
 **Manual Testing Checklist:**
+
 - [ ] Test all features in light and dark mode
 - [ ] Test with all three languages (en, fi, sv)
 - [ ] Test on mobile (Chrome DevTools)
@@ -720,6 +766,7 @@ function SubComponent() { }
 ### Performance Monitoring
 
 **Build Optimization:**
+
 ```bash
 npm run build        # Check bundle size
 npm run lint         # No warnings
@@ -727,6 +774,7 @@ npm run type-check   # No type errors
 ```
 
 **Metrics to Watch:**
+
 - First Contentful Paint (FCP): < 1.8s
 - Largest Contentful Paint (LCP): < 2.5s
 - Time to Interactive (TTI): < 3.8s
@@ -736,6 +784,7 @@ npm run type-check   # No type errors
 ### Deployment
 
 **Static Export for GitHub Pages:**
+
 ```bash
 npm run build  # Generates /out directory
 # GitHub Actions copies originalversion/
@@ -743,6 +792,7 @@ npm run build  # Generates /out directory
 ```
 
 **Environment:**
+
 - No server-side features (API routes, ISR)
 - All data fetching client-side
 - Static HTML generation

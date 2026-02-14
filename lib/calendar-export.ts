@@ -58,7 +58,7 @@ export const exportNextFreeSlot = (
   linkName: string,
   minutesUntilReservation: number,
   latitude: number,
-  longitude: number
+  longitude: number,
 ): void => {
   const now = new Date();
   const startTime = new Date(now.getTime() + 5 * 60 * 1000); // Start in 5 minutes
@@ -78,7 +78,7 @@ export const shareAvailability = async (
   hallName: string,
   linkName: string,
   resourceId: string,
-  isAvailable: boolean
+  isAvailable: boolean,
 ): Promise<boolean> => {
   const url = `https://resurssivaraus.espoo.fi/liikunnantilavaraus/haku/?ResourceIDs=${resourceId}`;
   const status = isAvailable ? 'Available now!' : 'Currently reserved';

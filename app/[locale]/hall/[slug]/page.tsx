@@ -27,8 +27,36 @@ export default async function HallPage({ params }: PageProps) {
     notFound();
   }
 
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'SportsActivityLocation',
+    name: hall.swimmingHallName,
+    description: hall.description,
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: hall.address?.split(',')[0],
+      addressLocality: 'Espoo',
+      postalCode: hall.address?.match(/\d{5}/)?.[0],
+      addressCountry: 'FI',
+    },
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: hall.latitude,
+      longitude: hall.longitude,
+    },
+    openingHours: hall.opening,
+    telephone: hall.phone,
+    image: [], // Add images if available in the future
+    isAccessibleForFree: false, // Usually paid
+    publicAccess: true,
+  };
+
   return (
     <div className="min-h-screen bg-background">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <HallClient hall={hall} />
     </div>
   );

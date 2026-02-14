@@ -1,16 +1,30 @@
 'use client';
 
-import { SwimmingHallCard } from '@/components/swimming-hall-card';
+import { SwimmingHallCard } from '@/components/SwimmingHallCard';
 import { swimmingHallData } from '@/lib/swimming-halls-data';
-import { ThemeToggle } from '@/components/theme-toggle';
-import { LanguageSwitcher } from '@/components/language-switcher';
-import { NotificationToggle } from '@/components/notification-toggle';
-import { BottomNav } from '@/components/bottom-nav';
+import { ThemeToggle } from '@/components/ThemeToggle';
+import { LanguageSwitcher } from '@/components/LanguageSwitcher';
+import { NotificationToggle } from '@/components/NotificationToggle';
+import { BottomNav } from '@/components/BottomNav';
+import { MobileMenu } from '@/components/MobileMenu';
 import { useTranslations, useLocale } from 'next-intl';
 import { type ReactElement, useMemo, useState } from 'react';
 import { Info, Sparkles, MapPin, Loader2 } from 'lucide-react';
 import Link from 'next/link';
 import { calculateDistance, getUserLocation, type UserLocation } from '@/lib/location-service';
+import { Button, buttonVariants } from '@/components/ui/Button';
+import { cn } from '@/lib/utils';
+import dynamic from 'next/dynamic';
+import { List, Map } from 'lucide-react';
+
+const MapView = dynamic(() => import('@/components/MapView'), {
+  ssr: false,
+  loading: () => (
+    <div className="w-full h-[600px] bg-muted animate-pulse rounded-lg border-2 border-black dark:border-white flex items-center justify-center">
+      Loading Map...
+    </div>
+  ),
+});
 
 export default function Home(): ReactElement {
   const t = useTranslations('app');
@@ -21,6 +35,7 @@ export default function Home(): ReactElement {
 
   const [userLocation, setUserLocation] = useState<UserLocation | null>(null);
   const [isLocationLoading, setIsLocationLoading] = useState(false);
+  const [viewMode, setViewMode] = useState<'list' | 'map'>('list');
 
   const handleToggleLocation = async () => {
     if (userLocation) {
@@ -58,7 +73,7 @@ export default function Home(): ReactElement {
           userLocation.latitude,
           userLocation.longitude,
           hall.latitude,
-          hall.longitude
+          hall.longitude,
         );
         return { ...hall, distance };
       })
@@ -74,16 +89,19 @@ export default function Home(): ReactElement {
           </h1>
           <div className="flex items-center gap-1 sm:gap-2">
             <NotificationToggle />
-            <Link
-              href={`/${locale}/about`}
-              className="p-2 rounded-md hover:bg-accent transition-colors focus-visible:ring-2 focus-visible:ring-ring"
-              aria-label={tNav('about')}
-              title={tNav('about')}
-            >
-              <Info className="h-4 w-4 sm:h-5 sm:w-5" aria-hidden="true" />
-            </Link>
-            <LanguageSwitcher />
-            <ThemeToggle />
+            <div className="hidden md:flex items-center gap-1 sm:gap-2">
+              <Link
+                href={`/${locale}/about`}
+                className="p-2 rounded-md hover:bg-accent transition-colors focus-visible:ring-2 focus-visible:ring-ring"
+                aria-label={tNav('about')}
+                title={tNav('about')}
+              >
+                <Info className="h-4 w-4 sm:h-5 sm:w-5" aria-hidden="true" />
+              </Link>
+              <LanguageSwitcher />
+              <ThemeToggle />
+            </div>
+            <MobileMenu />
           </div>
         </div>
       </header>
@@ -102,16 +120,20 @@ export default function Home(): ReactElement {
           <div className="flex flex-wrap justify-center gap-4 mb-8">
             <Link
               href={`/${locale}/best`}
-              className="inline-flex items-center gap-2 px-6 py-3 bg-linear-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white font-bold rounded-lg shadow-lg hover:shadow-xl transition-all transform hover:scale-105 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+              className={cn(
+                buttonVariants({ size: 'lg' }),
+                'bg-linear-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white font-bold rounded-lg shadow-lg hover:shadow-xl transition-all transform hover:scale-105',
+              )}
             >
               <Sparkles className="h-5 w-5" aria-hidden="true" />
               <span>{t('findBestOptions')}</span>
             </Link>
 
-            <button
+            <Button
               onClick={handleToggleLocation}
               disabled={isLocationLoading}
-              className={`inline-flex items-center gap-2 px-6 py-3 font-bold rounded-lg shadow-lg hover:shadow-xl transition-all transform hover:scale-105 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ${
+              size="lg"
+              className={`font-bold rounded-lg shadow-lg hover:shadow-xl transition-all transform hover:scale-105 ${
                 userLocation
                   ? 'bg-secondary text-secondary-foreground hover:bg-secondary/90'
                   : 'bg-primary text-primary-foreground hover:bg-primary/90'
@@ -123,30 +145,63 @@ export default function Home(): ReactElement {
                 <MapPin className="h-5 w-5" />
               )}
               <span>{getLocationButtonText()}</span>
-            </button>
+            </Button>
+
+            <div className="flex items-center bg-muted rounded-lg p-1 border-2 border-black dark:border-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)]">
+              <Button
+                variant={viewMode === 'list' ? 'secondary' : 'ghost'}
+                size="sm"
+                onClick={() => setViewMode('list')}
+                className={cn(
+                  'rounded-md',
+                  viewMode === 'list' && 'bg-background border-2 border-black dark:border-white',
+                )}
+              >
+                <List className="h-4 w-4 mr-2" />
+                {tNav('list')}
+              </Button>
+              <Button
+                variant={viewMode === 'map' ? 'secondary' : 'ghost'}
+                size="sm"
+                onClick={() => setViewMode('map')}
+                className={cn(
+                  'rounded-md',
+                  viewMode === 'map' && 'bg-background border-2 border-black dark:border-white',
+                )}
+              >
+                <Map className="h-4 w-4 mr-2" />
+                {tNav('map')}
+              </Button>
+            </div>
           </div>
 
           <div className="mx-auto max-w-4xl">
-            {userLocation ? (
-              <div className="mb-4 text-center">
-                <span className="inline-block px-3 py-1 text-xs font-semibold bg-accent text-accent-foreground rounded-full">
-                  📍 {tLocation('sortedByDistance')}
-                </span>
-              </div>
-            ) : null}
-            <div className="grid grid-cols-1 gap-6 sm:gap-8 lg:gap-10">
-              {sortedHalls.map((hall) => (
-                <SwimmingHallCard
-                  key={hall.swimmingHallName}
-                  hallName={hall.swimmingHallName}
-                  links={hall.relatedLinks}
-                  latitude={hall.latitude}
-                  longitude={hall.longitude}
-                  opening={hall.opening}
-                  distance={hall.distance}
-                />
-              ))}
-            </div>
+            {viewMode === 'list' ? (
+              <>
+                {userLocation ? (
+                  <div className="mb-4 text-center">
+                    <span className="inline-block px-3 py-1 text-xs font-semibold bg-accent text-accent-foreground rounded-full">
+                      📍 {tLocation('sortedByDistance')}
+                    </span>
+                  </div>
+                ) : null}
+                <div className="grid grid-cols-1 gap-6 sm:gap-8 lg:gap-10">
+                  {sortedHalls.map((hall) => (
+                    <SwimmingHallCard
+                      key={hall.swimmingHallName}
+                      hallName={hall.swimmingHallName}
+                      links={hall.relatedLinks}
+                      latitude={hall.latitude}
+                      longitude={hall.longitude}
+                      opening={hall.opening}
+                      distance={hall.distance}
+                    />
+                  ))}
+                </div>
+              </>
+            ) : (
+              <MapView halls={sortedHalls} locale={locale} />
+            )}
           </div>
         </div>
       </main>

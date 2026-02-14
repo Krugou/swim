@@ -1,11 +1,14 @@
 import type { Metadata } from 'next';
 import type { ReactElement } from 'react';
+import { Space_Grotesk } from 'next/font/google';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
-import { ThemeProvider } from '@/components/theme-provider';
+import { ThemeProvider } from '@/components/ThemeProvider';
+import { Toaster } from '@/components/ui/Toaster';
+import { InstallPrompt } from '@/components/InstallPrompt';
 import { notFound } from 'next/navigation';
 import { locales } from '@/lib/i18n/config';
-import { QueryClientProvider } from '@/components/query-client-provider';
+import { QueryClientProvider } from '@/components/QueryClientProvider';
 import '../globals.css';
 
 export const metadata: Metadata = {
@@ -42,6 +45,12 @@ export function generateStaticParams(): { locale: string }[] {
   return locales.map((locale) => ({ locale }));
 }
 
+const spaceGrotesk = Space_Grotesk({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-space-grotesk',
+});
+
 export default async function RootLayout({
   children,
   params,
@@ -63,7 +72,7 @@ export default async function RootLayout({
   return (
     <html lang={locale} suppressHydrationWarning>
       <head />
-      <body className="antialiased">
+      <body className={`${spaceGrotesk.variable} antialiased`}>
         <a href="#main-content" className="skip-to-content">
           Skip to main content
         </a>
@@ -74,7 +83,11 @@ export default async function RootLayout({
             enableSystem
             disableTransitionOnChange={false}
           >
-            <NextIntlClientProvider messages={messages}>{children}</NextIntlClientProvider>
+            <NextIntlClientProvider messages={messages}>
+              {children}
+              <Toaster />
+              <InstallPrompt />
+            </NextIntlClientProvider>
           </ThemeProvider>
         </QueryClientProvider>
       </body>

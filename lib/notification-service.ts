@@ -58,7 +58,7 @@ export const subscribeToPushNotifications = async (): Promise<PushSubscription |
       // You would need to generate a VAPID key for production
       // For now, this is a placeholder
       applicationServerKey: urlBase64ToUint8Array(
-        'BEl62iUYgUivxIkv69yViEuiBIa-Ib37J8xQmrXj-j9v4KJ9b8KjXJx5rJxKjJxJx'
+        'BEl62iUYgUivxIkv69yViEuiBIa-Ib37J8xQmrXj-j9v4KJ9b8KjXJx5rJxKjJxJx',
       ) as BufferSource,
     });
 
@@ -132,7 +132,7 @@ function urlBase64ToUint8Array(base64String: string): Uint8Array {
 export const checkAndNotifyAvailability = (
   hallName: string,
   isAvailable: boolean,
-  wasPreviouslyUnavailable: boolean
+  wasPreviouslyUnavailable: boolean,
 ): void => {
   if (isAvailable && wasPreviouslyUnavailable && Notification.permission === 'granted') {
     showNotification(`${hallName} is now available!`, {

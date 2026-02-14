@@ -4,7 +4,8 @@ import { motion } from 'framer-motion';
 import { X, MapPin, ExternalLink, Phone, Clock, Info as InfoIcon } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { type SwimmingHall } from '@/lib/swimming-halls-data';
-import { QuickActions } from './quick-actions';
+import { Button } from '@/components/ui/Button';
+import { QuickActions } from '@/components/QuickActions';
 
 interface HallDetailsProps {
   hall: SwimmingHall;
@@ -82,13 +83,15 @@ export function HallDetails({ hall, onClose }: HallDetailsProps) {
           <h1 className="text-2xl sm:text-3xl font-bold text-foreground">
             {hall.swimmingHallName}
           </h1>
-          <button
+          <Button
             onClick={onClose}
-            className="p-2 hover:bg-muted rounded-full transition-colors focus-visible:ring-2 focus-visible:ring-ring"
+            variant="ghost"
+            size="icon"
+            className="rounded-full"
             aria-label={t('back')}
           >
             <X className="h-6 w-6" />
-          </button>
+          </Button>
         </div>
 
         {/* Content - Structured Card Grid */}
@@ -112,15 +115,16 @@ export function HallDetails({ hall, onClose }: HallDetailsProps) {
                 </div>
                 <p className="text-muted-foreground text-lg mb-6">{details.address}</p>
               </div>
-              <a
-                href={`https://www.google.com/maps/dir/?api=1&destination=${hall.latitude},${hall.longitude}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 px-4 py-3 bg-primary text-primary-foreground rounded-xl font-bold hover:opacity-90 transition-all shadow-md active:scale-95"
-              >
-                <ExternalLink className="h-4 w-4" />
-                {tDetails('getDirections')}
-              </a>
+              <Button asChild className="w-full gap-2 font-bold shadow-md active:scale-95">
+                <a
+                  href={`https://www.google.com/maps/dir/?api=1&destination=${hall.latitude},${hall.longitude}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <ExternalLink className="h-4 w-4" />
+                  {tDetails('getDirections')}
+                </a>
+              </Button>
             </section>
 
             {/* Opening Hours Card */}

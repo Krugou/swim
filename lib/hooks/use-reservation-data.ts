@@ -126,7 +126,7 @@ export const analyzeReservations = (data: ReservationData[]): AnalyzedReservatio
   let isCurrentlyFreePractice = false;
 
   const sortedData = [...data].sort(
-    (a, b) => new Date(a.start).getTime() - new Date(b.start).getTime()
+    (a, b) => new Date(a.start).getTime() - new Date(b.start).getTime(),
   );
 
   const currentReservation = sortedData.find((reservation) => {
@@ -138,7 +138,7 @@ export const analyzeReservations = (data: ReservationData[]): AnalyzedReservatio
   if (currentReservation) {
     const reservationEnd = new Date(currentReservation.end);
     const minutesRemaining = Math.floor(
-      (reservationEnd.getTime() - currentTime.getTime()) / (60 * 1000)
+      (reservationEnd.getTime() - currentTime.getTime()) / (60 * 1000),
     );
 
     const hours = reservationEnd.getHours().toString().padStart(2, '0');
@@ -193,7 +193,7 @@ export const analyzeReservations = (data: ReservationData[]): AnalyzedReservatio
     const firstFutureReservation = sortedData.find((r) => new Date(r.start) > currentTime);
     if (firstFutureReservation) {
       const minutesUntil = Math.floor(
-        (new Date(firstFutureReservation.start).getTime() - currentTime.getTime()) / (60 * 1000)
+        (new Date(firstFutureReservation.start).getTime() - currentTime.getTime()) / (60 * 1000),
       );
       if (minutesUntil > 15) {
         nextAvailableSlot = `${minutesUntil} min`;

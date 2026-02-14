@@ -1,8 +1,9 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { ThemeToggle } from '@/components/theme-toggle';
-import { LanguageSwitcher } from '@/components/language-switcher';
+import { ThemeToggle } from '@/components/ThemeToggle';
+import { LanguageSwitcher } from '@/components/LanguageSwitcher';
+import { MobileMenu } from '@/components/MobileMenu';
 import { ArrowLeft } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { type ReactElement } from 'react';
@@ -27,8 +28,11 @@ export default function AboutPage(): ReactElement {
             <span className="text-sm sm:text-base font-medium">{tNav('back')}</span>
           </button>
           <div className="flex items-center gap-1 sm:gap-2">
-            <LanguageSwitcher />
-            <ThemeToggle />
+            <div className="hidden md:flex items-center gap-1 sm:gap-2">
+              <LanguageSwitcher />
+              <ThemeToggle />
+            </div>
+            <MobileMenu />
           </div>
         </div>
       </header>

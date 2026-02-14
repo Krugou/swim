@@ -1,7 +1,9 @@
 {
   "app": {
     "title": "Simhallens tidtabeller",
-    "description": "Realtidstillgänglighet för simhallar i Esbo"
+    "description": "Realtidstillgänglighet för simhallar i Esbo",
+    "themeLabel": "Tema",
+    "languageLabel": "Språk"
   },
   "navigation": {
     "home": "Hem",
@@ -11,7 +13,9 @@
     "swimmingHalls": "Simhallar",
     "best": "Bäst",
     "calendar": "Kalender",
-    "stats": "Statistik"
+    "stats": "Statistik",
+    "list": "Lista",
+    "map": "Karta"
   },
   "theme": {
     "light": "Ljus",
@@ -111,7 +115,8 @@
     "shared": "Delad!",
     "addToCalendar": "Lägg till i kalender",
     "added": "Tillagd!",
-    "viewDetails": "Visa detaljer"
+    "viewDetails": "Visa detaljer",
+    "refresh": "Uppdatera data"
   },
   "hallDetails": {
     "description": "Beskrivning",

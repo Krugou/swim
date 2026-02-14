@@ -1,16 +1,18 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/Card';
+import { Button } from '@/components/ui/Button';
 import { type RelatedLink } from '@/lib/swimming-halls-data';
 import { useTranslations, useLocale } from 'next-intl';
 import { RefreshCcw, Info } from 'lucide-react';
-import { WeatherDisplay } from '@/components/weather-display';
+import { WeatherDisplay } from '@/components/WeatherDisplay';
 import { useQueryClient } from '@tanstack/react-query';
 import Link from 'next/link';
 import { slugify } from '@/lib/slugify';
 import { checkIsOpen } from '@/lib/opening-hours';
-import { ResourceLink } from '@/components/resource-link';
+import { ResourceLink } from '@/components/ResourceLink';
+import { toast } from 'sonner';
 
 interface SwimmingHallCardProps {
   hallName: string;
@@ -32,12 +34,14 @@ export function SwimmingHallCard({
   opening,
 }: SwimmingHallCardProps) {
   const tLocation = useTranslations('location');
+  const tQuickActions = useTranslations('quickActions');
   const tDetails = useTranslations('hallDetails');
   const queryClient = useQueryClient();
   const locale = useLocale();
   const isOpen = checkIsOpen(opening);
 
   const handleRefreshAll = () => {
+    toast.info(tDetails('refreshingData'));
     links.forEach((link) => {
       queryClient.invalidateQueries({ queryKey: ['reservations', link.url] });
     });
@@ -50,7 +54,7 @@ export function SwimmingHallCard({
       transition={{ duration: 0.3 }}
       whileHover={{ y: -4 }}
     >
-      <Card className="h-full transition-all hover:-translate-y-1 hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] dark:hover:shadow-[8px_8px_0px_0px_rgba(255,255,255,1)]">
+      <Card interactive className="h-full">
         <CardHeader>
           <div className="flex flex-col gap-2">
             <div className="flex items-center justify-between gap-2">
@@ -61,22 +65,26 @@ export function SwimmingHallCard({
                     📍 {distance.toFixed(1)} km {tLocation('away')}
                   </span>
                 ) : null}
-                <Link
-                  href={`/${locale}/hall/${slugify(hallName)}`}
-                  className="p-2 bg-secondary text-secondary-foreground border-2 border-black dark:border-white rounded-md shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)] hover:-translate-y-0.5 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:hover:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] active:translate-y-0 active:shadow-none transition-all"
+                <Button
+                  asChild
+                  variant="secondary"
+                  size="icon"
                   aria-label={tDetails('viewDetails')}
                   title={tDetails('viewDetails')}
                 >
-                  <Info className="h-4 w-4" />
-                </Link>
-                <button
+                  <Link href={`/${locale}/hall/${slugify(hallName)}`}>
+                    <Info className="h-4 w-4" />
+                  </Link>
+                </Button>
+                <Button
+                  variant="accent"
+                  size="icon"
                   onClick={handleRefreshAll}
-                  className="p-2 bg-accent text-accent-foreground border-2 border-black dark:border-white rounded-md shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)] hover:-translate-y-0.5 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:hover:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] active:translate-y-0 active:shadow-none transition-all"
-                  aria-label="Refresh all data"
-                  title="Refresh all data"
+                  aria-label={tQuickActions('refresh')}
+                  title={tQuickActions('refresh')}
                 >
                   <RefreshCcw className="h-4 w-4" />
-                </button>
+                </Button>
               </div>
             </div>
             <WeatherDisplay latitude={latitude} longitude={longitude} />

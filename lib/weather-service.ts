@@ -36,7 +36,7 @@ interface YrNoResponse {
 
 export async function fetchWeatherData(
   latitude: number,
-  longitude: number
+  longitude: number,
 ): Promise<WeatherData | null> {
   try {
     const url = `https://api.met.no/weatherapi/locationforecast/2.0/compact?lat=${latitude}&lon=${longitude}`;

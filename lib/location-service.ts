@@ -1,10 +1,5 @@
 // Haversine formula to calculate distance between two points on Earth
-export function calculateDistance(
-  lat1: number,
-  lon1: number,
-  lat2: number,
-  lon2: number
-): number {
+export function calculateDistance(lat1: number, lon1: number, lat2: number, lon2: number): number {
   const R = 6371; // Radius of the Earth in kilometers
   const dLat = toRad(lat2 - lat1);
   const dLon = toRad(lon2 - lon1);
@@ -46,7 +41,7 @@ export async function getUserLocation(): Promise<UserLocation | null> {
       {
         timeout: 10000, // 10 second timeout
         enableHighAccuracy: false,
-      }
+      },
     );
   });
 }

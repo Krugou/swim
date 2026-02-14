@@ -1,4 +1,4 @@
-'use client';
+import { Button } from '@/components/ui/Button';
 
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslations } from 'next-intl';
@@ -57,15 +57,15 @@ export function ResourceLink({ link, isOpen }: ResourceLinkProps) {
           <span className="font-bold text-sm sm:text-base leading-tight">
             {link.relatedLinkName}
           </span>
-          <a
-            href={reservationUrl + link.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center justify-center shrink-0 bg-primary hover:bg-primary/90 text-primary-foreground font-bold py-1.5 px-3 rounded-md text-xs sm:text-sm transition-all focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 border-2 border-black dark:border-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)] hover:-translate-y-0.5 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:hover:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] active:translate-x-0 active:translate-y-0 active:shadow-none"
+          <Button
+            asChild
+            size="sm"
             aria-label={`${tReservation('bookNow')} - ${link.relatedLinkName}`}
           >
-            {tReservation('bookNow')}
-          </a>
+            <a href={reservationUrl + link.url} target="_blank" rel="noopener noreferrer">
+              {tReservation('bookNow')}
+            </a>
+          </Button>
         </div>
         <AnimatePresence mode="wait">
           {isLoading ? (
@@ -80,18 +80,16 @@ export function ResourceLink({ link, isOpen }: ResourceLinkProps) {
               <span className="sr-only">{t('loading')}</span>
             </motion.div>
           ) : error ? (
-            <motion.button
-              key="error"
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.8 }}
-              onClick={() => refetch()}
-              className="inline-flex items-center justify-center gap-2 w-full h-10 text-white font-bold bg-red-600 hover:bg-red-700 rounded-md border-2 border-black dark:border-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)] hover:-translate-y-0.5 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:hover:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] active:translate-y-0 active:shadow-none transition-all focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-              aria-label={tErrors('loadingData')}
-            >
-              <AlertCircle className="h-4 w-4" aria-hidden="true" />
-              <span className="text-sm">{tErrors('retry')}</span>
-            </motion.button>
+            <div className="w-full">
+              <Button
+                onClick={() => refetch()}
+                variant="destructive"
+                aria-label={tErrors('loadingData')}
+              >
+                <AlertCircle className="h-4 w-4 mr-2" aria-hidden="true" />
+                <span className="text-sm">{tErrors('retry')}</span>
+              </Button>
+            </div>
           ) : status && !status.hasFreeReservation ? (
             <motion.a
               key="status"

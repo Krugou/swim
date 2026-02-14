@@ -88,6 +88,7 @@ This project automatically deploys to GitHub Pages when changes are pushed to th
 When working on this project with GitHub Copilot:
 
 ### Code Style
+
 - Use TypeScript with strict type checking
 - Follow React Server Components patterns (default in Next.js App Router)
 - Use `'use client'` directive only when needed (state, effects, event handlers)
@@ -96,6 +97,7 @@ When working on this project with GitHub Copilot:
 - Follow the shadcn/ui component patterns for consistency
 
 ### Component Guidelines
+
 - Keep components small and focused on single responsibility
 - Extract reusable logic into custom hooks
 - Use the `cn()` utility from `@/lib/utils` for conditional classNames
@@ -103,27 +105,32 @@ When working on this project with GitHub Copilot:
 - Place feature components in `components/`
 
 ### Data Management
+
 - Keep static data in `lib/` directory
 - Use proper TypeScript interfaces for all data structures
 - Follow the existing pattern in `swimming-halls-data.ts`
 
 ### Styling
+
 - Use Tailwind CSS classes directly in components
 - Reference color palette variables defined in `globals.css`
 - Ensure responsive design with Tailwind breakpoints (sm:, md:, lg:)
 - Maintain consistent spacing and sizing
 
 ### Testing Changes
+
 - Always run `npm run build` before committing to verify static export works
 - Test responsive layouts at different screen sizes
 - Verify that the original version remains functional at `/originalversion`
 
 ### Git Workflow
+
 - Write clear, descriptive commit messages
 - Keep commits focused and atomic
 - Update README if adding new features or changing setup
 
 ### Performance Considerations
+
 - Minimize client-side JavaScript (favor Server Components)
 - Optimize images (use Next.js Image component when needed)
 - Keep bundle size small for fast page loads
@@ -131,6 +138,7 @@ When working on this project with GitHub Copilot:
 ## Original Version
 
 The `originalversion/` folder contains the original vanilla JavaScript implementation. This version is:
+
 - Standalone HTML/JS without build process
 - Uses CDN for Tailwind CSS
 - Accessible at `/originalversion` when deployed

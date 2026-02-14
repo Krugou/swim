@@ -1,6 +1,6 @@
 'use client';
 
-import { HallDetails } from '@/components/hall-details';
+import { HallDetails } from '@/components/HallDetails';
 import { useRouter } from 'next/navigation';
 import { type SwimmingHall } from '@/lib/swimming-halls-data';
 

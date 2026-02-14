@@ -2,7 +2,9 @@
   "app": {
     "title": "Uimahallit",
     "description": "Espoon uimahallien reaaliaikainen tilanne",
-    "findBestOptions": "Etsi parhaat vaihtoehdot"
+    "findBestOptions": "Etsi parhaat vaihtoehdot",
+    "themeLabel": "Teema",
+    "languageLabel": "Kieli"
   },
   "navigation": {
     "home": "Etusivu",
@@ -12,7 +14,9 @@
     "swimmingHalls": "Uimahallit",
     "best": "Paras",
     "calendar": "Kalenteri",
-    "stats": "Tilastot"
+    "stats": "Tilastot",
+    "list": "Lista",
+    "map": "Kartta"
   },
   "theme": {
     "light": "Valoisa",
@@ -113,7 +117,8 @@
     "shared": "Jaettu!",
     "addToCalendar": "Lisää kalenteriin",
     "added": "Lisätty!",
-    "viewDetails": "Näytä tiedot"
+    "viewDetails": "Näytä tiedot",
+    "refresh": "Päivitä tiedot"
   },
   "hallDetails": {
     "description": "Kuvaus",

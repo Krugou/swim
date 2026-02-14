@@ -10,7 +10,7 @@ export const getTimeWindow = (): { start: number; end: number } => {
 
 export const buildProxyUrl = (
   resourceId: string,
-  timeWindow: { start: number; end: number }
+  timeWindow: { start: number; end: number },
 ): string => {
   const cityUrl = `https://resurssivaraus.espoo.fi/Tailored/prime_product_intranet/espoo/web/Calendar/ReservationData.aspx?resourceid%5B%5D=${resourceId}&start=${timeWindow.start}&end=${timeWindow.end}&_=${timeWindow.start}`;
   // Using the worker proxy to bypass CORS

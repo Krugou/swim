@@ -1,6 +1,7 @@
 'use client';
 
 import { Bell, BellOff } from 'lucide-react';
+import { Button } from '@/components/ui/Button';
 import { useTranslations } from 'next-intl';
 import { useState, useEffect } from 'react';
 import {
@@ -82,10 +83,12 @@ export function NotificationToggle() {
   }
 
   return (
-    <button
+    <Button
       onClick={handleToggle}
       disabled={isLoading || permission === 'denied'}
-      className={`p-2 rounded-md transition-colors focus-visible:ring-2 focus-visible:ring-ring ${getClassName()}`}
+      variant="ghost"
+      size="icon"
+      className={`rounded-md transition-colors focus-visible:ring-2 focus-visible:ring-ring ${getClassName()}`}
       aria-label={isEnabled ? tNotifications('disable') : tNotifications('enable')}
       title={getTitle()}
     >
@@ -94,6 +97,6 @@ export function NotificationToggle() {
       ) : (
         <BellOff className={`h-4 w-4 sm:h-5 sm:w-5 ${isLoading ? 'animate-pulse' : ''}`} />
       )}
-    </button>
+    </Button>
   );
 }

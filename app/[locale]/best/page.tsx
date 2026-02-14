@@ -27,7 +27,7 @@ export default function BestOptionsPage() {
 
   // Pre-fetch all data
   const allResourceIds = swimmingHallData.flatMap((hall) =>
-    hall.relatedLinks.map((link) => link.url)
+    hall.relatedLinks.map((link) => link.url),
   );
 
   // Auto-trigger queries on mount
