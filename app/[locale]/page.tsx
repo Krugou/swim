@@ -16,6 +16,7 @@ import { Button, buttonVariants } from '@/components/ui/Button';
 import { cn } from '@/lib/utils';
 import dynamic from 'next/dynamic';
 import { List, Map } from 'lucide-react';
+import { slugify } from '@/lib/slugify';
 
 const MapView = dynamic(() => import('@/components/MapView'), {
   ssr: false,
@@ -194,6 +195,7 @@ const Home = (): ReactElement => {
                     <SwimmingHallCard
                       key={hall.swimmingHallName}
                       hallName={hall.swimmingHallName}
+                      id={slugify(hall.swimmingHallName)}
                       links={hall.relatedLinks}
                       latitude={hall.latitude}
                       longitude={hall.longitude}
