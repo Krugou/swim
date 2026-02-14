@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import type { ReactElement } from 'react';
 import { Space_Grotesk } from 'next/font/google';
 import { NextIntlClientProvider } from 'next-intl';
-import { getMessages } from 'next-intl/server';
+import { getMessages, getTranslations } from 'next-intl/server';
 import { ThemeProvider } from '@/components/ThemeProvider';
 import { Toaster } from '@/components/ui/Toaster';
 import { InstallPrompt } from '@/components/InstallPrompt';
@@ -67,13 +67,14 @@ const RootLayout = async ({
   // Providing all messages to the client
   // side is the easiest way to get started
   const messages = await getMessages();
+  const t = await getTranslations('accessibility');
 
   return (
     <html lang={locale} suppressHydrationWarning>
       <head />
       <body className={`${spaceGrotesk.variable} antialiased`}>
         <a href="#main-content" className="skip-to-content">
-          Skip to main content
+          {t('skipToContent')}
         </a>
         <QueryClientProvider>
           <ThemeProvider
