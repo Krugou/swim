@@ -10,7 +10,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState, useEffect } from 'react';
 
-export function MobileMenu() {
+export const MobileMenu = () => {
   const tNav = useTranslations('navigation');
   const tApp = useTranslations('app');
   const pathname = usePathname();
@@ -67,4 +67,4 @@ export function MobileMenu() {
       </SheetContent>
     </Sheet>
   );
-}
+};

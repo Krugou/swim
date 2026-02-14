@@ -60,7 +60,7 @@ const hallDetails: Record<
   },
 };
 
-export function HallDetails({ hall, onClose }: HallDetailsProps) {
+export const HallDetails = ({ hall, onClose }: HallDetailsProps) => {
   const t = useTranslations('navigation');
   const tDetails = useTranslations('hallDetails');
 
@@ -194,4 +194,4 @@ export function HallDetails({ hall, onClose }: HallDetailsProps) {
       </motion.div>
     </div>
   );
-}
+};

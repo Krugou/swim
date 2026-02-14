@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/Button';
 import { motion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 
-export function BottomNav() {
+export const BottomNav = () => {
   const tNav = useTranslations('navigation');
   const tAccessibility = useTranslations('accessibility');
 
@@ -38,4 +38,4 @@ export function BottomNav() {
       </div>
     </motion.nav>
   );
-}
+};

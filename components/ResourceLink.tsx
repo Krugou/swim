@@ -12,7 +12,7 @@ interface ResourceLinkProps {
   isOpen?: boolean | undefined;
 }
 
-export function ResourceLink({ link, isOpen }: ResourceLinkProps) {
+export const ResourceLink = ({ link, isOpen }: ResourceLinkProps) => {
   const { data: status, isLoading, error, dataUpdatedAt, refetch } = useReservationData(link.url);
   const t = useTranslations('status');
   const tReservation = useTranslations('reservation');
@@ -23,7 +23,9 @@ export function ResourceLink({ link, isOpen }: ResourceLinkProps) {
   const proxyUrl = buildProxyUrl(link.url, timeWindow);
 
   const getStatusBadge = (status?: AnalyzedReservationData) => {
-    if (!status || isLoading) return null;
+    if (!status || isLoading) {
+      return null;
+    }
     if (status.hasFreeReservation) {
       return (
         <span className="inline-block px-2 py-1 text-xs font-bold uppercase border-2 border-black dark:border-white bg-green-500 text-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)] rounded-md">
@@ -197,4 +199,4 @@ export function ResourceLink({ link, isOpen }: ResourceLinkProps) {
       </div>
     </motion.li>
   );
-}
+};

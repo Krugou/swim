@@ -41,9 +41,8 @@ export const viewport = {
 
 export const dynamicParams = false;
 
-export function generateStaticParams(): { locale: string }[] {
-  return locales.map((locale) => ({ locale }));
-}
+export const generateStaticParams = (): { locale: string }[] =>
+  locales.map((locale) => ({ locale }));
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
@@ -51,13 +50,13 @@ const spaceGrotesk = Space_Grotesk({
   variable: '--font-space-grotesk',
 });
 
-export default async function RootLayout({
+const RootLayout = async ({
   children,
   params,
 }: Readonly<{
   children: React.ReactNode;
   params: Promise<{ locale: string }>;
-}>): Promise<ReactElement> {
+}>): Promise<ReactElement> => {
   const { locale } = await params;
 
   // Ensure that the incoming `locale` is valid
@@ -93,4 +92,6 @@ export default async function RootLayout({
       </body>
     </html>
   );
-}
+};
+
+export default RootLayout;

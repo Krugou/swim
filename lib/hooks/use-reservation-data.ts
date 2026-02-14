@@ -229,16 +229,15 @@ export const fetchReservationData = async (resourceId: string): Promise<Reservat
   return response.json();
 };
 
-export function useReservationData(resourceId: string) {
-  return useQuery({
+export const useReservationData = (resourceId: string) =>
+  useQuery({
     queryKey: ['reservations', resourceId],
     queryFn: () => fetchReservationData(resourceId),
     select: (data) => analyzeReservations(data),
   });
-}
 
 // Hook for multiple resources (combines all resource data for a hall)
-export function useMultipleReservationData(resourceIds: string[]) {
+export const useMultipleReservationData = (resourceIds: string[]) => {
   const queries = useQueries({
     queries: resourceIds.map((id) => ({
       queryKey: ['reservations', id],
@@ -277,4 +276,4 @@ export function useMultipleReservationData(resourceIds: string[]) {
     data: analyzeReservations(allReservations),
     dataUpdatedAt,
   };
-}
+};

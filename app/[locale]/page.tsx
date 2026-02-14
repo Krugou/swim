@@ -26,7 +26,7 @@ const MapView = dynamic(() => import('@/components/MapView'), {
   ),
 });
 
-export default function Home(): ReactElement {
+const Home = (): ReactElement => {
   const t = useTranslations('app');
   const tNav = useTranslations('navigation');
   const tFooter = useTranslations('footer');
@@ -57,8 +57,12 @@ export default function Home(): ReactElement {
   };
 
   const getLocationButtonText = () => {
-    if (isLocationLoading) return tLocation('requesting');
-    if (userLocation) return tLocation('disable');
+    if (isLocationLoading) {
+      return tLocation('requesting');
+    }
+    if (userLocation) {
+      return tLocation('disable');
+    }
     return tLocation('enable');
   };
 
@@ -219,4 +223,6 @@ export default function Home(): ReactElement {
       <BottomNav />
     </>
   );
-}
+};
+
+export default Home;

@@ -25,14 +25,14 @@ interface SwimmingHallCardProps {
   opening?: string | undefined;
 }
 
-export function SwimmingHallCard({
+export const SwimmingHallCard = ({
   hallName,
   links,
   latitude,
   longitude,
   distance,
   opening,
-}: SwimmingHallCardProps) {
+}: SwimmingHallCardProps) => {
   const tLocation = useTranslations('location');
   const tQuickActions = useTranslations('quickActions');
   const tDetails = useTranslations('hallDetails');
@@ -100,4 +100,4 @@ export function SwimmingHallCard({
       </Card>
     </motion.div>
   );
-}
+};

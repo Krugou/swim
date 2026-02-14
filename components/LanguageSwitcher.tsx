@@ -7,7 +7,7 @@ import { usePathname, useRouter } from 'next/navigation';
 import { type Locale, localeNames } from '@/lib/i18n/config';
 import { Languages } from 'lucide-react';
 
-export function LanguageSwitcher() {
+export const LanguageSwitcher = () => {
   const locale = useLocale() as Locale;
   const router = useRouter();
   const pathname = usePathname();
@@ -67,4 +67,4 @@ export function LanguageSwitcher() {
       ) : null}
     </div>
   );
-}
+};

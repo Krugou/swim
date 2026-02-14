@@ -22,6 +22,21 @@ const eslintConfig = defineConfig([
           caughtErrorsIgnorePattern: '^_',
         },
       ],
+      'prefer-arrow-callback': 'error',
+      'func-style': ['error', 'expression'],
+      'arrow-body-style': ['error', 'as-needed'],
+      'eqeqeq': ['error', 'always'],
+      'no-var': 'error',
+      'prefer-const': 'error',
+      'curly': ['error', 'all'],
+      'no-console': 'warn',
+      'react/function-component-definition': [
+        'error',
+        {
+          namedComponents: 'arrow-function',
+          unnamedComponents: 'arrow-function',
+        },
+      ],
     },
   },
   {

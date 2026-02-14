@@ -13,7 +13,7 @@ interface QuickActionsProps {
   resourceId: string;
 }
 
-export function QuickActions({ hallName, linkName, resourceId }: QuickActionsProps) {
+export const QuickActions = ({ hallName, linkName, resourceId }: QuickActionsProps) => {
   const { data: status, isLoading } = useReservationData(resourceId);
   const tQuick = useTranslations('quickActions');
   const tStatus = useTranslations('status');
@@ -101,4 +101,4 @@ export function QuickActions({ hallName, linkName, resourceId }: QuickActionsPro
       </div>
     </div>
   );
-}
+};

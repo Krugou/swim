@@ -1,5 +1,11 @@
 // Haversine formula to calculate distance between two points on Earth
-export function calculateDistance(lat1: number, lon1: number, lat2: number, lon2: number): number {
+// Haversine formula to calculate distance between two points on Earth
+export const calculateDistance = (
+  lat1: number,
+  lon1: number,
+  lat2: number,
+  lon2: number,
+): number => {
   const R = 6371; // Radius of the Earth in kilometers
   const dLat = toRad(lat2 - lat1);
   const dLon = toRad(lon2 - lon1);
@@ -9,18 +15,16 @@ export function calculateDistance(lat1: number, lon1: number, lat2: number, lon2
   const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
   const distance = R * c;
   return distance;
-}
+};
 
-function toRad(value: number): number {
-  return (value * Math.PI) / 180;
-}
+const toRad = (value: number): number => (value * Math.PI) / 180;
 
 export interface UserLocation {
   latitude: number;
   longitude: number;
 }
 
-export async function getUserLocation(): Promise<UserLocation | null> {
+export const getUserLocation = async (): Promise<UserLocation | null> => {
   if (!navigator.geolocation) {
     console.error('Geolocation is not supported by this browser.');
     return null;
@@ -44,4 +48,4 @@ export async function getUserLocation(): Promise<UserLocation | null> {
       },
     );
   });
-}
+};

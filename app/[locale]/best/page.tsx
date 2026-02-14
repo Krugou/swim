@@ -76,8 +76,12 @@ export default function BestOptionsPage() {
 
     // Sort: free practice first, then by name
     bestOptions.sort((a, b) => {
-      if (a.reason === 'free-practice' && b.reason !== 'free-practice') return -1;
-      if (a.reason !== 'free-practice' && b.reason === 'free-practice') return 1;
+      if (a.reason === 'free-practice' && b.reason !== 'free-practice') {
+        return -1;
+      }
+      if (a.reason !== 'free-practice' && b.reason === 'free-practice') {
+        return 1;
+      }
       return a.hallName.localeCompare(b.hallName);
     });
   }

@@ -1,5 +1,7 @@
 export const checkIsOpen = (opening?: string): boolean => {
-  if (!opening) return true; // Default to open if no data
+  if (!opening) {
+    return true;
+  } // Default to open if no data
 
   const now = new Date();
   const day = now.getDay(); // 0 = Sun, 1 = Mon, ...
@@ -12,7 +14,9 @@ export const checkIsOpen = (opening?: string): boolean => {
 
   for (const part of parts) {
     const firstColonIndex = part.indexOf(':');
-    if (firstColonIndex === -1) continue;
+    if (firstColonIndex === -1) {
+      continue;
+    }
 
     const daysStr = part.substring(0, firstColonIndex).trim();
     const timesStr = part.substring(firstColonIndex + 1).trim();
@@ -31,7 +35,9 @@ export const checkIsOpen = (opening?: string): boolean => {
 
     if (lowerDays.includes('-')) {
       const rangeParts = lowerDays.split('-');
-      if (rangeParts.length !== 2) continue;
+      if (rangeParts.length !== 2) {
+        continue;
+      }
 
       const startDayPart = rangeParts[0]?.trim().slice(0, 3) || '';
       const endDayPart = rangeParts[1]?.trim().slice(0, 3) || '';
@@ -41,35 +47,49 @@ export const checkIsOpen = (opening?: string): boolean => {
 
       if (start !== undefined && end !== undefined) {
         if (start <= end) {
-          if (day >= start && day <= end) appliesToday = true;
+          if (day >= start && day <= end) {
+            appliesToday = true;
+          }
         } else {
-          if (day >= start || day <= end) appliesToday = true;
+          if (day >= start || day <= end) {
+            appliesToday = true;
+          }
         }
       }
     } else {
       // specific day
       const dStr = lowerDays.slice(0, 3);
-      if (dStr in dayMap && day === dayMap[dStr]) appliesToday = true;
+      if (dStr in dayMap && day === dayMap[dStr]) {
+        appliesToday = true;
+      }
     }
 
     if (appliesToday) {
-      if (timesStr.toLowerCase() === 'closed') return false;
+      if (timesStr.toLowerCase() === 'closed') {
+        return false;
+      }
 
       const [startStr, endStr] = timesStr.split('-');
 
-      if (!startStr || !endStr) continue;
+      if (!startStr || !endStr) {
+        continue;
+      }
 
       const [startHourStr, startMinuteStr] = startStr.trim().split(':');
       const [endHourStr, endMinuteStr] = endStr.trim().split(':');
 
-      if (!startHourStr || !endHourStr) continue;
+      if (!startHourStr || !endHourStr) {
+        continue;
+      }
 
       const sh = Number(startHourStr);
       const sm = Number(startMinuteStr);
       const eh = Number(endHourStr);
       const em = Number(endMinuteStr);
 
-      if (isNaN(sh) || isNaN(eh)) continue;
+      if (isNaN(sh) || isNaN(eh)) {
+        continue;
+      }
 
       const startTime = sh * 60 + (isNaN(sm) ? 0 : sm);
       const endTime = eh * 60 + (isNaN(em) ? 0 : em);

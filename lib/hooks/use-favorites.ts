@@ -41,9 +41,7 @@ export function useFavorites(): UseFavoritesReturn {
     }
   }, [favorites, isInitialized]);
 
-  const isFavorite = (hallName: string): boolean => {
-    return favorites.includes(hallName);
-  };
+  const isFavorite = (hallName: string): boolean => favorites.includes(hallName);
 
   const toggleFavorite = (hallName: string): void => {
     setFavorites((prev) =>

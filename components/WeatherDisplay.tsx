@@ -14,7 +14,7 @@ interface WeatherDisplayProps {
   longitude: number;
 }
 
-export function WeatherDisplay({ latitude, longitude }: WeatherDisplayProps) {
+export const WeatherDisplay = ({ latitude, longitude }: WeatherDisplayProps) => {
   const [weather, setWeather] = useState<WeatherData | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const t = useTranslations('weather');
@@ -73,4 +73,4 @@ export function WeatherDisplay({ latitude, longitude }: WeatherDisplayProps) {
       ) : null}
     </div>
   );
-}
+};

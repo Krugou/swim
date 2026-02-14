@@ -12,7 +12,7 @@ import {
   unsubscribeFromPushNotifications,
 } from '@/lib/notification-service';
 
-export function NotificationToggle() {
+export const NotificationToggle = () => {
   const tNotifications = useTranslations('notifications');
   const [isEnabled, setIsEnabled] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -68,12 +68,16 @@ export function NotificationToggle() {
     if (isEnabled) {
       return 'bg-green-500/20 hover:bg-green-500/30 text-green-600 dark:text-green-400';
     }
-    if (permission === 'denied') return 'opacity-50 cursor-not-allowed';
+    if (permission === 'denied') {
+      return 'opacity-50 cursor-not-allowed';
+    }
     return 'hover:bg-accent';
   };
 
   const getTitle = () => {
-    if (permission === 'denied') return tNotifications('permissionDenied');
+    if (permission === 'denied') {
+      return tNotifications('permissionDenied');
+    }
     return isEnabled ? tNotifications('disable') : tNotifications('enable');
   };
 
@@ -99,4 +103,4 @@ export function NotificationToggle() {
       )}
     </Button>
   );
-}
+};

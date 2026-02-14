@@ -38,10 +38,10 @@
 
 @layer base {
   :root {
-    --background: 45 30% 96%; /* Warm Off-white */
+    --background: 45 100% 90%; /* Vibrant Lemon Yellow */
     --foreground: 0 0% 0%; /* Pure Black */
 
-    --card: 0 0% 100%;
+    --card: 0 0% 100%; /* Keep cards white for pop */
     --card-foreground: 0 0% 0%;
 
     --popover: 0 0% 100%;
@@ -51,7 +51,7 @@
     --primary: 260 100% 65%; /* Electric Purple */
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 55 100% 60%; /* Bright Yellow */
+    --secondary: 48 100% 50%; /* Golden Yellow for better contrast on lemon */
     --secondary-foreground: 0 0% 0%;
 
     --muted: 180 80% 90%; /* Ice Blue */

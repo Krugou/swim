@@ -10,14 +10,11 @@ export interface NotificationSubscription {
 
 const NOTIFICATION_PERMISSION_KEY = 'notification-permission-requested';
 
-export const isNotificationSupported = (): boolean => {
-  return (
-    typeof window !== 'undefined' &&
-    'Notification' in window &&
-    'serviceWorker' in navigator &&
-    'PushManager' in window
-  );
-};
+export const isNotificationSupported = (): boolean =>
+  typeof window !== 'undefined' &&
+  'Notification' in window &&
+  'serviceWorker' in navigator &&
+  'PushManager' in window;
 
 export const getNotificationPermission = (): NotificationPermission => {
   if (!isNotificationSupported()) {
@@ -27,7 +24,9 @@ export const getNotificationPermission = (): NotificationPermission => {
 };
 
 export const hasRequestedPermission = (): boolean => {
-  if (typeof window === 'undefined') return false;
+  if (typeof window === 'undefined') {
+    return false;
+  }
   return localStorage.getItem(NOTIFICATION_PERMISSION_KEY) === 'true';
 };
 

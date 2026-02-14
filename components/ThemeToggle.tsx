@@ -6,7 +6,7 @@ import { Moon, Sun } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import { useTranslations } from 'next-intl';
 
-export function ThemeToggle() {
+export const ThemeToggle = () => {
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = React.useState(false);
   const t = useTranslations('theme');
@@ -37,4 +37,4 @@ export function ThemeToggle() {
       <span className="sr-only">{t('toggle')}</span>
     </Button>
   );
-}
+};

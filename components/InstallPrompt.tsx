@@ -6,7 +6,7 @@ import { X, Download } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { motion, AnimatePresence } from 'framer-motion';
 
-export function InstallPrompt() {
+export const InstallPrompt = () => {
   const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
   const [isVisible, setIsVisible] = useState(false);
   const t = useTranslations('pwa');
@@ -26,7 +26,9 @@ export function InstallPrompt() {
   }, []);
 
   const handleInstall = async () => {
-    if (!deferredPrompt) return;
+    if (!deferredPrompt) {
+      return;
+    }
 
     deferredPrompt.prompt();
     const { outcome } = await deferredPrompt.userChoice;
@@ -41,7 +43,9 @@ export function InstallPrompt() {
     setIsVisible(false);
   };
 
-  if (!isVisible) return null;
+  if (!isVisible) {
+    return null;
+  }
 
   return (
     <AnimatePresence>
@@ -84,4 +88,4 @@ export function InstallPrompt() {
       )}
     </AnimatePresence>
   );
-}
+};
