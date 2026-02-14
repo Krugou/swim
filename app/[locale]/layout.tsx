@@ -14,14 +14,14 @@ import '../globals.css';
 export const metadata: Metadata = {
   title: 'Swimming Halls - Espoo',
   description: 'Real-time swimming hall situation in Espoo',
-  manifest: '/manifest.json',
+  manifest: '/swim/manifest.json',
   icons: {
-    icon: '/favicon.ico',
-    shortcut: '/favicon.ico',
-    apple: '/apple-icon.png',
+    icon: '/swim/favicon.ico',
+    shortcut: '/swim/favicon.ico',
+    apple: '/swim/apple-icon.png',
     other: {
       rel: 'apple-touch-icon-precomposed',
-      url: '/apple-icon.png',
+      url: '/swim/apple-icon.png',
     },
   },
   // themeColor and viewport moved to the top-level `viewport` export
