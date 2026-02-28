@@ -1,0 +1,167 @@
+
+> nextjs-swim@0.1.0 lint
+> eslint app components lib
+
+
+C:\Users\moxch\Documents\GitHub\swim\app\[locale]\hall\[slug]\page.tsx
+  7:8  warning  Expected a function expression  func-style
+
+C:\Users\moxch\Documents\GitHub\swim\app\[locale]\layout.tsx
+  58:20  warning  Function component is not a function declaration  react/function-component-definition
+
+C:\Users\moxch\Documents\GitHub\swim\app\[locale]\page.tsx
+  30:14  warning  Function component is not a function declaration  react/function-component-definition
+  56:7   warning  Unexpected console statement                      no-console
+
+C:\Users\moxch\Documents\GitHub\swim\components\BottomNav.tsx
+  8:26  warning  Function component is not a function declaration  react/function-component-definition
+
+C:\Users\moxch\Documents\GitHub\swim\components\HallDetails.tsx
+  63:28  warning  Function component is not a function declaration  react/function-component-definition
+
+C:\Users\moxch\Documents\GitHub\swim\components\InstallPrompt.tsx
+   9:30  warning  Function component is not a function declaration  react/function-component-definition
+  10:56  warning  Unexpected any. Specify a different type          @typescript-eslint/no-explicit-any
+  15:25  warning  Unexpected any. Specify a different type          @typescript-eslint/no-explicit-any
+
+C:\Users\moxch\Documents\GitHub\swim\components\LanguageSwitcher.tsx
+  10:33  warning  Function component is not a function declaration  react/function-component-definition
+
+C:\Users\moxch\Documents\GitHub\swim\components\MapView.tsx
+  34:5  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Users\moxch\Documents\GitHub\swim\components\MapView.tsx:34:5
+  32 |
+  33 |   useEffect(() => {
+> 34 |     setMounted(true);
+     |     ^^^^^^^^^^ Avoid calling setState() directly within an effect
+  35 |   }, []);
+  36 |
+  37 |   if (!mounted) {  react-hooks/set-state-in-effect
+
+C:\Users\moxch\Documents\GitHub\swim\components\MobileMenu.tsx
+  13:27  warning  Function component is not a function declaration                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                react/function-component-definition
+  21:5   error    Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Users\moxch\Documents\GitHub\swim\components\MobileMenu.tsx:21:5
+  19 |   // Close menu when route changes
+  20 |   useEffect(() => {
+> 21 |     setOpen(false);
+     |     ^^^^^^^ Avoid calling setState() directly within an effect
+  22 |   }, [pathname]);
+  23 |
+  24 |   return (  react-hooks/set-state-in-effect
+
+C:\Users\moxch\Documents\GitHub\swim\components\NotificationToggle.tsx
+  15:35  warning  Function component is not a function declaration  react/function-component-definition
+  56:7   warning  Unexpected console statement                      no-console
+
+C:\Users\moxch\Documents\GitHub\swim\components\QueryClientProvider.tsx
+  6:36  warning  Function component is not a function declaration  react/function-component-definition
+
+C:\Users\moxch\Documents\GitHub\swim\components\QuickActions.tsx
+  16:29  warning  Function component is not a function declaration  react/function-component-definition
+
+C:\Users\moxch\Documents\GitHub\swim\components\ResourceLink.tsx
+  15:29  warning  Function component is not a function declaration                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    react/function-component-definition
+  52:19  error    Error: Cannot call impure function during render
+
+`Date.now` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+C:\Users\moxch\Documents\GitHub\swim\components\ResourceLink.tsx:52:19
+  50 |   const lastUpdated = dataUpdatedAt ? new Date(dataUpdatedAt) : null;
+  51 |   const minutesAgo = lastUpdated
+> 52 |     ? Math.floor((Date.now() - lastUpdated.getTime()) / (60 * 1000))
+     |                   ^^^^^^^^^^ Cannot call impure function
+  53 |     : null;
+  54 |
+  55 |   return (  react-hooks/purity
+
+C:\Users\moxch\Documents\GitHub\swim\components\SwimmingHallCard.tsx
+  29:33  warning  Function component is not a function declaration  react/function-component-definition
+
+C:\Users\moxch\Documents\GitHub\swim\components\ThemeProvider.tsx
+  5:30  warning  Function component is not a function declaration  react/function-component-definition
+
+C:\Users\moxch\Documents\GitHub\swim\components\ThemeToggle.tsx
+  9:28  warning  Function component is not a function declaration  react/function-component-definition
+
+C:\Users\moxch\Documents\GitHub\swim\components\WeatherDisplay.tsx
+  17:31  warning  Function component is not a function declaration  react/function-component-definition
+
+C:\Users\moxch\Documents\GitHub\swim\components\ui\Sheet.tsx
+   14:1   warning  Expected a function expression                    func-style
+   22:15  warning  Function component is not a function declaration  react/function-component-definition
+   39:22  warning  Function component is not a function declaration  react/function-component-definition
+   49:22  warning  Function component is not a function declaration  react/function-component-definition
+  124:21  warning  Function component is not a function declaration  react/function-component-definition
+  131:20  warning  Function component is not a function declaration  react/function-component-definition
+  135:26  warning  Function component is not a function declaration  react/function-component-definition
+
+C:\Users\moxch\Documents\GitHub\swim\components\ui\Skeleton.tsx
+  3:18  warning  Function component is not a function declaration  react/function-component-definition
+
+C:\Users\moxch\Documents\GitHub\swim\components\ui\Toaster.tsx
+  8:17  warning  Function component is not a function declaration  react/function-component-definition
+
+C:\Users\moxch\Documents\GitHub\swim\lib\calendar-export.ts
+   98:9  warning  Unexpected console statement  no-console
+  109:5  warning  Unexpected console statement  no-console
+
+C:\Users\moxch\Documents\GitHub\swim\lib\hooks\use-favorites.ts
+  14:8  warning  Expected a function expression  func-style
+  27:7  warning  Unexpected console statement    no-console
+  39:9  warning  Unexpected console statement    no-console
+
+C:\Users\moxch\Documents\GitHub\swim\lib\hooks\use-reservation-data.ts
+  250:75  error  Error: Cannot call impure function during render
+
+`Date.now` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+C:\Users\moxch\Documents\GitHub\swim\lib\hooks\use-reservation-data.ts:250:75
+  248 |   const isLoading = queries.some((q) => q.isLoading);
+  249 |   const error = queries.find((q) => q.error)?.error;
+> 250 |   const dataUpdatedAt = Math.min(...queries.map((q) => q.dataUpdatedAt || Date.now()));
+      |                                                                           ^^^^^^^^^^ Cannot call impure function
+  251 |
+  252 |   // Combine all reservation data
+  253 |   const allReservations = queries.flatMap((q) => q.data || []);  react-hooks/purity
+
+C:\Users\moxch\Documents\GitHub\swim\lib\location-service.ts
+  29:5  warning  Unexpected console statement  no-console
+  42:9  warning  Unexpected console statement  no-console
+
+C:\Users\moxch\Documents\GitHub\swim\lib\notification-service.ts
+   43:5  warning  Unexpected console statement    no-console
+   69:5  warning  Unexpected console statement    no-console
+   90:5  warning  Unexpected console statement    no-console
+  117:1  warning  Expected a function expression  func-style
+
+C:\Users\moxch\Documents\GitHub\swim\lib\slugify.ts
+  1:8  warning  Expected a function expression  func-style
+
+C:\Users\moxch\Documents\GitHub\swim\lib\utils.ts
+  4:8  warning  Expected a function expression  func-style
+
+C:\Users\moxch\Documents\GitHub\swim\lib\weather-service.ts
+   37:8  warning  Expected a function expression  func-style
+   53:7  warning  Unexpected console statement    no-console
+   94:5  warning  Unexpected console statement    no-console
+   99:8  warning  Expected a function expression  func-style
+  125:8  warning  Expected a function expression  func-style
+
+Ô£û 51 problems (4 errors, 47 warnings)
+  0 errors and 23 warnings potentially fixable with the `--fix` option.
+

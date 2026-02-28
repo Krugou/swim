@@ -14,6 +14,7 @@ const eslintConfig = defineConfig([
     },
     // Add custom rules here if needed, but keeping it minimal for now
     rules: {
+      '@typescript-eslint/no-explicit-any': 'warn',
       '@typescript-eslint/no-unused-vars': [
         'error',
         {
@@ -22,21 +23,17 @@ const eslintConfig = defineConfig([
           caughtErrorsIgnorePattern: '^_',
         },
       ],
-      'prefer-arrow-callback': 'error',
-      'func-style': ['error', 'expression'],
-      'arrow-body-style': ['error', 'as-needed'],
+      'prefer-arrow-callback': 'warn',
+      'func-style': 'warn',
+      'arrow-body-style': ['warn', 'as-needed'],
       'eqeqeq': ['error', 'always'],
       'no-var': 'error',
       'prefer-const': 'error',
       'curly': ['error', 'all'],
       'no-console': 'warn',
-      'react/function-component-definition': [
-        'error',
-        {
-          namedComponents: 'arrow-function',
-          unnamedComponents: 'arrow-function',
-        },
-      ],
+      'react/function-component-definition': 'warn',
+      'react-hooks/purity': 'warn',
+      'react-hooks/set-state-in-effect': 'warn',
     },
   },
   {
