@@ -16,7 +16,8 @@
     "calendar": "Kalenteri",
     "stats": "Tilastot",
     "list": "Lista",
-    "map": "Kartta"
+    "map": "Kartta",
+    "trends": "Trendit"
   },
   "theme": {
     "light": "Valoisa",
@@ -72,7 +73,8 @@
     "openStats": "Avaa tilastot"
   },
   "footer": {
-    "copyright": "Uimahallin aikataulut. Kaikki oikeudet pidätetään."
+    "copyright": "Uimahallin aikataulut. Kaikki oikeudet pidätetään.",
+    "dataUpdated": "Tiedot päivitetty"
   },
   "about": {
     "title": "Tietoa projektista",
@@ -137,5 +139,29 @@
     "dismiss": "Sulje",
     "installButton": "Asenna nyt",
     "maybeLater": "Ehkä myöhemmin"
+  },
+  "trends": {
+    "title": "Trendit ja analytiikka",
+    "weekly": "Viikko",
+    "monthly": "Kuukausi",
+    "yearly": "Vuosi",
+    "allHalls": "Kaikki hallit",
+    "loading": "Ladataan analytiikkaa...",
+    "noData": "Historiallista dataa ei vielä kerätty",
+    "noDataDescription": "Tiedonkeruu on juuri alkanut. Tarkista uudelleen muutaman tunnin kuluttua!",
+    "recommendation": "Paras aika uida",
+    "recommendationDescription": "Näinä tunteina on alhaisin varausaste historiallisen datan perusteella.",
+    "daysOfData": "Päiviä dataa",
+    "snapshots": "Otoksia",
+    "bestHour": "Paras tunti",
+    "busiestHour": "Vilkkain tunti",
+    "heatmapTitle": "Saatavuuden lämpökartta",
+    "bestHoursTitle": "Saatavuus tunneittain",
+    "bestHoursLegend": "Parhaat tunnit",
+    "worstHoursLegend": "Vilkkaimmat tunnit",
+    "normalHoursLegend": "Normaali",
+    "trendTitle": "Varaustrendi",
+    "perHallBreakdown": "Hallikohtainen erittely",
+    "lastUpdated": "Tiedot kerätty viimeksi"
   }
 }

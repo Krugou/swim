@@ -16,7 +16,8 @@
     "calendar": "Calendar",
     "stats": "Stats",
     "list": "List",
-    "map": "Map"
+    "map": "Map",
+    "trends": "Trends"
   },
   "theme": {
     "light": "Light",
@@ -72,7 +73,8 @@
     "openStats": "Open statistics"
   },
   "footer": {
-    "copyright": "Swimming Hall Schedules. All rights reserved."
+    "copyright": "Swimming Hall Schedules. All rights reserved.",
+    "dataUpdated": "Data updated"
   },
   "about": {
     "title": "About This Project",
@@ -137,5 +139,29 @@
     "dismiss": "Dismiss",
     "installButton": "Install Now",
     "maybeLater": "Maybe Later"
+  },
+  "trends": {
+    "title": "Trends & Analytics",
+    "weekly": "Weekly",
+    "monthly": "Monthly",
+    "yearly": "Yearly",
+    "allHalls": "All Halls",
+    "loading": "Loading analytics...",
+    "noData": "No historical data yet",
+    "noDataDescription": "Data collection has just started. Check back in a few hours for your first trends!",
+    "recommendation": "Best Time to Swim",
+    "recommendationDescription": "These hours have the lowest reservation rates based on historical data.",
+    "daysOfData": "Days of data",
+    "snapshots": "Snapshots",
+    "bestHour": "Best hour",
+    "busiestHour": "Busiest hour",
+    "heatmapTitle": "Availability Heatmap",
+    "bestHoursTitle": "Availability by Hour",
+    "bestHoursLegend": "Best hours",
+    "worstHoursLegend": "Busiest hours",
+    "normalHoursLegend": "Normal",
+    "trendTitle": "Reservation Trend",
+    "perHallBreakdown": "Per Hall Breakdown",
+    "lastUpdated": "Data last collected"
   }
 }

@@ -8,7 +8,7 @@ import { NotificationToggle } from '@/components/NotificationToggle';
 import { BottomNav } from '@/components/BottomNav';
 import { MobileMenu } from '@/components/MobileMenu';
 import { useTranslations, useLocale } from 'next-intl';
-import { type ReactElement, useMemo, useState } from 'react';
+import { type ReactElement, useMemo, useState, useEffect } from 'react';
 import { Info, Sparkles, MapPin, Loader2 } from 'lucide-react';
 import Link from 'next/link';
 import { calculateDistance, getUserLocation, type UserLocation } from '@/lib/location-service';
@@ -37,6 +37,20 @@ const Home = (): ReactElement => {
   const [userLocation, setUserLocation] = useState<UserLocation | null>(null);
   const [isLocationLoading, setIsLocationLoading] = useState(false);
   const [viewMode, setViewMode] = useState<'list' | 'map'>('list');
+  const [lastDataUpdate, setLastDataUpdate] = useState<string | null>(null);
+
+  const basePath = process.env.NODE_ENV === 'production' ? '/swim' : '';
+
+  useEffect(() => {
+    fetch(`${basePath}/data/history_index.json`)
+      .then((res) => (res.ok ? res.json() : null))
+      .then((data) => {
+        if (data?.lastUpdated) {
+          setLastDataUpdate(data.lastUpdated);
+        }
+      })
+      .catch(() => {});
+  }, [basePath]);
 
   const handleToggleLocation = async () => {
     if (userLocation) {
@@ -214,10 +228,15 @@ const Home = (): ReactElement => {
 
       <footer className="border-t bg-background/95 backdrop-blur mt-8">
         <div className="container mx-auto px-4 py-4 sm:py-6 sm:px-6 lg:px-8">
-          <div className="text-center text-xs sm:text-sm text-muted-foreground">
+          <div className="text-center text-xs sm:text-sm text-muted-foreground space-y-1">
             <p>
               © {new Date().getFullYear()} {tFooter('copyright')}
             </p>
+            {lastDataUpdate ? (
+              <p className="text-muted-foreground/60">
+                📊 {tFooter('dataUpdated')}: {new Date(lastDataUpdate).toLocaleString()}
+              </p>
+            ) : null}
           </div>
         </div>
       </footer>

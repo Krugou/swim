@@ -1,0 +1,45 @@
+name: 🏊 Pool Patrol
+
+on:
+  schedule:
+    - cron: '0 * * * *' # Run every hour at minute 0
+  workflow_dispatch: # Allow manual trigger
+
+permissions:
+  contents: write
+
+jobs:
+  diving-for-data:
+    name: 🤿 Diving-for-Data
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+
+      - name: 'Status: Code Splash'
+        run: echo "Code grabbed! The pool patrol bot is waking up. 🏊‍♂️☀️"
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - name: 'Status: Pool Check'
+        run: echo "Node.js ready. Checking the waters... 🌊👀"
+
+      - name: Install dependencies
+        run: |
+          npm ci
+          echo "Dependencies installed. The bot has its goggles on. 🥽📦"
+
+      - name: Collect swimming hall data
+        run: |
+          node scripts/collect-data.mjs
+          echo "Data collected! All pools have been surveyed. 📊🏊"
+
+      - name: Commit and push data
+        if: success()
+        run: |
+          chmod +x scripts/save-data.sh
+          ./scripts/save-data.sh

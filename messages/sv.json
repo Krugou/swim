@@ -15,7 +15,8 @@
     "calendar": "Kalender",
     "stats": "Statistik",
     "list": "Lista",
-    "map": "Karta"
+    "map": "Karta",
+    "trends": "Trender"
   },
   "theme": {
     "light": "Ljus",
@@ -71,7 +72,8 @@
     "openStats": "Öppna statistik"
   },
   "footer": {
-    "copyright": "Simhallens tidtabeller. Alla rättigheter förbehållna."
+    "copyright": "Simhallens tidtabeller. Alla rättigheter förbehållna.",
+    "dataUpdated": "Data uppdaterad"
   },
   "about": {
     "title": "Om detta projekt",
@@ -136,5 +138,29 @@
     "dismiss": "Stäng",
     "installButton": "Installera nu",
     "maybeLater": "Kanske senare"
+  },
+  "trends": {
+    "title": "Trender och analys",
+    "weekly": "Vecka",
+    "monthly": "Månad",
+    "yearly": "År",
+    "allHalls": "Alla simhallar",
+    "loading": "Laddar analys...",
+    "noData": "Ingen historisk data ännu",
+    "noDataDescription": "Datainsamlingen har just börjat. Kom tillbaka om några timmar!",
+    "recommendation": "Bästa tid att simma",
+    "recommendationDescription": "Dessa timmar har den lägsta bokningsgraden baserat på historisk data.",
+    "daysOfData": "Dagar med data",
+    "snapshots": "Ögonblicksbilder",
+    "bestHour": "Bästa timmen",
+    "busiestHour": "Mest upptagen",
+    "heatmapTitle": "Tillgänglighets värmekarta",
+    "bestHoursTitle": "Tillgänglighet per timme",
+    "bestHoursLegend": "Bästa timmarna",
+    "worstHoursLegend": "Mest upptagna",
+    "normalHoursLegend": "Normal",
+    "trendTitle": "Reservationstrend",
+    "perHallBreakdown": "Per simhall",
+    "lastUpdated": "Data senast insamlad"
   }
 }
