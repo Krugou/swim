@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-04-10T12:28:23.324Z",
+  "lastUpdated": "2026-04-10T13:39:14.453Z",
   "period": "yearly",
   "daysOfData": 43,
   "halls": {
@@ -72,7 +72,7 @@
         17,
         16
       ],
-      "totalSnapshots": 806
+      "totalSnapshots": 807
     },
     "leppavaaran-uimahalli": {
       "name": "Leppävaaran uimahalli",
@@ -143,7 +143,7 @@
         17,
         11
       ],
-      "totalSnapshots": 806
+      "totalSnapshots": 807
     },
     "espoonlahden-uimahalli": {
       "name": "Espoonlahden uimahalli",
@@ -154,7 +154,7 @@
         "9": 0.63,
         "10": 0.8,
         "11": 0.75,
-        "12": 0.64,
+        "12": 0.65,
         "13": 0.62,
         "14": 0.67,
         "15": 0.66,
@@ -164,7 +164,7 @@
         "19": 0.58,
         "20": 0.37,
         "21": 0.24,
-        "22": 0.2
+        "22": 0.19
       },
       "weekdayAverage": {
         "6": 0.25,
@@ -174,10 +174,10 @@
         "10": 0.78,
         "11": 0.72,
         "12": 0.61,
-        "13": 0.59,
+        "13": 0.6,
         "14": 0.65,
         "15": 0.66,
-        "16": 0.73,
+        "16": 0.74,
         "17": 0.81,
         "18": 0.69,
         "19": 0.62,
@@ -214,7 +214,7 @@
         17,
         11
       ],
-      "totalSnapshots": 806
+      "totalSnapshots": 807
     },
     "keski-espoon-uimahalli": {
       "name": "Keski-Espoon uimahalli",
@@ -252,7 +252,7 @@
         "17": 0.79,
         "18": 0.68,
         "19": 0.62,
-        "20": 0.44,
+        "20": 0.45,
         "21": 0.25,
         "22": 0.18
       },
@@ -285,7 +285,7 @@
         10,
         16
       ],
-      "totalSnapshots": 806
+      "totalSnapshots": 807
     },
     "olari-uimahalli": {
       "name": "Olari uimahalli",
@@ -314,7 +314,7 @@
         "8": 0.53,
         "9": 0.75,
         "10": 0.85,
-        "11": 0.81,
+        "11": 0.8,
         "12": 0.75,
         "13": 0.7,
         "14": 0.75,
@@ -356,7 +356,7 @@
         10,
         16
       ],
-      "totalSnapshots": 806
+      "totalSnapshots": 807
     }
   }
 }
