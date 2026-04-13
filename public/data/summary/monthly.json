@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-04-13T09:47:15.878Z",
+  "lastUpdated": "2026-04-13T10:41:54.040Z",
   "period": "monthly",
   "daysOfData": 31,
   "halls": {
@@ -72,7 +72,7 @@
         17,
         16
       ],
-      "totalSnapshots": 615
+      "totalSnapshots": 616
     },
     "leppavaaran-uimahalli": {
       "name": "Leppävaaran uimahalli",
@@ -143,7 +143,7 @@
         17,
         11
       ],
-      "totalSnapshots": 615
+      "totalSnapshots": 616
     },
     "espoonlahden-uimahalli": {
       "name": "Espoonlahden uimahalli",
@@ -159,7 +159,7 @@
         "14": 0.68,
         "15": 0.66,
         "16": 0.7,
-        "17": 0.71,
+        "17": 0.72,
         "18": 0.6,
         "19": 0.55,
         "20": 0.32,
@@ -169,7 +169,7 @@
       "weekdayAverage": {
         "6": 0.28,
         "7": 0.42,
-        "8": 0.47,
+        "8": 0.48,
         "9": 0.61,
         "10": 0.74,
         "11": 0.69,
@@ -214,7 +214,7 @@
         11,
         17
       ],
-      "totalSnapshots": 615
+      "totalSnapshots": 616
     },
     "keski-espoon-uimahalli": {
       "name": "Keski-Espoon uimahalli",
@@ -222,14 +222,14 @@
         "6": 0.16,
         "7": 0.25,
         "8": 0.33,
-        "9": 0.53,
-        "10": 0.59,
+        "9": 0.54,
+        "10": 0.6,
         "11": 0.63,
         "12": 0.56,
         "13": 0.55,
         "14": 0.56,
         "15": 0.56,
-        "16": 0.64,
+        "16": 0.65,
         "17": 0.65,
         "18": 0.52,
         "19": 0.48,
@@ -285,7 +285,7 @@
         16,
         11
       ],
-      "totalSnapshots": 615
+      "totalSnapshots": 616
     },
     "olari-uimahalli": {
       "name": "Olari uimahalli",
@@ -317,10 +317,10 @@
         "11": 0.78,
         "12": 0.76,
         "13": 0.73,
-        "14": 0.78,
+        "14": 0.79,
         "15": 0.8,
         "16": 0.86,
-        "17": 0.82,
+        "17": 0.81,
         "18": 0.77,
         "19": 0.68,
         "20": 0.55,
@@ -356,7 +356,7 @@
         10,
         17
       ],
-      "totalSnapshots": 615
+      "totalSnapshots": 616
     }
   }
 }
