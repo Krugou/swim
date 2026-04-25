@@ -4464,6 +4464,378 @@
           }
         }
       }
+    },
+    {
+      "timestamp": "2026-04-25T13:35:19.690Z",
+      "hour": 13,
+      "dayOfWeek": 6,
+      "halls": {
+        "matinkylan-uimahalli": {
+          "resources": {
+            "24767": {
+              "name": "50m, koko allas",
+              "hours": {
+                "6": false,
+                "7": false,
+                "8": true,
+                "9": true,
+                "10": true,
+                "11": true,
+                "12": true,
+                "13": true,
+                "14": true,
+                "15": true,
+                "16": true,
+                "17": true,
+                "18": true,
+                "19": false,
+                "20": false,
+                "21": false,
+                "22": false
+              },
+              "hasFreeReservation": false
+            },
+            "24790": {
+              "name": "Terapia-allas",
+              "hours": {
+                "6": false,
+                "7": false,
+                "8": false,
+                "9": false,
+                "10": false,
+                "11": false,
+                "12": false,
+                "13": false,
+                "14": false,
+                "15": false,
+                "16": false,
+                "17": false,
+                "18": false,
+                "19": false,
+                "20": false,
+                "21": false,
+                "22": false
+              },
+              "hasFreeReservation": false
+            },
+            "24847": {
+              "name": "Kuntosali",
+              "hours": {
+                "6": false,
+                "7": false,
+                "8": true,
+                "9": true,
+                "10": true,
+                "11": true,
+                "12": true,
+                "13": true,
+                "14": true,
+                "15": true,
+                "16": true,
+                "17": true,
+                "18": true,
+                "19": true,
+                "20": true,
+                "21": false,
+                "22": false
+              },
+              "hasFreeReservation": true
+            }
+          }
+        },
+        "leppavaaran-uimahalli": {
+          "resources": {
+            "16074": {
+              "name": "Iso allas, koko allas",
+              "hours": {
+                "6": false,
+                "7": false,
+                "8": false,
+                "9": true,
+                "10": true,
+                "11": true,
+                "12": true,
+                "13": true,
+                "14": true,
+                "15": true,
+                "16": true,
+                "17": true,
+                "18": true,
+                "19": true,
+                "20": false,
+                "21": false,
+                "22": false
+              },
+              "hasFreeReservation": false
+            },
+            "16083": {
+              "name": "Kuntosali",
+              "hours": {
+                "6": false,
+                "7": false,
+                "8": false,
+                "9": true,
+                "10": true,
+                "11": true,
+                "12": true,
+                "13": true,
+                "14": true,
+                "15": true,
+                "16": true,
+                "17": true,
+                "18": true,
+                "19": false,
+                "20": false,
+                "21": false,
+                "22": false
+              },
+              "hasFreeReservation": true
+            },
+            "18509": {
+              "name": "Terapia-allas",
+              "hours": {
+                "6": false,
+                "7": false,
+                "8": false,
+                "9": true,
+                "10": true,
+                "11": true,
+                "12": false,
+                "13": false,
+                "14": false,
+                "15": false,
+                "16": false,
+                "17": false,
+                "18": false,
+                "19": false,
+                "20": false,
+                "21": false,
+                "22": false
+              },
+              "hasFreeReservation": false
+            },
+            "19191": {
+              "name": "Maauimala, koko allas",
+              "hours": {
+                "6": false,
+                "7": false,
+                "8": false,
+                "9": false,
+                "10": false,
+                "11": false,
+                "12": false,
+                "13": false,
+                "14": false,
+                "15": false,
+                "16": false,
+                "17": false,
+                "18": false,
+                "19": false,
+                "20": false,
+                "21": false,
+                "22": false
+              },
+              "hasFreeReservation": false
+            }
+          }
+        },
+        "espoonlahden-uimahalli": {
+          "resources": {
+            "15939": {
+              "name": "50 m, koko allas",
+              "hours": {
+                "6": false,
+                "7": false,
+                "8": false,
+                "9": true,
+                "10": true,
+                "11": true,
+                "12": true,
+                "13": true,
+                "14": true,
+                "15": true,
+                "16": true,
+                "17": true,
+                "18": true,
+                "19": true,
+                "20": true,
+                "21": false,
+                "22": false
+              },
+              "hasFreeReservation": false
+            },
+            "15958": {
+              "name": "Vapaaharjoittelukuntosali",
+              "hours": {
+                "6": false,
+                "7": false,
+                "8": true,
+                "9": true,
+                "10": true,
+                "11": true,
+                "12": true,
+                "13": true,
+                "14": true,
+                "15": true,
+                "16": true,
+                "17": false,
+                "18": false,
+                "19": false,
+                "20": false,
+                "21": false,
+                "22": false
+              },
+              "hasFreeReservation": true
+            },
+            "16765": {
+              "name": "Kuntosali 1 (yläsali)",
+              "hours": {
+                "6": false,
+                "7": false,
+                "8": false,
+                "9": true,
+                "10": true,
+                "11": true,
+                "12": true,
+                "13": true,
+                "14": true,
+                "15": true,
+                "16": true,
+                "17": false,
+                "18": false,
+                "19": false,
+                "20": false,
+                "21": false,
+                "22": false
+              },
+              "hasFreeReservation": true
+            }
+          }
+        },
+        "keski-espoon-uimahalli": {
+          "resources": {
+            "16645": {
+              "name": "Iso allas, koko allas",
+              "hours": {
+                "6": false,
+                "7": false,
+                "8": false,
+                "9": false,
+                "10": false,
+                "11": true,
+                "12": true,
+                "13": true,
+                "14": true,
+                "15": true,
+                "16": true,
+                "17": true,
+                "18": false,
+                "19": false,
+                "20": false,
+                "21": false,
+                "22": false
+              },
+              "hasFreeReservation": false
+            },
+            "16650": {
+              "name": "Terapia-allas",
+              "hours": {
+                "6": false,
+                "7": false,
+                "8": false,
+                "9": true,
+                "10": true,
+                "11": true,
+                "12": false,
+                "13": false,
+                "14": false,
+                "15": false,
+                "16": false,
+                "17": false,
+                "18": false,
+                "19": false,
+                "20": false,
+                "21": false,
+                "22": false
+              },
+              "hasFreeReservation": false
+            },
+            "16654": {
+              "name": "Kuntosali",
+              "hours": {
+                "6": false,
+                "7": false,
+                "8": false,
+                "9": true,
+                "10": true,
+                "11": true,
+                "12": true,
+                "13": true,
+                "14": true,
+                "15": true,
+                "16": true,
+                "17": false,
+                "18": false,
+                "19": false,
+                "20": false,
+                "21": false,
+                "22": false
+              },
+              "hasFreeReservation": true
+            }
+          }
+        },
+        "olari-uimahalli": {
+          "resources": {
+            "15967": {
+              "name": "Kuntosali",
+              "hours": {
+                "6": false,
+                "7": false,
+                "8": false,
+                "9": false,
+                "10": false,
+                "11": false,
+                "12": false,
+                "13": false,
+                "14": false,
+                "15": false,
+                "16": false,
+                "17": false,
+                "18": false,
+                "19": false,
+                "20": false,
+                "21": false,
+                "22": false
+              },
+              "hasFreeReservation": false
+            },
+            "15968": {
+              "name": "Koko allas",
+              "hours": {
+                "6": true,
+                "7": true,
+                "8": true,
+                "9": true,
+                "10": true,
+                "11": true,
+                "12": true,
+                "13": true,
+                "14": true,
+                "15": true,
+                "16": true,
+                "17": true,
+                "18": true,
+                "19": true,
+                "20": true,
+                "21": true,
+                "22": true
+              },
+              "hasFreeReservation": false
+            }
+          }
+        }
+      }
     }
   ]
 }
