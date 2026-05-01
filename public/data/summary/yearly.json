@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-05-01T19:34:24.852Z",
+  "lastUpdated": "2026-05-01T20:26:13.037Z",
   "period": "yearly",
   "daysOfData": 64,
   "halls": {
@@ -28,7 +28,7 @@
         "6": 0.13,
         "7": 0.22,
         "8": 0.31,
-        "9": 0.42,
+        "9": 0.43,
         "10": 0.53,
         "11": 0.48,
         "12": 0.42,
@@ -72,7 +72,7 @@
         17,
         16
       ],
-      "totalSnapshots": 1264
+      "totalSnapshots": 1265
     },
     "leppavaaran-uimahalli": {
       "name": "Leppävaaran uimahalli",
@@ -143,7 +143,7 @@
         17,
         11
       ],
-      "totalSnapshots": 1264
+      "totalSnapshots": 1265
     },
     "espoonlahden-uimahalli": {
       "name": "Espoonlahden uimahalli",
@@ -157,7 +157,7 @@
         "12": 0.65,
         "13": 0.63,
         "14": 0.68,
-        "15": 0.66,
+        "15": 0.67,
         "16": 0.71,
         "17": 0.71,
         "18": 0.61,
@@ -167,7 +167,7 @@
         "22": 0.17
       },
       "weekdayAverage": {
-        "6": 0.26,
+        "6": 0.27,
         "7": 0.42,
         "8": 0.47,
         "9": 0.59,
@@ -214,7 +214,7 @@
         17,
         16
       ],
-      "totalSnapshots": 1264
+      "totalSnapshots": 1265
     },
     "keski-espoon-uimahalli": {
       "name": "Keski-Espoon uimahalli",
@@ -285,7 +285,7 @@
         17,
         11
       ],
-      "totalSnapshots": 1264
+      "totalSnapshots": 1265
     },
     "olari-uimahalli": {
       "name": "Olari uimahalli",
@@ -356,7 +356,7 @@
         17,
         10
       ],
-      "totalSnapshots": 1264
+      "totalSnapshots": 1265
     }
   }
 }
