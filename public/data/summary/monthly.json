@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-05-04T07:17:57.986Z",
+  "lastUpdated": "2026-05-04T09:00:47.659Z",
   "period": "monthly",
   "daysOfData": 31,
   "halls": {
@@ -72,7 +72,7 @@
         10,
         15
       ],
-      "totalSnapshots": 655
+      "totalSnapshots": 656
     },
     "leppavaaran-uimahalli": {
       "name": "Leppävaaran uimahalli",
@@ -80,9 +80,9 @@
         "6": 0.07,
         "7": 0.15,
         "8": 0.2,
-        "9": 0.32,
+        "9": 0.33,
         "10": 0.38,
-        "11": 0.36,
+        "11": 0.37,
         "12": 0.35,
         "13": 0.34,
         "14": 0.37,
@@ -105,10 +105,10 @@
         "12": 0.34,
         "13": 0.33,
         "14": 0.36,
-        "15": 0.33,
-        "16": 0.38,
+        "15": 0.34,
+        "16": 0.37,
         "17": 0.35,
-        "18": 0.36,
+        "18": 0.35,
         "19": 0.42,
         "20": 0.25,
         "21": 0.17,
@@ -143,7 +143,7 @@
         16,
         14
       ],
-      "totalSnapshots": 655
+      "totalSnapshots": 656
     },
     "espoonlahden-uimahalli": {
       "name": "Espoonlahden uimahalli",
@@ -176,9 +176,9 @@
         "12": 0.63,
         "13": 0.65,
         "14": 0.71,
-        "15": 0.65,
+        "15": 0.66,
         "16": 0.64,
-        "17": 0.66,
+        "17": 0.65,
         "18": 0.65,
         "19": 0.65,
         "20": 0.22,
@@ -214,7 +214,7 @@
         15,
         13
       ],
-      "totalSnapshots": 655
+      "totalSnapshots": 656
     },
     "keski-espoon-uimahalli": {
       "name": "Keski-Espoon uimahalli",
@@ -240,8 +240,8 @@
       "weekdayAverage": {
         "6": 0.11,
         "7": 0.21,
-        "8": 0.28,
-        "9": 0.39,
+        "8": 0.29,
+        "9": 0.4,
         "10": 0.37,
         "11": 0.41,
         "12": 0.43,
@@ -285,7 +285,7 @@
         14,
         15
       ],
-      "totalSnapshots": 655
+      "totalSnapshots": 656
     },
     "olari-uimahalli": {
       "name": "Olari uimahalli",
@@ -356,7 +356,7 @@
         15,
         14
       ],
-      "totalSnapshots": 655
+      "totalSnapshots": 656
     }
   }
 }
