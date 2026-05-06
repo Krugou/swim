@@ -1,12 +1,12 @@
 {
-  "lastUpdated": "2026-05-06T11:40:53.956Z",
+  "lastUpdated": "2026-05-06T12:51:39.444Z",
   "period": "monthly",
   "daysOfData": 31,
   "halls": {
     "matinkylan-uimahalli": {
       "name": "Matinkylän uimahalli",
       "hourlyAverage": {
-        "6": 0.12,
+        "6": 0.13,
         "7": 0.17,
         "8": 0.35,
         "9": 0.41,
@@ -72,7 +72,7 @@
         15,
         10
       ],
-      "totalSnapshots": 654
+      "totalSnapshots": 655
     },
     "leppavaaran-uimahalli": {
       "name": "Leppävaaran uimahalli",
@@ -143,7 +143,7 @@
         14,
         10
       ],
-      "totalSnapshots": 654
+      "totalSnapshots": 655
     },
     "espoonlahden-uimahalli": {
       "name": "Espoonlahden uimahalli",
@@ -159,11 +159,11 @@
         "14": 0.7,
         "15": 0.67,
         "16": 0.65,
-        "17": 0.55,
+        "17": 0.56,
         "18": 0.52,
         "19": 0.52,
         "20": 0.2,
-        "21": 0.14,
+        "21": 0.13,
         "22": 0.12
       },
       "weekdayAverage": {
@@ -172,10 +172,10 @@
         "8": 0.49,
         "9": 0.52,
         "10": 0.62,
-        "11": 0.62,
+        "11": 0.63,
         "12": 0.63,
         "13": 0.65,
-        "14": 0.7,
+        "14": 0.71,
         "15": 0.66,
         "16": 0.64,
         "17": 0.65,
@@ -214,7 +214,7 @@
         15,
         13
       ],
-      "totalSnapshots": 654
+      "totalSnapshots": 655
     },
     "keski-espoon-uimahalli": {
       "name": "Keski-Espoon uimahalli",
@@ -222,7 +222,7 @@
         "6": 0.08,
         "7": 0.15,
         "8": 0.21,
-        "9": 0.36,
+        "9": 0.37,
         "10": 0.34,
         "11": 0.44,
         "12": 0.43,
@@ -285,7 +285,7 @@
         15,
         14
       ],
-      "totalSnapshots": 654
+      "totalSnapshots": 655
     },
     "olari-uimahalli": {
       "name": "Olari uimahalli",
@@ -356,7 +356,7 @@
         15,
         14
       ],
-      "totalSnapshots": 654
+      "totalSnapshots": 655
     }
   }
 }
