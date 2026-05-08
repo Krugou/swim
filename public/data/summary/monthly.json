@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-05-08T21:29:07.110Z",
+  "lastUpdated": "2026-05-08T22:27:49.326Z",
   "period": "monthly",
   "daysOfData": 31,
   "halls": {
@@ -7,12 +7,12 @@
       "name": "Matinkylän uimahalli",
       "hourlyAverage": {
         "6": 0.12,
-        "7": 0.18,
+        "7": 0.17,
         "8": 0.36,
-        "9": 0.42,
+        "9": 0.41,
         "10": 0.47,
         "11": 0.43,
-        "12": 0.42,
+        "12": 0.41,
         "13": 0.46,
         "14": 0.47,
         "15": 0.48,
@@ -30,7 +30,7 @@
         "8": 0.26,
         "9": 0.31,
         "10": 0.39,
-        "11": 0.37,
+        "11": 0.36,
         "12": 0.37,
         "13": 0.43,
         "14": 0.44,
@@ -72,7 +72,7 @@
         19,
         18
       ],
-      "totalSnapshots": 657
+      "totalSnapshots": 658
     },
     "leppavaaran-uimahalli": {
       "name": "Leppävaaran uimahalli",
@@ -104,7 +104,7 @@
         "11": 0.34,
         "12": 0.34,
         "13": 0.33,
-        "14": 0.37,
+        "14": 0.36,
         "15": 0.34,
         "16": 0.39,
         "17": 0.35,
@@ -143,7 +143,7 @@
         14,
         10
       ],
-      "totalSnapshots": 657
+      "totalSnapshots": 658
     },
     "espoonlahden-uimahalli": {
       "name": "Espoonlahden uimahalli",
@@ -173,7 +173,7 @@
         "9": 0.5,
         "10": 0.62,
         "11": 0.63,
-        "12": 0.64,
+        "12": 0.63,
         "13": 0.65,
         "14": 0.71,
         "15": 0.66,
@@ -214,7 +214,7 @@
         15,
         16
       ],
-      "totalSnapshots": 657
+      "totalSnapshots": 658
     },
     "keski-espoon-uimahalli": {
       "name": "Keski-Espoon uimahalli",
@@ -285,7 +285,7 @@
         14,
         15
       ],
-      "totalSnapshots": 657
+      "totalSnapshots": 658
     },
     "olari-uimahalli": {
       "name": "Olari uimahalli",
@@ -320,7 +320,7 @@
         "14": 0.85,
         "15": 0.85,
         "16": 0.85,
-        "17": 0.71,
+        "17": 0.72,
         "18": 0.69,
         "19": 0.69,
         "20": 0.58,
@@ -356,7 +356,7 @@
         15,
         14
       ],
-      "totalSnapshots": 657
+      "totalSnapshots": 658
     }
   }
 }
