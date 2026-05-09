@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-05-09T19:31:00.582Z",
+  "lastUpdated": "2026-05-09T20:21:47.152Z",
   "period": "yearly",
   "daysOfData": 72,
   "halls": {
@@ -72,7 +72,7 @@
         17,
         16
       ],
-      "totalSnapshots": 1425
+      "totalSnapshots": 1426
     },
     "leppavaaran-uimahalli": {
       "name": "Leppävaaran uimahalli",
@@ -143,7 +143,7 @@
         17,
         16
       ],
-      "totalSnapshots": 1425
+      "totalSnapshots": 1426
     },
     "espoonlahden-uimahalli": {
       "name": "Espoonlahden uimahalli",
@@ -152,7 +152,7 @@
         "7": 0.34,
         "8": 0.42,
         "9": 0.57,
-        "10": 0.72,
+        "10": 0.71,
         "11": 0.71,
         "12": 0.65,
         "13": 0.64,
@@ -190,7 +190,7 @@
         "7": 0.15,
         "8": 0.29,
         "9": 0.54,
-        "10": 0.73,
+        "10": 0.72,
         "11": 0.78,
         "12": 0.72,
         "13": 0.69,
@@ -201,7 +201,7 @@
         "18": 0.39,
         "19": 0.34,
         "20": 0.28,
-        "21": 0.14,
+        "21": 0.15,
         "22": 0.12
       },
       "bestHours": [
@@ -210,11 +210,11 @@
         6
       ],
       "worstHours": [
-        10,
         16,
-        11
+        11,
+        10
       ],
-      "totalSnapshots": 1425
+      "totalSnapshots": 1426
     },
     "keski-espoon-uimahalli": {
       "name": "Keski-Espoon uimahalli",
@@ -259,7 +259,7 @@
       "weekendAverage": {
         "6": 0.09,
         "7": 0.11,
-        "8": 0.12,
+        "8": 0.11,
         "9": 0.43,
         "10": 0.56,
         "11": 0.7,
@@ -270,7 +270,7 @@
         "16": 0.62,
         "17": 0.53,
         "18": 0.3,
-        "19": 0.24,
+        "19": 0.23,
         "20": 0.19,
         "21": 0.13,
         "22": 0.1
@@ -285,7 +285,7 @@
         17,
         11
       ],
-      "totalSnapshots": 1425
+      "totalSnapshots": 1426
     },
     "olari-uimahalli": {
       "name": "Olari uimahalli",
@@ -356,7 +356,7 @@
         17,
         10
       ],
-      "totalSnapshots": 1425
+      "totalSnapshots": 1426
     }
   }
 }
