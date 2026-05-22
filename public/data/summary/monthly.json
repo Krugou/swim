@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-05-22T05:31:42.024Z",
+  "lastUpdated": "2026-05-22T07:29:20.555Z",
   "period": "monthly",
   "daysOfData": 31,
   "halls": {
@@ -29,7 +29,7 @@
         "7": 0.27,
         "8": 0.29,
         "9": 0.34,
-        "10": 0.42,
+        "10": 0.43,
         "11": 0.4,
         "12": 0.4,
         "13": 0.45,
@@ -72,7 +72,7 @@
         15,
         10
       ],
-      "totalSnapshots": 581
+      "totalSnapshots": 582
     },
     "leppavaaran-uimahalli": {
       "name": "Leppävaaran uimahalli",
@@ -80,7 +80,7 @@
         "6": 0.07,
         "7": 0.16,
         "8": 0.22,
-        "9": 0.33,
+        "9": 0.34,
         "10": 0.4,
         "11": 0.38,
         "12": 0.35,
@@ -143,7 +143,7 @@
         10,
         15
       ],
-      "totalSnapshots": 581
+      "totalSnapshots": 582
     },
     "espoonlahden-uimahalli": {
       "name": "Espoonlahden uimahalli",
@@ -154,8 +154,8 @@
         "9": 0.5,
         "10": 0.61,
         "11": 0.66,
-        "12": 0.66,
-        "13": 0.67,
+        "12": 0.67,
+        "13": 0.68,
         "14": 0.71,
         "15": 0.68,
         "16": 0.69,
@@ -167,9 +167,9 @@
         "22": 0.13
       },
       "weekdayAverage": {
-        "6": 0.29,
+        "6": 0.3,
         "7": 0.48,
-        "8": 0.48,
+        "8": 0.49,
         "9": 0.52,
         "10": 0.63,
         "11": 0.64,
@@ -177,7 +177,7 @@
         "13": 0.66,
         "14": 0.71,
         "15": 0.67,
-        "16": 0.68,
+        "16": 0.67,
         "17": 0.69,
         "18": 0.69,
         "19": 0.69,
@@ -214,7 +214,7 @@
         16,
         15
       ],
-      "totalSnapshots": 581
+      "totalSnapshots": 582
     },
     "keski-espoon-uimahalli": {
       "name": "Keski-Espoon uimahalli",
@@ -285,7 +285,7 @@
         14,
         15
       ],
-      "totalSnapshots": 581
+      "totalSnapshots": 582
     },
     "olari-uimahalli": {
       "name": "Olari uimahalli",
@@ -356,7 +356,7 @@
         15,
         14
       ],
-      "totalSnapshots": 581
+      "totalSnapshots": 582
     }
   }
 }
