@@ -1,7 +1,7 @@
 {
-  "lastUpdated": "2026-05-26T23:31:57.722Z",
+  "lastUpdated": "2026-05-27T01:14:05.848Z",
   "period": "yearly",
-  "daysOfData": 89,
+  "daysOfData": 90,
   "halls": {
     "matinkylan-uimahalli": {
       "name": "Matinkylän uimahalli",
@@ -72,7 +72,7 @@
         17,
         16
       ],
-      "totalSnapshots": 1724
+      "totalSnapshots": 1725
     },
     "leppavaaran-uimahalli": {
       "name": "Leppävaaran uimahalli",
@@ -143,7 +143,7 @@
         17,
         16
       ],
-      "totalSnapshots": 1724
+      "totalSnapshots": 1725
     },
     "espoonlahden-uimahalli": {
       "name": "Espoonlahden uimahalli",
@@ -214,7 +214,7 @@
         11,
         14
       ],
-      "totalSnapshots": 1724
+      "totalSnapshots": 1725
     },
     "keski-espoon-uimahalli": {
       "name": "Keski-Espoon uimahalli",
@@ -229,7 +229,7 @@
         "13": 0.5,
         "14": 0.54,
         "15": 0.54,
-        "16": 0.63,
+        "16": 0.62,
         "17": 0.59,
         "18": 0.47,
         "19": 0.47,
@@ -285,7 +285,7 @@
         17,
         11
       ],
-      "totalSnapshots": 1724
+      "totalSnapshots": 1725
     },
     "olari-uimahalli": {
       "name": "Olari uimahalli",
@@ -356,7 +356,7 @@
         17,
         15
       ],
-      "totalSnapshots": 1724
+      "totalSnapshots": 1725
     }
   }
 }
