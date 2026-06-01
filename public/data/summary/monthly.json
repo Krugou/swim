@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-06-01T05:49:08.640Z",
+  "lastUpdated": "2026-06-01T08:08:20.721Z",
   "period": "monthly",
   "daysOfData": 31,
   "halls": {
@@ -7,7 +7,7 @@
       "name": "Matinkylän uimahalli",
       "hourlyAverage": {
         "6": 0.09,
-        "7": 0.16,
+        "7": 0.17,
         "8": 0.4,
         "9": 0.47,
         "10": 0.52,
@@ -72,7 +72,7 @@
         16,
         11
       ],
-      "totalSnapshots": 541
+      "totalSnapshots": 542
     },
     "leppavaaran-uimahalli": {
       "name": "Leppävaaran uimahalli",
@@ -83,9 +83,9 @@
         "9": 0.37,
         "10": 0.42,
         "11": 0.38,
-        "12": 0.34,
+        "12": 0.35,
         "13": 0.33,
-        "14": 0.38,
+        "14": 0.39,
         "15": 0.38,
         "16": 0.39,
         "17": 0.36,
@@ -141,9 +141,9 @@
       "worstHours": [
         10,
         16,
-        15
+        14
       ],
-      "totalSnapshots": 541
+      "totalSnapshots": 542
     },
     "espoonlahden-uimahalli": {
       "name": "Espoonlahden uimahalli",
@@ -172,11 +172,11 @@
         "8": 0.5,
         "9": 0.53,
         "10": 0.63,
-        "11": 0.63,
+        "11": 0.64,
         "12": 0.64,
         "13": 0.65,
         "14": 0.69,
-        "15": 0.64,
+        "15": 0.65,
         "16": 0.66,
         "17": 0.67,
         "18": 0.69,
@@ -214,7 +214,7 @@
         16,
         15
       ],
-      "totalSnapshots": 541
+      "totalSnapshots": 542
     },
     "keski-espoon-uimahalli": {
       "name": "Keski-Espoon uimahalli",
@@ -230,7 +230,7 @@
         "14": 0.45,
         "15": 0.45,
         "16": 0.52,
-        "17": 0.4,
+        "17": 0.41,
         "18": 0.29,
         "19": 0.32,
         "20": 0.18,
@@ -238,7 +238,7 @@
         "22": 0.01
       },
       "weekdayAverage": {
-        "6": 0.07,
+        "6": 0.08,
         "7": 0.16,
         "8": 0.17,
         "9": 0.34,
@@ -285,7 +285,7 @@
         15,
         14
       ],
-      "totalSnapshots": 541
+      "totalSnapshots": 542
     },
     "olari-uimahalli": {
       "name": "Olari uimahalli",
@@ -356,7 +356,7 @@
         15,
         14
       ],
-      "totalSnapshots": 541
+      "totalSnapshots": 542
     }
   }
 }
