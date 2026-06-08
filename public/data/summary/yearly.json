@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-06-08T01:20:16.528Z",
+  "lastUpdated": "2026-06-08T03:23:36.982Z",
   "period": "yearly",
   "daysOfData": 102,
   "halls": {
@@ -72,7 +72,7 @@
         16,
         17
       ],
-      "totalSnapshots": 1913
+      "totalSnapshots": 1914
     },
     "leppavaaran-uimahalli": {
       "name": "Leppävaaran uimahalli",
@@ -143,7 +143,7 @@
         17,
         16
       ],
-      "totalSnapshots": 1913
+      "totalSnapshots": 1914
     },
     "espoonlahden-uimahalli": {
       "name": "Espoonlahden uimahalli",
@@ -175,7 +175,7 @@
         "11": 0.69,
         "12": 0.65,
         "13": 0.64,
-        "14": 0.69,
+        "14": 0.7,
         "15": 0.68,
         "16": 0.71,
         "17": 0.75,
@@ -214,7 +214,7 @@
         11,
         10
       ],
-      "totalSnapshots": 1913
+      "totalSnapshots": 1914
     },
     "keski-espoon-uimahalli": {
       "name": "Keski-Espoon uimahalli",
@@ -238,23 +238,23 @@
         "22": 0.14
       },
       "weekdayAverage": {
-        "6": 0.19,
+        "6": 0.2,
         "7": 0.29,
         "8": 0.36,
         "9": 0.52,
         "10": 0.53,
         "11": 0.54,
-        "12": 0.5,
+        "12": 0.51,
         "13": 0.52,
         "14": 0.56,
         "15": 0.54,
         "16": 0.65,
-        "17": 0.64,
+        "17": 0.65,
         "18": 0.6,
         "19": 0.61,
         "20": 0.41,
-        "21": 0.17,
-        "22": 0.14
+        "21": 0.18,
+        "22": 0.15
       },
       "weekendAverage": {
         "6": 0.13,
@@ -285,7 +285,7 @@
         17,
         11
       ],
-      "totalSnapshots": 1913
+      "totalSnapshots": 1914
     },
     "olari-uimahalli": {
       "name": "Olari uimahalli",
@@ -298,7 +298,7 @@
         "11": 0.71,
         "12": 0.71,
         "13": 0.69,
-        "14": 0.73,
+        "14": 0.74,
         "15": 0.73,
         "16": 0.77,
         "17": 0.73,
@@ -353,10 +353,10 @@
       ],
       "worstHours": [
         16,
-        17,
-        15
+        14,
+        17
       ],
-      "totalSnapshots": 1913
+      "totalSnapshots": 1914
     }
   }
 }
