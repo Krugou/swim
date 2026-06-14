@@ -1,12 +1,12 @@
 {
-  "lastUpdated": "2026-06-14T11:05:55.352Z",
+  "lastUpdated": "2026-06-14T12:53:07.503Z",
   "period": "yearly",
   "daysOfData": 108,
   "halls": {
     "matinkylan-uimahalli": {
       "name": "Matinkylän uimahalli",
       "hourlyAverage": {
-        "6": 0.1,
+        "6": 0.09,
         "7": 0.17,
         "8": 0.36,
         "9": 0.47,
@@ -72,7 +72,7 @@
         17,
         16
       ],
-      "totalSnapshots": 2008
+      "totalSnapshots": 2009
     },
     "leppavaaran-uimahalli": {
       "name": "Leppävaaran uimahalli",
@@ -143,7 +143,7 @@
         17,
         16
       ],
-      "totalSnapshots": 2008
+      "totalSnapshots": 2009
     },
     "espoonlahden-uimahalli": {
       "name": "Espoonlahden uimahalli",
@@ -214,7 +214,7 @@
         11,
         14
       ],
-      "totalSnapshots": 2008
+      "totalSnapshots": 2009
     },
     "keski-espoon-uimahalli": {
       "name": "Keski-Espoon uimahalli",
@@ -268,7 +268,7 @@
         "14": 0.58,
         "15": 0.61,
         "16": 0.63,
-        "17": 0.52,
+        "17": 0.53,
         "18": 0.3,
         "19": 0.26,
         "20": 0.23,
@@ -285,7 +285,7 @@
         17,
         11
       ],
-      "totalSnapshots": 2008
+      "totalSnapshots": 2009
     },
     "olari-uimahalli": {
       "name": "Olari uimahalli",
@@ -333,7 +333,7 @@
         "8": 0.47,
         "9": 0.56,
         "10": 0.63,
-        "11": 0.63,
+        "11": 0.62,
         "12": 0.59,
         "13": 0.57,
         "14": 0.59,
@@ -356,7 +356,7 @@
         15,
         14
       ],
-      "totalSnapshots": 2008
+      "totalSnapshots": 2009
     }
   }
 }
