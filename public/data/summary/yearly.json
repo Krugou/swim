@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-06-14T19:38:24.768Z",
+  "lastUpdated": "2026-06-14T20:37:04.825Z",
   "period": "yearly",
   "daysOfData": 108,
   "halls": {
@@ -49,7 +49,7 @@
         "8": 0.48,
         "9": 0.62,
         "10": 0.72,
-        "11": 0.64,
+        "11": 0.63,
         "12": 0.54,
         "13": 0.51,
         "14": 0.54,
@@ -72,7 +72,7 @@
         17,
         16
       ],
-      "totalSnapshots": 2016
+      "totalSnapshots": 2017
     },
     "leppavaaran-uimahalli": {
       "name": "Leppävaaran uimahalli",
@@ -125,10 +125,10 @@
         "13": 0.43,
         "14": 0.46,
         "15": 0.42,
-        "16": 0.45,
+        "16": 0.44,
         "17": 0.47,
         "18": 0.44,
-        "19": 0.25,
+        "19": 0.26,
         "20": 0.14,
         "21": 0.06,
         "22": 0.03
@@ -143,7 +143,7 @@
         17,
         16
       ],
-      "totalSnapshots": 2016
+      "totalSnapshots": 2017
     },
     "espoonlahden-uimahalli": {
       "name": "Espoonlahden uimahalli",
@@ -188,7 +188,7 @@
       "weekendAverage": {
         "6": 0.18,
         "7": 0.22,
-        "8": 0.34,
+        "8": 0.35,
         "9": 0.56,
         "10": 0.71,
         "11": 0.78,
@@ -202,7 +202,7 @@
         "19": 0.39,
         "20": 0.35,
         "21": 0.22,
-        "22": 0.19
+        "22": 0.2
       },
       "bestHours": [
         22,
@@ -214,7 +214,7 @@
         11,
         14
       ],
-      "totalSnapshots": 2016
+      "totalSnapshots": 2017
     },
     "keski-espoon-uimahalli": {
       "name": "Keski-Espoon uimahalli",
@@ -264,7 +264,7 @@
         "10": 0.53,
         "11": 0.69,
         "12": 0.59,
-        "13": 0.56,
+        "13": 0.57,
         "14": 0.59,
         "15": 0.61,
         "16": 0.64,
@@ -285,7 +285,7 @@
         17,
         11
       ],
-      "totalSnapshots": 2016
+      "totalSnapshots": 2017
     },
     "olari-uimahalli": {
       "name": "Olari uimahalli",
@@ -356,7 +356,7 @@
         15,
         14
       ],
-      "totalSnapshots": 2016
+      "totalSnapshots": 2017
     }
   }
 }
