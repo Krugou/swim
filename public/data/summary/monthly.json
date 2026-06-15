@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-06-15T11:16:51.357Z",
+  "lastUpdated": "2026-06-15T14:22:16.218Z",
   "period": "monthly",
   "daysOfData": 31,
   "halls": {
@@ -72,7 +72,7 @@
         16,
         11
       ],
-      "totalSnapshots": 487
+      "totalSnapshots": 488
     },
     "leppavaaran-uimahalli": {
       "name": "Leppävaaran uimahalli",
@@ -143,7 +143,7 @@
         14,
         16
       ],
-      "totalSnapshots": 487
+      "totalSnapshots": 488
     },
     "espoonlahden-uimahalli": {
       "name": "Espoonlahden uimahalli",
@@ -151,7 +151,7 @@
         "6": 0.51,
         "7": 0.61,
         "8": 0.65,
-        "9": 0.72,
+        "9": 0.73,
         "10": 0.78,
         "11": 0.82,
         "12": 0.82,
@@ -163,11 +163,11 @@
         "18": 0.72,
         "19": 0.72,
         "20": 0.57,
-        "21": 0.5,
-        "22": 0.5
+        "21": 0.51,
+        "22": 0.51
       },
       "weekdayAverage": {
-        "6": 0.59,
+        "6": 0.6,
         "7": 0.74,
         "8": 0.74,
         "9": 0.76,
@@ -181,7 +181,7 @@
         "17": 0.82,
         "18": 0.85,
         "19": 0.85,
-        "20": 0.59,
+        "20": 0.6,
         "21": 0.58,
         "22": 0.58
       },
@@ -205,16 +205,16 @@
         "22": 0.39
       },
       "bestHours": [
+        6,
         21,
-        22,
-        6
+        22
       ],
       "worstHours": [
         14,
         16,
         13
       ],
-      "totalSnapshots": 487
+      "totalSnapshots": 488
     },
     "keski-espoon-uimahalli": {
       "name": "Keski-Espoon uimahalli",
@@ -230,7 +230,7 @@
         "14": 0.69,
         "15": 0.69,
         "16": 0.72,
-        "17": 0.65,
+        "17": 0.66,
         "18": 0.58,
         "19": 0.59,
         "20": 0.53,
@@ -285,7 +285,7 @@
         15,
         14
       ],
-      "totalSnapshots": 487
+      "totalSnapshots": 488
     },
     "olari-uimahalli": {
       "name": "Olari uimahalli",
@@ -356,7 +356,7 @@
         15,
         14
       ],
-      "totalSnapshots": 487
+      "totalSnapshots": 488
     }
   }
 }
