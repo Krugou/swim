@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-06-21T14:54:07.050Z",
+  "lastUpdated": "2026-06-21T15:41:56.551Z",
   "period": "yearly",
   "daysOfData": 115,
   "halls": {
@@ -22,7 +22,7 @@
         "19": 0.46,
         "20": 0.42,
         "21": 0.15,
-        "22": 0.06
+        "22": 0.07
       },
       "weekdayAverage": {
         "6": 0.14,
@@ -46,7 +46,7 @@
       "weekendAverage": {
         "6": 0.05,
         "7": 0.06,
-        "8": 0.5,
+        "8": 0.51,
         "9": 0.64,
         "10": 0.73,
         "11": 0.65,
@@ -57,7 +57,7 @@
         "16": 0.58,
         "17": 0.6,
         "18": 0.53,
-        "19": 0.41,
+        "19": 0.42,
         "20": 0.39,
         "21": 0.09,
         "22": 0.06
@@ -72,7 +72,7 @@
         16,
         17
       ],
-      "totalSnapshots": 2116
+      "totalSnapshots": 2117
     },
     "leppavaaran-uimahalli": {
       "name": "Leppävaaran uimahalli",
@@ -143,7 +143,7 @@
         17,
         16
       ],
-      "totalSnapshots": 2116
+      "totalSnapshots": 2117
     },
     "espoonlahden-uimahalli": {
       "name": "Espoonlahden uimahalli",
@@ -186,11 +186,11 @@
         "22": 0.3
       },
       "weekendAverage": {
-        "6": 0.21,
+        "6": 0.22,
         "7": 0.26,
         "8": 0.38,
         "9": 0.58,
-        "10": 0.72,
+        "10": 0.73,
         "11": 0.79,
         "12": 0.75,
         "13": 0.74,
@@ -214,7 +214,7 @@
         11,
         14
       ],
-      "totalSnapshots": 2116
+      "totalSnapshots": 2117
     },
     "keski-espoon-uimahalli": {
       "name": "Keski-Espoon uimahalli",
@@ -271,7 +271,7 @@
         "17": 0.55,
         "18": 0.34,
         "19": 0.3,
-        "20": 0.27,
+        "20": 0.28,
         "21": 0.24,
         "22": 0.2
       },
@@ -285,7 +285,7 @@
         17,
         11
       ],
-      "totalSnapshots": 2116
+      "totalSnapshots": 2117
     },
     "olari-uimahalli": {
       "name": "Olari uimahalli",
@@ -356,7 +356,7 @@
         15,
         14
       ],
-      "totalSnapshots": 2116
+      "totalSnapshots": 2117
     }
   }
 }
