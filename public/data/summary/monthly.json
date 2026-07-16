@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-07-16T09:20:49.614Z",
+  "lastUpdated": "2026-07-16T11:46:36.451Z",
   "period": "monthly",
   "daysOfData": 31,
   "halls": {
@@ -72,7 +72,7 @@
         18,
         16
       ],
-      "totalSnapshots": 390
+      "totalSnapshots": 391
     },
     "leppavaaran-uimahalli": {
       "name": "Leppävaaran uimahalli",
@@ -86,7 +86,7 @@
         "12": 0.34,
         "13": 0.33,
         "14": 0.36,
-        "15": 0.34,
+        "15": 0.35,
         "16": 0.43,
         "17": 0.48,
         "18": 0.46,
@@ -109,7 +109,7 @@
         "16": 0.44,
         "17": 0.46,
         "18": 0.43,
-        "19": 0.45,
+        "19": 0.46,
         "20": 0.3,
         "21": 0.13,
         "22": 0.07
@@ -143,7 +143,7 @@
         18,
         19
       ],
-      "totalSnapshots": 390
+      "totalSnapshots": 391
     },
     "espoonlahden-uimahalli": {
       "name": "Espoonlahden uimahalli",
@@ -214,16 +214,16 @@
         21,
         20
       ],
-      "totalSnapshots": 390
+      "totalSnapshots": 391
     },
     "keski-espoon-uimahalli": {
       "name": "Keski-Espoon uimahalli",
       "hourlyAverage": {
-        "6": 0.31,
+        "6": 0.3,
         "7": 0.37,
         "8": 0.38,
         "9": 0.41,
-        "10": 0.41,
+        "10": 0.4,
         "11": 0.43,
         "12": 0.44,
         "13": 0.45,
@@ -239,7 +239,7 @@
       },
       "weekdayAverage": {
         "6": 0.3,
-        "7": 0.4,
+        "7": 0.39,
         "8": 0.41,
         "9": 0.42,
         "10": 0.41,
@@ -252,9 +252,9 @@
         "17": 0.42,
         "18": 0.42,
         "19": 0.42,
-        "20": 0.21,
-        "21": 0.21,
-        "22": 0.21
+        "20": 0.2,
+        "21": 0.2,
+        "22": 0.2
       },
       "weekendAverage": {
         "6": 0.32,
@@ -285,7 +285,7 @@
         14,
         13
       ],
-      "totalSnapshots": 390
+      "totalSnapshots": 391
     },
     "olari-uimahalli": {
       "name": "Olari uimahalli",
@@ -325,7 +325,7 @@
         "19": 0.79,
         "20": 0.76,
         "21": 0.74,
-        "22": 0.71
+        "22": 0.72
       },
       "weekendAverage": {
         "6": 0.68,
@@ -356,7 +356,7 @@
         15,
         14
       ],
-      "totalSnapshots": 390
+      "totalSnapshots": 391
     }
   }
 }
