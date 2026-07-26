@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-07-26T13:45:09.955Z",
+  "lastUpdated": "2026-07-26T15:11:36.483Z",
   "period": "yearly",
   "daysOfData": 150,
   "halls": {
@@ -7,7 +7,7 @@
       "name": "Matinkylän uimahalli",
       "hourlyAverage": {
         "6": 0.22,
-        "7": 0.3,
+        "7": 0.31,
         "8": 0.46,
         "9": 0.55,
         "10": 0.63,
@@ -72,7 +72,7 @@
         17,
         16
       ],
-      "totalSnapshots": 2524
+      "totalSnapshots": 2525
     },
     "leppavaaran-uimahalli": {
       "name": "Leppävaaran uimahalli",
@@ -143,13 +143,13 @@
         17,
         16
       ],
-      "totalSnapshots": 2524
+      "totalSnapshots": 2525
     },
     "espoonlahden-uimahalli": {
       "name": "Espoonlahden uimahalli",
       "hourlyAverage": {
         "6": 0.43,
-        "7": 0.52,
+        "7": 0.53,
         "8": 0.58,
         "9": 0.68,
         "10": 0.78,
@@ -163,7 +163,7 @@
         "18": 0.7,
         "19": 0.68,
         "20": 0.48,
-        "21": 0.41,
+        "21": 0.42,
         "22": 0.39
       },
       "weekdayAverage": {
@@ -191,7 +191,7 @@
         "8": 0.48,
         "9": 0.65,
         "10": 0.77,
-        "11": 0.82,
+        "11": 0.83,
         "12": 0.79,
         "13": 0.78,
         "14": 0.79,
@@ -202,7 +202,7 @@
         "19": 0.51,
         "20": 0.48,
         "21": 0.37,
-        "22": 0.35
+        "22": 0.36
       },
       "bestHours": [
         22,
@@ -214,7 +214,7 @@
         14,
         11
       ],
-      "totalSnapshots": 2524
+      "totalSnapshots": 2525
     },
     "keski-espoon-uimahalli": {
       "name": "Keski-Espoon uimahalli",
@@ -285,12 +285,12 @@
         17,
         11
       ],
-      "totalSnapshots": 2524
+      "totalSnapshots": 2525
     },
     "olari-uimahalli": {
       "name": "Olari uimahalli",
       "hourlyAverage": {
-        "6": 0.5,
+        "6": 0.51,
         "7": 0.52,
         "8": 0.55,
         "9": 0.67,
@@ -344,11 +344,11 @@
         "19": 0.59,
         "20": 0.55,
         "21": 0.53,
-        "22": 0.49
+        "22": 0.5
       },
       "bestHours": [
-        6,
         22,
+        6,
         7
       ],
       "worstHours": [
@@ -356,7 +356,7 @@
         15,
         14
       ],
-      "totalSnapshots": 2524
+      "totalSnapshots": 2525
     }
   }
 }
