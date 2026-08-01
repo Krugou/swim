@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-08-01T07:32:46.087Z",
+  "lastUpdated": "2026-08-01T10:06:27.091Z",
   "period": "yearly",
   "daysOfData": 156,
   "halls": {
@@ -54,13 +54,13 @@
         "13": 0.6,
         "14": 0.63,
         "15": 0.61,
-        "16": 0.64,
+        "16": 0.65,
         "17": 0.66,
         "18": 0.59,
         "19": 0.5,
         "20": 0.48,
         "21": 0.2,
-        "22": 0.17
+        "22": 0.18
       },
       "bestHours": [
         22,
@@ -72,7 +72,7 @@
         17,
         16
       ],
-      "totalSnapshots": 2576
+      "totalSnapshots": 2577
     },
     "leppavaaran-uimahalli": {
       "name": "Leppävaaran uimahalli",
@@ -143,7 +143,7 @@
         10,
         16
       ],
-      "totalSnapshots": 2576
+      "totalSnapshots": 2577
     },
     "espoonlahden-uimahalli": {
       "name": "Espoonlahden uimahalli",
@@ -162,7 +162,7 @@
         "17": 0.76,
         "18": 0.71,
         "19": 0.68,
-        "20": 0.49,
+        "20": 0.5,
         "21": 0.43,
         "22": 0.41
       },
@@ -197,9 +197,9 @@
         "14": 0.79,
         "15": 0.77,
         "16": 0.8,
-        "17": 0.64,
+        "17": 0.65,
         "18": 0.54,
-        "19": 0.51,
+        "19": 0.52,
         "20": 0.48,
         "21": 0.38,
         "22": 0.36
@@ -214,7 +214,7 @@
         11,
         14
       ],
-      "totalSnapshots": 2576
+      "totalSnapshots": 2577
     },
     "keski-espoon-uimahalli": {
       "name": "Keski-Espoon uimahalli",
@@ -285,16 +285,16 @@
         17,
         11
       ],
-      "totalSnapshots": 2576
+      "totalSnapshots": 2577
     },
     "olari-uimahalli": {
       "name": "Olari uimahalli",
       "hourlyAverage": {
-        "6": 0.51,
+        "6": 0.52,
         "7": 0.53,
         "8": 0.56,
         "9": 0.68,
-        "10": 0.74,
+        "10": 0.75,
         "11": 0.73,
         "12": 0.74,
         "13": 0.73,
@@ -347,8 +347,8 @@
         "22": 0.5
       },
       "bestHours": [
-        6,
         22,
+        6,
         7
       ],
       "worstHours": [
@@ -356,7 +356,7 @@
         15,
         14
       ],
-      "totalSnapshots": 2576
+      "totalSnapshots": 2577
     }
   }
 }
