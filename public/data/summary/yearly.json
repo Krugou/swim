@@ -1,7 +1,7 @@
 {
-  "lastUpdated": "2026-08-27T19:47:31.035Z",
+  "lastUpdated": "2026-08-28T04:11:16.832Z",
   "period": "yearly",
-  "daysOfData": 182,
+  "daysOfData": 183,
   "halls": {
     "matinkylan-uimahalli": {
       "name": "Matinkylän uimahalli",
@@ -26,7 +26,7 @@
       },
       "weekdayAverage": {
         "6": 0.24,
-        "7": 0.36,
+        "7": 0.37,
         "8": 0.41,
         "9": 0.48,
         "10": 0.56,
@@ -34,7 +34,7 @@
         "12": 0.51,
         "13": 0.53,
         "14": 0.53,
-        "15": 0.54,
+        "15": 0.53,
         "16": 0.59,
         "17": 0.58,
         "18": 0.55,
@@ -72,7 +72,7 @@
         16,
         17
       ],
-      "totalSnapshots": 3023
+      "totalSnapshots": 3024
     },
     "leppavaaran-uimahalli": {
       "name": "Leppävaaran uimahalli",
@@ -89,7 +89,7 @@
         "15": 0.5,
         "16": 0.53,
         "17": 0.55,
-        "18": 0.52,
+        "18": 0.53,
         "19": 0.49,
         "20": 0.36,
         "21": 0.24,
@@ -100,7 +100,7 @@
         "7": 0.33,
         "8": 0.4,
         "9": 0.45,
-        "10": 0.52,
+        "10": 0.53,
         "11": 0.52,
         "12": 0.49,
         "13": 0.47,
@@ -141,9 +141,9 @@
       "worstHours": [
         17,
         10,
-        16
+        18
       ],
-      "totalSnapshots": 3023
+      "totalSnapshots": 3024
     },
     "espoonlahden-uimahalli": {
       "name": "Espoonlahden uimahalli",
@@ -214,12 +214,12 @@
         14,
         11
       ],
-      "totalSnapshots": 3023
+      "totalSnapshots": 3024
     },
     "keski-espoon-uimahalli": {
       "name": "Keski-Espoon uimahalli",
       "hourlyAverage": {
-        "6": 0.2,
+        "6": 0.21,
         "7": 0.27,
         "8": 0.31,
         "9": 0.46,
@@ -285,13 +285,13 @@
         17,
         11
       ],
-      "totalSnapshots": 3023
+      "totalSnapshots": 3024
     },
     "olari-uimahalli": {
       "name": "Olari uimahalli",
       "hourlyAverage": {
         "6": 0.46,
-        "7": 0.48,
+        "7": 0.47,
         "8": 0.5,
         "9": 0.61,
         "10": 0.68,
@@ -356,7 +356,7 @@
         15,
         14
       ],
-      "totalSnapshots": 3023
+      "totalSnapshots": 3024
     }
   }
 }
