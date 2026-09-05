@@ -1,7 +1,7 @@
 {
-  "lastUpdated": "2026-09-04T23:54:29.069Z",
+  "lastUpdated": "2026-09-05T04:09:15.637Z",
   "period": "yearly",
-  "daysOfData": 190,
+  "daysOfData": 191,
   "halls": {
     "matinkylan-uimahalli": {
       "name": "Matinkylän uimahalli",
@@ -72,7 +72,7 @@
         17,
         16
       ],
-      "totalSnapshots": 3064
+      "totalSnapshots": 3065
     },
     "leppavaaran-uimahalli": {
       "name": "Leppävaaran uimahalli",
@@ -125,7 +125,7 @@
         "13": 0.49,
         "14": 0.51,
         "15": 0.48,
-        "16": 0.5,
+        "16": 0.51,
         "17": 0.54,
         "18": 0.52,
         "19": 0.38,
@@ -143,7 +143,7 @@
         17,
         16
       ],
-      "totalSnapshots": 3064
+      "totalSnapshots": 3065
     },
     "espoonlahden-uimahalli": {
       "name": "Espoonlahden uimahalli",
@@ -195,7 +195,7 @@
         "12": 0.78,
         "13": 0.77,
         "14": 0.78,
-        "15": 0.76,
+        "15": 0.77,
         "16": 0.78,
         "17": 0.6,
         "18": 0.5,
@@ -214,7 +214,7 @@
         11,
         14
       ],
-      "totalSnapshots": 3064
+      "totalSnapshots": 3065
     },
     "keski-espoon-uimahalli": {
       "name": "Keski-Espoon uimahalli",
@@ -261,7 +261,7 @@
         "7": 0.16,
         "8": 0.17,
         "9": 0.39,
-        "10": 0.44,
+        "10": 0.45,
         "11": 0.59,
         "12": 0.52,
         "13": 0.5,
@@ -285,7 +285,7 @@
         17,
         11
       ],
-      "totalSnapshots": 3064
+      "totalSnapshots": 3065
     },
     "olari-uimahalli": {
       "name": "Olari uimahalli",
@@ -296,7 +296,7 @@
         "9": 0.61,
         "10": 0.67,
         "11": 0.66,
-        "12": 0.68,
+        "12": 0.67,
         "13": 0.67,
         "14": 0.7,
         "15": 0.7,
@@ -333,11 +333,11 @@
         "8": 0.48,
         "9": 0.54,
         "10": 0.59,
-        "11": 0.59,
+        "11": 0.58,
         "12": 0.56,
         "13": 0.55,
         "14": 0.56,
-        "15": 0.55,
+        "15": 0.54,
         "16": 0.56,
         "17": 0.57,
         "18": 0.56,
@@ -356,7 +356,7 @@
         15,
         14
       ],
-      "totalSnapshots": 3064
+      "totalSnapshots": 3065
     }
   }
 }
