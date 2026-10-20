@@ -19,10 +19,14 @@ export const BestHoursChart = ({
 
   useEffect(() => {
     const canvas = canvasRef.current;
-    if (!canvas) return;
+    if (!canvas) {
+      return;
+    }
 
     const ctx = canvas.getContext('2d');
-    if (!ctx) return;
+    if (!ctx) {
+      return;
+    }
 
     const dpr = window.devicePixelRatio || 1;
     const rect = canvas.getBoundingClientRect();
@@ -37,7 +41,9 @@ export const BestHoursChart = ({
     const hours = Object.keys(data)
       .map(Number)
       .sort((a, b) => a - b);
-    if (hours.length === 0) return;
+    if (hours.length === 0) {
+      return;
+    }
 
     const paddingTop = 16;
     const paddingBottom = 32;

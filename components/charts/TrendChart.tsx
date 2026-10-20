@@ -18,10 +18,14 @@ export const TrendChart = ({ data, height = 180, color = '#3b82f6' }: TrendChart
 
   useEffect(() => {
     const canvas = canvasRef.current;
-    if (!canvas) return;
+    if (!canvas) {
+      return;
+    }
 
     const ctx = canvas.getContext('2d');
-    if (!ctx) return;
+    if (!ctx) {
+      return;
+    }
 
     const dpr = window.devicePixelRatio || 1;
     const rect = canvas.getBoundingClientRect();
@@ -33,7 +37,9 @@ export const TrendChart = ({ data, height = 180, color = '#3b82f6' }: TrendChart
     const h = rect.height;
     ctx.clearRect(0, 0, w, h);
 
-    if (data.length === 0) return;
+    if (data.length === 0) {
+      return;
+    }
 
     const paddingTop = 16;
     const paddingBottom = 40;

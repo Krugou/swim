@@ -106,12 +106,16 @@ export default function TrendsPage(): ReactElement {
 
                 for (const snapshot of dayData.snapshots || []) {
                   for (const [hallId, hallData] of Object.entries(snapshot.halls || {})) {
-                    if (selectedHall !== 'all' && hallId !== selectedHall) continue;
+                    if (selectedHall !== 'all' && hallId !== selectedHall) {
+                      continue;
+                    }
 
                     for (const [, resData] of Object.entries(hallData.resources || {})) {
                       for (const [, isReserved] of Object.entries(resData.hours || {})) {
                         totalSlots++;
-                        if (isReserved) totalReserved++;
+                        if (isReserved) {
+                          totalReserved++;
+                        }
                       }
                     }
                   }
@@ -150,7 +154,9 @@ export default function TrendsPage(): ReactElement {
   // Aggregate data across all halls when "all" is selected
   const aggregatedData = summaryData
     ? (() => {
-        if (selectedHall !== 'all' && currentHall) return currentHall;
+        if (selectedHall !== 'all' && currentHall) {
+          return currentHall;
+        }
 
         const hourlyAverage: Record<string, number> = {};
         const weekdayAverage: Record<string, number> = {};

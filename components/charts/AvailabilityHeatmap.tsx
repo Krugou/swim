@@ -23,10 +23,14 @@ export const AvailabilityHeatmap = ({
 
   useEffect(() => {
     const canvas = canvasRef.current;
-    if (!canvas) return;
+    if (!canvas) {
+      return;
+    }
 
     const ctx = canvas.getContext('2d');
-    if (!ctx) return;
+    if (!ctx) {
+      return;
+    }
 
     const dpr = window.devicePixelRatio || 1;
     const rect = canvas.getBoundingClientRect();
@@ -43,7 +47,9 @@ export const AvailabilityHeatmap = ({
     const hours = Object.keys(data)
       .map(Number)
       .sort((a, b) => a - b);
-    if (hours.length === 0) return;
+    if (hours.length === 0) {
+      return;
+    }
 
     const datasets = [
       { data, label: 'All', yOffset: 0 },
