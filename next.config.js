@@ -7,7 +7,7 @@ const isProd = process.env.NODE_ENV === 'production';
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',
+  ...(isProd ? { output: 'export' } : {}),
   // Serve under /swim on GitHub Pages; no basePath in dev for simpler local URLs
   basePath: isProd ? '/swim' : '',
   assetPrefix: isProd ? '/swim/' : undefined,

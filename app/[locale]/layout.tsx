@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import type { ReactElement } from 'react';
 import { Space_Grotesk } from 'next/font/google';
 import { NextIntlClientProvider } from 'next-intl';
-import { getMessages, getTranslations } from 'next-intl/server';
+import { getMessages, getTranslations, setRequestLocale } from 'next-intl/server';
 import { ThemeProvider } from '@/components/ThemeProvider';
 import { Toaster } from '@/components/ui/Toaster';
 import { InstallPrompt } from '@/components/InstallPrompt';
@@ -68,6 +68,8 @@ const RootLayout = async ({
   if (!(locales as readonly string[]).includes(locale)) {
     notFound();
   }
+
+  setRequestLocale(locale);
 
   // Providing all messages to the client
   // side is the easiest way to get started

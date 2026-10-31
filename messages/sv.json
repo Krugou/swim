@@ -2,6 +2,7 @@
   "app": {
     "title": "Simhallens tidtabeller",
     "description": "Realtidstillgänglighet för simhallar i Esbo",
+    "findBestOptions": "Hitta bästa alternativen",
     "themeLabel": "Tema",
     "languageLabel": "Språk"
   },

@@ -45,7 +45,7 @@ swim/
 
 ### Prerequisites
 
-- Node.js 20 or later
+- Node.js 22 (see `.nvmrc`)
 - npm
 
 ### Installation
@@ -69,6 +69,24 @@ npm run build
 ```
 
 The static files will be generated in the `out/` directory.
+
+### Quality Checks
+
+```bash
+npm run lint
+npm run type-check
+npm test
+```
+
+Run the browser end-to-end test locally after installing Chromium:
+
+```bash
+npx playwright install chromium
+npm run test:e2e
+```
+
+The GitHub Actions workflow runs these checks and builds the static site for pull
+requests; deployment runs only for pushes to `main` or a manual dispatch.
 
 ## Deployment
 
