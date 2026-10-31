@@ -1,9 +1,9 @@
-export const checkIsOpen = (opening?: string): boolean => {
+export const checkIsOpen = (opening?: string, at: Date = new Date()): boolean => {
   if (!opening) {
     return true;
   } // Default to open if no data
 
-  const now = new Date();
+  const now = at;
   const day = now.getDay(); // 0 = Sun, 1 = Mon, ...
   const hour = now.getHours();
   const minute = now.getMinutes();

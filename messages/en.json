@@ -82,6 +82,23 @@
     "dataSource": "Data is sourced directly from Espoo city's reservation system in real-time.",
     "projectInfo": "This project is created and maintained by volunteers to help the community access swimming hall information more easily."
   },
+  "therapy": {
+    "title": "Next therapy pool",
+    "subtitle": "Best therapy pool option starting at least 2 hours from now",
+    "find": "Find next therapy pool slot",
+    "searching": "Searching therapy pools...",
+    "none": "No therapy pool slot found for the next hours.",
+    "startsAt": "Starts",
+    "until": "until",
+    "freePractice": "Free practice",
+    "available": "Free slot",
+    "yourLocation": "Your location",
+    "hallLocation": "Pool location",
+    "gpsDenied": "Location unavailable. Weather and distance for your location are not shown.",
+    "gpsChecking": "Checking your location...",
+    "distance": "{km} km away",
+    "weatherSource": "Weather: Norwegian Meteorological Institute (MET Norway)"
+  },
   "bestOption": {
     "searching": "Searching...",
     "findBestOptions": "Find Best Options Now",

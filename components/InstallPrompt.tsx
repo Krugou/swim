@@ -55,7 +55,7 @@ export const InstallPrompt = () => {
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: 100, opacity: 0 }}
           role="status"
-          className="fixed bottom-4 left-4 right-4 md:left-auto md:right-4 md:bottom-4 md:w-96 z-50 p-4 bg-background border-2 border-black dark:border-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] rounded-lg flex flex-col gap-3"
+          className="fixed bottom-4 left-4 right-4 md:left-auto md:right-4 md:bottom-4 md:w-96 z-50 p-4 bg-background border border-border shadow-md rounded-lg flex flex-col gap-3"
         >
           <div className="flex items-start justify-between">
             <div className="flex flex-col">

@@ -21,7 +21,7 @@ import { slugify } from '@/lib/slugify';
 const MapView = dynamic(() => import('@/components/MapView'), {
   ssr: false,
   loading: () => (
-    <div className="w-full h-[600px] bg-muted animate-pulse rounded-lg border-2 border-black dark:border-white flex items-center justify-center">
+    <div className="w-full h-[600px] bg-muted animate-pulse rounded-lg border border-border flex items-center justify-center">
       Loading Map...
     </div>
   ),
@@ -166,14 +166,14 @@ const Home = (): ReactElement => {
               <span>{getLocationButtonText()}</span>
             </Button>
 
-            <div className="flex items-center bg-muted rounded-lg p-1 border-2 border-black dark:border-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)]">
+            <div className="flex items-center bg-muted rounded-lg p-1 border border-border shadow-md">
               <Button
                 variant={viewMode === 'list' ? 'secondary' : 'ghost'}
                 size="sm"
                 onClick={() => setViewMode('list')}
                 className={cn(
                   'rounded-md',
-                  viewMode === 'list' && 'bg-background border-2 border-black dark:border-white',
+                  viewMode === 'list' && 'bg-background border border-border',
                 )}
               >
                 <List className="h-4 w-4 mr-2" />
@@ -185,7 +185,7 @@ const Home = (): ReactElement => {
                 onClick={() => setViewMode('map')}
                 className={cn(
                   'rounded-md',
-                  viewMode === 'map' && 'bg-background border-2 border-black dark:border-white',
+                  viewMode === 'map' && 'bg-background border border-border',
                 )}
               >
                 <Map className="h-4 w-4 mr-2" />

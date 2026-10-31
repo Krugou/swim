@@ -11,6 +11,7 @@ import {
   type ReservationData,
 } from '@/lib/hooks/use-reservation-data';
 import Link from 'next/link';
+import { TherapyPoolFinder } from '@/components/TherapyPoolFinder';
 
 interface BestOption {
   hallName: string;
@@ -92,7 +93,7 @@ export default function BestOptionsPage() {
         {/* Header with Close Button */}
         <div className="flex items-center justify-between mb-8">
           <h1 className="text-2xl sm:text-3xl font-bold flex items-center gap-3">
-            <Sparkles className="h-8 w-8 text-green-500" />
+            <Sparkles className="h-8 w-8 text-primary" />
             {tBestOption('bestOptionsTitle')}
           </h1>
           <Link
@@ -105,6 +106,7 @@ export default function BestOptionsPage() {
         </div>
 
         {/* Content */}
+        <TherapyPoolFinder />
         {isScanning && !allDataLoaded ? (
           <div className="flex flex-col items-center justify-center py-20 space-y-4">
             <Loader2 className="h-10 w-10 animate-spin text-primary" />
@@ -134,10 +136,10 @@ export default function BestOptionsPage() {
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: index * 0.05 }}
-                  className={`p-6 rounded-2xl border-4 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,0.2)] ${
+                  className={`p-6 rounded-2xl border shadow-md ${
                     option.reason === 'free-practice'
-                      ? 'border-green-600 bg-green-50/50 dark:bg-green-950/40'
-                      : 'border-emerald-600 bg-emerald-50/50 dark:bg-emerald-950/40'
+                      ? 'border-accent/60 bg-accent/5'
+                      : 'border-primary/40 bg-secondary/60'
                   }`}
                 >
                   <div className="flex items-start gap-4 mb-4">
@@ -154,11 +156,11 @@ export default function BestOptionsPage() {
 
                   <div className="mb-6">
                     {option.reason === 'free-practice' ? (
-                      <span className="inline-flex items-center gap-1.5 px-3 py-1.5 text-sm font-bold text-white bg-green-600 rounded-full shadow-xs animate-pulse-glow">
+                      <span className="inline-flex items-center gap-1.5 px-3 py-1.5 text-sm font-bold text-white bg-accent text-accent-foreground rounded-full shadow-xs animate-pulse-glow">
                         🎉 {t('freeReservation')}
                       </span>
                     ) : (
-                      <span className="inline-flex items-center gap-1.5 px-3 py-1.5 text-sm font-bold text-white bg-emerald-600 rounded-full shadow-xs">
+                      <span className="inline-flex items-center gap-1.5 px-3 py-1.5 text-sm font-bold text-white bg-primary rounded-full shadow-xs">
                         ✓ {t('available')}
                       </span>
                     )}

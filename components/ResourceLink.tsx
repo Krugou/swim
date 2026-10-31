@@ -28,20 +28,20 @@ export const ResourceLink = ({ link, isOpen }: ResourceLinkProps) => {
     }
     if (status.hasFreeReservation) {
       return (
-        <span className="inline-block px-2 py-1 text-xs font-bold uppercase border-2 border-black dark:border-white bg-green-500 text-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)] rounded-md">
+        <span className="inline-block px-2 py-1 text-xs font-bold uppercase border border-border bg-green-500 text-white shadow-md rounded-md">
           {t('freeReservation')}
         </span>
       );
     }
     if (status.hasReservationInNext1Hour) {
       return (
-        <span className="inline-block px-2 py-1 text-xs font-bold uppercase border-2 border-black dark:border-white bg-red-500 text-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)] rounded-md">
+        <span className="inline-block px-2 py-1 text-xs font-bold uppercase border border-border bg-red-500 text-white shadow-md rounded-md">
           {t('reserved')}
         </span>
       );
     }
     return (
-      <span className="inline-block px-2 py-1 text-xs font-bold uppercase border-2 border-black dark:border-white bg-green-500 text-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)] rounded-md">
+      <span className="inline-block px-2 py-1 text-xs font-bold uppercase border border-border bg-green-500 text-white shadow-md rounded-md">
         {t('available')}
       </span>
     );
@@ -125,7 +125,7 @@ export const ResourceLink = ({ link, isOpen }: ResourceLinkProps) => {
                   return (
                     <div
                       key={index}
-                      className={`flex flex-col items-center justify-center w-8 h-8 rounded-md border-2 border-black dark:border-white shrink-0 font-bold text-xs shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)] ${
+                      className={`flex flex-col items-center justify-center w-8 h-8 rounded-md border border-border shrink-0 font-bold text-xs shadow-md ${
                         isReserved
                           ? 'bg-red-500 text-white border-dashed'
                           : 'bg-green-400 text-black'
@@ -161,13 +161,13 @@ export const ResourceLink = ({ link, isOpen }: ResourceLinkProps) => {
         {status?.nextAvailableSlot &&
         !status?.hasReservationInNext1Hour &&
         !status?.currentReservationEnd ? (
-          <div className="mt-1 flex items-center gap-2 px-3 py-2 bg-emerald-100 dark:bg-emerald-900 border-2 border-black dark:border-white rounded-md shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)]">
+          <div className="mt-1 flex items-center gap-2 px-3 py-2 bg-emerald-100 dark:bg-emerald-900 border border-border rounded-md shadow-md">
             <span className="text-lg animate-pulse">⏱️</span>
             <div className="flex flex-col leading-none">
               <span className="text-[10px] uppercase font-bold text-black dark:text-white tracking-wider">
                 {tTime('freeFor')}
               </span>
-              <span className="text-base font-black text-emerald-800 dark:text-emerald-100 font-mono">
+              <span className="text-base font-bold text-emerald-800 dark:text-emerald-100 font-mono">
                 {status.nextAvailableSlot}
               </span>
             </div>

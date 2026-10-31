@@ -82,6 +82,23 @@
     "dataSource": "Data hämtas direkt från Esbo stads reservationssystem i realtid.",
     "projectInfo": "Detta projekt skapas och underhålls av volontärer för att hjälpa samhället att lättare få tillgång till simhallsinformation."
   },
+  "therapy": {
+    "title": "Nästa terapibassäng",
+    "subtitle": "Bästa terapibassängen som startar minst 2 timmar framåt",
+    "find": "Hitta nästa terapibassängtid",
+    "searching": "Söker terapibassänger...",
+    "none": "Ingen terapibassängtid hittades för de närmaste timmarna.",
+    "startsAt": "Startar",
+    "until": "till",
+    "freePractice": "Fri träning",
+    "available": "Ledig tid",
+    "yourLocation": "Din plats",
+    "hallLocation": "Badhusets plats",
+    "gpsDenied": "Plats ej tillgänglig. Väder och avstånd för din plats visas inte.",
+    "gpsChecking": "Kontrollerar din plats...",
+    "distance": "{km} km bort",
+    "weatherSource": "Väder: Norska meteorologiska institutet (MET Norway)"
+  },
   "bestOption": {
     "searching": "Söker...",
     "findBestOptions": "Hitta bästa alternativen nu",

@@ -12,9 +12,10 @@ import { useTranslations } from 'next-intl';
 interface WeatherDisplayProps {
   latitude: number;
   longitude: number;
+  label?: string | undefined;
 }
 
-export const WeatherDisplay = ({ latitude, longitude }: WeatherDisplayProps) => {
+export const WeatherDisplay = ({ latitude, longitude, label }: WeatherDisplayProps) => {
   const [weather, setWeather] = useState<WeatherData | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const t = useTranslations('weather');
@@ -56,6 +57,7 @@ export const WeatherDisplay = ({ latitude, longitude }: WeatherDisplayProps) => 
 
   return (
     <div className="flex items-center gap-2 text-xs text-muted-foreground">
+      {label ? <span className="font-medium">{label}:</span> : null}
       <span className="text-base" role="img" aria-label={description} title={description}>
         {icon}
       </span>

@@ -82,6 +82,23 @@
     "dataSource": "Tiedot haetaan suoraan Espoon kaupungin varausjärjestelmästä reaaliajassa.",
     "projectInfo": "Tämä projekti on luotu ja sitä ylläpidetään vapaaehtoisvoimin, jotta yhteisö pääsee helpommin käsiksi uimahallien tietoihin."
   },
+  "therapy": {
+    "title": "Seuraava terapia-allas",
+    "subtitle": "Paras terapia-allasvaihtoehto, joka alkaa vähintään 2 tunnin päästä",
+    "find": "Etsi seuraava terapia-allasaika",
+    "searching": "Etsitään terapia-altaita...",
+    "none": "Terapia-allasaikaa ei löytynyt seuraaville tunneille.",
+    "startsAt": "Alkaa",
+    "until": "asti",
+    "freePractice": "Vapaaharjoittelu",
+    "available": "Vapaa aika",
+    "yourLocation": "Sijaintisi",
+    "hallLocation": "Uimahallin sijainti",
+    "gpsDenied": "Sijaintia ei saatu. Oman sijainnin sää ja etäisyys eivät näy.",
+    "gpsChecking": "Tarkistetaan sijaintia...",
+    "distance": "{km} km päässä",
+    "weatherSource": "Sää: Norjan ilmatieteen laitos (MET Norway)"
+  },
   "bestOption": {
     "searching": "Etsitään...",
     "findBestOptions": "Etsi parhaat vaihtoehdot nyt",

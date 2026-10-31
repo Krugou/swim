@@ -1,6 +1,7 @@
 @import 'tailwindcss';
 
 @theme {
+  --font-sans: var(--font-inter), 'Inter', system-ui, sans-serif;
   --font-display: var(--font-space-grotesk), 'Space Grotesk', sans-serif;
 
   --color-background: hsl(var(--background));
@@ -38,68 +39,68 @@
 
 @layer base {
   :root {
-    --background: 45 100% 90%; /* Vibrant Lemon Yellow */
-    --foreground: 0 0% 0%; /* Pure Black */
+    /* Nordic Lagoon (light) */
+    --background: 200 40% 97%;
+    --foreground: 210 40% 12%;
 
-    --card: 0 0% 100%; /* Keep cards white for pop */
-    --card-foreground: 0 0% 0%;
+    --card: 0 0% 100%;
+    --card-foreground: 210 40% 12%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 0%;
+    --popover-foreground: 210 40% 12%;
 
-    /* High Voltage Colors */
-    --primary: 260 100% 65%; /* Electric Purple */
+    --primary: 192 85% 28%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 48 100% 50%; /* Golden Yellow for better contrast on lemon */
-    --secondary-foreground: 0 0% 0%;
+    --secondary: 172 60% 90%;
+    --secondary-foreground: 192 85% 18%;
 
-    --muted: 180 80% 90%; /* Ice Blue */
-    --muted-foreground: 0 0% 0%;
+    --muted: 200 30% 93%;
+    --muted-foreground: 210 20% 32%;
 
-    --accent: 330 100% 60%; /* Hot Pink */
+    --accent: 16 90% 52%;
     --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 100% 50%; /* Red */
+    --destructive: 0 72% 48%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 0 0% 0%; /* Pure Black Borders */
+    --border: 200 25% 85%;
     --input: 0 0% 100%;
-    --ring: 0 0% 0%; /* Black Ring */
+    --ring: 192 85% 38%;
 
-    --radius: 0rem; /* Sharp corners */
+    --radius: 1rem;
   }
 
   .dark {
-    --background: 260 30% 12%; /* Deep Purple/Black */
-    --foreground: 0 0% 100%;
+    --background: 210 45% 8%;
+    --foreground: 200 30% 95%;
 
-    --card: 260 30% 18%;
-    --card-foreground: 0 0% 100%;
+    --card: 210 40% 12%;
+    --card-foreground: 200 30% 95%;
 
-    --popover: 260 30% 18%;
-    --popover-foreground: 0 0% 100%;
+    --popover: 210 40% 12%;
+    --popover-foreground: 200 30% 95%;
 
-    --primary: 55 100% 60%; /* Yellow in dark mode */
-    --primary-foreground: 0 0% 0%;
+    --primary: 185 80% 55%;
+    --primary-foreground: 210 45% 8%;
 
-    --secondary: 330 100% 60%; /* Pink */
-    --secondary-foreground: 0 0% 100%;
+    --secondary: 200 35% 20%;
+    --secondary-foreground: 185 60% 85%;
 
-    --muted: 260 20% 25%;
-    --muted-foreground: 0 0% 90%;
+    --muted: 210 30% 17%;
+    --muted-foreground: 200 20% 75%;
 
-    --accent: 180 100% 60%; /* Cyan */
-    --accent-foreground: 0 0% 0%;
+    --accent: 16 90% 62%;
+    --accent-foreground: 210 45% 8%;
 
-    --destructive: 0 80% 60%;
+    --destructive: 0 75% 62%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 0 0% 100%; /* White Borders */
-    --ring: 0 0% 100%;
+    --border: 210 25% 24%;
+    --input: 210 35% 14%;
+    --ring: 185 80% 55%;
   }
 }
-
 @layer base {
   * {
     @apply border-border;
@@ -122,48 +123,62 @@
 }
 
 @layer components {
-  /* Neobrutalist Utilities */
+  /* Legacy "neo-*" names kept so existing markup adopts the Nordic Lagoon look */
   .neo-shadow {
-    @apply shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)];
+    @apply shadow-[0_8px_24px_-12px_hsl(200_60%_20%/0.25)] dark:shadow-[0_8px_24px_-12px_rgb(0_0_0/0.6)];
   }
 
   .neo-shadow-hover {
-    @apply hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] dark:hover:shadow-[6px_6px_0px_0px_rgba(255,255,255,1)] hover:-translate-x-[2px] hover:-translate-y-[2px] transition-all duration-200;
+    @apply hover:shadow-[0_12px_28px_-10px_hsl(200_60%_20%/0.3)] hover:-translate-y-0.5 transition-all duration-200;
   }
 
   .neo-shadow-active {
-    @apply active:shadow-none active:translate-x-[4px] active:translate-y-[4px] transition-all duration-100;
+    @apply active:translate-y-0 active:shadow-sm transition-all duration-100;
   }
 
   .neo-border {
-    @apply border-[3px] border-black dark:border-white;
+    @apply border border-border rounded-lg;
   }
 
   .neo-card {
-    @apply border-[3px] border-black dark:border-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] bg-card text-card-foreground p-4;
+    @apply border border-border rounded-lg bg-card text-card-foreground p-4 shadow-[0_8px_24px_-12px_hsl(200_60%_20%/0.25)] dark:shadow-[0_8px_24px_-12px_rgb(0_0_0/0.6)];
   }
 
   .neo-button {
-    @apply border-[3px] border-black dark:border-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] dark:hover:shadow-[6px_6px_0px_0px_rgba(255,255,255,1)] hover:-translate-x-[2px] hover:-translate-y-[2px] transition-all duration-200 active:shadow-none active:translate-x-[4px] active:translate-y-[4px] inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50;
+    @apply rounded-lg border border-border shadow-[0_8px_24px_-12px_hsl(200_60%_20%/0.25)] hover:shadow-[0_12px_28px_-10px_hsl(200_60%_20%/0.3)] hover:-translate-y-0.5 active:translate-y-0 active:shadow-sm inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50;
   }
 
   .neo-input {
-    @apply border-[3px] border-black dark:border-white bg-input px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50;
+    @apply border border-border rounded-lg bg-input px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  .lagoon-header {
+    @apply bg-linear-to-r from-primary to-sky-500 text-primary-foreground;
   }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
 /* Scrollbar */
 ::-webkit-scrollbar {
   width: 12px;
 }
 ::-webkit-scrollbar-track {
   background: hsl(var(--background));
-  border-left: 2px solid hsl(var(--border));
+  border-left: 1px solid hsl(var(--border));
 }
 ::-webkit-scrollbar-thumb {
   background: hsl(var(--primary));
-  border: 2px solid hsl(var(--border));
+  border: 2px solid hsl(var(--background));
+  border-radius: 999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: hsl(var(--secondary));
+  background: hsl(var(--ring));
 }

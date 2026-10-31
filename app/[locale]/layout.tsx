@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import type { ReactElement } from 'react';
-import { Space_Grotesk } from 'next/font/google';
+import { Inter, Space_Grotesk } from 'next/font/google';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, getTranslations, setRequestLocale } from 'next-intl/server';
 import { ThemeProvider } from '@/components/ThemeProvider';
@@ -55,6 +55,12 @@ const spaceGrotesk = Space_Grotesk({
   variable: '--font-space-grotesk',
 });
 
+const inter = Inter({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-inter',
+});
+
 const RootLayout = async ({
   children,
   params,
@@ -79,7 +85,7 @@ const RootLayout = async ({
   return (
     <html lang={locale} suppressHydrationWarning>
       <head />
-      <body className={`${spaceGrotesk.variable} antialiased`}>
+      <body className={`${spaceGrotesk.variable} ${inter.variable} font-sans antialiased`}>
         <a href="#main-content" className="skip-to-content">
           {t('skipToContent')}
         </a>

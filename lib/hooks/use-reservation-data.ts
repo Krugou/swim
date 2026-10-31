@@ -56,15 +56,15 @@ export interface AnalyzedReservationData {
 }
 
 // Constants
-const FREE_PRACTICE_TEXT = 'Vapaaharjoitte';
+export const FREE_PRACTICE_TEXT = 'Vapaaharjoitte';
 const FOUR_HOURS_IN_SECONDS = 4 * 60 * 60;
 
 // Helper functions
-const getTimeWindow = (): { start: number; end: number } => {
+const getTimeWindow = (futureHours = 4): { start: number; end: number } => {
   const nowInSeconds = Math.floor(Date.now() / 1000);
   return {
     start: nowInSeconds - FOUR_HOURS_IN_SECONDS,
-    end: nowInSeconds + FOUR_HOURS_IN_SECONDS,
+    end: nowInSeconds + futureHours * 60 * 60,
   };
 };
 
@@ -217,8 +217,11 @@ export const analyzeReservations = (data: ReservationData[]): AnalyzedReservatio
   };
 };
 
-export const fetchReservationData = async (resourceId: string): Promise<ReservationData[]> => {
-  const timeWindow = getTimeWindow();
+export const fetchReservationData = async (
+  resourceId: string,
+  futureHours = 4,
+): Promise<ReservationData[]> => {
+  const timeWindow = getTimeWindow(futureHours);
   const proxyUrl = buildProxyUrl(resourceId, timeWindow);
 
   const response = await fetch(proxyUrl);

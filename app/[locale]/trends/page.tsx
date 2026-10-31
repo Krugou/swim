@@ -222,7 +222,7 @@ export default function TrendsPage(): ReactElement {
         {/* Controls */}
         <div className="flex flex-wrap gap-4 mb-8">
           {/* Period Toggle */}
-          <div className="flex items-center bg-muted rounded-lg p-1 border-2 border-black dark:border-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)]">
+          <div className="flex items-center bg-muted rounded-lg p-1 border border-border shadow-md">
             {(['weekly', 'monthly', 'yearly'] as const).map((p) => (
               <Button
                 key={p}
@@ -230,9 +230,7 @@ export default function TrendsPage(): ReactElement {
                 size="sm"
                 onClick={() => setPeriod(p)}
                 className={
-                  period === p
-                    ? 'bg-background border-2 border-black dark:border-white rounded-md'
-                    : 'rounded-md'
+                  period === p ? 'bg-background border border-border rounded-md' : 'rounded-md'
                 }
               >
                 {t(p)}
@@ -244,7 +242,7 @@ export default function TrendsPage(): ReactElement {
           <select
             value={selectedHall}
             onChange={(e) => setSelectedHall(e.target.value)}
-            className="px-4 py-2 bg-muted rounded-lg border-2 border-black dark:border-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)] font-medium text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+            className="px-4 py-2 bg-muted rounded-lg border border-border shadow-md font-medium text-sm focus:outline-none focus:ring-2 focus:ring-primary"
           >
             <option value="all">{t('allHalls')}</option>
             {hallIds.map((id) => (
@@ -293,7 +291,7 @@ export default function TrendsPage(): ReactElement {
                       {t('recommendation')}
                     </h2>
                   </div>
-                  <p className="text-2xl font-black text-green-900 dark:text-green-100">
+                  <p className="text-2xl font-bold text-green-900 dark:text-green-100">
                     {aggregatedData.bestHours.map((h) => `${h}:00`).join(', ')}
                   </p>
                   <p className="text-sm text-green-700 dark:text-green-300 mt-1">

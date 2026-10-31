@@ -95,7 +95,7 @@ const SheetContent = ({
             transition={{ type: 'spring', damping: 25, stiffness: 200 }}
             className={cn(
               'fixed z-50 gap-4 bg-background p-6 shadow-lg transition ease-in-out data-[state=open]:animate-in data-[state=closed]:animate-out duration-300',
-              'h-full w-3/4 sm:max-w-sm border-l-4 border-black dark:border-white shadow-[0_0_0_100vmax_rgba(0,0,0,0.5)]',
+              'h-full w-3/4 sm:max-w-sm border-l border-border shadow-[0_0_0_100vmax_rgba(0,0,0,0.5)]',
               side === 'right' ? 'right-0 top-0' : 'left-0 top-0 border-r-4 border-l-0',
               className,
             )}
