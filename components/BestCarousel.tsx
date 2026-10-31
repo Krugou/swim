@@ -1,6 +1,7 @@
 'use client';
 
 import { useCallback, useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 import { useRouter } from 'next/navigation';
@@ -41,6 +42,16 @@ export const BestCarousel = ({ options, loading, intervalSec, exitHref }: BestCa
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = prev;
+    };
+  }, []);
 
   const count = options.length;
   const current = count > 0 ? options[index % count] : undefined;
@@ -96,9 +107,13 @@ export const BestCarousel = ({ options, loading, intervalSec, exitHref }: BestCa
   const controlClass =
     'rounded-full bg-background/80 p-3 text-foreground shadow-md backdrop-blur transition hover:bg-background focus-visible:ring-2 focus-visible:ring-ring';
 
-  return (
+  if (!mounted) {
+    return null;
+  }
+
+  return createPortal(
     <div
-      className="fixed inset-0 z-50 flex flex-col bg-linear-to-br from-primary via-sky-700 to-slate-900 text-white"
+      className="fixed left-0 top-0 z-[100] flex h-dvh w-screen max-w-full flex-col overflow-hidden bg-linear-to-br from-primary via-sky-700 to-slate-900 text-white"
       data-testid="best-carousel"
     >
       <div className="flex items-center justify-between p-4 sm:p-6">
@@ -224,6 +239,7 @@ export const BestCarousel = ({ options, loading, intervalSec, exitHref }: BestCa
           </div>
         ) : null}
       </div>
-    </div>
+    </div>,
+    document.body,
   );
 };
