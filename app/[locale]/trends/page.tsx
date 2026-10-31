@@ -240,6 +240,7 @@ export default function TrendsPage(): ReactElement {
 
           {/* Hall Selector */}
           <select
+            aria-label={t('allHalls')}
             value={selectedHall}
             onChange={(e) => setSelectedHall(e.target.value)}
             className="px-4 py-2 bg-muted rounded-lg border border-border shadow-md font-medium text-sm focus:outline-none focus:ring-2 focus:ring-primary"
@@ -267,7 +268,7 @@ export default function TrendsPage(): ReactElement {
           >
             <BarChart3 className="h-16 w-16 text-muted-foreground mx-auto mb-4" />
             <p className="text-xl text-muted-foreground mb-2">{t('noData')}</p>
-            <p className="text-sm text-muted-foreground/70">{t('noDataDescription')}</p>
+            <p className="text-sm text-muted-foreground">{t('noDataDescription')}</p>
           </motion.div>
         ) : aggregatedData ? (
           <AnimatePresence mode="wait">
@@ -286,7 +287,7 @@ export default function TrendsPage(): ReactElement {
               >
                 <CardContent className="p-6">
                   <div className="flex items-center gap-3 mb-3">
-                    <Star className="h-6 w-6 text-green-600 dark:text-green-400" />
+                    <Star className="h-6 w-6 text-green-700 dark:text-green-400" />
                     <h2 className="text-lg font-bold text-green-800 dark:text-green-200">
                       {t('recommendation')}
                     </h2>
@@ -325,7 +326,7 @@ export default function TrendsPage(): ReactElement {
                 </Card>
                 <Card interactive>
                   <CardContent className="p-4 text-center">
-                    <TrendingUp className="h-5 w-5 text-red-500 mx-auto mb-1" />
+                    <TrendingUp className="h-5 w-5 text-red-600 dark:text-red-400 mx-auto mb-1" />
                     <p className="text-2xl font-bold">{aggregatedData.worstHours[0]}:00</p>
                     <p className="text-xs text-muted-foreground">{t('busiestHour')}</p>
                   </CardContent>
@@ -361,11 +362,11 @@ export default function TrendsPage(): ReactElement {
                   />
                   <div className="flex justify-center gap-6 mt-4 text-xs text-muted-foreground">
                     <span className="flex items-center gap-1">
-                      <span className="inline-block w-3 h-3 rounded bg-green-500" />
+                      <span className="inline-block w-3 h-3 rounded bg-green-700" />
                       {t('bestHoursLegend')}
                     </span>
                     <span className="flex items-center gap-1">
-                      <span className="inline-block w-3 h-3 rounded bg-red-500" />
+                      <span className="inline-block w-3 h-3 rounded bg-red-600" />
                       {t('worstHoursLegend')}
                     </span>
                     <span className="flex items-center gap-1">
@@ -398,11 +399,11 @@ export default function TrendsPage(): ReactElement {
                         <div className="flex items-center justify-between">
                           <CardTitle className="text-base">{hall.name}</CardTitle>
                           <div className="flex items-center gap-2 text-sm">
-                            <span className="text-green-600 dark:text-green-400 font-bold">
+                            <span className="text-green-700 dark:text-green-400 font-bold">
                               ★ {hall.bestHours[0]}:00
                             </span>
                             <span className="text-muted-foreground">→</span>
-                            <span className="text-red-500 font-bold">
+                            <span className="text-red-600 dark:text-red-400 font-bold">
                               ● {hall.worstHours[0]}:00
                             </span>
                           </div>
@@ -422,7 +423,7 @@ export default function TrendsPage(): ReactElement {
 
               {/* Last Updated */}
               {summaryData?.lastUpdated && (
-                <p className="text-xs text-center text-muted-foreground/60 mt-6">
+                <p className="text-xs text-center text-muted-foreground mt-6">
                   {t('lastUpdated')}: {new Date(summaryData.lastUpdated).toLocaleString()}
                 </p>
               )}

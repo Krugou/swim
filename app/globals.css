@@ -1,5 +1,7 @@
 @import 'tailwindcss';
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   --font-sans: var(--font-inter), 'Inter', system-ui, sans-serif;
   --font-display: var(--font-space-grotesk), 'Space Grotesk', sans-serif;
@@ -58,7 +60,7 @@
     --muted: 200 30% 93%;
     --muted-foreground: 210 20% 32%;
 
-    --accent: 16 90% 52%;
+    --accent: 16 85% 40%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 72% 48%;

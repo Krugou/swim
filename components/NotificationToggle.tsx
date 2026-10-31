@@ -66,7 +66,7 @@ export const NotificationToggle = () => {
 
   const getClassName = () => {
     if (isEnabled) {
-      return 'bg-green-500/20 hover:bg-green-500/30 text-green-600 dark:text-green-400';
+      return 'bg-green-500/20 hover:bg-green-500/30 text-green-700 dark:text-green-400';
     }
     if (permission === 'denied') {
       return 'opacity-50 cursor-not-allowed';

@@ -55,13 +55,13 @@ export const QuickActions = ({ hallName, linkName, resourceId }: QuickActionsPro
     }
     if (isAvailable) {
       return (
-        <span className="inline-block px-2 py-1 text-xs font-bold uppercase border border-border bg-green-500 text-white shadow-md rounded-md">
+        <span className="inline-block px-2 py-1 text-xs font-bold uppercase border border-border bg-green-700 text-white shadow-md rounded-md">
           ✓ {tStatus('available')}
         </span>
       );
     }
     return (
-      <span className="inline-block px-2 py-1 text-xs font-bold uppercase border border-border bg-red-500 text-white shadow-md rounded-md">
+      <span className="inline-block px-2 py-1 text-xs font-bold uppercase border border-border bg-red-600 text-white shadow-md rounded-md">
         {tStatus('reserved')}
       </span>
     );
@@ -90,7 +90,7 @@ export const QuickActions = ({ hallName, linkName, resourceId }: QuickActionsPro
           onClick={handleShare}
           className={`flex-1 inline-flex items-center justify-center gap-2 px-3 py-2 text-xs font-bold uppercase tracking-wider rounded-md border border-border shadow-md hover:-translate-y-0.5 hover:shadow-lg active:translate-y-0 active:shadow-none transition-all ${
             shareSuccess
-              ? 'bg-green-500 text-white'
+              ? 'bg-green-700 text-white'
               : 'bg-primary text-primary-foreground hover:bg-primary/90'
           }`}
           title={tQuick('share')}

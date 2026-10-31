@@ -28,20 +28,20 @@ export const ResourceLink = ({ link, isOpen }: ResourceLinkProps) => {
     }
     if (status.hasFreeReservation) {
       return (
-        <span className="inline-block px-2 py-1 text-xs font-bold uppercase border border-border bg-green-500 text-white shadow-md rounded-md">
+        <span className="inline-block px-2 py-1 text-xs font-bold uppercase border border-border bg-green-700 text-white shadow-md rounded-md">
           {t('freeReservation')}
         </span>
       );
     }
     if (status.hasReservationInNext1Hour) {
       return (
-        <span className="inline-block px-2 py-1 text-xs font-bold uppercase border border-border bg-red-500 text-white shadow-md rounded-md">
+        <span className="inline-block px-2 py-1 text-xs font-bold uppercase border border-border bg-red-600 text-white shadow-md rounded-md">
           {t('reserved')}
         </span>
       );
     }
     return (
-      <span className="inline-block px-2 py-1 text-xs font-bold uppercase border border-border bg-green-500 text-white shadow-md rounded-md">
+      <span className="inline-block px-2 py-1 text-xs font-bold uppercase border border-border bg-green-700 text-white shadow-md rounded-md">
         {t('available')}
       </span>
     );
@@ -102,8 +102,10 @@ export const ResourceLink = ({ link, isOpen }: ResourceLinkProps) => {
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-start w-full h-auto py-2 px-1 gap-2 overflow-x-auto no-scrollbar"
-              aria-label={`${tReservation('viewReservations')} - ${link.relatedLinkName}`}
             >
+              <span className="sr-only">
+                {tReservation('viewReservations')} - {link.relatedLinkName}
+              </span>
               {isOpen === false ? (
                 <div className="flex items-center justify-center w-full py-1">
                   <span className="font-bold text-muted-foreground text-sm uppercase tracking-wider">
@@ -127,7 +129,7 @@ export const ResourceLink = ({ link, isOpen }: ResourceLinkProps) => {
                       key={index}
                       className={`flex flex-col items-center justify-center w-8 h-8 rounded-md border border-border shrink-0 font-bold text-xs shadow-md ${
                         isReserved
-                          ? 'bg-red-500 text-white border-dashed'
+                          ? 'bg-red-600 text-white border-dashed'
                           : 'bg-green-400 text-black'
                       }`}
                       title={isReserved ? `Reserved ${displayHour}:00` : `Free ${displayHour}:00`}
@@ -174,7 +176,7 @@ export const ResourceLink = ({ link, isOpen }: ResourceLinkProps) => {
           </div>
         ) : null}
         {minutesAgo !== null ? (
-          <span className="text-xs text-muted-foreground/70 flex items-center gap-1">
+          <span className="text-xs text-muted-foreground flex items-center gap-1">
             🕐 {tTime('updated')}{' '}
             {minutesAgo === 0 ? tTime('justNow') : `${minutesAgo}m ${tTime('ago')}`}
           </span>

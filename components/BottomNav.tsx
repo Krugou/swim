@@ -28,7 +28,7 @@ export const BottomNav = () => {
         >
           <Link href={`/${locale}/best`}>
             <Sparkles
-              className="h-5 w-5 text-green-600 dark:text-green-400 mb-1"
+              className="h-5 w-5 text-green-700 dark:text-green-400 mb-1"
               aria-hidden="true"
             />
             <span className="text-xs font-medium">{tNav('best')}</span>

@@ -235,7 +235,7 @@ const Home = (): ReactElement => {
               © {new Date().getFullYear()} {tFooter('copyright')}
             </p>
             {lastDataUpdate ? (
-              <p className="text-muted-foreground/60">
+              <p className="text-muted-foreground">
                 📊 {tFooter('dataUpdated')}: {new Date(lastDataUpdate).toLocaleString()}
               </p>
             ) : null}

@@ -166,7 +166,7 @@ export const HallDetails = ({ hall, onClose }: HallDetailsProps) => {
                     key={facility}
                     className="flex items-center gap-2 px-4 py-3 bg-muted/50 rounded-xl border-l-4 border-l-green-500 font-semibold text-sm shadow-sm"
                   >
-                    <span className="text-green-600">✓</span>
+                    <span className="text-green-700">✓</span>
                     {facility}
                   </div>
                 ))}

@@ -96,7 +96,7 @@ const BestOptionsContent = () => {
 
                   <div className="mb-6">
                     {option.reason === 'free-practice' ? (
-                      <span className="inline-flex items-center gap-1.5 px-3 py-1.5 text-sm font-bold text-white bg-accent text-accent-foreground rounded-full shadow-xs animate-pulse-glow">
+                      <span className="inline-flex items-center gap-1.5 px-3 py-1.5 text-sm font-bold bg-accent text-accent-foreground rounded-full shadow-xs animate-pulse-glow">
                         🎉 {t('freeReservation')}
                       </span>
                     ) : (
