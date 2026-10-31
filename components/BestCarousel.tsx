@@ -176,11 +176,12 @@ export const BestCarousel = ({ options, loading, intervalSec, exitHref }: BestCa
               </span>
               <h2 className="text-4xl font-bold leading-tight sm:text-7xl">{current.hallName}</h2>
               <p className="text-2xl text-white/80 sm:text-4xl">{current.linkName}</p>
-              <div className="flex justify-center text-lg sm:text-2xl [&_*]:text-white">
+              <div className="flex justify-center text-white">
                 <WeatherDisplay
                   latitude={current.latitude}
                   longitude={current.longitude}
                   label={tWeather('hallLocation')}
+                  large
                 />
               </div>
             </motion.div>

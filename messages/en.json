@@ -117,6 +117,15 @@
     "noSlotsAvailable": "No available slots found at the moment. Try again later!"
   },
   "weather": {
+    "conditions": {
+      "clear": "Clear",
+      "partlyCloudy": "Partly cloudy",
+      "cloudy": "Cloudy",
+      "rain": "Rain",
+      "heavyRain": "Heavy rain",
+      "snow": "Snow",
+      "fog": "Fog"
+    },
     "loading": "Loading weather...",
     "temperature": "Temperature",
     "precipitation": "Precipitation",

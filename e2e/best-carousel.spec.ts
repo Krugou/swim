@@ -1,3 +1,4 @@
+import AxeBuilder from '@axe-core/playwright';
 import { expect, test } from '@playwright/test';
 
 const nowIso = (offsetMin: number) => new Date(Date.now() + offsetMin * 60000).toISOString();
@@ -71,4 +72,34 @@ test('root redirect keeps the carousel query string', async ({ page }) => {
 
   await expect(page).toHaveURL(/\/fi\/?\?view=carousel/);
   await expect(page.getByTestId('best-carousel')).toBeVisible();
+});
+
+test('carousel shows weather as text and has no accessibility violations', async ({ page }) => {
+  await mockApis(page);
+  await page.route('**/api.met.no/**', (route) =>
+    route.fulfill({
+      json: {
+        properties: {
+          timeseries: [
+            {
+              time: nowIso(0),
+              data: {
+                instant: {
+                  details: { air_temperature: 12.4, wind_speed: 3, precipitation_amount: 0.6 },
+                },
+                next_1_hours: { summary: { symbol_code: 'rain' } },
+              },
+            },
+          ],
+        },
+      },
+    }),
+  );
+  await page.goto('/en/?view=carousel&interval=60');
+
+  await expect(page.getByTestId('weather-text')).toContainText('Rain, 12°C');
+  await expect(page.getByTestId('weather-text')).toContainText('Precipitation 0.6 mm');
+
+  const results = await new AxeBuilder({ page }).include('[data-testid="best-carousel"]').analyze();
+  expect(results.violations.map((v) => `${v.id}: ${v.help}`)).toEqual([]);
 });

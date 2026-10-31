@@ -147,3 +147,31 @@ export function getWeatherDescription(symbolCode: string): string {
   }
   return 'Partly cloudy';
 }
+
+export type WeatherConditionKey =
+  'clear' | 'partlyCloudy' | 'cloudy' | 'rain' | 'heavyRain' | 'snow' | 'fog';
+
+export function getWeatherConditionKey(symbolCode: string): WeatherConditionKey {
+  if (symbolCode.includes('heavyrain')) {
+    return 'heavyRain';
+  }
+  if (symbolCode.includes('rain')) {
+    return 'rain';
+  }
+  if (symbolCode.includes('snow') || symbolCode.includes('sleet')) {
+    return 'snow';
+  }
+  if (symbolCode.includes('fog')) {
+    return 'fog';
+  }
+  if (symbolCode.includes('partlycloudy')) {
+    return 'partlyCloudy';
+  }
+  if (symbolCode.includes('cloudy')) {
+    return 'cloudy';
+  }
+  if (symbolCode.includes('clearsky') || symbolCode.includes('fair')) {
+    return 'clear';
+  }
+  return 'partlyCloudy';
+}

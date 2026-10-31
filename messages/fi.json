@@ -117,6 +117,15 @@
     "noSlotsAvailable": "Vapaita aikoja ei löytynyt tällä hetkellä. Yritä myöhemmin uudelleen!"
   },
   "weather": {
+    "conditions": {
+      "clear": "Selkeää",
+      "partlyCloudy": "Puolipilvistä",
+      "cloudy": "Pilvistä",
+      "rain": "Sadetta",
+      "heavyRain": "Kovaa sadetta",
+      "snow": "Lumisadetta",
+      "fog": "Sumuista"
+    },
     "loading": "Ladataan säätietoja...",
     "temperature": "Lämpötila",
     "precipitation": "Sademäärä",
