@@ -82,6 +82,17 @@
     "dataSource": "Data is sourced directly from Espoo city's reservation system in real-time.",
     "projectInfo": "This project is created and maintained by volunteers to help the community access swimming hall information more easily."
   },
+  "carousel": {
+    "start": "Carousel view",
+    "exit": "Exit carousel",
+    "pause": "Pause",
+    "play": "Play",
+    "next": "Next",
+    "previous": "Previous",
+    "fullscreen": "Full screen",
+    "exitFullscreen": "Exit full screen",
+    "slides": "Slides"
+  },
   "therapy": {
     "title": "Next therapy pool",
     "subtitle": "Best therapy pool option starting at least 2 hours from now",

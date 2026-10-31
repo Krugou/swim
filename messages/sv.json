@@ -82,6 +82,17 @@
     "dataSource": "Data hämtas direkt från Esbo stads reservationssystem i realtid.",
     "projectInfo": "Detta projekt skapas och underhålls av volontärer för att hjälpa samhället att lättare få tillgång till simhallsinformation."
   },
+  "carousel": {
+    "start": "Karusellvy",
+    "exit": "Lämna karusellen",
+    "pause": "Pausa",
+    "play": "Spela",
+    "next": "Nästa",
+    "previous": "Föregående",
+    "fullscreen": "Helskärm",
+    "exitFullscreen": "Lämna helskärm",
+    "slides": "Bilder"
+  },
   "therapy": {
     "title": "Nästa terapibassäng",
     "subtitle": "Bästa terapibassängen som startar minst 2 timmar framåt",

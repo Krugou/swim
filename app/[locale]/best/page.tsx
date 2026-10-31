@@ -11,20 +11,20 @@ import {
   type ReservationData,
 } from '@/lib/hooks/use-reservation-data';
 import Link from 'next/link';
+import { Suspense } from 'react';
+import { useSearchParams } from 'next/navigation';
+import { Presentation } from 'lucide-react';
+import { BestCarousel, type BestOption } from '@/components/BestCarousel';
+import { parseBestViewParams } from '@/lib/best-view';
 import { TherapyPoolFinder } from '@/components/TherapyPoolFinder';
 
-interface BestOption {
-  hallName: string;
-  linkName: string;
-  resourceId: string;
-  reason: string;
-}
-
-export default function BestOptionsPage() {
+const BestOptionsContent = () => {
   const t = useTranslations('status');
   const tReservation = useTranslations('reservation');
   const tBestOption = useTranslations('bestOption');
+  const tCarousel = useTranslations('carousel');
   const locale = useLocale();
+  const view = parseBestViewParams(useSearchParams());
 
   // Pre-fetch all data
   const allResourceIds = swimmingHallData.flatMap((hall) =>
@@ -61,6 +61,8 @@ export default function BestOptionsPage() {
               linkName: link.relatedLinkName,
               resourceId: link.url,
               reason: 'free-practice',
+              latitude: hall.latitude,
+              longitude: hall.longitude,
             });
           } else if (!status.hasReservationInNext1Hour && !status.currentReservationEnd) {
             // "Available now" means currently free AND no upcoming reservation starting soon
@@ -69,6 +71,8 @@ export default function BestOptionsPage() {
               linkName: link.relatedLinkName,
               resourceId: link.url,
               reason: 'available-now',
+              latitude: hall.latitude,
+              longitude: hall.longitude,
             });
           }
         }
@@ -87,6 +91,20 @@ export default function BestOptionsPage() {
     });
   }
 
+  if (view.mode === 'carousel') {
+    return (
+      <BestCarousel
+        options={bestOptions}
+
+        loading={isScanning && !allDataLoaded}
+
+        intervalSec={view.intervalSec}
+
+        exitHref={`/${locale}/best`}
+      />
+    );
+  }
+
   return (
     <div className="min-h-screen bg-background p-4 sm:p-6 lg:p-8">
       <div className="mx-auto max-w-4xl">
@@ -96,6 +114,13 @@ export default function BestOptionsPage() {
             <Sparkles className="h-8 w-8 text-primary" />
             {tBestOption('bestOptionsTitle')}
           </h1>
+          <Link
+            href={`/${locale}/best?view=carousel`}
+            className="ml-auto mr-2 inline-flex items-center gap-2 rounded-full bg-primary px-4 py-2 text-sm font-bold text-primary-foreground hover:bg-primary/90"
+          >
+            <Presentation className="h-4 w-4" aria-hidden="true" />
+            {tCarousel('start')}
+          </Link>
           <Link
             href={`/${locale}`}
             className="p-2 hover:bg-muted rounded-full transition-colors focus-visible:ring-2 focus-visible:ring-ring"
@@ -181,5 +206,13 @@ export default function BestOptionsPage() {
         )}
       </div>
     </div>
+  );
+};
+
+export default function BestOptionsPage() {
+  return (
+    <Suspense fallback={null}>
+      <BestOptionsContent />
+    </Suspense>
   );
 }

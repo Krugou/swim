@@ -82,6 +82,17 @@
     "dataSource": "Tiedot haetaan suoraan Espoon kaupungin varausjärjestelmästä reaaliajassa.",
     "projectInfo": "Tämä projekti on luotu ja sitä ylläpidetään vapaaehtoisvoimin, jotta yhteisö pääsee helpommin käsiksi uimahallien tietoihin."
   },
+  "carousel": {
+    "start": "Karuselli",
+    "exit": "Poistu karusellista",
+    "pause": "Tauko",
+    "play": "Toista",
+    "next": "Seuraava",
+    "previous": "Edellinen",
+    "fullscreen": "Koko näyttö",
+    "exitFullscreen": "Poistu koko näytöstä",
+    "slides": "Diat"
+  },
   "therapy": {
     "title": "Seuraava terapia-allas",
     "subtitle": "Paras terapia-allasvaihtoehto, joka alkaa vähintään 2 tunnin päästä",
