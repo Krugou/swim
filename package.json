@@ -61,9 +61,12 @@
     "vitest": "^4.1.12"
   },
   "lint-staged": {
-    "*.{ts,tsx,js,jsx,json,css,md}": [
+    "*.{ts,tsx,js,jsx}": [
+      "vitest related --run --passWithNoTests",
+      "oxlint --quiet",
       "prettier --check"
-    ]
+    ],
+    "*.{json,css,md}": "prettier --check"
   },
   "overrides": {
     "workbox-build": "7.4.1",

@@ -4,19 +4,17 @@ This project uses [Husky](https://typicode.github.io/husky/) to manage Git hooks
 
 ## Pre-commit Hook
 
-Before each commit, the following checks are automatically run:
+Before each commit, these checks run. Type-checking runs in parallel with the staged-file checks to keep the hook fast:
 
-1. **Tests** (`npm test`)
-   - Runs the Vitest suite first
+1. **Staged-file checks** (`npx lint-staged`, per staged `.ts/.tsx/.js/.jsx` file, in this order)
+   - `vitest related --run`: only tests affected by the staged files
+   - `oxlint --quiet`: [oxlint](https://oxc.rs/docs/guide/usage/linter) (config: `.oxlintrc.json`); errors block the commit
+   - `prettier --check`: unformatted files block the commit (also applied to staged `.json/.css/.md`)
 
-2. **Linting** (`npm run lint -- --quiet`)
-   - Runs [oxlint](https://oxc.rs/docs/guide/usage/linter) (config: `.oxlintrc.json`); errors block the commit
-
-3. **Type Checking** (`npm run type-check`)
+2. **Type Checking** (`npm run type-check`, incremental)
    - Ensures there are no TypeScript errors
 
-4. **Formatting** (`npx lint-staged`)
-   - Runs `prettier --check` on staged files; unformatted files block the commit
+The full test suite, full lint and E2E tests still run in CI (`deploy.yml`).
 
 ## Commit Message Hook
 
