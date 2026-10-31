@@ -6,12 +6,17 @@ This project uses [Husky](https://typicode.github.io/husky/) to manage Git hooks
 
 Before each commit, the following checks are automatically run:
 
-1. **Type Checking** (`npm run type-check`)
+1. **Tests** (`npm test`)
+   - Runs the Vitest suite first
+
+2. **Linting** (`npm run lint -- --quiet`)
+   - Runs [oxlint](https://oxc.rs/docs/guide/usage/linter) (config: `.oxlintrc.json`); errors block the commit
+
+3. **Type Checking** (`npm run type-check`)
    - Ensures there are no TypeScript errors
 
-2. **Linting & Formatting** (`npx lint-staged`)
-   - Runs ESLint with auto-fix on staged `.ts`, `.tsx`, `.js`, `.jsx` files
-   - Formats staged files with Prettier
+4. **Formatting** (`npx lint-staged`)
+   - Runs `prettier --check` on staged files; unformatted files block the commit
 
 ## Commit Message Hook
 

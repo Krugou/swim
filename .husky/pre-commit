@@ -1,16 +1,30 @@
 echo "🔍 Running pre-commit checks..."
 
-# Run type checking
-echo "📝 Type checking..."
-npm run type-check || {
-  echo "❌ Type check failed. Please fix TypeScript errors before committing."
+# 1. Tests first
+echo "🧪 Running tests..."
+npm test || {
+  echo "❌ Tests failed. Fix them before committing."
   exit 1
 }
 
-# Run lint-staged (linting and formatting)
-echo "🎨 Linting and formatting staged files..."
+# 2. Code rules (oxlint, errors only; warnings are pre-existing)
+echo "📏 Linting..."
+npm run lint -- --quiet || {
+  echo "❌ Lint failed. Fix oxlint errors before committing."
+  exit 1
+}
+
+# 3. Type checking
+echo "📝 Type checking..."
+npm run type-check || {
+  echo "❌ Type check failed. Fix TypeScript errors before committing."
+  exit 1
+}
+
+# 4. Prettier on staged files (fails the commit if anything is unformatted)
+echo "🎨 Checking formatting..."
 npx lint-staged || {
-  echo "❌ Linting failed. Please fix linting errors before committing."
+  echo "❌ Formatting check failed. Run 'npx prettier --write <files>' and re-stage."
   exit 1
 }
 

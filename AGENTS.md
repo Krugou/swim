@@ -13,3 +13,4 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 - Always commit and push every change directly to `main` (`git push origin HEAD:refs/heads/main`).
 - Commit after each completed change, using Conventional Commits messages.
 - Run `npm run type-check`, `npm run lint -- --quiet` and `npm test` before committing.
+- The husky pre-commit hook enforces this order: tests, oxlint, type-check, then `prettier --check` on staged files. Fix failures instead of bypassing the hook.
