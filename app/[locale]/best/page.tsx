@@ -3,19 +3,11 @@
 import { motion } from 'framer-motion';
 import { useTranslations, useLocale } from 'next-intl';
 import { Sparkles, Loader2, MapPin, X } from 'lucide-react';
-import { swimmingHallData } from '@/lib/swimming-halls-data';
-import { useQueries } from '@tanstack/react-query';
-import {
-  fetchReservationData,
-  analyzeReservations,
-  type ReservationData,
-} from '@/lib/hooks/use-reservation-data';
+import { useBestOptions } from '@/lib/hooks/use-best-options';
 import Link from 'next/link';
 import { Suspense } from 'react';
-import { useSearchParams } from 'next/navigation';
 import { Presentation } from 'lucide-react';
-import { BestCarousel, type BestOption } from '@/components/BestCarousel';
-import { parseBestViewParams } from '@/lib/best-view';
+import { BestCarouselGate } from '@/components/BestCarouselGate';
 import { TherapyPoolFinder } from '@/components/TherapyPoolFinder';
 
 const BestOptionsContent = () => {
@@ -24,89 +16,12 @@ const BestOptionsContent = () => {
   const tBestOption = useTranslations('bestOption');
   const tCarousel = useTranslations('carousel');
   const locale = useLocale();
-  const view = parseBestViewParams(useSearchParams());
 
-  // Pre-fetch all data
-  const allResourceIds = swimmingHallData.flatMap((hall) =>
-    hall.relatedLinks.map((link) => link.url),
-  );
-
-  // Auto-trigger queries on mount
-  const queries = useQueries({
-    queries: allResourceIds.map((resourceId) => ({
-      queryKey: ['reservations', resourceId],
-      queryFn: () => fetchReservationData(resourceId),
-    })),
-  });
-
-  // Create a map of resourceId -> query result for easy lookup
-  const queryMap = new Map(allResourceIds.map((resourceId, index) => [resourceId, queries[index]]));
-
-  const isScanning = queries.some((q) => q.isLoading || q.isFetching);
-  const allDataLoaded = queries.every((q) => q.data || q.error);
-
-  // Calculate best options from the query results
-  const bestOptions: BestOption[] = [];
-
-  if (allDataLoaded) {
-    swimmingHallData.forEach((hall) => {
-      hall.relatedLinks.forEach((link) => {
-        const query = queryMap.get(link.url);
-        if (query?.data) {
-          const status = analyzeReservations(query.data as ReservationData[]);
-
-          if (status.hasFreeReservation) {
-            bestOptions.push({
-              hallName: hall.swimmingHallName,
-              linkName: link.relatedLinkName,
-              resourceId: link.url,
-              reason: 'free-practice',
-              latitude: hall.latitude,
-              longitude: hall.longitude,
-            });
-          } else if (!status.hasReservationInNext1Hour && !status.currentReservationEnd) {
-            // "Available now" means currently free AND no upcoming reservation starting soon
-            bestOptions.push({
-              hallName: hall.swimmingHallName,
-              linkName: link.relatedLinkName,
-              resourceId: link.url,
-              reason: 'available-now',
-              latitude: hall.latitude,
-              longitude: hall.longitude,
-            });
-          }
-        }
-      });
-    });
-
-    // Sort: free practice first, then by name
-    bestOptions.sort((a, b) => {
-      if (a.reason === 'free-practice' && b.reason !== 'free-practice') {
-        return -1;
-      }
-      if (a.reason !== 'free-practice' && b.reason === 'free-practice') {
-        return 1;
-      }
-      return a.hallName.localeCompare(b.hallName);
-    });
-  }
-
-  if (view.mode === 'carousel') {
-    return (
-      <BestCarousel
-        options={bestOptions}
-
-        loading={isScanning && !allDataLoaded}
-
-        intervalSec={view.intervalSec}
-
-        exitHref={`/${locale}/best`}
-      />
-    );
-  }
+  const { options: bestOptions, loading } = useBestOptions();
 
   return (
     <div className="min-h-screen bg-background p-4 sm:p-6 lg:p-8">
+      <BestCarouselGate exitPath="/best" />
       <div className="mx-auto max-w-4xl">
         {/* Header with Close Button */}
         <div className="flex items-center justify-between mb-8">
@@ -132,7 +47,7 @@ const BestOptionsContent = () => {
 
         {/* Content */}
         <TherapyPoolFinder />
-        {isScanning && !allDataLoaded ? (
+        {loading ? (
           <div className="flex flex-col items-center justify-center py-20 space-y-4">
             <Loader2 className="h-10 w-10 animate-spin text-primary" />
             <p className="text-xl font-medium text-muted-foreground">{tBestOption('searching')}</p>

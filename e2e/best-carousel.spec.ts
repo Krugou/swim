@@ -37,3 +37,38 @@ test('carousel view mode shows best options and auto-advances', async ({ page })
   await expect(page).toHaveURL(/\/en\/best\/?$/);
   await expect(page.getByTestId('best-carousel')).toHaveCount(0);
 });
+
+const mockApis = async (page: import('@playwright/test').Page) => {
+  await page.route('**/proxy.aleksi-nokelainen.workers.dev/**', (route) =>
+    route.fulfill({
+      json: [
+        {
+          start: nowIso(-30),
+          end: nowIso(90),
+          title: 'Espoon kaupunki  Vapaaharjoittelu  Vapaaharjoitte',
+        },
+      ],
+    }),
+  );
+  await page.route('**/api.met.no/**', (route) => route.fulfill({ status: 500, body: '' }));
+};
+
+test('carousel works on the landing page and exits back to it', async ({ page }) => {
+  await mockApis(page);
+  await page.goto('/fi/?view=carousel&interval=3');
+
+  await expect(page.getByTestId('best-carousel')).toBeVisible();
+  await expect(page.getByTestId('carousel-slide')).toBeVisible();
+
+  await page.getByRole('button', { name: 'Poistu karusellista' }).click();
+  await expect(page).toHaveURL(/\/fi\/?$/);
+  await expect(page.getByTestId('best-carousel')).toHaveCount(0);
+});
+
+test('root redirect keeps the carousel query string', async ({ page }) => {
+  await mockApis(page);
+  await page.goto('/?view=carousel');
+
+  await expect(page).toHaveURL(/\/fi\/?\?view=carousel/);
+  await expect(page.getByTestId('best-carousel')).toBeVisible();
+});

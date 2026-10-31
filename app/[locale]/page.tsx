@@ -17,6 +17,7 @@ import { cn } from '@/lib/utils';
 import dynamic from 'next/dynamic';
 import { List, Map } from 'lucide-react';
 import { slugify } from '@/lib/slugify';
+import { BestCarouselGate } from '@/components/BestCarouselGate';
 
 const MapView = dynamic(() => import('@/components/MapView'), {
   ssr: false,
@@ -101,6 +102,7 @@ const Home = (): ReactElement => {
 
   return (
     <>
+      <BestCarouselGate />
       <header className="sticky top-0 z-40 w-full border-b bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60">
         <div className="container mx-auto flex h-14 sm:h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
           <h1 className="text-base sm:text-lg md:text-xl font-bold text-primary truncate">
