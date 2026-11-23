@@ -23,15 +23,12 @@ test('carousel view mode shows best options and auto-advances', async ({ page })
   await expect(carousel).toBeVisible();
   const slide = page.getByTestId('carousel-slide');
   await expect(slide).toBeVisible();
-  const first = await slide.getByRole('heading', { level: 2 }).innerText();
+  const first = await slide.innerText();
 
   await expect
-    .poll(
-      async () => page.getByTestId('carousel-slide').getByRole('heading', { level: 2 }).innerText(),
-      {
-        timeout: 10000,
-      },
-    )
+    .poll(async () => page.getByTestId('carousel-slide').innerText(), {
+      timeout: 10000,
+    })
     .not.toBe(first);
 
   await page.getByRole('button', { name: 'Exit carousel' }).click();
